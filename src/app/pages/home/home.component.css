@@ -1,0 +1,60 @@
+
+.content-banner{
+    padding: 20px;
+    max-width: 380px;
+    margin: auto;
+    text-align: center;
+    border-radius: 40px;
+}
+.content-banner img{
+    margin-top: 40px;
+    border: 5px solid #000000;
+    display: block;
+    width: 80%;
+    margin: auto;
+    border-radius: 100%;
+}
+
+.content-banner h1{
+    margin-top: 40px;
+    font-size: 42px;
+    font-family: 'Righteous';
+}
+
+.content-banner h2{
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.content-banner .redes a{
+    color: #000000;
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid #000000;
+    border-radius: 100%;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    margin: 0px 5px;
+    font-size: 20px;
+    transition: .3s;
+}
+
+.content-banner .redes a:hover{
+    background: #999999;
+}
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 1rgb(255, 255, 255)
+    background-color: rgb(255 255 255) !important;
+}
+
+#home-primary {
+    width: 93vw; /* Ocupa todo el ancho de la ventana */
+    height: 96vh; /* Ocupa toda la altura de la ventana */
+    display: flex; /* Para alinear el contenido */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; 
+    background-color: var(--bs-bg-opacity); 
+}
+

@@ -1,4 +1,7 @@
-
+.content-home{
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.96), rgb(255, 255, 255, 0.83)),url(../../../assets/img/example.avif);
+    color: #000000;
+}
 .content-banner{
     padding: 20px;
     max-width: 380px;

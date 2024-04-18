@@ -9,10 +9,4 @@ import { RouterModule } from '@angular/router';
   styleUrl: './nav.component.css'
 })
 export class NavComponent {
-
-  menuVisible: boolean = false;
-
-  selection(){
-       this.menuVisible = false;
-  }
 }

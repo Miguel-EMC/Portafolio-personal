@@ -1,0 +1,15 @@
+section {
+    padding: 60px 15px;
+    overflow: hidden;
+}
+.img-button{
+    margin-left: 8px;
+    width: 50px;
+    left: 50px;
+}
+
+.img-education{
+    margin-left: 10px;
+    width: 80px;
+    left: 80px;
+}

@@ -53,10 +53,10 @@
 }
 
 #home-primary {
-    width: 93vw; /* Ocupa todo el ancho de la ventana */
-    height: 96vh; /* Ocupa toda la altura de la ventana */
-    display: flex; /* Para alinear el contenido */
-    justify-content: center; /* Centra el contenido horizontalmente */
+    width: 93vw; 
+    height: 96vh; 
+    display: flex; 
+    justify-content: center;
     align-items: center; 
     background-color: var(--bs-bg-opacity); 
 }

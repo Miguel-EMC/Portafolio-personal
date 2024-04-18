@@ -4,12 +4,12 @@ import { FooterComponent } from '../../component/footer/footer.component';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-curriculum',
+  selector: 'app-education',
   standalone: true,
   imports: [NavComponent, FooterComponent, RouterModule],
-  templateUrl: './curriculum.component.html',
-  styleUrl: './curriculum.component.css'
+  templateUrl: './education.component.html',
+  styleUrl: './education.component.css'
 })
-export class CurriculumComponent {
+export class EducationComponent {
 
 }

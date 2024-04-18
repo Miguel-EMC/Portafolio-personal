@@ -1,15 +1,20 @@
 <section id="aboutme" class="about" data-selected="true" data-label-id="0">
   <div class="container">
-    <div class="section-title">
-      <hr />
-      <h2>Sobre Mí</h2>
-      <hr />
+    <hr />
+    <div class="d-flex justify-content-center">
+      <h2>Sobre mí</h2>
+      <i
+        ><img
+          src="https://cdn-icons-png.flaticon.com/512/924/924915.png"
+          class="img-button"
+        />
+      </i>
     </div>
-
+    <hr />
     <div class="row">
       <div class="col-lg-4 aos-init aos-animate" data-aos="parallax">
         <img src="../../../assets/img/about-me.png" class="img-fluid" alt="" />
-    </div>    
+      </div>
       <div
         class="col-lg-8 pt-4 pt-lg-0 content aos-init aos-animate"
         data-aos="fade-left"
@@ -34,10 +39,10 @@
         <div class="row">
           <div class="col-lg-6">
             <ul>
-              <li>
+              <!-- <li>
                 <i class="list-group-item"></i> <strong>Cumpleaños:</strong>
                 <span> 11 Feb 1995</span>
-              </li>
+              </li> -->
               <li>
                 <i class="list-group-item"></i> <strong>Celular:</strong>
                 <span> +593 999763190</span>
@@ -64,7 +69,11 @@
         <br />
         <div class="row align-items-start">
           <div class="col">
-            <button type="button" class="btn btn-outline-dark">
+            <button
+              type="submit"
+              class="btn btn-outline-dark"
+              routerLink="/education"
+            >
               Mi Eduación
               <i
                 ><img
@@ -74,7 +83,11 @@
             </button>
           </div>
           <div class="col">
-            <button type="button" class="btn btn-outline-dark">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              routerLink="/curriculum"
+            >
               Mi Experiencia
               <i
                 ><img

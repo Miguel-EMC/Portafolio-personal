@@ -1,0 +1,15 @@
+section {
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.img-button{
+    margin-left: 8px;
+    width: 50px;
+    left: 50px;
+}
+
+.btn:hover{
+    background: #999999;
+    color: black;
+}

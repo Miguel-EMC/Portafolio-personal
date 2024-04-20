@@ -13,3 +13,8 @@ section {
     width: 80px;
     left: 80px;
 }
+
+.img-fluid{
+    max-width: 70%;
+    height: auto;
+}

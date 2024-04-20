@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavComponent } from '../../component/nav/nav.component';
 import { FooterComponent } from '../../component/footer/footer.component';
-import { RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-education',
@@ -10,6 +11,15 @@ import { RouterModule } from '@angular/router';
   templateUrl: './education.component.html',
   styleUrl: './education.component.css'
 })
-export class EducationComponent {
+export class EducationComponent implements OnInit {
 
+  constructor(private router: Router, private viewportScroller: ViewportScroller) {}
+
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.viewportScroller.scrollToPosition([0, 0]);
+      }
+    });
+  }
 }

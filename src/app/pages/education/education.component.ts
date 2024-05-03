@@ -13,6 +13,8 @@ import { ViewportScroller } from '@angular/common';
 })
 export class EducationComponent implements OnInit {
 
+  secction:string = 'education';
+
   constructor(private router: Router, private viewportScroller: ViewportScroller) {}
 
   ngOnInit() {
@@ -21,5 +23,5 @@ export class EducationComponent implements OnInit {
         this.viewportScroller.scrollToPosition([0, 0]);
       }
     });
-  }
+  };
 }

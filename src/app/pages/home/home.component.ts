@@ -12,4 +12,5 @@ import { CurriculumComponent } from '../curriculum/curriculum.component';
 })
 export class HomeComponent {
 
+  secction:string = 'home';
 }

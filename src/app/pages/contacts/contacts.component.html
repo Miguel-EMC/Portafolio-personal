@@ -1,3 +1,57 @@
 <app-nav></app-nav>
-<p>contacts works!</p>
+
+<section id="contacts" class="contacts">
+  <div class="content-section">
+    <div class="row">
+      <div class="col">
+        <form class="row" action="https://docs.google.com/forms/d/e/1FAIpQLSeoFq9F9m6OKCGblM2Gx0R5fD7u1yH0WTc_8V1MLVgIDGfVRA/formResponse" method="POST" target="_blank">
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputEmail4" name="entry.1234567890">
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="inputPassword4" name="entry.0987654321">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="inputAddress" name="entry.1357924680">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Asunto</label>
+            <input type="text" class="form-control" id="inputAddress2" name="entry.2468013579">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Mesange</label>
+            <textarea type="text" class="form-control" id="inputAddress2" name="entry.2468013579"></textarea>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="col map-container">
+        <div class="map-wrapper">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15063.315848296434!2d-78.40852612910017!3d-0.3187335942804549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sec!4v1661722349197!5m2!1sen!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="info">
+            <ul>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                Antonio Jose de Sucre, Francisco de Orellana
+              </li>
+              <li>
+                <i class="fa-solid fa-mobile-screen"></i>
+                Llamanos: 0222787676 - 0999763190
+              </li>
+              <li>
+                <i class="fa-solid fa-envelope"></i>
+                Email: {{email}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <app-footer></app-footer>

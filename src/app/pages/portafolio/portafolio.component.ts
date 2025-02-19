@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { NavComponent } from '../../component/nav/nav.component';
 import { FooterComponent } from '../../component/footer/footer.component';
 import { CardSkillsComponent } from '../../component/card-skills/card-skills.component';
+import {NavComponent} from "../../components/nav/nav.component";
 
 @Component({
   selector: 'app-portafolio',

@@ -1,0 +1,151 @@
+/* Variables globales */
+/* Desactivar el scroll */
+html, body {
+  overflow: hidden; /* Desactiva el scroll */
+  margin: 0; /* Elimina márgenes predeterminados */
+  padding: 0; /* Elimina rellenos predeterminados */
+}
+
+:root {
+  /* Colores base */
+  --green-primary: #2ecc71; /* Verde limpio */
+  --blue-secondary: #3498db; /* Azul profesional */
+  --yellow-accent: #f1c40f; /* Amarillo cálido */
+
+  /* Fuentes */
+  --font-family: 'Inter', sans-serif;
+
+  /* Transiciones */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tema Claro */
+.light-theme {
+  --primary-bg: #f9fafb; /* Fondo principal */
+  --primary-text: #1e293b; /* Texto principal */
+  --secondary-text: #64748b; /* Texto secundario */
+  --accent-primary: var(--green-primary); /* Acento principal (Verde) */
+  --accent-secondary: var(--blue-secondary); /* Acento secundario (Azul) */
+  --button-bg: linear-gradient(145deg, #2ecc71, #27ae60); /* Botones y enlaces */
+  --button-hover: linear-gradient(145deg, #27ae60, #219653); /* Botones y enlaces (hover) */
+  --border-color: transparent; /* Sin bordes */
+  --highlight: var(--yellow-accent); /* Destacados y alertas */
+  --section-bg: #f9fafb; /* Fondos de secciones */
+}
+
+/* Tema Oscuro */
+.dark-theme {
+  --primary-bg: #1e293b; /* Fondo principal */
+  --primary-text: #f8fafc; /* Texto principal */
+  --secondary-text: #94a3b8; /* Texto secundario */
+  --accent-primary: var(--green-primary); /* Acento principal (Verde) */
+  --accent-secondary: var(--blue-secondary); /* Acento secundario (Azul) */
+  --button-bg: linear-gradient(145deg, #2ecc71, #27ae60); /* Botones y enlaces */
+  --button-hover: linear-gradient(145deg, #27ae60, #219653); /* Botones y enlaces (hover) */
+  --border-color: transparent; /* Sin bordes */
+  --highlight: var(--yellow-accent); /* Destacados y alertas */
+  --section-bg: #1e293b; /* Fondos de secciones */
+}
+
+/* Estilos globales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  font-family: var(--font-family);
+  transition: var(--transition);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-text);
+  margin: 1rem 0;
+}
+
+p {
+  color: var(--secondary-text);
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--accent-secondary);
+}
+
+/* Botones */
+button {
+  background: var(--button-bg);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+button:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px); /* Efecto de elevación */
+}
+
+button:active {
+  transform: translateY(0); /* Regresa al estado original al hacer clic */
+}
+
+/* Secciones */
+.section {
+  background-color: var(--section-bg);
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 12px;
+  transition: var(--transition);
+}
+
+/* Destacados */
+.highlight {
+  color: var(--highlight);
+  font-weight: bold;
+}
+
+/* Botón de cambio de tema */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--button-bg);
+  color: #ffffff;
+  border: none;
+  width: 36px; /* Tamaño reducido */
+  height: 36px; /* Tamaño reducido */
+  border-radius: 50%; /* Forma completamente redonda */
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: var(--button-hover);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95); /* Ligera contracción al hacer clic */
+}
+
+.theme-toggle i {
+  font-size: 1.2rem; /* Ícono más pequeño */
+  transition: var(--transition);
+}

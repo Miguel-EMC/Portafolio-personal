@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavComponent } from '../../component/nav/nav.component';
 import { FooterComponent } from '../../component/footer/footer.component';
 import { NavigationEnd, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import {NavComponent} from "../../components/nav/nav.component";
 
 @Component({
   selector: 'app-about-me',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavComponent } from '../../component/nav/nav.component';
 import { FooterComponent } from '../../component/footer/footer.component';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import {NavComponent} from "../../components/nav/nav.component";
 
 @Component({
   selector: 'app-curriculum',

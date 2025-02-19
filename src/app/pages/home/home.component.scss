@@ -1,0 +1,166 @@
+/* Fondo animado */
+#animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Colocar detrás del contenido */
+}
+
+.content-home {
+  color: var(--primary-text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  position: fixed; /* Mantener el fondo fijo */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ocupar todo el ancho */
+  height: 100%; /* Ocupar todo el alto */
+  background-color: var(--primary-bg); /* Usar el fondo global */
+}
+
+.content-banner {
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  text-align: center; /* Centrar todo el contenido */
+  /* Restaurar fondo y sombra */
+  background-color: var(--section-bg); /* Usa la variable de fondo de secciones */
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column; /* Alinear elementos en columna */
+  align-items: center; /* Centrar horizontalmente */
+  gap: 16px; /* Espaciado entre elementos */
+}
+
+.content-banner img {
+  border: 5px solid var(--accent-primary); /* Usamos el acento principal */
+  display: block;
+  width: 80%;
+  max-width: 150px; /* Tamaño máximo para responsividad */
+  margin: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.content-banner h1 {
+  font-size: 2.5rem;
+  font-family: 'Righteous', cursive;
+  color: var(--accent-primary); /* Usamos el acento principal */
+  margin: 0; /* Eliminar margen adicional */
+}
+
+.content-banner h2 {
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--secondary-text); /* Usamos el texto secundario */
+  margin: 0; /* Eliminar margen adicional */
+}
+
+.content-banner .redes {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.content-banner .redes a {
+  color: var(--primary-text);
+  display: inline-block;
+  text-decoration: none;
+  border: 2px solid var(--accent-primary);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  line-height: 35px;
+  font-size: 1.2rem;
+  transition: var(--transition);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: var(--accent-primary);
+    color: var(--primary-bg);
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: scale(1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Botón con bordes redondeados */
+.rounded-button {
+  background: linear-gradient(145deg, #2ecc71, #27ae60);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 30px; /* Bordes redondeados */
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+  margin-top: 10px; /* Ajustar espacio superior */
+
+  &:hover {
+    background: linear-gradient(145deg, #27ae60, #219653);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Diseño Responsivo */
+@media (max-width: 768px) {
+  .content-banner {
+    padding: 10px; /* Reducir padding en pantallas pequeñas */
+  }
+
+  .content-banner h1 {
+    font-size: 2rem; /* Reducir tamaño del título */
+  }
+
+  .content-banner h2 {
+    font-size: 0.9rem; /* Reducir tamaño del subtítulo */
+  }
+
+  .content-banner img {
+    max-width: 120px; /* Reducir tamaño de la imagen */
+  }
+
+  .rounded-button {
+    padding: 10px 20px; /* Reducir tamaño del botón */
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-banner {
+    padding: 5px; /* Padding aún más pequeño */
+  }
+
+  .content-banner h1 {
+    font-size: 1.8rem; /* Título aún más pequeño */
+  }
+
+  .content-banner h2 {
+    font-size: 0.8rem; /* Subtítulo aún más pequeño */
+  }
+
+  .content-banner img {
+    max-width: 100px; /* Imagen aún más pequeña */
+  }
+
+  .rounded-button {
+    padding: 8px 16px; /* Botón aún más pequeño */
+    font-size: 0.8rem;
+  }
+}

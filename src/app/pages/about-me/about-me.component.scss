@@ -1,0 +1,107 @@
+/* Reset básico para eliminar márgenes y rellenos predeterminados */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo general para la sección */
+#aboutme {
+  padding: 40px 20px;
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Título principal */
+.section-title {
+  font-size: 2.5rem;
+  color: var(--primary-text); /* Color del texto principal */
+  margin-bottom: 10px;
+}
+
+/* Subtítulo */
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--secondary-text); /* Color del texto secundario */
+  margin-bottom: 40px;
+}
+
+/* Contenido principal */
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Sección de información */
+.info {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+.info-title {
+  font-size: 1.8rem;
+  color: var(--primary-text); /* Color del texto principal */
+  margin-bottom: 20px;
+}
+
+.info-description {
+  font-size: 1rem;
+  color: var(--secondary-text); /* Color del texto secundario */
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+}
+
+.info-list li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: var(--secondary-text); /* Color del texto secundario */
+}
+
+.info-list i {
+  margin-right: 10px;
+  color: var(--accent-primary); /* Color del ícono (verde) */
+}
+
+/* Botón */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background: var(--button-bg); /* Gradiente de botón */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--button-hover); /* Gradiente de botón al hacer hover */
+}
+
+/* Imagen */
+.image img {
+  width: 250px; /* Tamaño fijo para la imagen */
+  height: 250px;
+  object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
+  border-radius: 50%; /* Forma circular */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}

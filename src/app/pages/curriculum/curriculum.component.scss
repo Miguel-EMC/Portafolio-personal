@@ -1,0 +1,185 @@
+.experience {
+  padding: 60px 15px;
+}
+
+/* Título principal */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--accent-primary); /* Usa el color de acento global */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Timeline (Espina de Pescado Alternada) */
+.timeline {
+  position: relative;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background-color: var(--accent-primary);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item.left .timeline-content {
+  order: 1;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.timeline-item.right .timeline-content {
+  order: 2;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.timeline-connector {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.timeline-content {
+  width: 45%;
+  padding: 20px;
+  background-color: var(--primary-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-small);
+  position: relative;
+}
+
+.timeline-header {
+  margin-bottom: 15px;
+}
+
+.timeline-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-text);
+}
+
+.timeline-subtitle {
+  font-size: 1rem;
+  color: var(--secondary-text);
+}
+
+.timeline-location {
+  font-size: 0.9rem;
+  color: var(--highlight);
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-list li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: var(--secondary-text);
+}
+
+.task-list i {
+  margin-right: 10px;
+  color: var(--accent-primary);
+}
+
+/* Sección de Skills */
+.skills-section {
+  padding: 40px 0;
+}
+
+.skills-container {
+  max-width: 1000px; /* Reducido para centrar mejor */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px; /* Espaciado reducido entre categorías */
+}
+
+.skill-category {
+  background-color: var(--primary-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-small);
+  padding: 20px;
+  text-align: center;
+}
+
+.skill-category h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-text);
+  margin-bottom: 15px;
+}
+
+.skill-items {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.skill-items li {
+  font-size: 1rem;
+  color: var(--secondary-text);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 8px 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.skill-items li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.skill-icon {
+  font-size: 1.2rem;
+  color: var(--accent-primary);
+}
+
+/* Botón de contacto */
+.btn-outline-success {
+  background: var(--button-bg);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-outline-success:hover {
+  background: var(--button-hover);
+}

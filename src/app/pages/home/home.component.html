@@ -1,6 +1,7 @@
 <app-nav />
-<div class="content-home">
-  <canvas id="animated-background"></canvas>
+
+<!-- HomeComponent -->
+<div class="content-home" id="home">
   <div class="content-banner">
     <img src="../../../assets/img/img-mia.png" alt="Miguel Muzo" />
     <h1>Miguel Muzo</h1>
@@ -20,9 +21,30 @@
         <i class="bi bi-envelope"></i>
       </a>
     </div>
-    <button class="rounded-button" (click)="scrollToAboutMe()">Get Started</button>
+    <button class="rounded-button" (click)="scrollToSection('aboutme')">Get Started</button>
+  </div>
+  <!-- Flecha Animada -->
+  <div class="scroll-down-indicator" (click)="scrollToSection('aboutme')">
+    <i class="bi bi-arrow-down-circle"></i>
   </div>
 </div>
+
+<!-- Secciones -->
 <section id="aboutme">
   <app-about-me></app-about-me>
 </section>
+<section id="education">
+  <app-education></app-education>
+</section>
+<section id="curriculum">
+  <app-curriculum></app-curriculum>
+</section>
+<!--<section id="portfolio">-->
+<!--  <app-portafolio></app-portafolio>-->
+<!--</section>-->
+<!--<section id="contacts">-->
+<!--  <app-contacts></app-contacts>-->
+<!--</section>-->
+
+<!-- Footer -->
+<app-footer [secction]="'#'"></app-footer>

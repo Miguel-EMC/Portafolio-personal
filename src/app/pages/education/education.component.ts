@@ -1,29 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { FooterComponent } from '../../component/footer/footer.component';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
-import {NavComponent} from "../../components/nav/nav.component";
-import {AboutMeComponent} from "../about-me/about-me.component";
-import {SkillsComponent} from "../skills/skills.component";
+import { Component } from '@angular/core';
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [NavComponent, FooterComponent, RouterModule, AboutMeComponent, SkillsComponent],
   templateUrl: './education.component.html',
-  styleUrl: './education.component.css'
+  styleUrls: ['./education.component.scss'],
+  imports: [
+    NgForOf
+  ]
 })
-export class EducationComponent implements OnInit {
-
-  secction:string = 'education';
-
-  constructor(private router: Router, private viewportScroller: ViewportScroller) {}
-
-  ngOnInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.viewportScroller.scrollToPosition([0, 0]);
-      }
-    });
-  };
+export class EducationComponent {
+  educationItems = [
+    {
+      logo: 'assets/img/university-logo.png', // Ruta a tu logo
+      title: 'Ingeniería en Sistemas',
+      institution: 'Universidad XYZ',
+      date: '2020 - Presente',
+      description:
+        'Estudiando ingeniería en sistemas con énfasis en desarrollo de software y análisis de datos.',
+    },
+    {
+      logo: 'assets/img/coding-logo.png', // Ruta a tu logo
+      title: 'Desarrollo Full Stack',
+      institution: 'Platzi',
+      date: '2022 - 2023',
+      description:
+        'Curso intensivo sobre desarrollo web full stack con tecnologías como Angular, Node.js y MongoDB.',
+    },
+    {
+      logo: 'assets/img/data-logo.png', // Ruta a tu logo
+      title: 'Análisis de Datos',
+      institution: 'Coursera',
+      date: '2021 - 2022',
+      description:
+        'Certificación en análisis de datos utilizando Python, Pandas y herramientas de visualización.',
+    },
+  ];
 }

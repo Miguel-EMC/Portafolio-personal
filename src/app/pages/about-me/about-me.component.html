@@ -1,113 +1,30 @@
-<section id="aboutme" class="about" data-selected="true" data-label-id="0">
+<section id="aboutme">
   <div class="container">
-    <hr />
-    <div class="d-flex justify-content-center">
-      <h2>Sobre mí</h2>
-      <i
-        ><img
-          src="https://cdn-icons-png.flaticon.com/512/924/924915.png"
-          class="img-button"
-        />
-      </i>
-    </div>
-    <hr />
-    <div class="row">
-      <div class="col-lg-4 aos-init aos-animate" data-aos="parallax">
-        <img src="../../../assets/img/about-me.png" class="img-fluid" alt="" />
-      </div>
-      <div
-        class="col-lg-8 pt-4 pt-lg-0 content aos-init aos-animate"
-        data-aos="fade-left"
-      >
-        <!-- <h3>Desarrollador de Software &amp; Analista de Datos.</h3> -->
-        <h3>Estudiante de Ingenieria en Sistemas de la EPN</h3>
-        <!-- <p class="fst-italic">Resuelvo problemas con lógica y tecnología.</p> -->
-        <p>
-          Soy un apasionado de aprender y mantenerme al día con las últimas
-          tendencias tecnológicas. Me considero un colaborador entusiasta, capaz
-          de trabajar en equipo y adaptarme rápidamente a nuevos desafíos.
-          Siempre estoy buscando oportunidades para mejorar mis habilidades y
-          contribuir al éxito de los proyectos en los que participo.
+    <!-- Título -->
+    <h2 class="section-title">👨‍💻 Sobre mí</h2>
+    <p class="section-subtitle">Conoce mi trayectoria y pasión por la tecnología</p>
+    <!-- Contenido Principal -->
+    <div class="about-content">
+      <!-- Información -->
+      <div class="info">
+        <h3 class="info-title">Estudiante de Ingeniería en Sistemas de la EPN</h3>
+        <p class="info-description">
+          Soy un apasionado de aprender y mantenerme al día con las últimas tendencias tecnológicas. Me considero un colaborador entusiasta, capaz de trabajar en equipo y adaptarme rápidamente a nuevos desafíos. Siempre estoy buscando oportunidades para mejorar mis habilidades y contribuir al éxito de los proyectos en los que participo.
         </p>
-        <!-- <p>
-          Soy un desarrollador Full Stack apasionado, con experiencia tanto en
-          el ámbito laboral como en proyectos personales. Me centro en crear
-          aplicaciones web robustas y escalables, utilizando una variedad de
-          lenguajes y tecnologías de programación. Además, disfruto del análisis
-          de datos, lo que me permite optimizar el rendimiento de mis proyectos
-          y tomar decisiones informadas.
-        </p> -->
-        <div class="row">
-          <div class="col-lg-6">
-            <ul>
-              <!-- <li>
-                <i class="list-group-item"></i> <strong>Cumpleaños:</strong>
-                <span> 11 Feb 1995</span>
-              </li> -->
-              <li>
-                <i class="list-group-item"></i> <strong>Celular:</strong>
-                <span> +593 999763190</span>
-              </li>
-              <li>
-                <i class="list-group-item"></i> <strong>Locación:</strong>
-                <span> Quito, Ecuador</span>
-              </li>
-              <li>
-                <i class="list-group-item"></i> <strong>Email:</strong>
-                <span> {{ email }}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- <div class="row justify-content-md-center">
-          <div class="col col-lg-3">
-            <button type="button" class="btn btn-outline-dark">
-              Descargar CV <i class="bi bi-download"></i>
-            </button>
-          </div>
-        </div> -->
-        <br />
-        <br />
-        <div class="row align-items-start">
-          <div class="col">
-            <button
-              type="submit"
-              class="btn btn-outline-dark"
-              routerLink="/education"
-            >
-              Mi Eduación
-              <i
-                ><img
-                  src="https://cdn-icons-png.flaticon.com/512/10782/10782161.png"
-                  class="img-button"
-              /></i>
-            </button>
-          </div>
-          <div class="col">
-            <button
-              type="button"
-              class="btn btn-outline-dark"
-              routerLink="/curriculum"
-            >
-              Mi Experiencia
-              <i
-                ><img
-                  src="https://cdn-icons-png.flaticon.com/512/14802/14802775.png"
-                  class="img-button"
-              /></i>
-            </button>
-          </div>
-          <!-- <div class="col">
-            <button type="button" class="btn btn-outline-dark">
-              Mi Investigación
-              <i
-                ><img
-                  src="https://cdn-icons-png.flaticon.com/512/2322/2322972.png"
-                  class="img-button"
-              /></i>
-            </button>
-          </div> -->
-        </div>
+        <!-- Datos Personales -->
+        <ul class="info-list">
+          <li><i class="bi bi-phone"></i> <strong>Celular:</strong> +593 999763190</li>
+          <li><i class="bi bi-geo-alt"></i> <strong>Locación:</strong> Quito, Ecuador</li>
+          <li><i class="bi bi-envelope"></i> <strong>Email:</strong> {{ email }}</li>
+        </ul>
+        <!-- Botón Único -->
+        <button class="btn btn-primary" routerLink="/blog">
+          Mi Blog <i class="bi bi-journal-text"></i>
+        </button>
+      </div>
+      <!-- Imagen -->
+      <div class="image">
+        <img src="../../../assets/img/about-me.png" alt="Miguel Muzo" class="rounded-circle shadow" />
       </div>
     </div>
   </div>

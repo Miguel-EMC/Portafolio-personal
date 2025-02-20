@@ -1,41 +1,48 @@
-/* Fondo animado */
-#animated-background {
+/* Contenedor del Home */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita desbordamiento horizontal */
+  scroll-behavior: smooth; /* Scroll suave global */
+}
+
+app-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: -1; /* Colocar detrás del contenido */
+  height: 60px; /* Altura del encabezado */
+  background-color: var(--primary-bg);
+  z-index: 1000;
 }
 
-.content-home {
-  color: var(--primary-text);
-  min-height: 100vh;
+.content-home, section {
+  min-height: 100vh; /* Cada sección ocupa al menos el 100% de la altura de la pantalla */
   display: flex;
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
-  position: fixed; /* Mantener el fondo fijo */
-  top: 0;
-  left: 0;
-  width: 100%; /* Ocupar todo el ancho */
-  height: 100%; /* Ocupar todo el alto */
-  background-color: var(--primary-bg); /* Usar el fondo global */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 60px; /* Espacio para evitar que el contenido quede detrás del encabezado */
+  box-sizing: border-box;
 }
 
+/* Banner Principal */
 .content-banner {
   padding: 20px;
   max-width: 400px;
   margin: auto;
   text-align: center; /* Centrar todo el contenido */
-  /* Restaurar fondo y sombra */
   background-color: var(--section-bg); /* Usa la variable de fondo de secciones */
   border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra suave */
   display: flex;
   flex-direction: column; /* Alinear elementos en columna */
   align-items: center; /* Centrar horizontalmente */
   gap: 16px; /* Espaciado entre elementos */
 }
 
+/* Imagen de Perfil */
 .content-banner img {
   border: 5px solid var(--accent-primary); /* Usamos el acento principal */
   display: block;
@@ -46,6 +53,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Títulos */
 .content-banner h1 {
   font-size: 2.5rem;
   font-family: 'Righteous', cursive;
@@ -60,6 +68,7 @@
   margin: 0; /* Eliminar margen adicional */
 }
 
+/* Redes Sociales */
 .content-banner .redes {
   display: flex;
   justify-content: center;
@@ -78,21 +87,21 @@
   font-size: 1.2rem;
   transition: var(--transition);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  &:hover {
-    background-color: var(--accent-primary);
-    color: var(--primary-bg);
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  &:active {
-    transform: scale(1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
 }
 
-/* Botón con bordes redondeados */
+.content-banner .redes a:hover {
+  background-color: var(--accent-primary);
+  color: var(--primary-bg);
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.content-banner .redes a:active {
+  transform: scale(1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón "Get Started" */
 .rounded-button {
   background: linear-gradient(145deg, #2ecc71, #27ae60);
   color: #ffffff;
@@ -105,17 +114,17 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   transition: var(--transition);
   margin-top: 10px; /* Ajustar espacio superior */
+}
 
-  &:hover {
-    background: linear-gradient(145deg, #27ae60, #219653);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  }
+.rounded-button:hover {
+  background: linear-gradient(145deg, #27ae60, #219653);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
 
-  &:active {
-    transform: translateY(0);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
+.rounded-button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Diseño Responsivo */
@@ -162,5 +171,46 @@
   .rounded-button {
     padding: 8px 16px; /* Botón aún más pequeño */
     font-size: 0.8rem;
+  }
+}
+
+/* Estilo para el encabezado */
+app-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Altura del encabezado */
+  background-color: var(--primary-bg);
+  z-index: 1000;
+}
+
+/* Estilo para la flecha animada */
+.scroll-down-indicator {
+  position: absolute;
+  bottom: 20px; /* Distancia desde el fondo */
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  animation: bounce 2s infinite; /* Efecto de rebote */
+}
+
+.scroll-down-indicator i {
+  font-size: 2.5rem;
+  color: var(--accent-primary); /* Color de la flecha */
+  transition: color 0.3s ease;
+}
+
+.scroll-down-indicator i:hover {
+  color: var(--button-hover); /* Cambio de color al pasar el mouse */
+}
+
+/* Animación de rebote */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }

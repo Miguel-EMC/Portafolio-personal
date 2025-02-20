@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FooterComponent } from '../../component/footer/footer.component';
 import { NavigationEnd, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
@@ -8,9 +7,9 @@ import {NavComponent} from "../../components/nav/nav.component";
 @Component({
   selector: 'app-about-me',
   standalone: true,
-  imports: [NavComponent, FooterComponent, RouterModule],
+  imports: [NavComponent, RouterModule],
   templateUrl: './about-me.component.html',
-  styleUrl: './about-me.component.css'
+  styleUrl: './about-me.component.scss'
 })
 export class AboutMeComponent implements OnInit {
   email: string = " eduardomuzo123456@gmail.com";

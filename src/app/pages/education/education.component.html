@@ -1,45 +1,21 @@
-<app-nav />
-<div class="content-home">
-  <canvas id="animated-background"></canvas>
-  <div class="content-banner">
-    <img src="../../../assets/img/img-mia.png" alt="Miguel Muzo" />
-    <h1>Miguel Muzo</h1>
-    <h2>💻 | Estudiante de Ingeniería en Sistemas |</h2>
-    <h2>Soy un apasionado al desarrollo Full Stack y análisis de datos de Ecuador 🛩️</h2>
-    <div class="redes">
-      <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank">
-        <i class="bi bi-linkedin"></i>
-      </a>
-      <a href="https://wa.me/593999763190?text=Hola%20Miguel" target="_blank">
-        <i class="bi bi-whatsapp"></i>
-      </a>
-      <a href="https://github.com/Miguel-EMC" target="_blank">
-        <i class="bi bi-github"></i>
-      </a>
-      <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=eduardomuzo123456@gmail.com" target="_blank">
-        <i class="bi bi-envelope"></i>
-      </a>
+<section class="education-section">
+  <div class="container">
+    <h2 class="section-title">🎓 Educación</h2>
+    <p class="section-subtitle">Mi camino académico y profesional</p>
+    <div class="education-cards">
+      <div class="education-card" *ngFor="let item of educationItems">
+        <!-- Encabezado con efecto hover -->
+        <div class="card-header">
+          <img [src]="item.logo" alt="{{ item.title }}" class="card-logo" />
+        </div>
+        <!-- Cuerpo de la tarjeta -->
+        <div class="card-body">
+          <h3 class="card-title">{{ item.title }}</h3>
+          <p class="card-institution">{{ item.institution }}</p>
+          <p class="card-date">{{ item.date }}</p>
+          <p class="card-description">{{ item.description }}</p>
+        </div>
+      </div>
     </div>
-    <button class="rounded-button">Get Started</button>
   </div>
-
-  <section id="aboutme">
-    <app-about-me></app-about-me>
-  </section>
-
-  <section id="education">
-    <app-education></app-education>
-  </section>
-
-  <section id="projects">
-<!--    <app-projects></app-projects>-->
-  </section>
-
-  <section id="skills">
-    <app-skills></app-skills>
-  </section>
-
-  <section id="contact">
-<!--    <app-contact></app-contact>-->
-  </section>
-</div>
+</section>

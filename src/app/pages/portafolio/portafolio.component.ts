@@ -1,12 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { FooterComponent } from '../../component/footer/footer.component';
-import { CardSkillsComponent } from '../../component/card-skills/card-skills.component';
 import {NavComponent} from "../../components/nav/nav.component";
 
 @Component({
   selector: 'app-portafolio',
   standalone: true,
-  imports: [NavComponent, FooterComponent, CardSkillsComponent],
+  imports: [NavComponent],
   templateUrl: './portafolio.component.html',
   styleUrl: './portafolio.component.css'
 })

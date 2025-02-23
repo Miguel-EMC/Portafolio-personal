@@ -1,16 +1,19 @@
 /* Variables globales */
 :root {
-  /* Colores base */
-  --green-primary: #2ecc71; /* Verde limpio */
-  --blue-secondary: #3498db; /* Azul profesional */
-  --yellow-accent: #f1c40f; /* Amarillo cálido */
+  --green-primary: #2ecc71;
+  --blue-secondary: #3498db;
+  --yellow-accent: #f1c40f;
 
   /* Fuentes */
   --font-family: 'Inter', sans-serif;
 
   /* Transiciones */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --primary-bg-light: #f9fafb;
+  --primary-bg-dark: #1e293b;
 }
+
 
 /* Tema Claro */
 .light-theme {
@@ -49,10 +52,20 @@
 body {
   background-color: var(--primary-bg);
   color: var(--primary-text);
-  font-family: var(--font-family);
+  zzfont-family: var(--font-family);
   transition: var(--transition);
-  line-height: 1.6; /* Mejora la legibilidad del texto */
+  line-height: 1.6;
 }
+
+/* Apply the background colors for body based on the theme */
+body.light-theme {
+  background-color: var(--primary-bg-light);
+}
+
+body.dark-theme {
+  background-color: var(--primary-bg-dark);
+}
+
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--primary-text);
@@ -154,10 +167,22 @@ button:active {
 
 /* Fondo Animado */
 #animated-background {
-  position: fixed;
+  position: fixed; /* Fijo para cubrir toda la pantalla */
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Colocar detrás del contenido */
+  width: 100vw; /* Ancho completo de la ventana */
+  height: 100vh; /* Alto completo de la ventana */
+  z-index: -1; /* Asegura que esté detrás de todo el contenido */
+  pointer-events: none; /* Evita que interfiera con clics u otras interacciones */
+}
+/* Contenedor principal de la aplicación */
+app-root {
+  position: relative;
+  z-index: 1; /* Asegura que el contenido esté por encima del fondo animado */
+}
+
+/* Contenido dentro del router-outlet */
+router-outlet + * {
+  position: relative;
+  z-index: 1; /* Asegura que el contenido esté por encima del fondo animado */
 }

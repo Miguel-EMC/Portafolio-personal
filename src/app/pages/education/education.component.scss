@@ -1,5 +1,7 @@
+/* Estilo general para la sección */
 .education-section {
   padding: 60px 15px;
+  background-color: var(--section-bg); /* Usa el fondo de secciones */
 }
 
 .section-title {
@@ -44,11 +46,9 @@
   background-color: var(--accent-primary); /* Usa el color de acento global */
 }
 
-.card-logo {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 50%;
+.card-icon {
+  font-size: 3rem; /* Tamaño grande para el ícono */
+  color: #ffffff; /* Color blanco para contraste */
 }
 
 .card-body {
@@ -80,6 +80,7 @@
   line-height: 1.6;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .education-card {
     width: 100%;

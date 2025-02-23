@@ -1,12 +1,14 @@
 <section class="education-section">
   <div class="container">
+    <!-- Título -->
     <h2 class="section-title">🎓 Educación</h2>
     <p class="section-subtitle">Mi camino académico y profesional</p>
+    <!-- Contenedor de Tarjetas -->
     <div class="education-cards">
       <div class="education-card" *ngFor="let item of educationItems">
-        <!-- Encabezado con efecto hover -->
+        <!-- Encabezado con ícono -->
         <div class="card-header">
-          <img [src]="item.logo" alt="{{ item.title }}" class="card-logo" />
+          <i [class]="item.icon" class="card-icon"></i>
         </div>
         <!-- Cuerpo de la tarjeta -->
         <div class="card-body">

@@ -1,13 +1,11 @@
 <app-nav />
-
-<!-- HomeComponent -->
+<!-- Contenido principal -->
 <div class="content-home" id="home">
   <div class="content-banner">
     <img src="../../../assets/img/img-mia.png" alt="Miguel Muzo" />
     <h1>Miguel Muzo</h1>
-    <h2>💻 | Estudiante de Ingeniería en Sistemas |</h2>
-    <h2>Soy un apasionado al desarrollo Full Stack y análisis de datos de Ecuador 🛩️</h2>
-    <div class="redes">
+    <h2>💻 | Desarrollador de Software |</h2>
+    <h2>Soy un apasionado desarrollador de software con experiencia en aplicaciones web <strong>eficientes y escalables</strong>. Me especializo en tecnologías modernas y tengo un fuerte interés en <strong>Inteligencia Artificial</strong>, <strong>Machine Learning</strong> y <strong>Deep Learning</strong>.</h2>    <div class="redes">
       <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank">
         <i class="bi bi-linkedin"></i>
       </a>
@@ -21,14 +19,9 @@
         <i class="bi bi-envelope"></i>
       </a>
     </div>
-    <button class="rounded-button" (click)="scrollToSection('aboutme')">Get Started</button>
-  </div>
-  <!-- Flecha Animada -->
-  <div class="scroll-down-indicator" (click)="scrollToSection('aboutme')">
-    <i class="bi bi-arrow-down-circle"></i>
+    <button class="rounded-button" (click)="scrollToSection('aboutme')">Comenzar</button>
   </div>
 </div>
-
 <!-- Secciones -->
 <section id="aboutme">
   <app-about-me></app-about-me>
@@ -39,12 +32,5 @@
 <section id="curriculum">
   <app-curriculum></app-curriculum>
 </section>
-<!--<section id="portfolio">-->
-<!--  <app-portafolio></app-portafolio>-->
-<!--</section>-->
-<!--<section id="contacts">-->
-<!--  <app-contacts></app-contacts>-->
-<!--</section>-->
-
 <!-- Footer -->
-<app-footer [secction]="'#'"></app-footer>
+<app-footer></app-footer>

@@ -1,96 +1,79 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import {NgClass, NgForOf, ViewportScroller} from '@angular/common';
+import {NgClass, NgForOf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-curriculum',
   standalone: true,
   imports: [
     NgClass,
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   templateUrl: './curriculum.component.html',
   styleUrls: ['./curriculum.component.scss']
 })
 export class CurriculumComponent implements OnInit {
+  // Datos de Experiencia
   experiences = [
     {
+      title: 'Full Stack Developer',
+      subtitle: 'Lateral Business Thinking | Innovate Empresarial Solutions',
+      location: 'Quito, Ecuador',
+      date: 'Jun 2024 - Actualidad',
+      tasks: [
+        'Crear interfaces web dinámicas y optimizar la experiencia de usuario.',
+        'Colaborar con equipos para desarrollar aplicaciones escalables y eficientes.',
+        'Desarrollo de aplicativo móvil Münster Mind.'
+      ]
+    },
+    {
       title: 'Desarrollador de Software',
-      subtitle: 'Freelance - Actualidad',
-      location: 'Quito - Ecuador',
+      subtitle: 'Freelance',
+      location: 'Quito, Ecuador',
+      date: 'Nov 2023 - Oct 2024',
       tasks: [
-        'Participé en el desarrollo de la plataforma Proyecto ASOBANCA en la empresa CEER, enfocándome en la elaboración de pantallas de la aplicación.',
-        'Colaboro en el mejoramiento tanto del backend como del frontend del aplicativo Billusos, implementando mejoras significativas para aumentar su rendimiento y usabilidad.'
-      ],
-      image: 'https://static.vecteezy.com/system/resources/thumbnails/019/153/003/small/3d-minimal-programming-icon-coding-screen-web-development-concept-laptop-with-a-coding-screen-and-a-coding-icon-3d-illustration-png.png'
+        'Contribuir al desarrollo de la plataforma Proyecto ASOBANCA, tanto en el backend como en el frontend.',
+        'Colaborar en la mejora continua del aplicativo Billusos.',
+        'Realizar proyectos web personales.'
+      ]
     },
     {
       title: 'Full Stack Developer Jr',
-      subtitle: 'Centro Ecuatoriano de Eficiencia de Recursos - 02/2023 - 09/2023',
-      location: 'Quito - Ecuador',
+      subtitle: 'Centro Ecuatoriano de Eficiencia de Recursos',
+      location: 'Quito, Ecuador',
+      date: 'Ene 2023 - Sep 2023',
       tasks: [
-        'Maquetación de pantallas cliente para el sistema CONAFIS SARAS.',
-        'Configuración de equipos de trabajo en el área de desarrollo.',
-        'Manejo de base de datos y generación de scripts para el sistema CONAFIPS SARAS.',
-        'Desarrollo de la plataforma SARAS <a href="https://saras.finanzaspopulares.gob.ec/View/SARAS/index.php" target="_blank">Link</a>'
-      ],
-      image: 'https://pbs.twimg.com/profile_images/997152929911136256/ALjrjqbO_400x400.jpg'
-    },
-    {
-      title: 'Full Stack Developer Jr',
-      subtitle: 'Centro Ecuatoriano de Eficiencia de Recursos - 02/2023 - 09/2023',
-      location: 'Quito - Ecuador',
-      tasks: [
-        'Maquetación de pantallas cliente para el sistema CONAFIS SARAS.',
-        'Configuración de equipos de trabajo en el área de desarrollo.',
-        'Manejo de base de datos y generación de scripts para el sistema CONAFIPS SARAS.',
-        'Desarrollo de la plataforma SARAS <a href="https://saras.finanzaspopulares.gob.ec/View/SARAS/index.php" target="_blank">Link</a>'
-      ],
-      image: 'https://pbs.twimg.com/profile_images/997152929911136256/ALjrjqbO_400x400.jpg'
-    },
-    {
-      title: 'Full Stack Developer Jr',
-      subtitle: 'Centro Ecuatoriano de Eficiencia de Recursos - 02/2023 - 09/2023',
-      location: 'Quito - Ecuador',
-      tasks: [
-        'Maquetación de pantallas cliente para el sistema CONAFIS SARAS.',
-        'Configuración de equipos de trabajo en el área de desarrollo.',
-        'Manejo de base de datos y generación de scripts para el sistema CONAFIPS SARAS.',
-        'Desarrollo de la plataforma SARAS <a href="https://saras.finanzaspopulares.gob.ec/View/SARAS/index.php" target="_blank">Link</a>'
-      ],
-      image: 'https://pbs.twimg.com/profile_images/997152929911136256/ALjrjqbO_400x400.jpg'
+        'Maquetar pantallas cliente para el sistema CONAFIS SARAS.',
+        'Configurar equipos de trabajo en el área de desarrollo.',
+        'Manejar bases de datos, incluyendo la generación de scripts para CONAFIPS SARAS.'
+      ]
     }
   ];
 
+  // Datos de Habilidades
   skills = [
     {
-      category: 'Frontend',
-      items: ['HTML5 & CSS3', 'JavaScript (ES6+)', 'Angular', 'React']
+      category: 'Habilidades Técnicas',
+      items: [
+        'Python', 'JavaScript', 'TypeScript', 'PHP', 'HTML', 'CSS', 'Bash', 'Dart',
+        'MySQL', 'SQLServer', 'MongoDB', 'Firebase', 'Postgresql',
+        'Django', 'Laravel', 'NestJs', 'Node.js', 'Angular', 'Flutter',
+        'Docker', 'Kubernetes', 'AWS', 'Figma', 'Git', 'Jira', 'Power BI', 'Microsoft Office'
+      ]
     },
     {
-      category: 'Backend',
-      items: ['Node.js', 'Express.js', 'Django', 'PHP']
-    },
-    {
-      category: 'Bases de Datos',
-      items: ['MySQL', 'PostgreSQL', 'MongoDB', 'Firebase']
-    },
-    {
-      category: 'Herramientas',
-      items: ['Git & GitHub', 'Docker', 'Jenkins', 'AWS']
+      category: 'Habilidades Interpersonales',
+      items: [
+        'Trabajo en equipo', 'Aprendizaje continuo', 'Manejo de presión',
+        'Análisis y solución de problemas'
+      ]
     }
   ];
 
   visibleItems: boolean[] = [];
 
-  constructor(private router: Router, private viewportScroller: ViewportScroller) {}
-
   ngOnInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.viewportScroller.scrollToPosition([0, 0]);
-      }
-    });
     this.visibleItems = new Array(this.experiences.length).fill(false);
   }
 
@@ -113,24 +96,35 @@ export class CurriculumComponent implements OnInit {
 
   getSkillIcon(skill: string): string {
     const icons = {
-      'HTML5 & CSS3': 'bi-code-slash',
-      'JavaScript (ES6+)': 'bi-braces',
-      Angular: 'bi-lightning',
-      React: 'bi-boxes',
-      'Node.js': 'bi-terminal',
-      'Express.js': 'bi-server',
-      Django: 'bi-diagram-3',
+      Python: 'bi-filetype-py',
+      JavaScript: 'bi-braces',
+      TypeScript: 'bi-braces',
       PHP: 'bi-filetype-php',
+      HTML: 'bi-filetype-html',
+      CSS: 'bi-filetype-css',
+      Bash: 'bi-terminal',
+      Dart: 'bi-lightning',
       MySQL: 'bi-database',
-      PostgreSQL: 'bi-database-fill',
+      SQLServer: 'bi-database-fill',
       MongoDB: 'bi-database-down',
       Firebase: 'bi-fire',
-      'Git & GitHub': 'bi-git',
+      Postgresql: 'bi-database-check',
+      Django: 'bi-diagram-3',
+      Laravel: 'bi-boxes',
+      NestJs: 'bi-nut',
+      'Node.js': 'bi-terminal',
+      Angular: 'bi-lightning',
+      Flutter: 'bi-phone',
       Docker: 'bi-box-seam',
-      Jenkins: 'bi-gear',
-      AWS: 'bi-cloud'
+      Kubernetes: 'bi-diagram-3',
+      AWS: 'bi-cloud',
+      Figma: 'bi-pencil-square',
+      Git: 'bi-git',
+      Jira: 'bi-kanban',
+      'Power BI': 'bi-bar-chart',
+      'Microsoft Office': 'bi-file-earmark-spreadsheet'
     };
-    // @ts-ignore
-    return 'bi-question-circle' || icons[skill]; // Ícono por defecto si no hay coincidencia
+
+    return skill in icons ? icons[skill as keyof typeof icons] : 'bi-brightness-high';
   }
 }

@@ -1,0 +1,134 @@
+/* Estilo general para la sección */
+.contacts {
+  padding: 60px 15px;
+  background-color: var(--section-bg);
+}
+
+/* Título principal */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--accent-primary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--secondary-text);
+}
+
+/* Contenedor principal */
+.content-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Diseño de dos columnas */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.col-md-6 {
+  flex: 1;
+}
+
+/* Formulario de contacto */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    label {
+      font-size: 1rem;
+      color: var(--primary-text);
+    }
+
+    input,
+    textarea {
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: var(--accent-primary);
+        outline: none;
+      }
+    }
+
+    textarea {
+      resize: none;
+    }
+  }
+
+  button {
+    align-self: flex-start;
+  }
+}
+
+/* Mapa e información */
+.map-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  iframe {
+    border-radius: 12px;
+    box-shadow: var(--shadow-small);
+  }
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    color: var(--secondary-text);
+    margin-bottom: 10px;
+
+    i {
+      font-size: 1.2rem;
+      color: var(--accent-primary);
+    }
+  }
+}
+
+/* Botón personalizado */
+.rounded-button {
+  background: linear-gradient(145deg, #2ecc71, #27ae60);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(145deg, #27ae60, #219653);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+}

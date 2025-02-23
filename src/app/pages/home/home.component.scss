@@ -102,31 +102,38 @@ app-nav {
 }
 
 /* Botón "Get Started" */
+/* Estilo general para el botón */
 .rounded-button {
-  background: linear-gradient(145deg, #2ecc71, #27ae60);
-  color: #ffffff;
+  background: linear-gradient(145deg, #2ecc71, #27ae60); /* Gradiente verde */
+  color: #ffffff; /* Texto blanco */
   border: none;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: bold;
+  padding: 12px 24px; /* Espaciado interno */
+  font-size: 1rem; /* Tamaño de fuente */
+  font-weight: bold; /* Texto en negrita */
   border-radius: 30px; /* Bordes redondeados */
   cursor: pointer;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  transition: var(--transition);
-  margin-top: 10px; /* Ajustar espacio superior */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  transition: all 0.3s ease; /* Transición suave */
+  display: inline-flex; /* Alineación horizontal */
+  align-items: center; /* Centrado vertical */
+  gap: 8px; /* Espacio entre el ícono y el texto */
 }
 
 .rounded-button:hover {
-  background: linear-gradient(145deg, #27ae60, #219653);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(145deg, #27ae60, #219653); /* Cambio de gradiente */
+  transform: translateY(-2px); /* Efecto de elevación */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
 }
 
 .rounded-button:active {
-  transform: translateY(0);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(0); /* Regresa a la posición original */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra reducida */
 }
 
+/* Ícono dentro del botón */
+.rounded-button i {
+  font-size: 1.2rem; /* Tamaño del ícono */
+}
 /* Diseño Responsivo */
 @media (max-width: 768px) {
   .content-banner {
@@ -202,7 +209,7 @@ app-nav {
 }
 
 .scroll-down-indicator i:hover {
-  color: var(--button-hover); /* Cambio de color al pasar el mouse */
+  box-shadow: 0 8px 16px rgba(182, 182, 182, 0.3);
 }
 
 /* Animación de rebote */

@@ -1,5 +1,7 @@
+/* Estilo general para la sección */
 .experience {
   padding: 60px 15px;
+  background-color: var(--section-bg); /* Usa el fondo de secciones */
 }
 
 /* Título principal */
@@ -117,11 +119,11 @@
 }
 
 .skills-container {
-  max-width: 1000px; /* Reducido para centrar mejor */
+  max-width: 1000px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 15px; /* Espaciado reducido entre categorías */
+  gap: 15px;
 }
 
 .skill-category {
@@ -169,17 +171,43 @@
   color: var(--accent-primary);
 }
 
-/* Botón de contacto */
-.btn-outline-success {
-  background: var(--button-bg);
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+/* Contenedor del botón */
+.button-container {
+  display: flex; /* Usa Flexbox para centrar */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  margin: 0 auto; /* Asegura que esté centrado en el viewport */
 }
 
-.btn-outline-success:hover {
-  background: var(--button-hover);
+.rounded-button {
+  background: linear-gradient(145deg, #2ecc71, #27ae60); /* Gradiente verde */
+  color: #ffffff; /* Texto blanco */
+  border: none;
+  padding: 12px 24px; /* Espaciado interno */
+  font-size: 1rem; /* Tamaño de fuente */
+  font-weight: bold; /* Texto en negrita */
+  border-radius: 30px; /* Bordes redondeados */
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  transition: all 0.3s ease; /* Transición suave */
+  display: inline-flex; /* Alineación horizontal */
+  align-items: center; /* Centrado vertical */
+  gap: 8px; /* Espacio entre el ícono y el texto */
+}
+
+.rounded-button:hover {
+  background: linear-gradient(145deg, #27ae60, #219653); /* Cambio de gradiente */
+  transform: translateY(-2px); /* Efecto de elevación */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+.rounded-button:active {
+  transform: translateY(0); /* Regresa a la posición original */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra reducida */
+}
+
+/* Ícono dentro del botón */
+.rounded-button i {
+  font-size: 1.2rem; /* Tamaño del ícono */
 }

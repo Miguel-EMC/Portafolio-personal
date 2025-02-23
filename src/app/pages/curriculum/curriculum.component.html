@@ -2,7 +2,6 @@
   <div class="container">
     <!-- Título de Experiencia -->
     <h2 class="section-title text-center mb-4">🎓 Mi Experiencia</h2>
-
     <!-- Espina de Pescado Alternada (Timeline Vertical) -->
     <div class="timeline">
       <div
@@ -14,31 +13,28 @@
       >
         <!-- Línea de Conexión -->
         <div class="timeline-connector"></div>
-
         <!-- Contenido de la Experiencia -->
         <div class="timeline-content">
           <div class="timeline-header">
             <h3 class="timeline-title">{{ exp.title }}</h3>
             <h5 class="timeline-subtitle">{{ exp.subtitle }}</h5>
-            <h6 class="timeline-location">{{ exp.location }}</h6>
+            <h6 class="timeline-location">{{ exp.location }} | {{ exp.date }}</h6>
           </div>
           <div class="timeline-body">
             <p class="timeline-text">Tareas realizadas:</p>
             <ul class="task-list">
               <li *ngFor="let task of exp.tasks">
                 <i class="bi bi-check-circle-fill text-success"></i>
-                <span [innerHTML]="task"></span>
+                <span>{{ task }}</span>
               </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-
     <!-- Sección de Skills -->
     <section class="skills-section mt-5">
-      <h2 class="section-title text-center mb-4">🛠️ Mis Skills</h2>
-
+      <h2 class="section-title text-center mb-4">🛠️ Mis Habilidades</h2>
       <!-- Lista Estilizada de Skills -->
       <div class="skills-container">
         <div class="skill-category" *ngFor="let skill of skills">
@@ -52,11 +48,10 @@
         </div>
       </div>
     </section>
-
     <!-- Botón de Contacto -->
-    <div class="text-center mt-5">
-      <button type="button" class="btn btn-outline-success">
-        <strong><i class="bi bi-person"></i> CONTÁCTAME</strong>
+    <div class="button-container text-center mt-5">
+      <button class="rounded-button" routerLink="/contacts">
+        <i class="bi bi-person"></i> Contáctame
       </button>
     </div>
   </div>

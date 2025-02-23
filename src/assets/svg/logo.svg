@@ -1,6 +1,6 @@
-<svg width="250" height="100" viewBox="0 0 480 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Figura principal: Robot simplificado -->
-  <g transform="translate(20, 50)">
+  <g transform="translate(50, 80) scale(1.5)">
     <!-- Cabeza del robot -->
     <rect x="20" y="0" width="40" height="30" rx="10" ry="10" fill="#33B379" />
     <!-- Ojos del robot -->
@@ -19,7 +19,7 @@
     <circle cx="70" cy="40" r="4" fill="#33B379" />
   </g>
   <!-- Texto "Miguel Muzo" -->
-  <text x="100" y="80" font-family="Poppins, sans-serif" font-size="32" fill="url(#techGradient)" font-weight="bold" text-anchor="start" alignment-baseline="middle" letter-spacing="2">MIGUEL MUZO</text>
+  <text x="150" y="100" font-family="Poppins, sans-serif" font-size="48" fill="url(#techGradient)" font-weight="bold" text-anchor="start" alignment-baseline="middle" letter-spacing="2">MIGUEL MUZO</text>
   <!-- Gradiente para el texto -->
   <defs>
     <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">

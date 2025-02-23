@@ -13,4 +13,12 @@ export class AppComponent {
   title = 'protafolio-personal';
 
   constructor(private animatedBackgroundService: AnimatedBackgroundService) {}
+
+  ngAfterViewInit(): void {
+    const canvas = document.getElementById('animated-background') as HTMLCanvasElement;
+    if (canvas) {
+      this.animatedBackgroundService.init(canvas);
+    }
+  }
 }
+

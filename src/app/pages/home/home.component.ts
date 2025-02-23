@@ -4,6 +4,7 @@ import {AboutMeComponent} from "../about-me/about-me.component";
 import {CurriculumComponent} from "../curriculum/curriculum.component";
 import {FooterComponent} from "../../components/footer/footer.component";
 import {NavComponent} from "../../components/nav/nav.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ import {NavComponent} from "../../components/nav/nav.component";
     AboutMeComponent,
     CurriculumComponent,
     FooterComponent,
-    NavComponent
+    NavComponent,
+    RouterLink
   ],
   styleUrls: ['./home.component.scss']
 })

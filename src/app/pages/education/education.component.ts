@@ -13,28 +13,28 @@ import {NgForOf} from "@angular/common";
 export class EducationComponent {
   educationItems = [
     {
-      logo: 'assets/img/university-logo.png', // Ruta a tu logo
-      title: 'Ingeniería en Sistemas',
-      institution: 'Universidad XYZ',
-      date: '2020 - Presente',
+      icon: 'bi bi-mortarboard-fill', // Ícono de graduación
+      title: 'Ingeniería en Ciencias de la Computación',
+      institution: 'Escuela Politécnica Nacional',
+      date: 'Actualidad',
       description:
         'Estudiando ingeniería en sistemas con énfasis en desarrollo de software y análisis de datos.',
     },
     {
-      logo: 'assets/img/coding-logo.png', // Ruta a tu logo
-      title: 'Desarrollo Full Stack',
-      institution: 'Platzi',
-      date: '2022 - 2023',
+      icon: 'bi bi-code-slash', // Ícono de código
+      title: 'Tecnología Superior en Desarrollo de Software',
+      institution: 'Escuela Politécnica Nacional',
+      date: '2020 - 2023',
       description:
-        'Curso intensivo sobre desarrollo web full stack con tecnologías como Angular, Node.js y MongoDB.',
+        'Formación técnica en desarrollo de aplicaciones web y móviles utilizando tecnologías modernas.',
     },
     {
-      logo: 'assets/img/data-logo.png', // Ruta a tu logo
-      title: 'Análisis de Datos',
-      institution: 'Coursera',
-      date: '2021 - 2022',
+      icon: 'bi bi-book', // Ícono de libro
+      title: 'Bachillerato General Unificado',
+      institution: 'Unidad Educativa Leopoldo Mercado',
+      date: '2013 - 2019',
       description:
-        'Certificación en análisis de datos utilizando Python, Pandas y herramientas de visualización.',
+        'Educación secundaria con enfoque en ciencias y matemáticas.',
     },
   ];
 }

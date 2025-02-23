@@ -1,0 +1,33 @@
+.footer {
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .scroll-to-top {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--accent-primary);
+    transition: var(--transition);
+
+    &:hover {
+      color: var(--accent-secondary);
+      transform: scale(1.1);
+    }
+  }
+}

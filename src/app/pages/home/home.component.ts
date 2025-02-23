@@ -1,16 +1,37 @@
 import { Component } from '@angular/core';
-import { NavComponent } from '../../component/nav/nav.component';
-import { FooterComponent } from '../../component/footer/footer.component';
-import { AboutMeComponent } from '../about-me/about-me.component';
-import { CurriculumComponent } from '../curriculum/curriculum.component';
+import {EducationComponent} from "../education/education.component";
+import {AboutMeComponent} from "../about-me/about-me.component";
+import {CurriculumComponent} from "../curriculum/curriculum.component";
+import {FooterComponent} from "../../components/footer/footer.component";
+import {NavComponent} from "../../components/nav/nav.component";
+import {RouterLink} from "@angular/router";
+
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavComponent, FooterComponent, AboutMeComponent, CurriculumComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  imports: [
+    EducationComponent,
+    AboutMeComponent,
+    CurriculumComponent,
+    FooterComponent,
+    NavComponent,
+    RouterLink
+  ],
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  scrollToSection(sectionId: string): void {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const offset = 60; // Altura del encabezado (app-nav)
+      const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - offset;
 
-  secction:string = 'home';
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
 }

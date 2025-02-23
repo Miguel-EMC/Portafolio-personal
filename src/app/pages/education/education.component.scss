@@ -1,0 +1,88 @@
+/* Estilo general para la sección */
+.education-section {
+  padding: 60px 15px;
+  background-color: var(--section-bg); /* Usa el fondo de secciones */
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--accent-primary); /* Usa el color de acento global */
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--secondary-text); /* Usa el color de texto secundario global */
+}
+
+.education-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.education-card {
+  background-color: var(--primary-bg); /* Usa el fondo principal global */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--accent-primary); /* Usa el color de acento global */
+}
+
+.card-icon {
+  font-size: 3rem; /* Tamaño grande para el ícono */
+  color: #ffffff; /* Color blanco para contraste */
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--primary-text); /* Usa el color de texto global */
+}
+
+.card-institution {
+  font-size: 1rem;
+  color: var(--secondary-text); /* Usa el color de texto secundario global */
+  margin-bottom: 5px;
+}
+
+.card-date {
+  font-size: 0.9rem;
+  color: var(--highlight); /* Usa el color de resaltado global */
+  margin-bottom: 10px;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: var(--secondary-text); /* Usa el color de texto secundario global */
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .education-card {
+    width: 100%;
+  }
+}

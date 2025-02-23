@@ -1,51 +1,111 @@
 <app-nav></app-nav>
-
 <section id="contacts" class="contacts">
   <div class="content-section">
+    <!-- Título de la Sección -->
+    <h2 class="section-title text-center mb-4">📞 Contáctame</h2>
+    <p class="section-subtitle text-center mb-5">
+      Estoy aquí para ayudarte. ¡No dudes en contactarme!
+    </p>
+
+    <!-- Contenido Principal -->
     <div class="row">
-      <div class="col">
-        <form class="row" action="https://docs.google.com/forms/d/e/1FAIpQLSeoFq9F9m6OKCGblM2Gx0R5fD7u1yH0WTc_8V1MLVgIDGfVRA/formResponse" method="POST" target="_blank">
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="inputEmail4" name="entry.1234567890">
+      <!-- Formulario de Contacto -->
+      <div class="col-md-6 fade-in">
+        <form
+          class="contact-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSeoFq9F9m6OKCGblM2Gx0R5fD7u1yH0WTc_8V1MLVgIDGfVRA/formResponse"
+          method="POST"
+          target="_blank"
+        >
+          <div class="form-group">
+            <label for="name" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="entry.1234567890"
+              placeholder="Ingresa tu nombre"
+              required
+            />
           </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Apellido</label>
-            <input type="text" class="form-control" id="inputPassword4" name="entry.0987654321">
+          <div class="form-group">
+            <label for="lastname" class="form-label">Apellido</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              name="entry.0987654321"
+              placeholder="Ingresa tu apellido"
+              required
+            />
           </div>
-          <div class="col-12">
-            <label for="inputAddress" class="form-label">Correo electrónico</label>
-            <input type="email" class="form-control" id="inputAddress" name="entry.1357924680">
+          <div class="form-group">
+            <label for="email" class="form-label">Correo Electrónico</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="entry.1357924680"
+              placeholder="ejemplo@correo.com"
+              required
+            />
           </div>
-          <div class="col-12">
-            <label for="inputAddress2" class="form-label">Asunto</label>
-            <input type="text" class="form-control" id="inputAddress2" name="entry.2468013579">
+          <div class="form-group">
+            <label for="subject" class="form-label">Asunto</label>
+            <input
+              type="text"
+              class="form-control"
+              id="subject"
+              name="entry.2468013579"
+              placeholder="Escribe el asunto"
+              required
+            />
           </div>
-          <div class="col-12">
-            <label for="inputAddress2" class="form-label">Mesange</label>
-            <textarea type="text" class="form-control" id="inputAddress2" name="entry.2468013579"></textarea>
+          <div class="form-group">
+            <label for="message" class="form-label">Mensaje</label>
+            <textarea
+              class="form-control"
+              id="message"
+              name="entry.2468013579"
+              rows="5"
+              placeholder="Escribe tu mensaje aquí..."
+              required
+            ></textarea>
           </div>
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
+          <button type="submit" class="btn btn-primary rounded-button">
+            Enviar Mensaje
+          </button>
         </form>
       </div>
-      <div class="col map-container">
+
+      <!-- Información de Contacto y Mapa -->
+      <div class="col-md-6 map-container fade-in">
         <div class="map-wrapper">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15063.315848296434!2d-78.40852612910017!3d-0.3187335942804549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sec!4v1661722349197!5m2!1sen!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <div class="info">
-            <ul>
+          <!-- Mapa de Google -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15063.315848296434!2d-78.40852612910017!3d-0.3187335942804549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sec!4v1661722349197!5m2!1sen!2sec"
+            width="100%"
+            height="300"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+
+          <!-- Información Adicional -->
+          <div class="info mt-4">
+            <ul class="info-list">
               <li>
                 <i class="fa-solid fa-location-dot"></i>
-                Antonio Jose de Sucre, Francisco de Orellana
+                Antonio José de Sucre, Francisco de Orellana
               </li>
               <li>
                 <i class="fa-solid fa-mobile-screen"></i>
-                Llamanos: 0222787676 - 0999763190
+                Llámanos: 0222787676 - 0999763190
               </li>
               <li>
                 <i class="fa-solid fa-envelope"></i>
-                Email: {{email}}
+                Email: {{ email }}
               </li>
             </ul>
           </div>
@@ -54,4 +114,3 @@
     </div>
   </div>
 </section>
-<app-footer></app-footer>

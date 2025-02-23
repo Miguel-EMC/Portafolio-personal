@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { NavComponent } from '../../component/nav/nav.component';
-import { FooterComponent } from '../../component/footer/footer.component';
+import {NavComponent} from "../../components/nav/nav.component";
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [NavComponent, FooterComponent],
+  imports: [NavComponent],
   templateUrl: './contacts.component.html',
-  styleUrl: './contacts.component.css'
+  styleUrl: './contacts.component.scss'
 })
 export class ContactsComponent {
   email: string = 'eduardomuzo123456@gmail.com'

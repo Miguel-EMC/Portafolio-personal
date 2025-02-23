@@ -1,0 +1,182 @@
+/* Reset básico para eliminar márgenes y rellenos predeterminados */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo general para la sección */
+#aboutme {
+  padding: 60px 20px;
+  background-color: var(--section-bg); /* Usa el fondo de secciones */
+  position: relative;
+  overflow: hidden;
+
+  /* Animación de fondo */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    transform: skewX(-20deg);
+    animation: slide-background 10s infinite linear;
+    z-index: -1;
+  }
+}
+
+/* Animación de fondo */
+@keyframes slide-background {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Título principal */
+.section-title {
+  font-size: 2.5rem;
+  color: var(--accent-primary); /* Color verde para el título */
+  margin-bottom: 10px;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* Subtítulo */
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--secondary-text); /* Color del texto secundario */
+  margin-bottom: 40px;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+/* Contenido principal */
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Sección de información */
+.info {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+  animation: fadeInUp 1.4s ease-out;
+}
+
+.info-title {
+  font-size: 1.8rem;
+  color: var(--accent-primary); /* Color verde para el título */
+  margin-bottom: 20px;
+}
+
+.info-description {
+  font-size: 1rem;
+  color: var(--secondary-text); /* Color del texto secundario */
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+}
+
+.info-list li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: var(--secondary-text); /* Color del texto secundario */
+  display: flex;
+  align-items: center;
+  animation: fadeInUp 1.6s ease-out;
+}
+
+.info-list i {
+  margin-right: 10px;
+  color: var(--accent-primary); /* Color verde para los íconos */
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.info-list i:hover {
+  transform: scale(1.2);
+}
+
+.info-list a {
+  color: var(--accent-primary); /* Color verde para los enlaces */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.info-list a:hover {
+  color: var(--accent-secondary); /* Cambio de color al pasar el mouse */
+}
+
+/* Botón */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  color: #fff;
+  background: var(--button-bg); /* Gradiente de botón */
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1.8s ease-out;
+}
+
+.btn:hover {
+  background: var(--button-hover); /* Gradiente de botón al hacer hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen */
+.image img {
+  width: 250px; /* Tamaño fijo para la imagen */
+  height: 250px;
+  object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
+  border-radius: 50%; /* Forma circular */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  animation: fadeInUp 2s ease-out;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

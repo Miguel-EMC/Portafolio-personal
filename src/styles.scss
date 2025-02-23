@@ -1,0 +1,188 @@
+/* Variables globales */
+:root {
+  --green-primary: #2ecc71;
+  --blue-secondary: #3498db;
+  --yellow-accent: #f1c40f;
+
+  /* Fuentes */
+  --font-family: 'Inter', sans-serif;
+
+  /* Transiciones */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --primary-bg-light: #f9fafb;
+  --primary-bg-dark: #1e293b;
+}
+
+
+/* Tema Claro */
+.light-theme {
+  --primary-bg: #f9fafb; /* Fondo principal */
+  --primary-text: #1e293b; /* Texto principal */
+  --secondary-text: #64748b; /* Texto secundario */
+  --accent-primary: var(--green-primary); /* Acento principal (Verde) */
+  --accent-secondary: var(--blue-secondary); /* Acento secundario (Azul) */
+  --button-bg: linear-gradient(145deg, #2ecc71, #27ae60); /* Botones y enlaces */
+  --button-hover: linear-gradient(145deg, #27ae60, #219653); /* Botones y enlaces (hover) */
+  --border-color: transparent; /* Sin bordes */
+  --highlight: var(--yellow-accent); /* Destacados y alertas */
+  --section-bg: #f9fafb; /* Fondos de secciones */
+}
+
+/* Tema Oscuro */
+.dark-theme {
+  --primary-bg: #1e293b; /* Fondo principal */
+  --primary-text: #f8fafc; /* Texto principal */
+  --secondary-text: #94a3b8; /* Texto secundario */
+  --accent-primary: var(--green-primary); /* Acento principal (Verde) */
+  --accent-secondary: var(--blue-secondary); /* Acento secundario (Azul) */
+  --button-bg: linear-gradient(145deg, #2ecc71, #27ae60); /* Botones y enlaces */
+  --button-hover: linear-gradient(145deg, #27ae60, #219653); /* Botones y enlaces (hover) */
+  --border-color: transparent; /* Sin bordes */
+  --highlight: var(--yellow-accent); /* Destacados y alertas */
+  --section-bg: #1e293b; /* Fondos de secciones */
+}
+/* Estilos globales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  zzfont-family: var(--font-family);
+  transition: var(--transition);
+  line-height: 1.6;
+}
+
+/* Apply the background colors for body based on the theme */
+body.light-theme {
+  background-color: var(--primary-bg-light);
+}
+
+body.dark-theme {
+  background-color: var(--primary-bg-dark);
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-text);
+  margin: var(--spacing-large) 0;
+  line-height: 1.2; /* Mejora la legibilidad de los títulos */
+}
+
+p {
+  color: var(--secondary-text);
+  line-height: 1.6;
+  margin: var(--spacing-medium) 0;
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--accent-secondary);
+}
+
+/* Botones */
+button {
+  background: var(--button-bg);
+  color: #ffffff;
+  border: none;
+  padding: var(--spacing-medium) var(--spacing-large);
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-small);
+  transition: var(--transition);
+  box-shadow: var(--shadow-small); /* Agrega sombra para mejorar la profundidad */
+}
+
+button:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px); /* Efecto de elevación */
+  box-shadow: var(--shadow-medium); /* Aumenta la sombra al hacer hover */
+}
+
+button:active {
+  transform: translateY(0); /* Regresa al estado original al hacer clic */
+  box-shadow: var(--shadow-small); /* Reduce la sombra al hacer clic */
+}
+
+/* Secciones */
+.section {
+  background-color: var(--section-bg);
+  padding: var(--spacing-large);
+  margin: var(--spacing-medium) 0;
+  border-radius: 12px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-small); /* Agrega sombra para mejorar la profundidad */
+}
+
+/* Destacados */
+.highlight {
+  color: var(--highlight);
+  font-weight: bold;
+}
+
+/* Botón de cambio de tema */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--button-bg);
+  color: #ffffff;
+  border: none;
+  width: 36px; /* Tamaño reducido */
+  height: 36px; /* Tamaño reducido */
+  border-radius: 50%; /* Forma completamente redonda */
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-small); /* Agrega sombra para mejorar la profundidad */
+}
+
+.theme-toggle:hover {
+  background: var(--button-hover);
+  box-shadow: var(--shadow-medium); /* Aumenta la sombra al hacer hover */
+}
+
+.theme-toggle:active {
+  transform: scale(0.95); /* Ligera contracción al hacer clic */
+  box-shadow: var(--shadow-small); /* Reduce la sombra al hacer clic */
+}
+
+.theme-toggle i {
+  font-size: 1.2rem; /* Ícono más pequeño */
+  transition: var(--transition);
+}
+
+
+/* Fondo Animado */
+#animated-background {
+  position: fixed; /* Fijo para cubrir toda la pantalla */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Ancho completo de la ventana */
+  height: 100vh; /* Alto completo de la ventana */
+  z-index: -1; /* Asegura que esté detrás de todo el contenido */
+  pointer-events: none; /* Evita que interfiera con clics u otras interacciones */
+}
+/* Contenedor principal de la aplicación */
+app-root {
+  position: relative;
+  z-index: 1; /* Asegura que el contenido esté por encima del fondo animado */
+}
+
+/* Contenido dentro del router-outlet */
+router-outlet + * {
+  position: relative;
+  z-index: 1; /* Asegura que el contenido esté por encima del fondo animado */
+}

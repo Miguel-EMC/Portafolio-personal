@@ -33,6 +33,7 @@
   width: 300px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto; /* Centrado de tarjetas */
 }
 
 .education-card:hover {
@@ -81,8 +82,64 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .education-cards {
+    justify-content: space-between; /* Alineación más eficiente para pantallas medianas */
+  }
+
   .education-card {
-    width: 100%;
+    width: 48%; /* Dos tarjetas por fila en pantallas medianas */
+  }
+}
+
+@media (max-width: 768px) {
+  .education-cards {
+    justify-content: center; /* Centrado de las tarjetas en pantallas más pequeñas */
+  }
+
+  .education-card {
+    width: 100%; /* Una tarjeta por fila en pantallas más pequeñas */
+  }
+
+  .section-title {
+    font-size: 2rem; /* Ajustar el tamaño del título */
+  }
+
+  .section-subtitle {
+    font-size: 1rem; /* Ajustar el tamaño del subtítulo */
+  }
+
+  .card-title {
+    font-size: 1.2rem; /* Ajustar el tamaño del título de las tarjetas */
+  }
+
+  .card-institution, .card-date, .card-description {
+    font-size: 0.9rem; /* Reducir el tamaño del texto en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem; /* Título más pequeño en pantallas muy pequeñas */
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem; /* Subtítulo más pequeño */
+  }
+
+  .education-card {
+    width: 100%; /* Una tarjeta por fila en pantallas muy pequeñas */
+  }
+
+  .card-body {
+    padding: 15px; /* Reducir el padding para mejorar el espaciado */
+  }
+
+  .card-title {
+    font-size: 1.1rem; /* Ajustar tamaño de texto en tarjetas */
+  }
+
+  .card-institution, .card-date, .card-description {
+    font-size: 0.8rem; /* Texto más pequeño */
   }
 }

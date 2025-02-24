@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ScrollService } from "../../services/scroll.service";
 import { ThemeService } from "../../services/theme.service";
 import { NgClass } from "@angular/common";
-import {RouterLink} from "@angular/router";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-nav',
@@ -12,6 +12,8 @@ import {RouterLink} from "@angular/router";
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
+  isNavbarOpen = false;
+
   constructor(
     private themeService: ThemeService,
     private scrollService: ScrollService
@@ -27,5 +29,9 @@ export class NavComponent {
 
   scrollToSection(sectionId: string): void {
     this.scrollService.scrollToSection(sectionId);
+  }
+
+  toggleNavbar(): void {
+    this.isNavbarOpen = !this.isNavbarOpen;
   }
 }

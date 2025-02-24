@@ -14,7 +14,6 @@
   --primary-bg-dark: #1e293b;
 }
 
-
 /* Tema Claro */
 .light-theme {
   --primary-bg: #f9fafb; /* Fondo principal */
@@ -42,7 +41,9 @@
   --highlight: var(--yellow-accent); /* Destacados y alertas */
   --section-bg: #1e293b; /* Fondos de secciones */
 }
-/* Estilos globales */
+
+
+/* Reset y Estilos Globales */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -52,12 +53,11 @@
 body {
   background-color: var(--primary-bg);
   color: var(--primary-text);
-  zzfont-family: var(--font-family);
+  font-family: var(--font-family);
   transition: var(--transition);
   line-height: 1.6;
 }
 
-/* Apply the background colors for body based on the theme */
 body.light-theme {
   background-color: var(--primary-bg-light);
 }
@@ -66,11 +66,10 @@ body.dark-theme {
   background-color: var(--primary-bg-dark);
 }
 
-
 h1, h2, h3, h4, h5, h6 {
   color: var(--primary-text);
   margin: var(--spacing-large) 0;
-  line-height: 1.2; /* Mejora la legibilidad de los títulos */
+  line-height: 1.2;
 }
 
 p {
@@ -103,18 +102,77 @@ button {
   justify-content: center;
   gap: var(--spacing-small);
   transition: var(--transition);
-  box-shadow: var(--shadow-small); /* Agrega sombra para mejorar la profundidad */
+  box-shadow: var(--shadow-small); /* Sombra para mejor profundidad */
 }
 
 button:hover {
   background: var(--button-hover);
-  transform: translateY(-2px); /* Efecto de elevación */
-  box-shadow: var(--shadow-medium); /* Aumenta la sombra al hacer hover */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
 }
 
 button:active {
-  transform: translateY(0); /* Regresa al estado original al hacer clic */
-  box-shadow: var(--shadow-small); /* Reduce la sombra al hacer clic */
+  transform: translateY(0);
+  box-shadow: var(--shadow-small);
+}
+
+/* Destacados */
+.highlight {
+  color: var(--highlight);
+  font-weight: bold;
+}
+
+/* Tema Toggle */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--button-bg);
+  color: #ffffff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-small);
+}
+
+.theme-toggle:hover {
+  background: var(--button-hover);
+  box-shadow: var(--shadow-medium);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+  box-shadow: var(--shadow-small);
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+/* Fondo Animado */
+#animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Contenedor principal */
+app-root {
+  position: relative;
+  z-index: 1;
+}
+
+router-outlet + * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Secciones */
@@ -124,65 +182,69 @@ button:active {
   margin: var(--spacing-medium) 0;
   border-radius: 12px;
   transition: var(--transition);
-  box-shadow: var(--shadow-small); /* Agrega sombra para mejorar la profundidad */
+  box-shadow: var(--shadow-small);
 }
 
-/* Destacados */
-.highlight {
-  color: var(--highlight);
-  font-weight: bold;
+/* Imágenes Responsivas */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-/* Botón de cambio de tema */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--button-bg);
-  color: #ffffff;
-  border: none;
-  width: 36px; /* Tamaño reducido */
-  height: 36px; /* Tamaño reducido */
-  border-radius: 50%; /* Forma completamente redonda */
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: var(--shadow-small); /* Agrega sombra para mejorar la profundidad */
+/* Medias Queries para Pantallas Pequeñas (Móviles) */
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .section {
+    padding: var(--spacing-medium);
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: var(--spacing-small) var(--spacing-medium);
+  }
+
+  #animated-background {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .theme-toggle {
+    width: 30px;
+    height: 30px;
+  }
 }
 
-.theme-toggle:hover {
-  background: var(--button-hover);
-  box-shadow: var(--shadow-medium); /* Aumenta la sombra al hacer hover */
+/* Medias Queries para Pantallas Medianas (Tabletas) */
+@media screen and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+
+  .section {
+    padding: var(--spacing-large);
+  }
+
+  button {
+    font-size: 1rem;
+    padding: var(--spacing-small) var(--spacing-large);
+  }
 }
 
-.theme-toggle:active {
-  transform: scale(0.95); /* Ligera contracción al hacer clic */
-  box-shadow: var(--shadow-small); /* Reduce la sombra al hacer clic */
-}
+/* Medias Queries para Pantallas Grandes (Escritorios) */
+@media screen and (min-width: 1025px) {
+  body {
+    font-size: 18px;
+  }
 
-.theme-toggle i {
-  font-size: 1.2rem; /* Ícono más pequeño */
-  transition: var(--transition);
-}
+  .section {
+    padding: var(--spacing-xlarge);
+  }
 
-
-/* Fondo Animado */
-#animated-background {
-  position: fixed; /* Fijo para cubrir toda la pantalla */
-  top: 0;
-  left: 0;
-  width: 100vw; /* Ancho completo de la ventana */
-  height: 100vh; /* Alto completo de la ventana */
-  z-index: -1; /* Asegura que esté detrás de todo el contenido */
-  pointer-events: none; /* Evita que interfiera con clics u otras interacciones */
-}
-/* Contenedor principal de la aplicación */
-app-root {
-  position: relative;
-  z-index: 1; /* Asegura que el contenido esté por encima del fondo animado */
-}
-
-/* Contenido dentro del router-outlet */
-router-outlet + * {
-  position: relative;
-  z-index: 1; /* Asegura que el contenido esté por encima del fondo animado */
+  button {
+    font-size: 1.2rem;
+    padding: var(--spacing-medium) var(--spacing-large);
+  }
 }

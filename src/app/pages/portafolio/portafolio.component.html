@@ -51,7 +51,7 @@
   </section>
 
   <!-- Detalles del Proyecto -->
-  <div *ngIf="selectedProject" class="project-details-overlay" (click)="closeDetails()">
+=  <div *ngIf="selectedProject" class="project-details-overlay" (click)="closeDetails()">
     <div class="project-details" (click)="$event.stopPropagation()">
       <h3>{{ selectedProject.title }}</h3>
       <p>{{ selectedProject.description }}</p>
@@ -64,11 +64,12 @@
       <!-- Mostrar carrusel de imágenes si no hay liveUrl -->
       <div *ngIf="!selectedProject.liveUrl && selectedProject.images.length > 0" class="image-carousel">
         <button (click)="prevImage()" class="carousel-button prev">❮</button>
-        <img [src]="selectedProject.images[currentImageIndex]" [alt]="selectedProject.title">
+        <img [src]="selectedProject.images[currentImageIndex]" [alt]="selectedProject.title" class="carousel-image">
         <button (click)="nextImage()" class="carousel-button next">❯</button>
       </div>
 
-      <button (click)="closeDetails()">Cerrar</button>
+      <button (click)="closeDetails()" class="close-btn">Cerrar</button>
     </div>
   </div>
+
 </div>

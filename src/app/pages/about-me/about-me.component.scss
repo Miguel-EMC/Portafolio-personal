@@ -180,3 +180,105 @@
     transform: translateY(0);
   }
 }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  /* Ajusta el contenido de la sección para pantallas medianas */
+  .about-content {
+    gap: 30px; /* Menos espacio entre los elementos */
+  }
+
+  .info {
+    flex: 1;
+    min-width: 280px; /* Reduce el ancho mínimo de las secciones */
+  }
+
+  .section-title {
+    font-size: 2.2rem; /* Tamaño más pequeño para pantallas medianas */
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem; /* Tamaño más pequeño */
+  }
+
+  .info-title {
+    font-size: 1.6rem; /* Ajusta tamaño de los títulos */
+  }
+
+  .info-description {
+    font-size: 0.95rem;
+  }
+
+  .info-list li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ajusta el contenido de la sección para pantallas pequeñas */
+  .about-content {
+    flex-direction: column; /* Muestra los elementos en columna */
+    align-items: center;
+  }
+
+  .image img {
+    width: 200px; /* Imagen más pequeña */
+    height: 200px;
+  }
+
+  .section-title {
+    font-size: 2rem; /* Tamaño más pequeño para pantallas pequeñas */
+  }
+
+  .section-subtitle {
+    font-size: 1rem; /* Ajuste para pantallas pequeñas */
+  }
+
+  .info-title {
+    font-size: 1.4rem;
+  }
+
+  .info-description {
+    font-size: 0.9rem;
+  }
+
+  .info-list li {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ajustes para pantallas muy pequeñas (teléfonos) */
+  .section-title {
+    font-size: 1.8rem; /* Título aún más pequeño */
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .info {
+    text-align: center; /* Centrado del texto en pantallas muy pequeñas */
+  }
+
+  .info-title {
+    font-size: 1.3rem;
+  }
+
+  .info-description {
+    font-size: 0.85rem;
+  }
+
+  .info-list li {
+    font-size: 0.85rem;
+  }
+
+  .image img {
+    width: 150px; /* Imagen aún más pequeña */
+    height: 150px;
+  }
+
+  .btn {
+    padding: 10px 20px; /* Ajuste del tamaño del botón */
+  }
+}

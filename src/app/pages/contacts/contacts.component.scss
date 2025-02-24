@@ -132,3 +132,72 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
 }
+
+/* Media Queries para Responsividad */
+
+/* Para pantallas pequeñas (hasta 768px) */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .col-md-6 {
+    width: 100%;
+  }
+
+  .contact-form,
+  .map-container {
+    width: 100%;
+  }
+
+  .map-container iframe {
+    height: 250px;
+  }
+
+  .info-list li {
+    font-size: 0.9rem;
+  }
+
+  .rounded-button {
+    width: 100%;
+    padding: 15px 0;
+  }
+}
+
+/* Para pantallas muy pequeñas (hasta 480px) */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .contact-form .form-group input,
+  .contact-form .form-group textarea {
+    font-size: 0.9rem;
+  }
+
+  .info-list li {
+    font-size: 0.85rem;
+  }
+
+  .map-container iframe {
+    height: 200px;
+  }
+
+  .rounded-button {
+    font-size: 0.9rem;
+    padding: 12px 0;
+  }
+}

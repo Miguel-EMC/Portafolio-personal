@@ -1,98 +1,133 @@
-/* Navbar */
+/* Navbar Estilos */
 .navbar {
   height: 70px;
-  display: flex;
-  align-items: center;
   padding: 0 20px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
-.navbar.bg-light {
-  background-color: var(--primary-bg-light) !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Fondo principal con temas */
+.navbar.light-theme {
+  background-color: var(--primary-bg-light);
+  color: var(--primary-text-light);
 }
 
-.navbar.bg-dark {
-  background-color: var(--primary-bg-dark) !important;
-  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+.navbar.dark-theme {
+  background-color: var(--primary-bg-dark);
+  color: var(--primary-text-dark);
 }
 
-.navbar-toggler {
-  margin-left: auto;
-  border: none;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 8px;
-  border-radius: 8px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-    transform: scale(1.1);
-  }
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-  width: 24px;
-  height: 24px;
-}
-
-.navbar.bg-light .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-.navbar.bg-light .navbar-toggler {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.navbar.bg-dark .navbar-toggler {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.logo {
-  width: auto;
+/* Estilo de logo */
+.navbar .logo {
   height: 40px;
-  max-height: 40px;
   transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 }
 
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
+.navbar .logo:hover {
+  transform: scale(1.1);
 }
 
+/* Navbar Toggler */
+.navbar-toggler {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  color: var(--primary-text);
+  padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+  line-height: 1;
+  transition: background-color 0.3s ease;
+}
+
+/* Cambiar fondo de navbar-toggler según el tema */
+.navbar.light-theme .navbar-toggler {
+  background-color: var(--primary-bg-light); /* Fondo claro */
+}
+
+.navbar.dark-theme .navbar-toggler {
+  background-color: var(--primary-bg-dark); /* Fondo oscuro */
+}
+
+/* Estilos de Links de Navegación */
 .navbar-nav {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  background-color: transparent;  /* Esto lo cambiamos a un color según el tema */
+  transition: background-color 0.3s ease; /* Para suavizar el cambio de fondo */
 }
 
-.theme-toggle {
+/* Fondo de navbar-nav según el tema */
+.navbar.light-theme .navbar-nav {
+  background-color: var(--primary-bg-light); /* Fondo claro para navbar-nav */
+}
+
+.navbar.dark-theme .navbar-nav {
+  background-color: var(--primary-bg-dark); /* Fondo oscuro para navbar-nav */
+}
+
+.nav-item {
   margin-left: 20px;
 }
 
-/* Media Queries */
+.nav-link {
+  color: var(--primary-text);
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-primary);
+}
+
+/* Toggle de Tema */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--button-bg);
+  color: #ffffff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-small);
+}
+
+.theme-toggle:hover {
+  background: var(--button-hover);
+  box-shadow: var(--shadow-medium);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+  box-shadow: var(--shadow-small);
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+/* Navbar en Pantallas Pequeñas */
 @media (max-width: 992px) {
-  .navbar-brand {
-    margin-right: 10px;
-  }
-
-  .navbar-toggler {
-    margin-left: 10px;
-  }
-
   .navbar-nav {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    text-align: center;
   }
 
   .nav-item {
-    margin: 0;
+    margin-left: 0;
+    margin-top: 10px;
   }
 
   .theme-toggle {
@@ -100,20 +135,11 @@
   }
 }
 
-.collapse {
-  background-color: var(--primary-bg);
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* Efecto al colapsar el navbar */
+.navbar-collapse {
+  display: none;
 }
 
-.navbar-nav .nav-link {
-  font-size: 1rem;
-  color: var(--primary-text);
-  padding: 10px 0;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: var(--accent-primary);
-  }
+.navbar-collapse.show {
+  display: block;
 }

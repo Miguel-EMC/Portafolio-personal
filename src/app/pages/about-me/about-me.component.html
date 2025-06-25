@@ -1,32 +1,216 @@
-<section id="aboutme">
+<section class="about-section">
   <div class="container">
-    <!-- Título -->
-    <h2 class="section-title">👨‍💻 Sobre mí</h2>
-    <p class="section-subtitle">Conoce mi trayectoria y pasión por la tecnología</p>
-    <!-- Contenido Principal -->
-    <div class="about-content">
-      <!-- Información -->
-      <div class="info">
-        <h3 class="info-title">Estudiante de Ingeniería en Ciencias de la Computación</h3>
-        <p class="info-description">
-          Soy un desarrollador Full Stack apasionado por la creación de soluciones tecnológicas innovadoras. Me especializo en aplicaciones web eficientes y escalables, utilizando las últimas tecnologías para ofrecer resultados de alta calidad. También tengo un fuerte interés en Inteligencia Artificial, Machine Learning y Deep Learning.
-        </p>
-        <!-- Datos Personales -->
-        <ul class="info-list">
-          <li><i class="bi bi-phone"></i> <strong>Celular:</strong> +593 999763190</li>
-          <li><i class="bi bi-geo-alt"></i> <strong>Locación:</strong> Quito, Ecuador</li>
-          <li><i class="bi bi-envelope"></i> <strong>Email: </strong> {{ email }}</li>
-          <li><i class="bi bi-linkedin"></i> <strong>LinkedIn: </strong> <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank"> Eduardo Miguel Muzo</a></li>
-          <li><i class="bi bi-github"></i> <strong>Github: </strong> <a href="https://github.com/Miguel-EMC" target="_blank"> Miguel-EMC</a></li>
-        </ul>
-        <!-- Botón Único -->
-        <button class="btn btn-primary" routerLink="/blog">
-          Mi Blog <i class="bi bi-journal-text"></i>
-        </button>
+    <!-- Section Header -->
+    <div class="section-header animate-fade-in-up">
+      <div class="section-badge">
+        <i class="bi bi-person-circle"></i>
+        <span>Sobre Mí</span>
       </div>
-      <!-- Imagen -->
-      <div class="image">
-        <img src="../../../assets/img/about-me.png" alt="Miguel Muzo" class="rounded-circle shadow" />
+      <h2 class="section-title">
+        Conoce mi historia y <span class="highlight">pasión por la tecnología</span>
+      </h2>
+      <p class="section-subtitle">
+        Descubre mi trayectoria profesional, mis valores y lo que me motiva cada día
+      </p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="about-content">
+      <!-- Personal Info Card -->
+      <div class="info-card animate-fade-in-left">
+        <div class="card-header">
+          <div class="avatar-container">
+            <img src="../../../assets/img/about-me.png" alt="Miguel Muzo" class="avatar" />
+            <div class="avatar-ring"></div>
+          </div>
+          <div class="header-text">
+            <h3 class="card-title">Eduardo Miguel Muzo</h3>
+            <p class="card-subtitle">Desarrollador Full Stack & Estudiante de Ingeniería</p>
+            <div class="location">
+              <i class="bi bi-geo-alt"></i>
+              <span>Quito, Ecuador</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-content">
+          <p class="bio">
+            Soy un desarrollador Full Stack apasionado por crear soluciones tecnológicas innovadoras. 
+            Me especializo en aplicaciones web eficientes y escalables, utilizando las últimas tecnologías 
+            para ofrecer resultados de alta calidad. También tengo un fuerte interés en 
+            <strong>Inteligencia Artificial</strong>, <strong>Machine Learning</strong> y <strong>Deep Learning</strong>.
+          </p>
+
+          <!-- Contact Info -->
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="bi bi-phone"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Teléfono</span>
+                <a href="tel:+593999763190" class="contact-value">+593 999 763 190</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="bi bi-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Email</span>
+                <a href="mailto:eduardomuzo123456@gmail.com" class="contact-value">{{ email }}</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="bi bi-linkedin"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" 
+                   target="_blank" 
+                   class="contact-value">Eduardo Miguel Muzo</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="bi bi-github"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">GitHub</span>
+                <a href="https://github.com/Miguel-EMC" 
+                   target="_blank" 
+                   class="contact-value">Miguel-EMC</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills & Interests -->
+      <div class="skills-interests animate-fade-in-right">
+        <!-- Values Card -->
+        <div class="values-card">
+          <h4 class="card-title">
+            <i class="bi bi-heart"></i>
+            Mis Valores
+          </h4>
+          <div class="values-grid">
+            <div class="value-item">
+              <div class="value-icon">💡</div>
+              <div class="value-content">
+                <h5>Innovación</h5>
+                <p>Siempre busco nuevas formas de resolver problemas</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">🎯</div>
+              <div class="value-content">
+                <h5>Excelencia</h5>
+                <p>Me comprometo con la calidad en cada proyecto</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">🤝</div>
+              <div class="value-content">
+                <h5>Colaboración</h5>
+                <p>Creo en el poder del trabajo en equipo</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">📚</div>
+              <div class="value-content">
+                <h5>Aprendizaje</h5>
+                <p>Nunca dejo de aprender y crecer profesionalmente</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interests Card -->
+        <div class="interests-card">
+          <h4 class="card-title">
+            <i class="bi bi-lightbulb"></i>
+            Áreas de Interés
+          </h4>
+          <div class="interests-list">
+            <div class="interest-tag">
+              <i class="bi bi-robot"></i>
+              <span>Inteligencia Artificial</span>
+            </div>
+            <div class="interest-tag">
+              <i class="bi bi-graph-up"></i>
+              <span>Machine Learning</span>
+            </div>
+            <div class="interest-tag">
+              <i class="bi bi-layers"></i>
+              <span>Deep Learning</span>
+            </div>
+            <div class="interest-tag">
+              <i class="bi bi-cloud"></i>
+              <span>Cloud Computing</span>
+            </div>
+            <div class="interest-tag">
+              <i class="bi bi-shield-check"></i>
+              <span>Ciberseguridad</span>
+            </div>
+            <div class="interest-tag">
+              <i class="bi bi-phone"></i>
+              <span>Desarrollo Móvil</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Card -->
+        <div class="stats-card">
+          <h4 class="card-title">
+            <i class="bi bi-bar-chart"></i>
+            En Números
+          </h4>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">2+</div>
+              <div class="stat-label">Años de Experiencia</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">15+</div>
+              <div class="stat-label">Proyectos Completados</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Tecnologías Dominadas</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Compromiso</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta-section animate-fade-in-up">
+      <div class="cta-card">
+        <div class="cta-content">
+          <h3>¿Listo para trabajar juntos?</h3>
+          <p>Estoy siempre abierto a nuevas oportunidades y colaboraciones interesantes.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="mailto:eduardomuzo123456@gmail.com" class="btn btn-primary">
+            <i class="bi bi-envelope"></i>
+            <span>Enviar Email</span>
+          </a>
+          <a href="https://wa.me/593999763190?text=Hola%20Miguel" 
+             target="_blank" 
+             class="btn btn-secondary">
+            <i class="bi bi-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>

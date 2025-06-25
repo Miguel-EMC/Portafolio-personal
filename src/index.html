@@ -1,22 +1,87 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>ProtafolioPersonal</title>
+  <title>Miguel Muzo - Desarrollador Full Stack</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-  <script src="path/to/dist/feather.js"></script>
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <meta name="description" content="Miguel Muzo - Desarrollador Full Stack especializado en aplicaciones web modernas, IA y Machine Learning. Portafolio profesional con proyectos y experiencia.">
+  <meta name="keywords" content="desarrollador, full stack, angular, typescript, python, inteligencia artificial, machine learning">
+  <meta name="author" content="Miguel Muzo">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://miguelmuzo.dev/">
+  <meta property="og:title" content="Miguel Muzo - Desarrollador Full Stack">
+  <meta property="og:description" content="Desarrollador Full Stack especializado en aplicaciones web modernas, IA y Machine Learning.">
+  <meta property="og:image" content="/assets/img/og-image.jpg">
 
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://miguelmuzo.dev/">
+  <meta property="twitter:title" content="Miguel Muzo - Desarrollador Full Stack">
+  <meta property="twitter:description" content="Desarrollador Full Stack especializado en aplicaciones web modernas, IA y Machine Learning.">
+  <meta property="twitter:image" content="/assets/img/og-image.jpg">
+  
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+  <!-- DevIcons -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#22c55e">
+  <meta name="msapplication-TileColor" content="#22c55e">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="/assets/img/img-mia.png" as="image" type="image/png">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Eduardo Miguel Muzo",
+    "alternateName": "Miguel Muzo",
+    "jobTitle": "Desarrollador Full Stack",
+    "description": "Desarrollador Full Stack especializado en aplicaciones web modernas, IA y Machine Learning",
+    "url": "https://miguelmuzo.dev",
+    "sameAs": [
+      "https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/",
+      "https://github.com/Miguel-EMC"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Quito",
+      "addressCountry": "Ecuador"
+    },
+    "email": "eduardomuzo123456@gmail.com",
+    "telephone": "+593999763190"
+  }
+  </script>
+</head>
+<body class="light-theme">
+  <app-root></app-root>
+  
+  <!-- Performance monitoring -->
+  <script>
+    // Simple performance monitoring
+    window.addEventListener('load', function() {
+      if ('performance' in window) {
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+        console.log('Page load time:', loadTime + 'ms');
+      }
+    });
+  </script>
+</body>
 </html>

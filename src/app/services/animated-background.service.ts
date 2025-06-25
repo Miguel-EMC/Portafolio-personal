@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -10,9 +11,11 @@ export class AnimatedBackgroundService {
   private theme: 'light' | 'dark' = 'light';
   private animationFrameId!: number;
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   init(canvas: HTMLCanvasElement): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d')!;
     this.resizeCanvas();
@@ -22,6 +25,8 @@ export class AnimatedBackgroundService {
   }
 
   toggleTheme(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    
     this.theme = this.theme === 'light' ? 'dark' : 'light';
     document.body.classList.toggle('light-theme', this.theme === 'light');
     document.body.classList.toggle('dark-theme', this.theme === 'dark');
@@ -30,17 +35,23 @@ export class AnimatedBackgroundService {
   }
 
   destroy(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    
     cancelAnimationFrame(this.animationFrameId);
     window.removeEventListener('resize', this.resizeCanvas.bind(this));
   }
 
   private resizeCanvas(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
     this.createParticles(); // Recrear partículas para ajustarlas al nuevo tamaño
   }
 
   private createParticles(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    
     const particleCount = Math.floor(window.innerWidth / 10); // Ajustar cantidad según el tamaño de la pantalla
     this.particles = [];
     for (let i = 0; i < particleCount; i++) {
@@ -56,6 +67,8 @@ export class AnimatedBackgroundService {
   }
 
   private drawParticles(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    
     const bgColor = getComputedStyle(document.body).getPropertyValue('--primary-bg').trim();
     this.ctx.fillStyle = bgColor || (this.theme === 'light' ? 'rgba(255, 255, 255, 0)' : 'rgba(0, 0, 0, 0.8)');
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -79,6 +92,8 @@ export class AnimatedBackgroundService {
   }
 
   private startAnimation(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    
     const animate = () => {
       this.drawParticles();
       this.animationFrameId = requestAnimationFrame(animate);

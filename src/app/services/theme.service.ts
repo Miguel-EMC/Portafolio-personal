@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -6,12 +7,14 @@ import { Injectable } from '@angular/core';
 export class ThemeService {
   private currentTheme: 'light' | 'dark' = 'light';
 
-  constructor() {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    if (savedTheme) {
-      this.setTheme(savedTheme);
-    } else {
-      this.setTheme('light');
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    if (isPlatformBrowser(this.platformId)) {
+      const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+      if (savedTheme) {
+        this.setTheme(savedTheme);
+      } else {
+        this.setTheme('light');
+      }
     }
   }
 
@@ -22,9 +25,11 @@ export class ThemeService {
 
   private setTheme(theme: 'light' | 'dark'): void {
     this.currentTheme = theme;
-    document.body.classList.remove('light-theme', 'dark-theme');
-    document.body.classList.add(`${theme}-theme`);
-    localStorage.setItem('theme', theme);
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.remove('light-theme', 'dark-theme');
+      document.body.classList.add(`${theme}-theme`);
+      localStorage.setItem('theme', theme);
+    }
   }
 
   getCurrentTheme(): 'light' | 'dark' {

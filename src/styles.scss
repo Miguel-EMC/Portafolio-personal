@@ -6,20 +6,7 @@
 :root {
   /* === PALETA DE COLORES PROFESIONAL === */
   
-  /* Colores Primarios - Azul Corporativo */
-  --blue-50: #eff6ff;
-  --blue-100: #dbeafe;
-  --blue-200: #bfdbfe;
-  --blue-300: #93c5fd;
-  --blue-400: #60a5fa;
-  --blue-500: #3b82f6;
-  --blue-600: #2563eb;
-  --blue-700: #1d4ed8;
-  --blue-800: #1e40af;
-  --blue-900: #1e3a8a;
-  --blue-950: #172554;
-
-  /* Colores Secundarios - Verde Profesional */
+  /* Colores Primarios - Verde Profesional */
   --emerald-50: #ecfdf5;
   --emerald-100: #d1fae5;
   --emerald-200: #a7f3d0;
@@ -30,18 +17,31 @@
   --emerald-700: #047857;
   --emerald-800: #065f46;
   --emerald-900: #064e3b;
+  --emerald-950: #022c22;
 
-  /* Colores de Acento - Violeta Moderno */
-  --violet-50: #f5f3ff;
-  --violet-100: #ede9fe;
-  --violet-200: #ddd6fe;
-  --violet-300: #c4b5fd;
-  --violet-400: #a78bfa;
-  --violet-500: #8b5cf6;
-  --violet-600: #7c3aed;
-  --violet-700: #6d28d9;
-  --violet-800: #5b21b6;
-  --violet-900: #4c1d95;
+  /* Colores Secundarios - Verde Complementario */
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #14532d;
+
+  /* Colores de Acento - Azul Moderno */
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
 
   /* Escala de Grises Profesional */
   --gray-50: #f9fafb;
@@ -177,7 +177,7 @@
   --bg-primary: #ffffff;
   --bg-secondary: var(--gray-50);
   --bg-tertiary: var(--gray-100);
-  --bg-accent: var(--blue-50);
+  --bg-accent: var(--emerald-50);
   --bg-muted: var(--gray-100);
   
   /* Superficies */
@@ -198,17 +198,17 @@
   --border-primary: var(--gray-200);
   --border-secondary: var(--gray-300);
   --border-muted: var(--gray-100);
-  --border-focus: var(--blue-500);
+  --border-focus: var(--emerald-500);
   
   /* Colores de Marca */
-  --accent-primary: var(--blue-600);
-  --accent-secondary: var(--emerald-600);
-  --accent-tertiary: var(--violet-600);
+  --accent-primary: var(--emerald-600);
+  --accent-secondary: var(--green-600);
+  --accent-tertiary: var(--blue-600);
   
   /* Estados */
   --state-hover: var(--gray-50);
   --state-active: var(--gray-100);
-  --state-focus: var(--blue-50);
+  --state-focus: var(--emerald-50);
   --state-disabled: var(--gray-100);
 }
 
@@ -218,7 +218,7 @@
   --bg-primary: var(--gray-950);
   --bg-secondary: var(--gray-900);
   --bg-tertiary: var(--gray-800);
-  --bg-accent: rgba(59, 130, 246, 0.1);
+  --bg-accent: rgba(16, 185, 129, 0.1);
   --bg-muted: var(--gray-800);
   
   /* Superficies */
@@ -239,17 +239,17 @@
   --border-primary: var(--gray-800);
   --border-secondary: var(--gray-700);
   --border-muted: var(--gray-800);
-  --border-focus: var(--blue-500);
+  --border-focus: var(--emerald-500);
   
   /* Colores de Marca */
-  --accent-primary: var(--blue-500);
-  --accent-secondary: var(--emerald-500);
-  --accent-tertiary: var(--violet-500);
+  --accent-primary: var(--emerald-500);
+  --accent-secondary: var(--green-500);
+  --accent-tertiary: var(--blue-500);
   
   /* Estados */
   --state-hover: var(--gray-800);
   --state-active: var(--gray-700);
-  --state-focus: rgba(59, 130, 246, 0.1);
+  --state-focus: rgba(16, 185, 129, 0.1);
   --state-disabled: var(--gray-800);
 }
 
@@ -423,7 +423,7 @@ p {
 
 /* Variantes de Botones */
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   color: var(--text-inverse);
   box-shadow: var(--shadow-sm);
   
@@ -856,7 +856,7 @@ p {
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 var(--space-8) rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 var(--space-8) rgba(16, 185, 129, 0.3);
 }
 
 /* ===== GLASSMORPHISM ===== */

@@ -1,75 +1,266 @@
-<app-nav></app-nav>
 <div class="portfolio-container">
-  <h1 class="portfolio-title">Mi Portafolio</h1>
-
-  <!-- Proyectos Personales -->
-  <section class="projects-section">
-    <h2>Proyectos Personales</h2>
-    <div class="projects-grid">
-      <div *ngFor="let project of personalProjects" class="project-card" (click)="showDetails(project)">
-        <div class="card-content">
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
-          <div class="tools">
-            <img *ngFor="let tool of project.frameworks" [src]="getToolIcon(tool)" [alt]="tool">
-          </div>
-          <!-- Mostrar solo la primera imagen -->
-          <img *ngIf="project.images.length > 0" [src]="project.images[0]" [alt]="project.title" class="card-image">
-        </div>
-        <div class="card-actions">
-          <button (click)="showDetails(project); $event.stopPropagation()">Más Detalles</button>
-          <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" (click)="$event.stopPropagation()">
-            <i class="fab fa-github"></i> GitHub
-          </a>
-        </div>
-      </div>
+  <!-- Hero Section -->
+  <section class="portfolio-hero">
+    <h1 class="portfolio-title">Mi Portafolio</h1>
+    <p class="portfolio-subtitle">
+      Explora una selección de mis mejores proyectos, desde aplicaciones web modernas hasta soluciones innovadoras
+    </p>
+    
+    <!-- Filtros de Categoría -->
+    <div class="category-filters">
+      <button class="filter-btn active" (click)="filterProjects('all')">
+        <i class="bi bi-grid"></i>
+        Todos
+      </button>
+      <button class="filter-btn" (click)="filterProjects('personal')">
+        <i class="bi bi-person"></i>
+        Personales
+      </button>
+      <button class="filter-btn" (click)="filterProjects('professional')">
+        <i class="bi bi-briefcase"></i>
+        Profesionales
+      </button>
+      <button class="filter-btn" (click)="filterProjects('web')">
+        <i class="bi bi-globe"></i>
+        Web Apps
+      </button>
+      <button class="filter-btn" (click)="filterProjects('mobile')">
+        <i class="bi bi-phone"></i>
+        Móviles
+      </button>
     </div>
   </section>
 
-  <!-- Proyectos Profesionales -->
-  <section class="projects-section">
-    <h2>Proyectos Profesionales</h2>
-    <div class="projects-grid">
-      <div *ngFor="let project of professionalProjects" class="project-card" (click)="showDetails(project)">
-        <div class="card-content">
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
-          <div class="tools">
-            <img *ngFor="let tool of project.frameworks" [src]="getToolIcon(tool)" [alt]="tool">
+  <div class="portfolio-content">
+    <!-- Proyectos Personales -->
+    <section class="projects-section" *ngIf="shouldShowSection('personal')">
+      <div class="section-header">
+        <h2>Proyectos Personales</h2>
+        <p>Iniciativas propias que demuestran mi pasión por la innovación y el aprendizaje continuo</p>
+      </div>
+      
+      <div class="projects-grid">
+        <div *ngFor="let project of getFilteredProjects('personal')" 
+             class="project-card" 
+             (click)="showDetails(project)"
+             [attr.data-category]="project.category">
+          
+          <div class="card-image-container">
+            <img *ngIf="project.images.length > 0" 
+                 [src]="project.images[0]" 
+                 [alt]="project.title" 
+                 class="card-image"
+                 loading="lazy">
+            
+            <div class="card-overlay">
+              <div class="overlay-content">
+                <i class="bi bi-eye overlay-icon"></i>
+                <div class="overlay-text">Ver Detalles</div>
+              </div>
+            </div>
           </div>
-          <!-- Mostrar solo la primera imagen -->
-          <img *ngIf="project.images.length > 0" [src]="project.images[0]" [alt]="project.title" class="card-image">
+          
+          <div class="card-content">
+            <span class="project-category">{{ project.category }}</span>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            
+            <div class="project-tech">
+              <span *ngFor="let tech of project.frameworks" class="tech-tag">
+                <img [src]="getToolIcon(tech)" [alt]="tech" *ngIf="getToolIcon(tech)">
+                {{ tech }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="card-actions">
+            <button class="action-btn primary" (click)="showDetails(project); $event.stopPropagation()">
+              <i class="bi bi-eye"></i>
+              Ver Detalles
+            </button>
+            <a *ngIf="project.githubUrl" 
+               [href]="project.githubUrl" 
+               target="_blank" 
+               class="action-btn secondary"
+               (click)="$event.stopPropagation()">
+              <i class="bi bi-github"></i>
+              GitHub
+            </a>
+          </div>
         </div>
-        <div class="card-actions">
-          <button (click)="showDetails(project); $event.stopPropagation()">Más Detalles</button>
-          <a *ngIf="project.liveUrl" [href]="project.liveUrl" target="_blank" (click)="$event.stopPropagation()">
-            <i class="fas fa-external-link-alt"></i> Visitar
-          </a>
+      </div>
+    </section>
+
+    <!-- Proyectos Profesionales -->
+    <section class="projects-section" *ngIf="shouldShowSection('professional')">
+      <div class="section-header">
+        <h2>Proyectos Profesionales</h2>
+        <p>Soluciones empresariales desarrolladas para clientes y empresas reales</p>
+      </div>
+      
+      <div class="projects-grid">
+        <div *ngFor="let project of getFilteredProjects('professional')" 
+             class="project-card" 
+             (click)="showDetails(project)"
+             [attr.data-category]="project.category">
+          
+          <div class="card-image-container">
+            <img *ngIf="project.images.length > 0" 
+                 [src]="project.images[0]" 
+                 [alt]="project.title" 
+                 class="card-image"
+                 loading="lazy">
+            
+            <div class="card-overlay">
+              <div class="overlay-content">
+                <i class="bi bi-eye overlay-icon"></i>
+                <div class="overlay-text">Ver Detalles</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card-content">
+            <span class="project-category">{{ project.category }}</span>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            
+            <div class="project-tech">
+              <span *ngFor="let tech of project.frameworks" class="tech-tag">
+                <img [src]="getToolIcon(tech)" [alt]="tech" *ngIf="getToolIcon(tech)">
+                {{ tech }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="card-actions">
+            <button class="action-btn primary" (click)="showDetails(project); $event.stopPropagation()">
+              <i class="bi bi-eye"></i>
+              Ver Detalles
+            </button>
+            <a *ngIf="project.liveUrl" 
+               [href]="project.liveUrl" 
+               target="_blank" 
+               class="action-btn secondary"
+               (click)="$event.stopPropagation()">
+              <i class="bi bi-box-arrow-up-right"></i>
+              Ver Sitio
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Detalles del Proyecto -->
-=  <div *ngIf="selectedProject" class="project-details-overlay" (click)="closeDetails()">
-    <div class="project-details" (click)="$event.stopPropagation()">
-      <h3>{{ selectedProject.title }}</h3>
-      <p>{{ selectedProject.description }}</p>
-
-      <!-- Mostrar página web en miniatura si existe liveUrl -->
-      <div *ngIf="selectedProject.liveUrl" class="mini-browser">
-        <iframe [src]="selectedProject.liveUrl" frameborder="0"></iframe>
-      </div>
-
-      <!-- Mostrar carrusel de imágenes si no hay liveUrl -->
-      <div *ngIf="!selectedProject.liveUrl && selectedProject.images.length > 0" class="image-carousel">
-        <button (click)="prevImage()" class="carousel-button prev">❮</button>
-        <img [src]="selectedProject.images[currentImageIndex]" [alt]="selectedProject.title" class="carousel-image">
-        <button (click)="nextImage()" class="carousel-button next">❯</button>
-      </div>
-
-      <button (click)="closeDetails()" class="close-btn">Cerrar</button>
-    </div>
+    </section>
   </div>
 
+  <!-- Modal de Detalles del Proyecto -->
+  <div *ngIf="selectedProject" 
+       class="project-details-overlay" 
+       (click)="closeDetails()"
+       [@fadeIn]>
+    
+    <div class="project-details" 
+         (click)="$event.stopPropagation()"
+         [@slideInUp]>
+      
+      <button class="close-btn" (click)="closeDetails()" aria-label="Cerrar">
+        <i class="bi bi-x"></i>
+      </button>
+      
+      <div class="modal-header">
+        <h3>{{ selectedProject.title }}</h3>
+        <p>{{ selectedProject.description }}</p>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Mini Browser para sitios web -->
+        <div *ngIf="selectedProject.liveUrl" class="mini-browser">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="browser-url">{{ selectedProject.liveUrl }}</div>
+          </div>
+          <iframe [src]="selectedProject.liveUrl" 
+                  [title]="selectedProject.title"
+                  loading="lazy"></iframe>
+        </div>
+
+        <!-- Carrusel de imágenes para proyectos sin URL -->
+        <div *ngIf="!selectedProject.liveUrl && selectedProject.images.length > 0" 
+             class="image-carousel">
+          
+          <div class="carousel-container">
+            <img [src]="selectedProject.images[currentImageIndex]" 
+                 [alt]="selectedProject.title" 
+                 class="carousel-image">
+            
+            <button *ngIf="selectedProject.images.length > 1"
+                    class="carousel-button prev" 
+                    (click)="prevImage()"
+                    aria-label="Imagen anterior">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+            
+            <button *ngIf="selectedProject.images.length > 1"
+                    class="carousel-button next" 
+                    (click)="nextImage()"
+                    aria-label="Siguiente imagen">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+          
+          <div *ngIf="selectedProject.images.length > 1" class="carousel-indicators">
+            <span *ngFor="let image of selectedProject.images; let i = index"
+                  class="indicator"
+                  [class.active]="i === currentImageIndex"
+                  (click)="goToImage(i)"></span>
+          </div>
+        </div>
+
+        <!-- Información adicional del proyecto -->
+        <div class="project-info">
+          <div class="info-section">
+            <h4>Tecnologías Utilizadas</h4>
+            <div class="tech-list">
+              <span *ngFor="let tech of selectedProject.frameworks" class="tech-badge">
+                <img [src]="getToolIcon(tech)" [alt]="tech" *ngIf="getToolIcon(tech)">
+                {{ tech }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="info-section" *ngIf="selectedProject.features">
+            <h4>Características Principales</h4>
+            <ul class="features-list">
+              <li *ngFor="let feature of selectedProject.features">
+                <i class="bi bi-check-circle-fill"></i>
+                {{ feature }}
+              </li>
+            </ul>
+          </div>
+          
+          <div class="project-links">
+            <a *ngIf="selectedProject.githubUrl" 
+               [href]="selectedProject.githubUrl" 
+               target="_blank" 
+               class="action-btn secondary">
+              <i class="bi bi-github"></i>
+              Ver Código
+            </a>
+            
+            <a *ngIf="selectedProject.liveUrl" 
+               [href]="selectedProject.liveUrl" 
+               target="_blank" 
+               class="action-btn primary">
+              <i class="bi bi-box-arrow-up-right"></i>
+              Visitar Sitio
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<app-nav></app-nav>

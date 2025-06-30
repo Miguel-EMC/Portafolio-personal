@@ -1,115 +1,212 @@
-<app-nav></app-nav>
-<br>
-<br>
-<section id="contacts" class="contacts"><!-- Título de la Sección -->
-    <h2 class="section-title text-center mb-4">📞 Contáctame</h2>
-    <p class="section-subtitle text-center mb-5">
-      Estoy aquí para ayudarte. ¡No dudes en contactarme!
+<div class="contacts">
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <h1 class="section-title">📞 Contáctame</h1>
+    <p class="section-subtitle">
+      ¿Tienes un proyecto en mente? ¡Hablemos! Estoy aquí para ayudarte a convertir tus ideas en realidad.
     </p>
+  </section>
 
-    <!-- Contenido Principal -->
-    <div class="row">
+  <div class="contact-container">
+    <!-- Grid Principal -->
+    <div class="contact-grid">
       <!-- Formulario de Contacto -->
-      <div class="col-md-6 fade-in">
+      <div class="contact-form-section">
+        <div class="form-header">
+          <h3>Envíame un mensaje</h3>
+          <p>Completa el formulario y te responderé lo antes posible</p>
+        </div>
+        
         <form
           class="contact-form"
           action="https://docs.google.com/forms/d/e/1FAIpQLSeoFq9F9m6OKCGblM2Gx0R5fD7u1yH0WTc_8V1MLVgIDGfVRA/formResponse"
           method="POST"
           target="_blank"
         >
-          <div class="form-group">
-            <label for="name" class="form-label">Nombre</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              name="entry.1234567890"
-              placeholder="Ingresa tu nombre"
-              required
-            />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">
+                Nombre <span class="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="entry.1234567890"
+                placeholder="Tu nombre completo"
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="lastname">
+                Apellido <span class="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="lastname"
+                name="entry.0987654321"
+                placeholder="Tu apellido"
+                required
+              />
+            </div>
           </div>
+          
           <div class="form-group">
-            <label for="lastname" class="form-label">Apellido</label>
-            <input
-              type="text"
-              class="form-control"
-              id="lastname"
-              name="entry.0987654321"
-              placeholder="Ingresa tu apellido"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="email" class="form-label">Correo Electrónico</label>
+            <label for="email">
+              Correo Electrónico <span class="required">*</span>
+            </label>
             <input
               type="email"
-              class="form-control"
               id="email"
               name="entry.1357924680"
-              placeholder="ejemplo@correo.com"
+              placeholder="tu@email.com"
               required
             />
           </div>
+          
           <div class="form-group">
-            <label for="subject" class="form-label">Asunto</label>
+            <label for="subject">
+              Asunto <span class="required">*</span>
+            </label>
             <input
               type="text"
-              class="form-control"
               id="subject"
               name="entry.2468013579"
-              placeholder="Escribe el asunto"
+              placeholder="¿De qué quieres hablar?"
               required
             />
           </div>
+          
           <div class="form-group">
-            <label for="message" class="form-label">Mensaje</label>
+            <label for="message">
+              Mensaje <span class="required">*</span>
+            </label>
             <textarea
-              class="form-control"
               id="message"
               name="entry.2468013579"
               rows="5"
-              placeholder="Escribe tu mensaje aquí..."
+              placeholder="Cuéntame sobre tu proyecto o idea..."
               required
             ></textarea>
           </div>
-          <button type="submit" class="btn btn-primary rounded-button">
+          
+          <button type="submit" class="submit-btn">
+            <i class="bi bi-send"></i>
             Enviar Mensaje
           </button>
         </form>
       </div>
 
-      <!-- Información de Contacto y Mapa -->
-      <div class="col-md-6 map-container fade-in">
-        <div class="map-wrapper">
-          <!-- Mapa de Google -->
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15063.315848296434!2d-78.40852612910017!3d-0.3187335942804549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sec!4v1661722349197!5m2!1sen!2sec"
-            width="100%"
-            height="300"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+      <!-- Información de Contacto -->
+      <div class="contact-info-section">
+        <!-- Métodos de Contacto -->
+        <div class="contact-info-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="bi bi-chat-dots"></i>
+            </div>
+            <h4 class="card-title">Métodos de Contacto</h4>
+          </div>
+          
+          <div class="contact-methods">
+            <a href="tel:+593999763190" class="contact-method">
+              <div class="method-icon">
+                <i class="bi bi-phone"></i>
+              </div>
+              <div class="method-info">
+                <div class="method-label">Teléfono</div>
+                <div class="method-value">+593 999 763 190</div>
+              </div>
+            </a>
+            
+            <a href="mailto:{{ email }}" class="contact-method">
+              <div class="method-icon">
+                <i class="bi bi-envelope"></i>
+              </div>
+              <div class="method-info">
+                <div class="method-label">Email</div>
+                <div class="method-value">{{ email }}</div>
+              </div>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" 
+               target="_blank" 
+               class="contact-method">
+              <div class="method-icon">
+                <i class="bi bi-linkedin"></i>
+              </div>
+              <div class="method-info">
+                <div class="method-label">LinkedIn</div>
+                <div class="method-value">Eduardo Miguel Muzo</div>
+              </div>
+            </a>
+            
+            <a href="https://wa.me/593999763190?text=Hola%20Miguel" 
+               target="_blank" 
+               class="contact-method">
+              <div class="method-icon">
+                <i class="bi bi-whatsapp"></i>
+              </div>
+              <div class="method-info">
+                <div class="method-label">WhatsApp</div>
+                <div class="method-value">Mensaje directo</div>
+              </div>
+            </a>
+          </div>
+        </div>
 
-          <!-- Información Adicional -->
-          <div class="info mt-4">
-            <ul class="info-list">
-              <li>
-                <i class="fa-solid fa-location-dot"></i>
-                Antonio José de Sucre, Francisco de Orellana
-              </li>
-              <li>
-                <i class="fa-solid fa-mobile-screen"></i>
-                Llámanos: 0222787676 - 0999763190
-              </li>
-              <li>
-                <i class="fa-solid fa-envelope"></i>
-                Email: {{ email }}
-              </li>
-            </ul>
+        <!-- Mapa y Ubicación -->
+        <div class="map-section">
+          <div class="map-header">
+            <div class="map-icon">
+              <i class="bi bi-geo-alt"></i>
+            </div>
+            <h4 class="map-title">Mi Ubicación</h4>
+          </div>
+          
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15063.315848296434!2d-78.40852612910017!3d-0.3187335942804549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sec!4v1661722349197!5m2!1sen!2sec"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación de Miguel Muzo en Quito, Ecuador"
+            ></iframe>
+          </div>
+          
+          <div class="location-info">
+            <div class="location-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <span>Quito, Ecuador</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-</section>
+
+    <!-- Call to Action -->
+    <section class="contact-cta">
+      <div class="cta-content">
+        <h3>¿Listo para comenzar?</h3>
+        <p>
+          Trabajemos juntos para crear algo increíble. Ya sea un proyecto web, una aplicación móvil o una solución personalizada.
+        </p>
+      </div>
+      
+      <div class="cta-buttons">
+        <a href="mailto:{{ email }}" class="cta-btn primary">
+          <i class="bi bi-envelope"></i>
+          Enviar Email
+        </a>
+        <a href="https://wa.me/593999763190?text=Hola%20Miguel,%20me%20interesa%20trabajar%20contigo" 
+           target="_blank" 
+           class="cta-btn secondary">
+          <i class="bi bi-whatsapp"></i>
+          WhatsApp
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+
+<app-nav></app-nav>

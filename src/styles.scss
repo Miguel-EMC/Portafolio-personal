@@ -19,17 +19,18 @@
   --blue-900: #1e3a8a;
   --blue-950: #172554;
 
-  /* Colores Secundarios - Verde Profesional */
-  --emerald-50: #ecfdf5;
-  --emerald-100: #d1fae5;
-  --emerald-200: #a7f3d0;
-  --emerald-300: #6ee7b7;
-  --emerald-400: #34d399;
-  --emerald-500: #10b981;
-  --emerald-600: #059669;
-  --emerald-700: #047857;
-  --emerald-800: #065f46;
-  --emerald-900: #064e3b;
+  /* Colores Secundarios - Verde Turquesa Profesional */
+  --turquoise-50: #f0fdfa;
+  --turquoise-100: #ccfbf1;
+  --turquoise-200: #99f6e4;
+  --turquoise-300: #5eead4;
+  --turquoise-400: #2dd4bf;
+  --turquoise-500: #14b8a6;
+  --turquoise-600: #0d9488;
+  --turquoise-700: #0f766e;
+  --turquoise-800: #115e59;
+  --turquoise-900: #134e4a;
+  --turquoise-950: #042f2e;
 
   /* Colores de Acento - Violeta Moderno */
   --violet-50: #f5f3ff;
@@ -57,7 +58,7 @@
   --gray-950: #030712;
 
   /* Colores de Estado */
-  --success: var(--emerald-500);
+  --success: var(--turquoise-500);
   --warning: #f59e0b;
   --error: #ef4444;
   --info: var(--blue-500);
@@ -175,40 +176,40 @@
 .light-theme {
   /* Fondos */
   --bg-primary: #ffffff;
-  --bg-secondary: var(--gray-50);
-  --bg-tertiary: var(--gray-100);
-  --bg-accent: var(--blue-50);
+  --bg-secondary: var(--turquoise-50);
+  --bg-tertiary: var(--gray-50);
+  --bg-accent: var(--turquoise-100);
   --bg-muted: var(--gray-100);
   
   /* Superficies */
   --surface-primary: #ffffff;
-  --surface-secondary: var(--gray-50);
+  --surface-secondary: var(--turquoise-50);
   --surface-elevated: #ffffff;
   --surface-overlay: rgba(255, 255, 255, 0.95);
-  --surface-glass: rgba(255, 255, 255, 0.8);
+  --surface-glass: rgba(255, 255, 255, 0.85);
   
   /* Textos */
   --text-primary: var(--gray-900);
-  --text-secondary: var(--gray-600);
-  --text-tertiary: var(--gray-500);
-  --text-muted: var(--gray-400);
+  --text-secondary: var(--gray-700);
+  --text-tertiary: var(--gray-600);
+  --text-muted: var(--gray-500);
   --text-inverse: #ffffff;
   
   /* Bordes */
-  --border-primary: var(--gray-200);
-  --border-secondary: var(--gray-300);
-  --border-muted: var(--gray-100);
-  --border-focus: var(--blue-500);
+  --border-primary: var(--turquoise-200);
+  --border-secondary: var(--turquoise-300);
+  --border-muted: var(--turquoise-100);
+  --border-focus: var(--turquoise-500);
   
   /* Colores de Marca */
-  --accent-primary: var(--blue-600);
-  --accent-secondary: var(--emerald-600);
+  --accent-primary: var(--turquoise-600);
+  --accent-secondary: var(--blue-600);
   --accent-tertiary: var(--violet-600);
   
   /* Estados */
-  --state-hover: var(--gray-50);
-  --state-active: var(--gray-100);
-  --state-focus: var(--blue-50);
+  --state-hover: var(--turquoise-50);
+  --state-active: var(--turquoise-100);
+  --state-focus: var(--turquoise-50);
   --state-disabled: var(--gray-100);
 }
 
@@ -216,40 +217,40 @@
 .dark-theme {
   /* Fondos */
   --bg-primary: var(--gray-950);
-  --bg-secondary: var(--gray-900);
-  --bg-tertiary: var(--gray-800);
-  --bg-accent: rgba(59, 130, 246, 0.1);
-  --bg-muted: var(--gray-800);
+  --bg-secondary: var(--turquoise-950);
+  --bg-tertiary: var(--gray-900);
+  --bg-accent: rgba(20, 184, 166, 0.1);
+  --bg-muted: var(--gray-900);
   
   /* Superficies */
   --surface-primary: var(--gray-950);
-  --surface-secondary: var(--gray-900);
+  --surface-secondary: var(--turquoise-950);
   --surface-elevated: var(--gray-900);
-  --surface-overlay: rgba(17, 24, 39, 0.95);
-  --surface-glass: rgba(17, 24, 39, 0.8);
+  --surface-overlay: rgba(4, 47, 46, 0.95);
+  --surface-glass: rgba(4, 47, 46, 0.8);
   
   /* Textos */
-  --text-primary: var(--gray-50);
-  --text-secondary: var(--gray-300);
-  --text-tertiary: var(--gray-400);
-  --text-muted: var(--gray-500);
-  --text-inverse: var(--gray-900);
+  --text-primary: var(--turquoise-50);
+  --text-secondary: var(--turquoise-200);
+  --text-tertiary: var(--turquoise-300);
+  --text-muted: var(--gray-400);
+  --text-inverse: var(--gray-950);
   
   /* Bordes */
-  --border-primary: var(--gray-800);
-  --border-secondary: var(--gray-700);
-  --border-muted: var(--gray-800);
-  --border-focus: var(--blue-500);
+  --border-primary: var(--turquoise-800);
+  --border-secondary: var(--turquoise-700);
+  --border-muted: var(--turquoise-900);
+  --border-focus: var(--turquoise-400);
   
   /* Colores de Marca */
-  --accent-primary: var(--blue-500);
-  --accent-secondary: var(--emerald-500);
-  --accent-tertiary: var(--violet-500);
+  --accent-primary: var(--turquoise-400);
+  --accent-secondary: var(--blue-400);
+  --accent-tertiary: var(--violet-400);
   
   /* Estados */
-  --state-hover: var(--gray-800);
-  --state-active: var(--gray-700);
-  --state-focus: rgba(59, 130, 246, 0.1);
+  --state-hover: var(--turquoise-900);
+  --state-active: var(--turquoise-800);
+  --state-focus: rgba(20, 184, 166, 0.15);
   --state-disabled: var(--gray-800);
 }
 
@@ -856,7 +857,7 @@ p {
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 var(--space-8) rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 var(--space-8) rgba(20, 184, 166, 0.4);
 }
 
 /* ===== GLASSMORPHISM ===== */

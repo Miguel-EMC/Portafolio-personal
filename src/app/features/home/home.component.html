@@ -1,0 +1,158 @@
+<app-nav />
+
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+  <div class="hero-background">
+    <div class="hero-particles"></div>
+  </div>
+  
+  <div class="container">
+    <div class="hero-content">
+      <!-- Profile Image with floating animation -->
+      <div class="profile-container animate-scale-in">
+        <div class="profile-image-wrapper">
+          <img src="../../../assets/img/img-mia.png" alt="Miguel Muzo" class="profile-image" />
+          <div class="profile-ring"></div>
+          <div class="profile-glow"></div>
+        </div>
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          <span class="status-text">Disponible para trabajar</span>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="hero-text">
+        <div class="greeting animate-fade-in-up delay-200">
+          <span class="greeting-text">👋 Hola, soy</span>
+        </div>
+        
+        <h1 class="hero-title animate-fade-in-up delay-300">
+          <span class="name-highlight">Miguel Muzo</span>
+        </h1>
+        
+        <div class="hero-subtitle animate-fade-in-up delay-400">
+          <div class="typing-container">
+            <span class="typing-text">Desarrollador Full Stack</span>
+            <span class="cursor">|</span>
+          </div>
+        </div>
+        
+        <p class="hero-description animate-fade-in-up delay-500">
+          Soy un apasionado desarrollador de software con experiencia en aplicaciones web 
+          <strong>eficientes y escalables</strong>. Me especializo en tecnologías modernas y tengo un fuerte interés en 
+          <strong>Inteligencia Artificial</strong>, <strong>Machine Learning</strong> y <strong>Deep Learning</strong>.
+        </p>
+
+        <!-- Tech Stack -->
+        <div class="tech-stack animate-fade-in-up delay-600">
+          <span class="tech-label">Tecnologías principales:</span>
+          <div class="tech-icons">
+            <div class="tech-item" title="Angular">
+              <i class="devicon-angular-plain"></i>
+            </div>
+            <div class="tech-item" title="TypeScript">
+              <i class="devicon-typescript-plain"></i>
+            </div>
+            <div class="tech-item" title="Python">
+              <i class="devicon-python-plain"></i>
+            </div>
+            <div class="tech-item" title="Node.js">
+              <i class="devicon-nodejs-plain"></i>
+            </div>
+            <div class="tech-item" title="Docker">
+              <i class="devicon-docker-plain"></i>
+            </div>
+            <div class="tech-item" title="AWS">
+              <i class="devicon-amazonwebservices-original"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="hero-actions animate-fade-in-up delay-700">
+          <button class="btn btn-primary hero-cta" (click)="scrollToSection('sobre-mi')">
+            <span>Conoce más sobre mí</span>
+            <i class="bi bi-arrow-down"></i>
+          </button>
+          
+          <a href="mailto:eduardomuzo123456@gmail.com" class="btn btn-secondary">
+            <i class="bi bi-envelope"></i>
+            <span>Contáctame</span>
+          </a>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links animate-fade-in-up delay-800">
+          <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" 
+             target="_blank" 
+             class="social-link linkedin"
+             aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://github.com/Miguel-EMC" 
+             target="_blank" 
+             class="social-link github"
+             aria-label="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://wa.me/593999763190?text=Hola%20Miguel" 
+             target="_blank" 
+             class="social-link whatsapp"
+             aria-label="WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+          </a>
+          <a href="mailto:eduardomuzo123456@gmail.com" 
+             class="social-link email"
+             aria-label="Email">
+            <i class="bi bi-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator animate-fade-in-up delay-1000">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span class="scroll-text">Desliza para explorar</span>
+    </div>
+  </div>
+
+  <!-- Floating Elements -->
+  <div class="floating-elements">
+    <div class="floating-element element-1">💻</div>
+    <div class="floating-element element-2">🚀</div>
+    <div class="floating-element element-3">⚡</div>
+    <div class="floating-element element-4">🎯</div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="sobre-mi" class="section-spacing">
+  <app-about-me></app-about-me>
+</section>
+
+<!-- Education Section -->
+<section id="educacion" class="section-spacing">
+  <app-education></app-education>
+</section>
+
+<!-- Experience Section -->
+<section id="experiencia" class="section-spacing">
+  <app-curriculum></app-curriculum>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portafolio" class="section-spacing">
+  <app-portafolio></app-portafolio>
+</section>
+
+<!-- Contact Section -->
+<section id="contacto" class="section-spacing">
+  <app-contacts></app-contacts>
+</section>
+
+<!-- Footer -->
+<app-footer></app-footer>

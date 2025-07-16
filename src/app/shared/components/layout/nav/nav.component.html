@@ -1,0 +1,110 @@
+<nav class="navbar" [ngClass]="{'scrolled': isScrolled}">
+  <div class="container">
+    <div class="nav-content">
+      <!-- Brand Name -->
+      <a class="nav-brand" (click)="scrollToSection('home')">
+        <!-- Brand area vacía, solo para scroll to home -->
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="nav-links desktop-nav">
+        <a class="nav-link" (click)="scrollToSection('home')" [class.active]="activeSection === 'home'">
+          <i class="bi bi-house-fill"></i>
+          <span class="nav-text">Inicio</span>
+        </a>
+        <a class="nav-link" (click)="scrollToSection('sobre-mi')" [class.active]="activeSection === 'sobre-mi'">
+          <i class="bi bi-person-fill"></i>
+          <span class="nav-text">Sobre Mí</span>
+        </a>
+        <a class="nav-link" (click)="scrollToSection('educacion')" [class.active]="activeSection === 'educacion'">
+          <i class="bi bi-graduation-cap-fill"></i>
+          <span class="nav-text">Educación</span>
+        </a>
+        <a class="nav-link" (click)="scrollToSection('experiencia')" [class.active]="activeSection === 'experiencia'">
+          <i class="bi bi-briefcase-fill"></i>
+          <span class="nav-text">Experiencia</span>
+        </a>
+        <a class="nav-link" (click)="scrollToSection('portafolio')" [class.active]="activeSection === 'portafolio'">
+          <i class="bi bi-collection-fill"></i>
+          <span class="nav-text">Portafolio</span>
+        </a>
+        <a class="nav-link" (click)="scrollToSection('contacto')" [class.active]="activeSection === 'contacto'">
+          <i class="bi bi-envelope-fill"></i>
+          <span class="nav-text">Contacto</span>
+        </a>
+      </div>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <!-- CTA Button -->
+        <a class="btn btn-primary cta-button" (click)="scrollToSection('contacto')">
+          <i class="bi bi-chat-dots-fill"></i>
+          <span>Hablemos</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Menú">
+          <div class="hamburger" [class.active]="isMobileMenuOpen">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" [class.open]="isMobileMenuOpen">
+      <div class="mobile-nav-content">
+        <div class="mobile-links">
+          <a class="mobile-link" (click)="scrollToSection('home')" [class.active]="activeSection === 'home'">
+            <i class="bi bi-house-fill"></i>
+            <span>Inicio</span>
+          </a>
+          <a class="mobile-link" (click)="scrollToSection('sobre-mi')" [class.active]="activeSection === 'sobre-mi'">
+            <i class="bi bi-person-fill"></i>
+            <span>Sobre Mí</span>
+          </a>
+          <a class="mobile-link" (click)="scrollToSection('educacion')" [class.active]="activeSection === 'educacion'">
+            <i class="bi bi-graduation-cap-fill"></i>
+            <span>Educación</span>
+          </a>
+          <a class="mobile-link" (click)="scrollToSection('experiencia')" [class.active]="activeSection === 'experiencia'">
+            <i class="bi bi-briefcase-fill"></i>
+            <span>Experiencia</span>
+          </a>
+          <a class="mobile-link" (click)="scrollToSection('portafolio')" [class.active]="activeSection === 'portafolio'">
+            <i class="bi bi-collection-fill"></i>
+            <span>Portafolio</span>
+          </a>
+          <a class="mobile-link" (click)="scrollToSection('contacto')" [class.active]="activeSection === 'contacto'">
+            <i class="bi bi-envelope-fill"></i>
+            <span>Contacto</span>
+          </a>
+        </div>
+        
+        <div class="mobile-footer">
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank" class="social-link" aria-label="LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://github.com/Miguel-EMC" target="_blank" class="social-link" aria-label="GitHub">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="mailto:eduardomuzo123456@gmail.com" class="social-link" aria-label="Email">
+              <i class="bi bi-envelope"></i>
+            </a>
+            <a href="https://wa.me/593999763190" target="_blank" class="social-link" aria-label="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-overlay" 
+       [class.active]="isMobileMenuOpen" 
+       (click)="closeMobileMenu()"></div>
+</nav>

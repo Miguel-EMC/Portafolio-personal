@@ -1,0 +1,347 @@
+.portfolio-container {
+  margin-top: 6rem;
+  min-height: calc(100vh - 6rem);
+  padding: 2rem;
+}
+
+.portfolio-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--accent-primary);
+}
+
+/* Sección de proyectos */
+.projects-section {
+  margin-bottom: 3rem;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-secondary);
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Estilo de las tarjetas de proyecto */
+.project-card {
+  background: var(--surface-elevated);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+  padding: 1.5rem;
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-primary);
+  }
+
+  p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .tools {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .card-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: 8px;
+  }
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.05);
+
+  button,
+  a {
+    background: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  button:hover,
+  a:hover {
+    background: var(--button-hover);
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .portfolio-title {
+    font-size: 2rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+
+  .card-actions {
+    flex-direction: column;
+    align-items: center;
+    button,
+    a {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+/* Responsividad para pantallas extra pequeñas (móviles) */
+@media (max-width: 480px) {
+  .portfolio-title {
+    font-size: 1.8rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-card {
+    margin-bottom: 1rem;
+  }
+
+  .card-content {
+    padding: 0.8rem;
+  }
+
+  .card-actions {
+    button,
+    a {
+      padding: 0.5rem;
+    }
+  }
+
+  .project-details {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .mini-browser iframe {
+    height: 300px;
+  }
+
+  .image-carousel img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .carousel-button {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+}
+
+/* Estilo para la ventana flotante de detalles del proyecto */
+.project-details-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Asegúrate de que esté encima de otros elementos */
+  animation: fadeIn 0.3s ease-out;
+}
+
+.project-details {
+  background: var(--surface-elevated);
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 900px;
+  width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 0.5s ease-out;
+}
+
+.project-details h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.project-details p {
+  font-size: 1.2rem;
+  color: var(--secondary-text);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Mini navegador para la vista previa */
+.mini-browser iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.mini-browser iframe:hover {
+  transform: scale(1.02);
+}
+
+/* Carrusel de imágenes */
+.image-carousel {
+  position: relative;
+  text-align: center;
+}
+
+.carousel-image {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  z-index: 1;
+  transition: background 0.3s ease;
+}
+
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
+
+/* Botón de cerrar */
+.close-btn {
+  background: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 1.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.close-btn:hover {
+  background: var(--button-hover);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .project-details {
+    padding: 1.5rem;
+    width: 95%;
+  }
+
+  .mini-browser iframe {
+    height: 350px;
+  }
+
+  .carousel-button {
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+
+  .carousel-image {
+    max-width: 100%;
+  }
+
+  .close-btn {
+    padding: 0.8rem;
+  }
+}

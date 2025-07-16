@@ -285,6 +285,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Asegurar que todas las secciones tengan fondo oscuro */
+section, .section-spacing, .about-section, .education-section, .experience, .contacts, .portfolio-container {
+  background-color: var(--bg-primary) !important;
+}
+
 /* ===== TIPOGRAFÍA PROFESIONAL ===== */
 
 h1, h2, h3, h4, h5, h6 {
@@ -895,17 +900,10 @@ p {
   color: var(--text-inverse);
 }
 
-/* ===== CANVAS ANIMADO ===== */
+/* ===== CANVAS ANIMADO - DESACTIVADO ===== */
 
 #animated-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: var(--z-0);
-  pointer-events: none;
-  opacity: 0.6;
+  display: none;
 }
 
 /* ===== ACCESIBILIDAD ===== */

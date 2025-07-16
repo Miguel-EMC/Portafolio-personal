@@ -146,20 +146,54 @@
   border: 1px solid var(--border-primary);
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-md);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: status-pulse 2s infinite;
+  }
 }
 
 .status-dot {
   width: 8px;
   height: 8px;
-  background: var(--primary-500);
+  background: #22c55e;
   border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
 }
 
 .status-text {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-primary);
+  margin-left: var(--space-1);
+}
+
+@keyframes status-pulse {
+  0% {
+    transform: translateY(-50%) scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  
+  70% {
+    transform: translateY(-50%) scale(1);
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+  
+  100% {
+    transform: translateY(-50%) scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
 }
 
 /* Hero Text */
@@ -574,5 +608,54 @@
   .social-links {
     width: 100%;
     justify-content: center;
+  }
+  
+  .cv-download {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* CV Download Button */
+.cv-download {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: var(--space-6);
+}
+
+.cv-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+  border: none;
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(20, 184, 166, 0.4);
+    filter: brightness(1.1);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  i {
+    font-size: 1rem;
+    transition: transform var(--transition-fast);
+  }
+  
+  &:hover i {
+    transform: translateY(-1px);
   }
 }

@@ -1,23 +1,14 @@
 <nav class="navbar" [ngClass]="{'scrolled': isScrolled}">
   <div class="container">
     <div class="nav-content">
-      <!-- Brand Name -->
-      <a class="nav-brand" (click)="scrollToSection('home')">
-        <!-- Brand area vacía, solo para scroll to home -->
-      </a>
-
       <!-- Desktop Navigation -->
       <div class="nav-links desktop-nav">
         <a class="nav-link" (click)="scrollToSection('home')" [class.active]="activeSection === 'home'">
-          <i class="bi bi-house-fill"></i>
-          <span class="nav-text">Inicio</span>
-        </a>
-        <a class="nav-link" (click)="scrollToSection('sobre-mi')" [class.active]="activeSection === 'sobre-mi'">
           <i class="bi bi-person-fill"></i>
           <span class="nav-text">Sobre Mí</span>
         </a>
         <a class="nav-link" (click)="scrollToSection('educacion')" [class.active]="activeSection === 'educacion'">
-          <i class="bi bi-graduation-cap-fill"></i>
+          <i class="bi bi-mortarboard-fill"></i>
           <span class="nav-text">Educación</span>
         </a>
         <a class="nav-link" (click)="scrollToSection('experiencia')" [class.active]="activeSection === 'experiencia'">
@@ -36,12 +27,6 @@
 
       <!-- Actions -->
       <div class="nav-actions">
-        <!-- CTA Button -->
-        <a class="btn btn-primary cta-button" (click)="scrollToSection('contacto')">
-          <i class="bi bi-chat-dots-fill"></i>
-          <span>Hablemos</span>
-        </a>
-
         <!-- Mobile Menu Toggle -->
         <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Menú">
           <div class="hamburger" [class.active]="isMobileMenuOpen">
@@ -58,15 +43,11 @@
       <div class="mobile-nav-content">
         <div class="mobile-links">
           <a class="mobile-link" (click)="scrollToSection('home')" [class.active]="activeSection === 'home'">
-            <i class="bi bi-house-fill"></i>
-            <span>Inicio</span>
-          </a>
-          <a class="mobile-link" (click)="scrollToSection('sobre-mi')" [class.active]="activeSection === 'sobre-mi'">
             <i class="bi bi-person-fill"></i>
             <span>Sobre Mí</span>
           </a>
           <a class="mobile-link" (click)="scrollToSection('educacion')" [class.active]="activeSection === 'educacion'">
-            <i class="bi bi-graduation-cap-fill"></i>
+            <i class="bi bi-mortarboard-fill"></i>
             <span>Educación</span>
           </a>
           <a class="mobile-link" (click)="scrollToSection('experiencia')" [class.active]="activeSection === 'experiencia'">

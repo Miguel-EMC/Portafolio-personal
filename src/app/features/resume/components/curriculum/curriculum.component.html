@@ -1,58 +1,125 @@
-<section id="experience" class="experience">
+<section id="experience" class="experience-section">
   <div class="container">
-    <!-- Título de Experiencia -->
-    <h2 class="section-title text-center mb-4">🎓 Mi Experiencia</h2>
-    <!-- Espina de Pescado Alternada (Timeline Vertical) -->
-    <div class="timeline">
-      <div
+    <!-- Header Section -->
+    <div class="section-header">
+      <div class="section-badge">
+        <i class="bi bi-code-slash"></i>
+        <span>Trayectoria Profesional</span>
+      </div>
+      <h2 class="section-title">
+        Mi <span class="highlight">Experiencia</span>
+      </h2>
+      <p class="section-subtitle">
+        Un recorrido por mi carrera profesional en el desarrollo de software
+      </p>
+    </div>
+
+    <!-- Experience Timeline -->
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+      
+      <div 
         class="timeline-item"
         *ngFor="let exp of experiences; let i = index"
         [class.visible]="isVisible(i)"
-        [class.left]="i % 2 === 0"
-        [class.right]="i % 2 !== 0"
+        [style.animation-delay]="(i * 200) + 'ms'"
       >
-        <!-- Línea de Conexión -->
-        <div class="timeline-connector"></div>
-        <!-- Contenido de la Experiencia -->
-        <div class="timeline-content">
-          <div class="timeline-header">
-            <h3 class="timeline-title">{{ exp.title }}</h3>
-            <h5 class="timeline-subtitle">{{ exp.subtitle }}</h5>
-            <h6 class="timeline-location">{{ exp.location }} | {{ exp.date }}</h6>
+        <div class="timeline-marker">
+          <div class="marker-dot"></div>
+          <div class="marker-pulse"></div>
+        </div>
+        
+        <div class="timeline-card">
+          <div class="card-header">
+            <div class="company-info">
+              <h3 class="position-title">{{ exp.title }}</h3>
+              <h4 class="company-name">{{ exp.subtitle }}</h4>
+              <div class="location-date">
+                <span class="location">
+                  <i class="bi bi-geo-alt"></i>
+                  {{ exp.location }}
+                </span>
+                <span class="date">
+                  <i class="bi bi-calendar3"></i>
+                  {{ exp.date }}
+                </span>
+              </div>
+            </div>
+            <div class="card-icon">
+              <i class="bi bi-briefcase-fill"></i>
+            </div>
           </div>
-          <div class="timeline-body">
-            <p class="timeline-text">Tareas realizadas:</p>
-            <ul class="task-list">
-              <li *ngFor="let task of exp.tasks">
-                <i class="bi bi-check-circle-fill text-success"></i>
-                <span>{{ task }}</span>
-              </li>
-            </ul>
+          
+          <div class="card-body">
+            <div class="achievements">
+              <h5 class="achievements-title">Logros principales:</h5>
+              <ul class="achievements-list">
+                <li *ngFor="let task of exp.tasks" class="achievement-item">
+                  <div class="achievement-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                  </div>
+                  <span class="achievement-text">{{ task }}</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Sección de Skills -->
-    <section class="skills-section mt-5">
-      <h2 class="section-title text-center mb-4">🛠️ Mis Habilidades</h2>
-      <!-- Lista Estilizada de Skills -->
-      <div class="skills-container">
-        <div class="skill-category" *ngFor="let skill of skills">
-          <h4>{{ skill.category }}</h4>
-          <ul class="skill-items">
-            <li *ngFor="let item of skill.items">
-              <i class="skill-icon bi" [ngClass]="getSkillIcon(item)"></i>
-              {{ item }}
-            </li>
-          </ul>
+
+    <!-- Skills Section -->
+    <div class="skills-section">
+      <div class="skills-header">
+        <h3 class="skills-title">
+          <i class="bi bi-tools"></i>
+          Stack Tecnológico
+        </h3>
+        <p class="skills-subtitle">Tecnologías y herramientas que domino</p>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-category" *ngFor="let skill of skills; let i = index">
+          <div class="category-header">
+            <div class="category-icon">
+              <i [class]="getCategoryIcon(skill.category)"></i>
+            </div>
+            <h4 class="category-title">{{ skill.category }}</h4>
+          </div>
+          
+          <div class="skills-list">
+            <div 
+              class="skill-tag" 
+              *ngFor="let item of skill.items; let j = index"
+              [style.animation-delay]="((i * 100) + (j * 50)) + 'ms'"
+            >
+              <i class="skill-icon" [class]="getSkillIcon(item)"></i>
+              <span class="skill-name">{{ item }}</span>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-    <!-- Botón de Contacto -->
-    <div class="button-container text-center mt-5">
-      <button class="rounded-button" routerLink="/contacts">
-        <i class="bi bi-person"></i> Contáctame
-      </button>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <div class="cta-card">
+        <div class="cta-content">
+          <h3 class="cta-title">¿Interesado en colaborar?</h3>
+          <p class="cta-description">
+            Estoy disponible para nuevos proyectos y oportunidades profesionales
+          </p>
+        </div>
+        <div class="cta-actions">
+          <button class="cta-button primary" (click)="scrollToSection('contacto')">
+            <i class="bi bi-envelope"></i>
+            <span>Contactar</span>
+          </button>
+          <a href="/assets/cv/CV-Miguel-Muzo.pdf" download class="cta-button secondary">
+            <i class="bi bi-download"></i>
+            <span>Descargar CV</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

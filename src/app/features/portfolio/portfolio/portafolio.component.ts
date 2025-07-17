@@ -1,88 +1,243 @@
-import { Component } from '@angular/core';
-import { NavComponent } from '../../../shared/components/layout/nav/nav.component';
-import { Project, Tool } from '../../../interfaces/project.interface';
+import { Component, OnInit } from '@angular/core';
 import { NgForOf, NgIf } from "@angular/common";
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Project, Tool } from '../../../interfaces/project.interface';
 
 @Component({
   selector: 'app-portafolio',
   standalone: true,
-  imports: [NavComponent, NgForOf, NgIf],
+  imports: [NgForOf, NgIf],
   templateUrl: './portafolio.component.html',
-  styleUrls: ['./portafolio.component.scss']
+  styleUrls: ['./portafolio.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 }))
+      ])
+    ]),
+    trigger('slideIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.95) translateY(20px)' }),
+        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', 
+          style({ opacity: 1, transform: 'scale(1) translateY(0)' }))
+      ])
+    ])
+  ]
 })
-export class PortafolioComponent {
+export class PortafolioComponent implements OnInit {
+  activeFilter: 'all' | 'personal' | 'professional' = 'all';
+  selectedProject: Project | null = null;
+  currentImageIndex: number = 0;
+
   personalProjects: Project[] = [
     {
       id: 1,
-      title: 'Proyecto Personal 1',
-      description: 'Descripción detallada del proyecto personal 1.',
-      images: ['https://via.placeholder.com/300', 'https://via.placeholder.com/400'],
-      frameworks: ['Angular', 'TypeScript'],
-      githubUrl: 'https://github.com/user/project1'
+      title: 'Sistema de Gestión Académica',
+      description: 'Plataforma web completa para la gestión de estudiantes, profesores y cursos con dashboard administrativo y reportes en tiempo real.',
+      images: [
+        'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
+        'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg'
+      ],
+      frameworks: ['Angular', 'TypeScript', 'Node.js', 'PostgreSQL', 'Bootstrap'],
+      githubUrl: 'https://github.com/Miguel-EMC/academic-system',
+      type: 'personal'
     },
     {
       id: 2,
-      title: 'Proyecto Personal 1',
-      description: 'Descripción detallada del proyecto personal 1.',
-      images: ['https://via.placeholder.com/300', 'https://via.placeholder.com/400'],
-      frameworks: ['Angular', 'TypeScript'],
-      githubUrl: 'https://github.com/user/project1'
+      title: 'E-Commerce Moderno',
+      description: 'Tienda online responsive con carrito de compras, pasarela de pagos, gestión de inventario y panel de administración.',
+      images: [
+        'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
+        'https://images.pexels.com/photos/3184466/pexels-photo-3184466.jpeg'
+      ],
+      frameworks: ['React', 'Next.js', 'Stripe', 'MongoDB', 'Tailwind CSS'],
+      githubUrl: 'https://github.com/Miguel-EMC/ecommerce-app',
+      type: 'personal'
     },
     {
       id: 3,
-      title: 'Proyecto Personal 1',
-      description: 'Descripción detallada del proyecto personal 1.',
-      images: ['https://via.placeholder.com/300', 'https://via.placeholder.com/400'],
-      frameworks: ['Angular', 'TypeScript'],
-      githubUrl: 'https://github.com/user/project1'
+      title: 'App de Gestión de Tareas',
+      description: 'Aplicación móvil multiplataforma para gestión de proyectos y tareas con sincronización en tiempo real y colaboración en equipo.',
+      images: [
+        'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
+        'https://images.pexels.com/photos/3184361/pexels-photo-3184361.jpeg'
+      ],
+      frameworks: ['Flutter', 'Dart', 'Firebase', 'Provider', 'Material Design'],
+      githubUrl: 'https://github.com/Miguel-EMC/task-manager-app',
+      type: 'personal'
     },
-    // Más proyectos...
+    {
+      id: 4,
+      title: 'Dashboard de Analytics',
+      description: 'Panel de control interactivo con visualización de datos, gráficos dinámicos y reportes personalizables para análisis de negocio.',
+      images: [
+        'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
+        'https://images.pexels.com/photos/3184288/pexels-photo-3184288.jpeg'
+      ],
+      frameworks: ['Vue.js', 'D3.js', 'Python', 'FastAPI', 'Chart.js'],
+      githubUrl: 'https://github.com/Miguel-EMC/analytics-dashboard',
+      type: 'personal'
+    }
   ];
 
   professionalProjects: Project[] = [
     {
-      id: 2,
-      title: 'Proyecto Profesional 1',
-      description: 'Descripción detallada del proyecto profesional 1.',
-      images: ['https://via.placeholder.com/500', 'https://via.placeholder.com/600'],
-      frameworks: ['React', 'Node.js'],
-      liveUrl: 'https://proyectoprofesional1.com'
+      id: 5,
+      title: 'Plataforma ASOBANCA',
+      description: 'Sistema integral para instituciones financieras con módulos de gestión de clientes, transacciones y reportes regulatorios.',
+      images: [
+        'https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg',
+        'https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg'
+      ],
+      frameworks: ['Laravel', 'Vue.js', 'MySQL', 'Redis', 'Docker'],
+      liveUrl: 'https://asobanca-demo.com',
+      type: 'professional'
     },
-    // Más proyectos...
+    {
+      id: 6,
+      title: 'Münster Mind App',
+      description: 'Aplicación móvil innovadora para entrenamiento mental y cognitivo con gamificación y seguimiento de progreso.',
+      images: [
+        'https://images.pexels.com/photos/3184305/pexels-photo-3184305.jpeg',
+        'https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg'
+      ],
+      frameworks: ['Flutter', 'Firebase', 'TensorFlow Lite', 'Provider', 'Hive'],
+      liveUrl: 'https://munster-mind.app',
+      type: 'professional'
+    },
+    {
+      id: 7,
+      title: 'Sistema CONAFIS SARAS',
+      description: 'Plataforma gubernamental para gestión de recursos y análisis estadístico con alta disponibilidad y seguridad.',
+      images: [
+        'https://images.pexels.com/photos/3184312/pexels-photo-3184312.jpeg',
+        'https://images.pexels.com/photos/3184313/pexels-photo-3184313.jpeg'
+      ],
+      frameworks: ['Angular', 'NestJS', 'PostgreSQL', 'Kubernetes', 'JWT'],
+      liveUrl: 'https://conafis-saras.gov.ec',
+      type: 'professional'
+    },
+    {
+      id: 8,
+      title: 'Billusos Platform',
+      description: 'Plataforma de facturación electrónica y gestión empresarial con integración a servicios gubernamentales.',
+      images: [
+        'https://images.pexels.com/photos/3184320/pexels-photo-3184320.jpeg',
+        'https://images.pexels.com/photos/3184321/pexels-photo-3184321.jpeg'
+      ],
+      frameworks: ['Django', 'React', 'PostgreSQL', 'Celery', 'AWS'],
+      liveUrl: 'https://billusos.com',
+      type: 'professional'
+    }
   ];
 
-  tools: Tool[] = [
-    { name: 'Git', iconUrl: 'https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png' },
-    { name: 'Jira', iconUrl: 'https://cdn-icons-png.flaticon.com/512/5968/5968875.png' },
-    // Más herramientas...
-  ];
+  allProjects: Project[] = [];
+  filteredProjects: Project[] = [];
 
-  selectedProject: Project | null = null;
-  currentImageIndex: number = 0;
+  ngOnInit() {
+    this.allProjects = [...this.personalProjects, ...this.professionalProjects];
+    this.filteredProjects = this.allProjects;
+  }
+
+  setFilter(filter: 'all' | 'personal' | 'professional') {
+    this.activeFilter = filter;
+    
+    switch (filter) {
+      case 'personal':
+        this.filteredProjects = this.personalProjects;
+        break;
+      case 'professional':
+        this.filteredProjects = this.professionalProjects;
+        break;
+      default:
+        this.filteredProjects = this.allProjects;
+    }
+  }
 
   showDetails(project: Project): void {
     this.selectedProject = project;
-    this.currentImageIndex = 0; // Reinicia el índice de la imagen al abrir el detalle
+    this.currentImageIndex = 0;
+    document.body.style.overflow = 'hidden';
   }
 
   closeDetails(): void {
     this.selectedProject = null;
-  }
-
-  getToolIcon(toolName: string): string {
-    const tool = this.tools.find(t => t.name === toolName);
-    return tool ? tool.iconUrl : '';
+    document.body.style.overflow = '';
   }
 
   nextImage(): void {
-    if (this.selectedProject) {
+    if (this.selectedProject && this.selectedProject.images.length > 1) {
       this.currentImageIndex = (this.currentImageIndex + 1) % this.selectedProject.images.length;
     }
   }
 
   prevImage(): void {
-    if (this.selectedProject) {
-      this.currentImageIndex = (this.currentImageIndex - 1 + this.selectedProject.images.length) % this.selectedProject.images.length;
+    if (this.selectedProject && this.selectedProject.images.length > 1) {
+      this.currentImageIndex = 
+        (this.currentImageIndex - 1 + this.selectedProject.images.length) % this.selectedProject.images.length;
     }
+  }
+
+  getTechIcon(tech: string): string {
+    const icons: { [key: string]: string } = {
+      // Frontend Frameworks
+      'Angular': 'bi-triangle',
+      'React': 'bi-atom',
+      'Vue.js': 'bi-lightning',
+      'Next.js': 'bi-arrow-right-circle',
+      
+      // Languages
+      'TypeScript': 'bi-braces',
+      'JavaScript': 'bi-braces',
+      'Python': 'bi-filetype-py',
+      'Dart': 'bi-lightning-charge',
+      'PHP': 'bi-filetype-php',
+      
+      // Backend
+      'Node.js': 'bi-server',
+      'Django': 'bi-diagram-3',
+      'Laravel': 'bi-boxes',
+      'NestJS': 'bi-hexagon',
+      'FastAPI': 'bi-lightning',
+      
+      // Databases
+      'PostgreSQL': 'bi-database',
+      'MySQL': 'bi-database-fill',
+      'MongoDB': 'bi-database-down',
+      'Firebase': 'bi-fire',
+      'Redis': 'bi-database-gear',
+      
+      // Mobile
+      'Flutter': 'bi-phone',
+      'React Native': 'bi-phone-landscape',
+      
+      // Styling
+      'Bootstrap': 'bi-bootstrap',
+      'Tailwind CSS': 'bi-wind',
+      'Material Design': 'bi-palette',
+      'CSS3': 'bi-filetype-css',
+      'SASS': 'bi-palette2',
+      
+      // Tools & Services
+      'Docker': 'bi-box-seam',
+      'Kubernetes': 'bi-diagram-3',
+      'AWS': 'bi-cloud',
+      'Stripe': 'bi-credit-card',
+      'JWT': 'bi-shield-check',
+      'Chart.js': 'bi-bar-chart',
+      'D3.js': 'bi-graph-up',
+      'TensorFlow Lite': 'bi-cpu',
+      
+      // State Management
+      'Provider': 'bi-arrow-repeat',
+      'Redux': 'bi-arrow-clockwise',
+      
+      // Storage
+      'Hive': 'bi-archive',
+      'Celery': 'bi-gear'
+    };
+
+    return icons[tech] || 'bi-code-slash';
   }
 }

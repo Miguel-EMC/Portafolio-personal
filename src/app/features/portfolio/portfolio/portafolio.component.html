@@ -1,74 +1,246 @@
-<div class="portfolio-container">
-  <h1 class="portfolio-title">Mi Portafolio</h1>
+<section class="portfolio-section">
+  <div class="container">
+    <!-- Header Section -->
+    <div class="section-header">
+      <div class="section-badge">
+        <i class="bi bi-collection"></i>
+        <span>Mis Trabajos</span>
+      </div>
+      <h2 class="section-title">
+        Mi <span class="highlight">Portafolio</span>
+      </h2>
+      <p class="section-subtitle">
+        Una selección de proyectos que demuestran mis habilidades y experiencia en desarrollo
+      </p>
+    </div>
 
-  <!-- Proyectos Personales -->
-  <section class="projects-section">
-    <h2>Proyectos Personales</h2>
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button 
+        class="filter-tab"
+        [class.active]="activeFilter === 'all'"
+        (click)="setFilter('all')"
+      >
+        <i class="bi bi-grid"></i>
+        <span>Todos</span>
+      </button>
+      <button 
+        class="filter-tab"
+        [class.active]="activeFilter === 'personal'"
+        (click)="setFilter('personal')"
+      >
+        <i class="bi bi-person"></i>
+        <span>Personales</span>
+      </button>
+      <button 
+        class="filter-tab"
+        [class.active]="activeFilter === 'professional'"
+        (click)="setFilter('professional')"
+      >
+        <i class="bi bi-briefcase"></i>
+        <span>Profesionales</span>
+      </button>
+    </div>
+
+    <!-- Projects Grid -->
     <div class="projects-grid">
-      <div *ngFor="let project of personalProjects" class="project-card" (click)="showDetails(project)">
-        <div class="card-content">
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
-          <div class="tools">
-            <img *ngFor="let tool of project.frameworks" [src]="getToolIcon(tool)" [alt]="tool">
+      <div 
+        *ngFor="let project of filteredProjects; let i = index" 
+        class="project-card"
+        [style.animation-delay]="(i * 100) + 'ms'"
+        (click)="showDetails(project)"
+      >
+        <div class="card-image">
+          <img 
+            [src]="project.images[0] || 'https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg'" 
+            [alt]="project.title"
+            class="project-image"
+          />
+          <div class="image-overlay">
+            <div class="overlay-content">
+              <button class="overlay-button primary">
+                <i class="bi bi-eye"></i>
+                <span>Ver Detalles</span>
+              </button>
+              <div class="overlay-links">
+                <a 
+                  *ngIf="project.githubUrl" 
+                  [href]="project.githubUrl" 
+                  target="_blank" 
+                  class="overlay-link"
+                  (click)="$event.stopPropagation()"
+                >
+                  <i class="bi bi-github"></i>
+                </a>
+                <a 
+                  *ngIf="project.liveUrl" 
+                  [href]="project.liveUrl" 
+                  target="_blank" 
+                  class="overlay-link"
+                  (click)="$event.stopPropagation()"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </div>
+            </div>
           </div>
-          <!-- Mostrar solo la primera imagen -->
-          <img *ngIf="project.images.length > 0" [src]="project.images[0]" [alt]="project.title" class="card-image">
         </div>
-        <div class="card-actions">
-          <button (click)="showDetails(project); $event.stopPropagation()">Más Detalles</button>
-          <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" (click)="$event.stopPropagation()">
-            <i class="fab fa-github"></i> GitHub
-          </a>
+        
+        <div class="card-content">
+          <div class="project-category">
+            <span class="category-badge" [class]="project.type">
+              <i [class]="project.type === 'personal' ? 'bi bi-person' : 'bi bi-briefcase'"></i>
+              {{ project.type === 'personal' ? 'Personal' : 'Profesional' }}
+            </span>
+          </div>
+          
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-description">{{ project.description }}</p>
+          
+          <div class="tech-stack">
+            <div class="tech-item" *ngFor="let tech of project.frameworks.slice(0, 4)">
+              <i [class]="getTechIcon(tech)"></i>
+              <span>{{ tech }}</span>
+            </div>
+            <div *ngIf="project.frameworks.length > 4" class="tech-more">
+              +{{ project.frameworks.length - 4 }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Proyectos Profesionales -->
-  <section class="projects-section">
-    <h2>Proyectos Profesionales</h2>
-    <div class="projects-grid">
-      <div *ngFor="let project of professionalProjects" class="project-card" (click)="showDetails(project)">
-        <div class="card-content">
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
-          <div class="tools">
-            <img *ngFor="let tool of project.frameworks" [src]="getToolIcon(tool)" [alt]="tool">
-          </div>
-          <!-- Mostrar solo la primera imagen -->
-          <img *ngIf="project.images.length > 0" [src]="project.images[0]" [alt]="project.title" class="card-image">
-        </div>
-        <div class="card-actions">
-          <button (click)="showDetails(project); $event.stopPropagation()">Más Detalles</button>
-          <a *ngIf="project.liveUrl" [href]="project.liveUrl" target="_blank" (click)="$event.stopPropagation()">
-            <i class="fas fa-external-link-alt"></i> Visitar
-          </a>
-        </div>
+    <!-- Empty State -->
+    <div *ngIf="filteredProjects.length === 0" class="empty-state">
+      <div class="empty-icon">
+        <i class="bi bi-folder-x"></i>
       </div>
-    </div>
-  </section>
-
-  <!-- Detalles del Proyecto -->
-=  <div *ngIf="selectedProject" class="project-details-overlay" (click)="closeDetails()">
-    <div class="project-details" (click)="$event.stopPropagation()">
-      <h3>{{ selectedProject.title }}</h3>
-      <p>{{ selectedProject.description }}</p>
-
-      <!-- Mostrar página web en miniatura si existe liveUrl -->
-      <div *ngIf="selectedProject.liveUrl" class="mini-browser">
-        <iframe [src]="selectedProject.liveUrl" frameborder="0"></iframe>
-      </div>
-
-      <!-- Mostrar carrusel de imágenes si no hay liveUrl -->
-      <div *ngIf="!selectedProject.liveUrl && selectedProject.images.length > 0" class="image-carousel">
-        <button (click)="prevImage()" class="carousel-button prev">❮</button>
-        <img [src]="selectedProject.images[currentImageIndex]" [alt]="selectedProject.title" class="carousel-image">
-        <button (click)="nextImage()" class="carousel-button next">❯</button>
-      </div>
-
-      <button (click)="closeDetails()" class="close-btn">Cerrar</button>
+      <h3 class="empty-title">No hay proyectos</h3>
+      <p class="empty-description">
+        No se encontraron proyectos para el filtro seleccionado
+      </p>
     </div>
   </div>
 
-</div>
+  <!-- Project Details Modal -->
+  <div 
+    *ngIf="selectedProject" 
+    class="modal-overlay" 
+    (click)="closeDetails()"
+    [@fadeIn]
+  >
+    <div class="modal-content" (click)="$event.stopPropagation()" [@slideIn]>
+      <div class="modal-header">
+        <div class="modal-title-section">
+          <h3 class="modal-title">{{ selectedProject.title }}</h3>
+          <span class="modal-category" [class]="selectedProject.type">
+            <i [class]="selectedProject.type === 'personal' ? 'bi bi-person' : 'bi bi-briefcase'"></i>
+            {{ selectedProject.type === 'personal' ? 'Personal' : 'Profesional' }}
+          </span>
+        </div>
+        <button class="close-button" (click)="closeDetails()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="project-preview">
+          <!-- Live Preview -->
+          <div *ngIf="selectedProject.liveUrl" class="live-preview">
+            <div class="browser-mockup">
+              <div class="browser-header">
+                <div class="browser-controls">
+                  <span class="control red"></span>
+                  <span class="control yellow"></span>
+                  <span class="control green"></span>
+                </div>
+                <div class="browser-url">
+                  <i class="bi bi-lock"></i>
+                  <span>{{ selectedProject.liveUrl }}</span>
+                </div>
+              </div>
+              <iframe 
+                [src]="selectedProject.liveUrl" 
+                frameborder="0"
+                class="preview-iframe"
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- Image Gallery -->
+          <div *ngIf="!selectedProject.liveUrl && selectedProject.images.length > 0" class="image-gallery">
+            <div class="gallery-main">
+              <img 
+                [src]="selectedProject.images[currentImageIndex]" 
+                [alt]="selectedProject.title"
+                class="gallery-image"
+              />
+              <button 
+                *ngIf="selectedProject.images.length > 1"
+                class="gallery-nav prev" 
+                (click)="prevImage()"
+              >
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <button 
+                *ngIf="selectedProject.images.length > 1"
+                class="gallery-nav next" 
+                (click)="nextImage()"
+              >
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
+            <div *ngIf="selectedProject.images.length > 1" class="gallery-thumbnails">
+              <button
+                *ngFor="let image of selectedProject.images; let i = index"
+                class="thumbnail"
+                [class.active]="i === currentImageIndex"
+                (click)="currentImageIndex = i"
+              >
+                <img [src]="image" [alt]="selectedProject.title + ' - ' + (i + 1)">
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-info">
+          <div class="project-details">
+            <h4 class="details-title">Descripción del Proyecto</h4>
+            <p class="project-full-description">{{ selectedProject.description }}</p>
+            
+            <div class="tech-section">
+              <h4 class="details-title">Tecnologías Utilizadas</h4>
+              <div class="tech-grid">
+                <div class="tech-badge" *ngFor="let tech of selectedProject.frameworks">
+                  <i [class]="getTechIcon(tech)"></i>
+                  <span>{{ tech }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-actions">
+            <a 
+              *ngIf="selectedProject.liveUrl" 
+              [href]="selectedProject.liveUrl" 
+              target="_blank" 
+              class="action-button primary"
+            >
+              <i class="bi bi-box-arrow-up-right"></i>
+              <span>Ver Proyecto</span>
+            </a>
+            <a 
+              *ngIf="selectedProject.githubUrl" 
+              [href]="selectedProject.githubUrl" 
+              target="_blank" 
+              class="action-button secondary"
+            >
+              <i class="bi bi-github"></i>
+              <span>Ver Código</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

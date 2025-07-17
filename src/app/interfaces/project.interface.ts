@@ -1,4 +1,3 @@
-// interfaces/project.interface.ts
 export interface Project {
   id: number;
   title: string;
@@ -7,6 +6,7 @@ export interface Project {
   frameworks: string[];
   githubUrl?: string;
   liveUrl?: string;
+  type: 'personal' | 'professional';
 }
 
 export interface Tool {

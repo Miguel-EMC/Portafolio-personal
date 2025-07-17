@@ -290,6 +290,19 @@ section, .section-spacing, .about-section, .education-section, .experience, .con
   background-color: var(--bg-primary) !important;
 }
 
+/* ===== LAYOUT SIMPLE PARA NAVBAR VERTICAL ===== */
+
+/* Solo padding básico para el cuerpo del documento */
+body {
+  @media (min-width: 769px) {
+    padding-left: 280px;
+  }
+  
+  @media (max-width: 768px) {
+    padding-left: 0;
+  }
+}
+
 /* ===== TIPOGRAFÍA PROFESIONAL ===== */
 
 h1, h2, h3, h4, h5, h6 {
@@ -513,6 +526,8 @@ p {
   @media (min-width: 1536px) {
     max-width: 1536px;
   }
+  
+  /* Comportamiento normal del container */
 }
 
 /* ===== SISTEMA DE GRID ===== */

@@ -3,7 +3,6 @@ import { EducationComponent } from "../resume/components/education/education.com
 import { AboutMeComponent } from "../contact/about-me/about-me.component";
 import { CurriculumComponent } from "../resume/components/curriculum/curriculum.component";
 import { FooterComponent } from "../../shared/components/layout/footer/footer.component";
-import { NavComponent } from "../../shared/components/layout/nav/nav.component";
 import { PortafolioComponent } from "../portfolio/portfolio/portafolio.component";
 import { ContactsComponent } from "../contact/contacts/contacts.component";
 import { RouterLink } from "@angular/router";
@@ -17,7 +16,6 @@ import { RouterLink } from "@angular/router";
     AboutMeComponent,
     CurriculumComponent,
     FooterComponent,
-    NavComponent,
     PortafolioComponent,
     ContactsComponent,
     RouterLink

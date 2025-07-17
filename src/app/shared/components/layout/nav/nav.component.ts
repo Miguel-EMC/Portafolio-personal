@@ -43,7 +43,7 @@ export class NavComponent implements OnInit, OnDestroy {
   @HostListener('window:resize', [])
   onWindowResize(): void {
     if (this.isMobileMenuOpen && isPlatformBrowser(this.platformId)) {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 769) {
         this.closeMobileMenu();
       }
     }
@@ -64,7 +64,7 @@ export class NavComponent implements OnInit, OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       const section = document.getElementById(sectionId);
       if (section) {
-        const offset = 70; // Altura del navbar
+        const offset = isPlatformBrowser(this.platformId) && window.innerWidth <= 768 ? 0 : 0; // Sin offset para navbar vertical
         const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - offset;
 

@@ -1,5 +1,5 @@
 .about-section {
-  padding: var(--space-12) 0;
+  padding: var(--space-3) 0;
   background: var(--bg-primary);
   position: relative;
   overflow: hidden;
@@ -150,15 +150,15 @@
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: white;
   margin-bottom: var(--space-1);
 }
 
 .card-subtitle {
   font-size: 1rem;
-  color: var(--accent-primary);
+  color: #f59e0b;
   font-weight: 500;
   margin-bottom: var(--space-2);
 }
@@ -495,6 +495,7 @@
   
   p {
     font-size: 1rem;
+    color: white;
     opacity: 0.9;
     margin: 0;
     max-width: none;
@@ -512,26 +513,43 @@
   }
   
   .btn {
-    background: var(--surface-elevated);
-    color: var(--accent-primary);
-    border: 2px solid var(--surface-elevated);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    font-weight: 600;
+    transition: all var(--transition-fast);
     
     &:hover {
-      background: transparent;
-      color: white;
-      border-color: white;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--accent-primary);
+      border-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
     
     &.btn-secondary {
-      background: transparent;
-      color: white;
-      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
       
       &:hover {
-        background: var(--surface-elevated);
+        background: rgba(255, 255, 255, 0.8);
         color: var(--accent-primary);
-        border-color: var(--surface-elevated);
+        border-color: rgba(255, 255, 255, 0.8);
       }
+    }
+    
+    i {
+      font-size: 1.125rem;
+      transition: transform var(--transition-fast);
+    }
+    
+    &:hover i {
+      transform: scale(1.1);
     }
   }
 }
@@ -549,7 +567,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .about-section {
-    padding: var(--space-16) 0;
+    padding: var(--space-4) 0;
   }
   
   .section-header {
@@ -566,7 +584,7 @@
 
 @media (max-width: 480px) {
   .about-section {
-    padding: var(--space-12) 0;
+    padding: var(--space-2) 0;
   }
   
   .info-card,

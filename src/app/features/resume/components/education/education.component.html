@@ -2,12 +2,6 @@
   <div class="container">
     <!-- Header con animación -->
     <div class="section-header" data-aos="fade-up">
-      <div class="section-badge">
-        <div class="badge-icon">
-          <i class="bi bi-mortarboard-fill"></i>
-        </div>
-        <span class="badge-text">Formación Académica</span>
-      </div>
       <h2 class="section-title">
         Mi Trayectoria <span class="highlight">Educativa</span>
       </h2>
@@ -16,106 +10,27 @@
       </p>
     </div>
 
-    <!-- Education Timeline -->
-    <div class="education-timeline">
-      <div class="timeline-line"></div>
-      
+    <!-- Education Grid -->
+    <div class="education-grid">
       <div 
-        class="education-item" 
+        class="education-card"
         *ngFor="let item of educationItems; let i = index"
         [attr.data-aos]="'fade-up'"
-        [attr.data-aos-delay]="i * 200"
+        [attr.data-aos-delay]="i * 150"
       >
-        <div class="timeline-marker">
-          <div class="marker-outer">
-            <div class="marker-inner">
-              <i [class]="item.icon"></i>
-            </div>
+        <div class="card-header">
+          <div class="education-badge">
+            <i [class]="item.icon"></i>
           </div>
-          <div class="marker-pulse"></div>
+          <div class="header-content">
+            <h3 class="education-title">{{ item.title }}</h3>
+            <h4 class="institution-name">{{ item.institution }}</h4>
+          </div>
+          <div class="date-badge">{{ item.date }}</div>
         </div>
         
-        <div class="education-card">
-          <div class="card-glow"></div>
-          <div class="card-content">
-            <div class="card-header">
-              <div class="education-info">
-                <h3 class="education-title">{{ item.title }}</h3>
-                <h4 class="institution-name">{{ item.institution }}</h4>
-                <div class="education-meta">
-                  <span class="education-date">
-                    <i class="bi bi-calendar3"></i>
-                    {{ item.date }}
-                  </span>
-                  <span class="education-status" [class]="getStatusClass(item.date)">
-                    <i [class]="getStatusIcon(item.date)"></i>
-                    {{ getStatusText(item.date) }}
-                  </span>
-                </div>
-              </div>
-              <div class="card-decoration">
-                <div class="decoration-circle"></div>
-                <div class="decoration-lines">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="card-body">
-              <p class="education-description">{{ item.description }}</p>
-              
-              <!-- Logros o materias destacadas -->
-              <div class="achievements" *ngIf="item.achievements">
-                <h5 class="achievements-title">
-                  <i class="bi bi-trophy"></i>
-                  Logros Destacados
-                </h5>
-                <div class="achievements-list">
-                  <div class="achievement-item" *ngFor="let achievement of item.achievements">
-                    <div class="achievement-icon">
-                      <i class="bi bi-check-circle-fill"></i>
-                    </div>
-                    <span class="achievement-text">{{ achievement }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Skills adquiridas -->
-    <div class="skills-acquired" data-aos="fade-up" data-aos-delay="600">
-      <div class="skills-header">
-        <h3 class="skills-title">
-          <i class="bi bi-lightbulb"></i>
-          Conocimientos Adquiridos
-        </h3>
-        <p class="skills-subtitle">
-          Habilidades y competencias desarrolladas durante mi formación
-        </p>
-      </div>
-      
-      <div class="skills-grid">
-        <div class="skill-category" *ngFor="let category of skillsAcquired; let i = index">
-          <div class="category-header">
-            <div class="category-icon">
-              <i [class]="category.icon"></i>
-            </div>
-            <h4 class="category-name">{{ category.name }}</h4>
-          </div>
-          <div class="skills-list">
-            <span 
-              class="skill-tag" 
-              *ngFor="let skill of category.skills; let j = index"
-              [style.animation-delay]="((i * 100) + (j * 50)) + 'ms'"
-            >
-              {{ skill }}
-            </span>
-          </div>
+        <div class="card-body">
+          <p class="education-description" *ngIf="item.description">{{ item.description }}</p>
         </div>
       </div>
     </div>

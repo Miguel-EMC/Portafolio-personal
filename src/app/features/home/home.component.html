@@ -3,14 +3,78 @@
   <app-about-me></app-about-me>
 </section>
 
-<!-- Education Section -->
-<section id="educacion" class="section-spacing">
-  <app-education></app-education>
-</section>
-
-<!-- Experience Section -->
-<section id="experiencia" class="section-spacing">
-  <app-curriculum></app-curriculum>
+<!-- Resume Section - Combined Experience & Education -->
+<section id="resume" class="section-spacing resume-section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <h2 class="section-title">
+        Mi <span class="highlight">Resume</span>
+      </h2>
+      <p class="section-subtitle">
+        Un resumen completo de mi experiencia profesional y formación académica
+      </p>
+    </div>
+    
+    <div class="resume-grid">
+      <!-- Experience Column -->
+      <div class="resume-column experience-column" data-aos="fade-right">
+        <div class="column-header">
+          <div class="header-icon">
+            <i class="bi bi-briefcase-fill"></i>
+          </div>
+          <h3 class="column-title">Experiencia Profesional</h3>
+        </div>
+        <app-curriculum></app-curriculum>
+      </div>
+      
+      <!-- Education Column -->
+      <div class="resume-column education-column" data-aos="fade-left">
+        <div class="column-header">
+          <div class="header-icon">
+            <i class="bi bi-mortarboard-fill"></i>
+          </div>
+          <h3 class="column-title">Formación Académica</h3>
+        </div>
+        <app-education></app-education>
+      </div>
+    </div>
+    
+    <!-- Skills Section -->
+    <div class="skills-section" data-aos="fade-up" data-aos-delay="600">
+      <div class="skills-header">
+        <div class="header-icon">
+          <i class="bi bi-gear-fill"></i>
+        </div>
+        <h3 class="skills-title">Technical <span class="highlight">Skills</span></h3>
+        <p class="skills-subtitle">Tecnologías y herramientas que domino en el desarrollo de software</p>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-category" *ngFor="let category of getSkillCategories()">
+          <div class="category-header">
+            <div class="category-icon">
+              <i [class]="category.icon"></i>
+            </div>
+            <h4 class="category-name">{{ category.name }}</h4>
+          </div>
+          
+          <div class="skills-list">
+            <div class="skill-item" *ngFor="let skill of category.skills">
+              <div class="skill-info">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-percentage">{{ skill.level }}%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" [style.width]="skill.level + '%'"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Portfolio Section -->

@@ -1,21 +1,121 @@
 <section class="education-section">
   <div class="container">
-    <!-- Título -->
-    <h2 class="section-title">🎓 Educación</h2>
-    <p class="section-subtitle">Mi camino académico y profesional</p>
-    <!-- Contenedor de Tarjetas -->
-    <div class="education-cards">
-      <div class="education-card" *ngFor="let item of educationItems">
-        <!-- Encabezado con ícono -->
-        <div class="card-header">
-          <i [class]="item.icon" class="card-icon"></i>
+    <!-- Header con animación -->
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-badge">
+        <div class="badge-icon">
+          <i class="bi bi-mortarboard-fill"></i>
         </div>
-        <!-- Cuerpo de la tarjeta -->
-        <div class="card-body">
-          <h3 class="card-title">{{ item.title }}</h3>
-          <p class="card-institution">{{ item.institution }}</p>
-          <p class="card-date">{{ item.date }}</p>
-          <p class="card-description">{{ item.description }}</p>
+        <span class="badge-text">Formación Académica</span>
+      </div>
+      <h2 class="section-title">
+        Mi Trayectoria <span class="highlight">Educativa</span>
+      </h2>
+      <p class="section-subtitle">
+        El camino académico que ha forjado mi carrera profesional en tecnología
+      </p>
+    </div>
+
+    <!-- Education Timeline -->
+    <div class="education-timeline">
+      <div class="timeline-line"></div>
+      
+      <div 
+        class="education-item" 
+        *ngFor="let item of educationItems; let i = index"
+        [attr.data-aos]="'fade-up'"
+        [attr.data-aos-delay]="i * 200"
+      >
+        <div class="timeline-marker">
+          <div class="marker-outer">
+            <div class="marker-inner">
+              <i [class]="item.icon"></i>
+            </div>
+          </div>
+          <div class="marker-pulse"></div>
+        </div>
+        
+        <div class="education-card">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <div class="card-header">
+              <div class="education-info">
+                <h3 class="education-title">{{ item.title }}</h3>
+                <h4 class="institution-name">{{ item.institution }}</h4>
+                <div class="education-meta">
+                  <span class="education-date">
+                    <i class="bi bi-calendar3"></i>
+                    {{ item.date }}
+                  </span>
+                  <span class="education-status" [class]="getStatusClass(item.date)">
+                    <i [class]="getStatusIcon(item.date)"></i>
+                    {{ getStatusText(item.date) }}
+                  </span>
+                </div>
+              </div>
+              <div class="card-decoration">
+                <div class="decoration-circle"></div>
+                <div class="decoration-lines">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card-body">
+              <p class="education-description">{{ item.description }}</p>
+              
+              <!-- Logros o materias destacadas -->
+              <div class="achievements" *ngIf="item.achievements">
+                <h5 class="achievements-title">
+                  <i class="bi bi-trophy"></i>
+                  Logros Destacados
+                </h5>
+                <div class="achievements-list">
+                  <div class="achievement-item" *ngFor="let achievement of item.achievements">
+                    <div class="achievement-icon">
+                      <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                    <span class="achievement-text">{{ achievement }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills adquiridas -->
+    <div class="skills-acquired" data-aos="fade-up" data-aos-delay="600">
+      <div class="skills-header">
+        <h3 class="skills-title">
+          <i class="bi bi-lightbulb"></i>
+          Conocimientos Adquiridos
+        </h3>
+        <p class="skills-subtitle">
+          Habilidades y competencias desarrolladas durante mi formación
+        </p>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-category" *ngFor="let category of skillsAcquired; let i = index">
+          <div class="category-header">
+            <div class="category-icon">
+              <i [class]="category.icon"></i>
+            </div>
+            <h4 class="category-name">{{ category.name }}</h4>
+          </div>
+          <div class="skills-list">
+            <span 
+              class="skill-tag" 
+              *ngFor="let skill of category.skills; let j = index"
+              [style.animation-delay]="((i * 100) + (j * 50)) + 'ms'"
+            >
+              {{ skill }}
+            </span>
+          </div>
         </div>
       </div>
     </div>

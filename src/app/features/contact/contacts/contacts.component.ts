@@ -11,4 +11,15 @@ import { FormsModule } from '@angular/forms';
 })
 export class ContactsComponent {
   email: string = 'eduardomuzo123456@gmail.com';
+  isSubmitting: boolean = false;
+
+  onSubmit() {
+    this.isSubmitting = true;
+    
+    // Simular envío del formulario
+    setTimeout(() => {
+      this.isSubmitting = false;
+      // Aquí podrías agregar lógica adicional como mostrar un mensaje de éxito
+    }, 2000);
+  }
 }

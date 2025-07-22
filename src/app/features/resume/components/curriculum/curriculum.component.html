@@ -1,16 +1,18 @@
 <section id="experience" class="experience-section">
   <div class="container">
     <!-- Header Section -->
-    <div class="section-header">
+    <div class="section-header" data-aos="fade-up">
       <div class="section-badge">
-        <i class="bi bi-code-slash"></i>
-        <span>Trayectoria Profesional</span>
+        <div class="badge-icon">
+          <i class="bi bi-briefcase-fill"></i>
+        </div>
+        <span class="badge-text">Trayectoria Profesional</span>
       </div>
       <h2 class="section-title">
         Mi <span class="highlight">Experiencia</span>
       </h2>
       <p class="section-subtitle">
-        Un recorrido por mi carrera profesional en el desarrollo de software
+        Un recorrido por mi carrera profesional en el desarrollo de software y tecnología
       </p>
     </div>
 
@@ -22,78 +24,115 @@
         class="timeline-item"
         *ngFor="let exp of experiences; let i = index"
         [class.visible]="isVisible(i)"
-        [style.animation-delay]="(i * 200) + 'ms'"
+        [attr.data-aos]="'fade-up'"
+        [attr.data-aos-delay]="i * 200"
       >
         <div class="timeline-marker">
-          <div class="marker-dot"></div>
+          <div class="marker-container">
+            <div class="marker-dot"></div>
+            <div class="marker-ring"></div>
+          </div>
           <div class="marker-pulse"></div>
         </div>
         
         <div class="timeline-card">
+          <div class="card-glow"></div>
           <div class="card-header">
             <div class="company-info">
+              <div class="position-badge">
+                <i class="bi bi-briefcase"></i>
+                <span>{{ getPositionLevel(exp.title) }}</span>
+              </div>
               <h3 class="position-title">{{ exp.title }}</h3>
               <h4 class="company-name">{{ exp.subtitle }}</h4>
-              <div class="location-date">
-                <span class="location">
-                  <i class="bi bi-geo-alt"></i>
-                  {{ exp.location }}
-                </span>
-                <span class="date">
+              <div class="meta-info">
+                <div class="location-info">
+                  <i class="bi bi-geo-alt-fill"></i>
+                  <span>{{ exp.location }}</span>
+                </div>
+                <div class="date-info">
                   <i class="bi bi-calendar3"></i>
-                  {{ exp.date }}
-                </span>
+                  <span>{{ exp.date }}</span>
+                </div>
+                <div class="duration-info">
+                  <i class="bi bi-clock"></i>
+                  <span>{{ calculateDuration(exp.date) }}</span>
+                </div>
               </div>
             </div>
-            <div class="card-icon">
-              <i class="bi bi-briefcase-fill"></i>
+            <div class="card-decoration">
+              <div class="tech-preview">
+                <div class="tech-icon" *ngFor="let tech of getTechIcons(exp.title).slice(0, 3)">
+                  <i [class]="tech"></i>
+                </div>
+              </div>
             </div>
           </div>
           
           <div class="card-body">
             <div class="achievements">
-              <h5 class="achievements-title">Logros principales:</h5>
-              <ul class="achievements-list">
-                <li *ngFor="let task of exp.tasks" class="achievement-item">
-                  <div class="achievement-icon">
-                    <i class="bi bi-check-circle-fill"></i>
+              <h5 class="achievements-title">
+                <i class="bi bi-trophy"></i>
+                Logros y Responsabilidades
+              </h5>
+              <div class="achievements-grid">
+                <div class="achievement-item" *ngFor="let task of exp.tasks; let j = index">
+                  <div class="achievement-number">{{ j + 1 }}</div>
+                  <div class="achievement-content">
+                    <p class="achievement-text">{{ task }}</p>
+                    <div class="achievement-impact" *ngIf="getImpactMetric(task)">
+                      <i class="bi bi-graph-up-arrow"></i>
+                      <span>{{ getImpactMetric(task) }}</span>
+                    </div>
                   </div>
-                  <span class="achievement-text">{{ task }}</span>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Skills Section -->
-    <div class="skills-section">
-      <div class="skills-header">
-        <h3 class="skills-title">
-          <i class="bi bi-tools"></i>
+    <!-- Tech Stack Section -->
+    <div class="tech-stack-section" data-aos="fade-up" data-aos-delay="400">
+      <div class="tech-header">
+        <h3 class="tech-title">
+          <i class="bi bi-cpu"></i>
           Stack Tecnológico
         </h3>
-        <p class="skills-subtitle">Tecnologías y herramientas que domino</p>
+        <p class="tech-subtitle">Tecnologías y herramientas que domino profesionalmente</p>
       </div>
       
-      <div class="skills-grid">
-        <div class="skill-category" *ngFor="let skill of skills; let i = index">
+      <div class="tech-categories">
+        <div class="tech-category" *ngFor="let category of techStack; let i = index">
           <div class="category-header">
             <div class="category-icon">
-              <i [class]="getCategoryIcon(skill.category)"></i>
+              <i [class]="category.icon"></i>
             </div>
-            <h4 class="category-title">{{ skill.category }}</h4>
+            <div class="category-info">
+              <h4 class="category-name">{{ category.name }}</h4>
+              <span class="category-count">{{ category.technologies.length }} tecnologías</span>
+            </div>
           </div>
           
-          <div class="skills-list">
+          <div class="tech-grid">
             <div 
-              class="skill-tag" 
-              *ngFor="let item of skill.items; let j = index"
+              class="tech-item" 
+              *ngFor="let tech of category.technologies; let j = index"
               [style.animation-delay]="((i * 100) + (j * 50)) + 'ms'"
             >
-              <i class="skill-icon" [class]="getSkillIcon(item)"></i>
-              <span class="skill-name">{{ item }}</span>
+              <div class="tech-icon-container">
+                <i class="tech-icon" [class]="getTechIcon(tech.name)"></i>
+              </div>
+              <div class="tech-info">
+                <span class="tech-name">{{ tech.name }}</span>
+                <div class="tech-level">
+                  <div class="level-bar">
+                    <div class="level-fill" [style.width]="tech.level + '%'"></div>
+                  </div>
+                  <span class="level-text">{{ getLevelText(tech.level) }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -101,18 +140,39 @@
     </div>
 
     <!-- CTA Section -->
-    <div class="cta-section">
+    <div class="cta-section" data-aos="fade-up" data-aos-delay="600">
       <div class="cta-card">
+        <div class="cta-background">
+          <div class="bg-pattern"></div>
+        </div>
         <div class="cta-content">
-          <h3 class="cta-title">¿Interesado en colaborar?</h3>
+          <div class="cta-icon">
+            <i class="bi bi-rocket-takeoff"></i>
+          </div>
+          <h3 class="cta-title">¿Listo para el siguiente proyecto?</h3>
           <p class="cta-description">
-            Estoy disponible para nuevos proyectos y oportunidades profesionales
+            Estoy disponible para nuevas oportunidades y colaboraciones emocionantes
           </p>
+          <div class="cta-stats">
+            <div class="stat-item">
+              <span class="stat-number">{{ getTotalExperience() }}+</span>
+              <span class="stat-label">Años de Experiencia</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">{{ getTotalProjects() }}+</span>
+              <span class="stat-label">Proyectos Completados</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">{{ getTotalTechnologies() }}+</span>
+              <span class="stat-label">Tecnologías</span>
+            </div>
+          </div>
         </div>
         <div class="cta-actions">
           <button class="cta-button primary" (click)="scrollToSection('contacto')">
             <i class="bi bi-envelope"></i>
-            <span>Contactar</span>
+            <span>Contactar Ahora</span>
+            <div class="button-shine"></div>
           </button>
           <a href="/assets/cv/CV-Miguel-Muzo.pdf" download class="cta-button secondary">
             <i class="bi bi-download"></i>

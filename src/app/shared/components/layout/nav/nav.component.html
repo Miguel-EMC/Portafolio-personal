@@ -1,5 +1,5 @@
 <nav class="navbar" [ngClass]="{'scrolled': isScrolled, 'open': isMobileMenuOpen}">
-  <!-- Mobile Menu Toggle (Inside navbar for better positioning) -->
+  <!-- Mobile Menu Toggle -->
   <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Menú">
     <div class="hamburger" [class.active]="isMobileMenuOpen">
       <span></span>
@@ -7,63 +7,100 @@
       <span></span>
     </div>
   </button>
-  <div class="container">
-    <div class="nav-content">
-      <!-- Brand/Logo -->
-      <div class="nav-brand">
-        <a (click)="scrollToSection('home')" class="brand-link">
-          <span class="brand-text">Miguel</span>
-        </a>
-      </div>
 
-      <!-- Desktop Navigation -->
-      <div class="nav-links desktop-nav">
-        <a class="nav-link" (click)="scrollToSection('home')" [class.active]="activeSection === 'home'">
-          <i class="bi bi-person-fill"></i>
-          <span class="nav-text">Sobre Mí</span>
-        </a>
-        <a class="nav-link" (click)="scrollToSection('educacion')" [class.active]="activeSection === 'educacion'">
-          <i class="bi bi-mortarboard-fill"></i>
-          <span class="nav-text">Educación</span>
-        </a>
-        <a class="nav-link" (click)="scrollToSection('experiencia')" [class.active]="activeSection === 'experiencia'">
-          <i class="bi bi-briefcase-fill"></i>
-          <span class="nav-text">Experiencia</span>
-        </a>
-        <a class="nav-link" (click)="scrollToSection('portafolio')" [class.active]="activeSection === 'portafolio'">
-          <i class="bi bi-collection-fill"></i>
-          <span class="nav-text">Portafolio</span>
-        </a>
-        <a class="nav-link" (click)="scrollToSection('contacto')" [class.active]="activeSection === 'contacto'">
-          <i class="bi bi-envelope-fill"></i>
-          <span class="nav-text">Contacto</span>
-        </a>
-      </div>
-
-      <!-- Actions -->
-      <div class="nav-actions">
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank" class="social-link" aria-label="LinkedIn">
-            <i class="bi bi-linkedin"></i>
-          </a>
-          <a href="https://github.com/Miguel-EMC" target="_blank" class="social-link" aria-label="GitHub">
-            <i class="bi bi-github"></i>
-          </a>
-          <a href="mailto:eduardomuzo123456@gmail.com" class="social-link" aria-label="Email">
-            <i class="bi bi-envelope"></i>
-          </a>
-          <a href="https://wa.me/593999763190" target="_blank" class="social-link" aria-label="WhatsApp">
-            <i class="bi bi-whatsapp"></i>
-          </a>
+  <div class="nav-container">
+    <!-- Brand/Logo -->
+    <div class="nav-brand">
+      <a (click)="scrollToSection('home')" class="brand-link">
+        <div class="brand-icon">
+          <div class="icon-layers">
+            <div class="layer layer-1"></div>
+            <div class="layer layer-2"></div>
+            <div class="layer layer-3"></div>
+          </div>
         </div>
-      </div>
+        <div class="brand-text">
+          <span class="brand-name">Miguel</span>
+          <span class="brand-title">Full Stack Dev</span>
+        </div>
+      </a>
     </div>
 
+    <!-- Desktop Navigation -->
+    <div class="nav-links desktop-nav">
+      <a class="nav-link" (click)="scrollToSection('home')" [class.active]="activeSection === 'home'">
+        <div class="link-content">
+          <i class="bi bi-person-fill"></i>
+          <span class="nav-text">Sobre Mí</span>
+          <div class="link-indicator"></div>
+        </div>
+      </a>
+      <a class="nav-link" (click)="scrollToSection('educacion')" [class.active]="activeSection === 'educacion'">
+        <div class="link-content">
+          <i class="bi bi-mortarboard-fill"></i>
+          <span class="nav-text">Educación</span>
+          <div class="link-indicator"></div>
+        </div>
+      </a>
+      <a class="nav-link" (click)="scrollToSection('experiencia')" [class.active]="activeSection === 'experiencia'">
+        <div class="link-content">
+          <i class="bi bi-briefcase-fill"></i>
+          <span class="nav-text">Experiencia</span>
+          <div class="link-indicator"></div>
+        </div>
+      </a>
+      <a class="nav-link" (click)="scrollToSection('portafolio')" [class.active]="activeSection === 'portafolio'">
+        <div class="link-content">
+          <i class="bi bi-collection-fill"></i>
+          <span class="nav-text">Portafolio</span>
+          <div class="link-indicator"></div>
+        </div>
+      </a>
+      <a class="nav-link" (click)="scrollToSection('contacto')" [class.active]="activeSection === 'contacto'">
+        <div class="link-content">
+          <i class="bi bi-envelope-fill"></i>
+          <span class="nav-text">Contacto</span>
+          <div class="link-indicator"></div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Status & Actions -->
+    <div class="nav-footer">
+      <div class="status-card">
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          <div class="status-pulse"></div>
+        </div>
+        <div class="status-text">
+          <span class="status-label">Estado</span>
+          <span class="status-value">Disponible</span>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank" class="social-link linkedin" aria-label="LinkedIn">
+          <i class="bi bi-linkedin"></i>
+          <div class="social-tooltip">LinkedIn</div>
+        </a>
+        <a href="https://github.com/Miguel-EMC" target="_blank" class="social-link github" aria-label="GitHub">
+          <i class="bi bi-github"></i>
+          <div class="social-tooltip">GitHub</div>
+        </a>
+        <a href="mailto:eduardomuzo123456@gmail.com" class="social-link email" aria-label="Email">
+          <i class="bi bi-envelope"></i>
+          <div class="social-tooltip">Email</div>
+        </a>
+        <a href="https://wa.me/593999763190" target="_blank" class="social-link whatsapp" aria-label="WhatsApp">
+          <i class="bi bi-whatsapp"></i>
+          <div class="social-tooltip">WhatsApp</div>
+        </a>
+      </div>
+    </div>
   </div>
 
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-overlay" 
+       [class.active]="isMobileMenuOpen" 
+       (click)="closeMobileMenu()"></div>
 </nav>
-
-<!-- Mobile Menu Overlay -->
-<div class="mobile-overlay" 
-     [class.active]="isMobileMenuOpen" 
-     (click)="closeMobileMenu()"></div>

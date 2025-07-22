@@ -1,10 +1,12 @@
 <section id="contacts" class="contact-section">
   <div class="container">
     <!-- Header Section -->
-    <div class="section-header">
+    <div class="section-header" data-aos="fade-up">
       <div class="section-badge">
-        <i class="bi bi-envelope"></i>
-        <span>Hablemos</span>
+        <div class="badge-icon">
+          <i class="bi bi-envelope-heart"></i>
+        </div>
+        <span class="badge-text">Conectemos</span>
       </div>
       <h2 class="section-title">
         Trabajemos <span class="highlight">Juntos</span>
@@ -17,210 +19,289 @@
     <!-- Contact Content -->
     <div class="contact-content">
       <!-- Contact Form -->
-      <div class="contact-form-section">
-        <div class="form-header">
-          <h3 class="form-title">Envíame un mensaje</h3>
-          <p class="form-subtitle">
-            Completa el formulario y te responderé lo antes posible
-          </p>
-        </div>
-
-        <form
-          class="contact-form"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSeoFq9F9m6OKCGblM2Gx0R5fD7u1yH0WTc_8V1MLVgIDGfVRA/formResponse"
-          method="POST"
-          target="_blank"
-          #contactForm="ngForm"
-        >
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName" class="form-label">
-                <i class="bi bi-person"></i>
-                Nombre
-              </label>
-              <input
-                type="text"
-                id="firstName"
-                name="entry.1234567890"
-                class="form-control"
-                placeholder="Tu nombre"
-                required
-                #firstName="ngModel"
-                ngModel
-              />
-              <div class="form-feedback" *ngIf="firstName.invalid && firstName.touched">
-                El nombre es requerido
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="lastName" class="form-label">
-                <i class="bi bi-person-badge"></i>
-                Apellido
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                name="entry.0987654321"
-                class="form-control"
-                placeholder="Tu apellido"
-                required
-                #lastName="ngModel"
-                ngModel
-              />
-              <div class="form-feedback" *ngIf="lastName.invalid && lastName.touched">
-                El apellido es requerido
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="email" class="form-label">
-              <i class="bi bi-envelope"></i>
-              Correo Electrónico
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="entry.1357924680"
-              class="form-control"
-              placeholder="tu@email.com"
-              required
-              email
-              #email="ngModel"
-              ngModel
-            />
-            <div class="form-feedback" *ngIf="email.invalid && email.touched">
-              <span *ngIf="email.errors?.['required']">El email es requerido</span>
-              <span *ngIf="email.errors?.['email']">Ingresa un email válido</span>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="subject" class="form-label">
-              <i class="bi bi-chat-text"></i>
-              Asunto
-            </label>
-            <select
-              id="subject"
-              name="entry.2468013579"
-              class="form-control"
-              required
-              #subject="ngModel"
-              ngModel
-            >
-              <option value="">Selecciona un asunto</option>
-              <option value="proyecto-web">Desarrollo Web</option>
-              <option value="proyecto-movil">Desarrollo Móvil</option>
-              <option value="consultoria">Consultoría Técnica</option>
-              <option value="colaboracion">Colaboración</option>
-              <option value="freelance">Trabajo Freelance</option>
-              <option value="otro">Otro</option>
-            </select>
-            <div class="form-feedback" *ngIf="subject.invalid && subject.touched">
-              Selecciona un asunto
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="message" class="form-label">
+      <div class="contact-form-section" data-aos="fade-right">
+        <div class="form-container">
+          <div class="form-header">
+            <div class="form-icon">
               <i class="bi bi-chat-dots"></i>
-              Mensaje
-            </label>
-            <textarea
-              id="message"
-              name="entry.9876543210"
-              class="form-control"
-              rows="5"
-              placeholder="Cuéntame sobre tu proyecto o idea..."
-              required
-              #message="ngModel"
-              ngModel
-            ></textarea>
-            <div class="form-feedback" *ngIf="message.invalid && message.touched">
-              El mensaje es requerido
             </div>
+            <h3 class="form-title">Envíame un mensaje</h3>
+            <p class="form-subtitle">
+              Completa el formulario y te responderé en menos de 24 horas
+            </p>
           </div>
 
-          <div class="form-actions">
-            <button 
-              type="submit" 
-              class="submit-button"
-              [disabled]="contactForm.invalid"
-            >
-              <i class="bi bi-send"></i>
-              <span>Enviar Mensaje</span>
-              <div class="button-shine"></div>
-            </button>
-          </div>
-        </form>
+          <form
+            class="contact-form"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSeoFq9F9m6OKCGblM2Gx0R5fD7u1yH0WTc_8V1MLVgIDGfVRA/formResponse"
+            method="POST"
+            target="_blank"
+            #contactForm="ngForm"
+          >
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName" class="form-label">
+                  <i class="bi bi-person"></i>
+                  <span>Nombre</span>
+                </label>
+                <div class="input-container">
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="entry.1234567890"
+                    class="form-control"
+                    placeholder="Tu nombre"
+                    required
+                    #firstName="ngModel"
+                    ngModel
+                  />
+                  <div class="input-focus-border"></div>
+                </div>
+                <div class="form-feedback" *ngIf="firstName.invalid && firstName.touched">
+                  <i class="bi bi-exclamation-circle"></i>
+                  El nombre es requerido
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="lastName" class="form-label">
+                  <i class="bi bi-person-badge"></i>
+                  <span>Apellido</span>
+                </label>
+                <div class="input-container">
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="entry.0987654321"
+                    class="form-control"
+                    placeholder="Tu apellido"
+                    required
+                    #lastName="ngModel"
+                    ngModel
+                  />
+                  <div class="input-focus-border"></div>
+                </div>
+                <div class="form-feedback" *ngIf="lastName.invalid && lastName.touched">
+                  <i class="bi bi-exclamation-circle"></i>
+                  El apellido es requerido
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">
+                <i class="bi bi-envelope"></i>
+                <span>Correo Electrónico</span>
+              </label>
+              <div class="input-container">
+                <input
+                  type="email"
+                  id="email"
+                  name="entry.1357924680"
+                  class="form-control"
+                  placeholder="tu@email.com"
+                  required
+                  email
+                  #email="ngModel"
+                  ngModel
+                />
+                <div class="input-focus-border"></div>
+              </div>
+              <div class="form-feedback" *ngIf="email.invalid && email.touched">
+                <i class="bi bi-exclamation-circle"></i>
+                <span *ngIf="email.errors?.['required']">El email es requerido</span>
+                <span *ngIf="email.errors?.['email']">Ingresa un email válido</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject" class="form-label">
+                <i class="bi bi-tag"></i>
+                <span>Tipo de Proyecto</span>
+              </label>
+              <div class="select-container">
+                <select
+                  id="subject"
+                  name="entry.2468013579"
+                  class="form-control"
+                  required
+                  #subject="ngModel"
+                  ngModel
+                >
+                  <option value="">Selecciona el tipo de proyecto</option>
+                  <option value="proyecto-web">🌐 Desarrollo Web</option>
+                  <option value="proyecto-movil">📱 Desarrollo Móvil</option>
+                  <option value="ecommerce">🛒 E-commerce</option>
+                  <option value="api">⚡ API & Backend</option>
+                  <option value="consultoria">💡 Consultoría Técnica</option>
+                  <option value="colaboracion">🤝 Colaboración</option>
+                  <option value="freelance">💼 Trabajo Freelance</option>
+                  <option value="otro">🔧 Otro</option>
+                </select>
+                <div class="select-arrow">
+                  <i class="bi bi-chevron-down"></i>
+                </div>
+              </div>
+              <div class="form-feedback" *ngIf="subject.invalid && subject.touched">
+                <i class="bi bi-exclamation-circle"></i>
+                Selecciona un tipo de proyecto
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">
+                <i class="bi bi-chat-text"></i>
+                <span>Mensaje</span>
+              </label>
+              <div class="textarea-container">
+                <textarea
+                  id="message"
+                  name="entry.9876543210"
+                  class="form-control"
+                  rows="6"
+                  placeholder="Cuéntame sobre tu proyecto, objetivos, timeline y presupuesto aproximado..."
+                  required
+                  #message="ngModel"
+                  ngModel
+                ></textarea>
+                <div class="textarea-focus-border"></div>
+                <div class="character-count">
+                  <span>{{ message.value?.length || 0 }}/500</span>
+                </div>
+              </div>
+              <div class="form-feedback" *ngIf="message.invalid && message.touched">
+                <i class="bi bi-exclamation-circle"></i>
+                El mensaje es requerido
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button 
+                type="submit" 
+                class="submit-button"
+                [disabled]="contactForm.invalid"
+                [class.loading]="isSubmitting"
+              >
+                <div class="button-content">
+                  <i class="bi bi-send" *ngIf="!isSubmitting"></i>
+                  <i class="bi bi-arrow-clockwise spin" *ngIf="isSubmitting"></i>
+                  <span>{{ isSubmitting ? 'Enviando...' : 'Enviar Mensaje' }}</span>
+                </div>
+                <div class="button-shine"></div>
+              </button>
+              
+              <div class="form-note">
+                <i class="bi bi-shield-check"></i>
+                <span>Tu información está segura y no será compartida</span>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
 
       <!-- Contact Info -->
-      <div class="contact-info-section">
-        <div class="info-header">
-          <h3 class="info-title">Información de Contacto</h3>
-          <p class="info-subtitle">
-            También puedes contactarme directamente a través de estos medios
-          </p>
+      <div class="contact-info-section" data-aos="fade-left">
+        <!-- Quick Contact Methods -->
+        <div class="quick-contact">
+          <h3 class="info-title">
+            <i class="bi bi-lightning"></i>
+            Contacto Rápido
+          </h3>
+          
+          <div class="contact-methods">
+            <a href="mailto:{{ email }}" class="contact-method email">
+              <div class="method-icon">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div class="method-content">
+                <h4 class="method-title">Email</h4>
+                <p class="method-value">{{ email }}</p>
+                <span class="method-description">Respuesta en 24 horas</span>
+              </div>
+              <div class="method-status">
+                <div class="status-dot active"></div>
+              </div>
+            </a>
+
+            <a href="https://wa.me/593999763190?text=Hola%20Miguel,%20me%20interesa%20trabajar%20contigo" 
+               target="_blank" 
+               class="contact-method whatsapp">
+              <div class="method-icon">
+                <i class="bi bi-whatsapp"></i>
+              </div>
+              <div class="method-content">
+                <h4 class="method-title">WhatsApp</h4>
+                <p class="method-value">+593 999 763 190</p>
+                <span class="method-description">Respuesta inmediata</span>
+              </div>
+              <div class="method-status">
+                <div class="status-dot active"></div>
+              </div>
+            </a>
+
+            <a href="tel:+593999763190" class="contact-method phone">
+              <div class="method-icon">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div class="method-content">
+                <h4 class="method-title">Teléfono</h4>
+                <p class="method-value">+593 999 763 190</p>
+                <span class="method-description">Lun - Vie, 9:00 - 18:00</span>
+              </div>
+              <div class="method-status">
+                <div class="status-dot"></div>
+              </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" 
+               target="_blank" 
+               class="contact-method linkedin">
+              <div class="method-icon">
+                <i class="bi bi-linkedin"></i>
+              </div>
+              <div class="method-content">
+                <h4 class="method-title">LinkedIn</h4>
+                <p class="method-value">Eduardo Miguel Muzo</p>
+                <span class="method-description">Red profesional</span>
+              </div>
+              <div class="method-status">
+                <div class="status-dot active"></div>
+              </div>
+            </a>
+          </div>
         </div>
 
-        <div class="contact-methods">
-          <a href="mailto:{{ email }}" class="contact-method">
-            <div class="method-icon">
-              <i class="bi bi-envelope-fill"></i>
+        <!-- Availability Status -->
+        <div class="availability-card">
+          <div class="availability-header">
+            <div class="availability-icon">
+              <i class="bi bi-calendar-check"></i>
             </div>
-            <div class="method-content">
-              <h4 class="method-title">Email</h4>
-              <p class="method-value">{{ email }}</p>
-              <span class="method-description">Respuesta en 24 horas</span>
+            <div class="availability-info">
+              <h4 class="availability-title">Estado Actual</h4>
+              <div class="availability-status">
+                <div class="status-indicator">
+                  <div class="status-dot active"></div>
+                  <span class="status-text">Disponible para proyectos</span>
+                </div>
+              </div>
             </div>
-            <div class="method-arrow">
-              <i class="bi bi-arrow-right"></i>
+          </div>
+          
+          <div class="availability-details">
+            <div class="detail-item">
+              <i class="bi bi-clock"></i>
+              <span>Tiempo de respuesta: < 24h</span>
             </div>
-          </a>
-
-          <a href="tel:+593999763190" class="contact-method">
-            <div class="method-icon">
-              <i class="bi bi-telephone-fill"></i>
+            <div class="detail-item">
+              <i class="bi bi-calendar3"></i>
+              <span>Inicio de proyectos: Inmediato</span>
             </div>
-            <div class="method-content">
-              <h4 class="method-title">Teléfono</h4>
-              <p class="method-value">+593 999 763 190</p>
-              <span class="method-description">Lun - Vie, 9:00 - 18:00</span>
+            <div class="detail-item">
+              <i class="bi bi-geo-alt"></i>
+              <span>Ubicación: Quito, Ecuador (GMT-5)</span>
             </div>
-            <div class="method-arrow">
-              <i class="bi bi-arrow-right"></i>
-            </div>
-          </a>
-
-          <a href="https://wa.me/593999763190?text=Hola%20Miguel" target="_blank" class="contact-method">
-            <div class="method-icon whatsapp">
-              <i class="bi bi-whatsapp"></i>
-            </div>
-            <div class="method-content">
-              <h4 class="method-title">WhatsApp</h4>
-              <p class="method-value">+593 999 763 190</p>
-              <span class="method-description">Respuesta inmediata</span>
-            </div>
-            <div class="method-arrow">
-              <i class="bi bi-arrow-right"></i>
-            </div>
-          </a>
-
-          <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank" class="contact-method">
-            <div class="method-icon linkedin">
-              <i class="bi bi-linkedin"></i>
-            </div>
-            <div class="method-content">
-              <h4 class="method-title">LinkedIn</h4>
-              <p class="method-value">Eduardo Miguel Muzo</p>
-              <span class="method-description">Red profesional</span>
-            </div>
-            <div class="method-arrow">
-              <i class="bi bi-arrow-right"></i>
-            </div>
-          </a>
+          </div>
         </div>
 
         <!-- Location Card -->
@@ -232,6 +313,7 @@
             <div class="location-info">
               <h4 class="location-title">Ubicación</h4>
               <p class="location-address">Quito, Ecuador</p>
+              <span class="location-timezone">GMT-5 (Hora de Ecuador)</span>
             </div>
           </div>
           
@@ -245,21 +327,50 @@
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
+            <div class="map-overlay">
+              <div class="map-info">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>Quito, Ecuador</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Availability Status -->
-        <div class="availability-card">
-          <div class="availability-header">
-            <div class="status-indicator">
-              <div class="status-dot"></div>
-              <span class="status-text">Disponible para proyectos</span>
+        <!-- FAQ Section -->
+        <div class="faq-section">
+          <h4 class="faq-title">
+            <i class="bi bi-question-circle"></i>
+            Preguntas Frecuentes
+          </h4>
+          <div class="faq-list">
+            <div class="faq-item">
+              <div class="faq-question">
+                <i class="bi bi-clock"></i>
+                <span>¿Cuánto tiempo toma un proyecto?</span>
+              </div>
+              <div class="faq-answer">
+                Depende de la complejidad, pero típicamente 2-8 semanas
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">
+                <i class="bi bi-currency-dollar"></i>
+                <span>¿Cómo manejas los pagos?</span>
+              </div>
+              <div class="faq-answer">
+                50% al inicio, 50% al completar. Acepto transferencias y PayPal
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">
+                <i class="bi bi-tools"></i>
+                <span>¿Ofreces mantenimiento?</span>
+              </div>
+              <div class="faq-answer">
+                Sí, incluyo 3 meses de soporte gratuito post-entrega
+              </div>
             </div>
           </div>
-          <p class="availability-description">
-            Actualmente acepto nuevos proyectos y colaboraciones. 
-            ¡No dudes en contactarme para discutir tu idea!
-          </p>
         </div>
       </div>
     </div>

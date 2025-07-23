@@ -1,5 +1,6 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, PLATFORM_ID, Inject } from '@angular/core';
 import { NgClass, NgForOf, NgIf } from "@angular/common";
+import { isPlatformBrowser } from '@angular/common';
 
 interface Experience {
   title: string;
@@ -35,6 +36,8 @@ interface TechCategory {
   styleUrls: ['./curriculum.component.scss']
 })
 export class CurriculumComponent implements OnInit {
+  
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
   experiences: Experience[] = [
     {
       title: 'Full Stack Developer',
@@ -172,6 +175,10 @@ export class CurriculumComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+    
     this.experiences.forEach((_, index) => {
       const element = document.querySelector(`.timeline-item:nth-child(${index + 1})`);
       if (element) {
@@ -189,6 +196,10 @@ export class CurriculumComponent implements OnInit {
   }
 
   scrollToSection(sectionId: string): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+    
     const section = document.getElementById(sectionId);
     if (section) {
       const offset = 80;

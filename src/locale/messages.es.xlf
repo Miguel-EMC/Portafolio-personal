@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" target-language="es" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="about.header.title" datatype="html">
+        <source>Conoce mi historia y <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;highlight&quot;&gt;"/>pasión por la tecnología<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <target>Conoce mi historia y <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;highlight&quot;&gt;"/>pasión por la tecnología<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.header.subtitle" datatype="html">
+        <source>Descubre mi trayectoria profesional, mis valores y lo que me motiva cada día</source>
+        <target>Descubre mi trayectoria profesional, mis valores y lo que me motiva cada día</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">9,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.role" datatype="html">
+        <source>Desarrollador Full Stack &amp; Estudiante de Ingeniería</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.location" datatype="html">
+        <source>Quito, Ecuador</source>
+        <target>Quito, Ecuador</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.bio" datatype="html">
+        <source> Soy un desarrollador Full Stack apasionado por crear soluciones tecnológicas innovadoras. Me especializo en aplicaciones web eficientes y escalables, utilizando las últimas tecnologías para ofrecer resultados de alta calidad. También tengo un fuerte interés en <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Inteligencia Artificial<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Machine Learning<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> y <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Deep Learning<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>. </source>
+        <target> Soy un desarrollador Full Stack apasionado por crear soluciones tecnológicas innovadoras. Me especializo en aplicaciones web eficientes y escalables, utilizando las últimas tecnologías para ofrecer resultados de alta calidad. También tengo un fuerte interés en <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Inteligencia Artificial<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Machine Learning<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> y <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Deep Learning<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">34,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.contact.phone" datatype="html">
+        <source>Teléfono</source>
+        <target>Teléfono</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">47,48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.contact.email" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">57,58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.contact.linkedin" datatype="html">
+        <source>LinkedIn</source>
+        <target>LinkedIn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">69,70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.contact.github" datatype="html">
+        <source>GitHub</source>
+        <target>GitHub</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">81,82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.values.title" datatype="html">
+        <source>Mis Valores</source>
+        <target>Mis Valores</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">95,97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.values.innovation.title" datatype="html">
+        <source>Innovación</source>
+        <target>Innovación</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">101,102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.values.innovation.desc" datatype="html">
+        <source>Siempre busco nuevas formas de resolver problemas</source>
+        <target>Siempre busco nuevas formas de resolver problemas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">102,104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.values.excellence.title" datatype="html">
+        <source>Excelencia</source>
+        <target>Excelencia</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">108,109</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.values.excellence.desc" datatype="html">
+        <source>Me comprometo con la calidad en cada proyecto</source>
+        <target>Me comprometo con la calidad en cada proyecto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">109,111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.values.collaboration.title" datatype="html">
+        <source>Colaboración</source>
+        <target>Colaboración</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">115,116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.values.collaboration.desc" datatype="html">
+        <source>Creo en el poder del trabajo en equipo</source>
+        <target>Creo en el poder del trabajo en equipo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">116,119</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.values.learning.title" datatype="html">
+        <source>Aprendizaje</source>
+        <target>Aprendizaje</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">122,123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.values.learning.desc" datatype="html">
+        <source>Nunca dejo de aprender y crecer profesionalmente</source>
+        <target>Nunca dejo de aprender y crecer profesionalmente</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">123,125</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.interests.title" datatype="html">
+        <source>Áreas de Interés</source>
+        <target>Áreas de Interés</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">133,135</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.interests.ai" datatype="html">
+        <source>Inteligencia Artificial</source>
+        <target>Inteligencia Artificial</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">138,140</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.interests.ml" datatype="html">
+        <source>Machine Learning</source>
+        <target>Machine Learning</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">142,144</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.interests.dl" datatype="html">
+        <source>Deep Learning</source>
+        <target>Deep Learning</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">146,148</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.interests.cloud" datatype="html">
+        <source>Cloud Computing</source>
+        <target>Cloud Computing</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">150,152</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.interests.security" datatype="html">
+        <source>Ciberseguridad</source>
+        <target>Ciberseguridad</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">154,156</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.interests.mobile" datatype="html">
+        <source>Desarrollo Móvil</source>
+        <target>Desarrollo Móvil</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">158,160</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.stats.title" datatype="html">
+        <source>En Números</source>
+        <target>En Números</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">167,169</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.stats.experience" datatype="html">
+        <source>Años de Experiencia</source>
+        <target>Años de Experiencia</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">172,174</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.stats.projects" datatype="html">
+        <source>Proyectos Completados</source>
+        <target>Proyectos Completados</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">176,178</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.stats.technologies" datatype="html">
+        <source>Tecnologías Dominadas</source>
+        <target>Tecnologías Dominadas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">180,182</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.stats.commitment" datatype="html">
+        <source>Compromiso</source>
+        <target>Compromiso</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">184,186</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.cta.title" datatype="html">
+        <source>¿Listo para trabajar juntos?</source>
+        <target>¿Listo para trabajar juntos?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">195,196</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.cta.subtitle" datatype="html">
+        <source>Estoy siempre abierto a nuevas oportunidades y colaboraciones interesantes.</source>
+        <target>Estoy siempre abierto a nuevas oportunidades y colaboraciones interesantes.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">196,198</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.cta.email" datatype="html">
+        <source>Enviar Email</source>
+        <target>Enviar Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">201,203</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.cta.whatsapp" datatype="html">
+        <source>WhatsApp</source>
+        <target>WhatsApp</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/about-me/about-me.component.html</context>
+          <context context-type="linenumber">207,209</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home.resume.title" datatype="html">
+        <source> Mi <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;highlight&quot;&gt;"/>Resume<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <target> Mi <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;highlight&quot;&gt;"/>Resume<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/home/home.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home.resume.subtitle" datatype="html">
+        <source> Un resumen completo de mi experiencia profesional y formación académica </source>
+        <target> Un resumen completo de mi experiencia profesional y formación académica </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/home/home.component.html</context>
+          <context context-type="linenumber">14,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home.experience.title" datatype="html">
+        <source>Experiencia Profesional</source>
+        <target>Experiencia Profesional</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/home/home.component.html</context>
+          <context context-type="linenumber">25,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home.education.title" datatype="html">
+        <source>Formación Académica</source>
+        <target>Formación Académica</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/home/home.component.html</context>
+          <context context-type="linenumber">36,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home.skills.title" datatype="html">
+        <source>Technical <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;highlight&quot;&gt;"/>Skills<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <target>Technical <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;highlight&quot;&gt;"/>Skills<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/home/home.component.html</context>
+          <context context-type="linenumber">48,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home.skills.subtitle" datatype="html">
+        <source>Tecnologías y herramientas que domino en el desarrollo de software</source>
+        <target>Tecnologías y herramientas que domino en el desarrollo de software</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/home/home.component.html</context>
+          <context context-type="linenumber">49,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.copyright" datatype="html">
+        <source>© 2025 My Portfolio. All rights reserved.</source>
+        <target>© 2025 My Portfolio. All rights reserved.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/layout/footer/footer.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav.brandSubtitle" datatype="html">
+        <source>Full Stack Dev</source>
+        <target>Full Stack Dev</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/layout/nav/nav.component.html</context>
+          <context context-type="linenumber">24,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav.about" datatype="html">
+        <source>Sobre Mí</source>
+        <target>Sobre Mí</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/layout/nav/nav.component.html</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav.resume" datatype="html">
+        <source>Resume</source>
+        <target>Resume</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/layout/nav/nav.component.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav.portfolio" datatype="html">
+        <source>Portafolio</source>
+        <target>Portafolio</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/layout/nav/nav.component.html</context>
+          <context context-type="linenumber">48,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav.contact" datatype="html">
+        <source>Contacto</source>
+        <target>Contacto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/layout/nav/nav.component.html</context>
+          <context context-type="linenumber">55,56</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

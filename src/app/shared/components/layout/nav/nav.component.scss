@@ -580,6 +580,18 @@
   }
 }
 
+/* ===== LANGUAGE TOGGLE ===== */
+
+.nav-language {
+  margin: var(--space-4) 0;
+  padding: 0 var(--space-6);
+  
+  @media (max-width: 768px) {
+    padding: 0 var(--space-4);
+    margin: var(--space-3) 0;
+  }
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 
 @media (max-width: 768px) {

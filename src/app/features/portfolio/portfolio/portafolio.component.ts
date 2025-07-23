@@ -36,8 +36,8 @@ export class PortafolioComponent implements OnInit {
       title: 'Sistema de Gestión Académica',
       description: 'Plataforma web completa para la gestión de estudiantes, profesores y cursos con dashboard administrativo y reportes en tiempo real.',
       images: [
-        'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
-        'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg'
+        '/assets/img/img-01.jpg',
+        '/assets/img/img-02.jpg'
       ],
       frameworks: ['Angular', 'TypeScript', 'Node.js', 'PostgreSQL', 'Bootstrap'],
       githubUrl: 'https://github.com/Miguel-EMC/academic-system',
@@ -48,8 +48,8 @@ export class PortafolioComponent implements OnInit {
       title: 'E-Commerce Moderno',
       description: 'Tienda online responsive con carrito de compras, pasarela de pagos, gestión de inventario y panel de administración.',
       images: [
-        'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
-        'https://images.pexels.com/photos/3184466/pexels-photo-3184466.jpeg'
+        '/assets/img/img-01.jpg',
+        '/assets/img/img-02.jpg'
       ],
       frameworks: ['React', 'Next.js', 'Stripe', 'MongoDB', 'Tailwind CSS'],
       githubUrl: 'https://github.com/Miguel-EMC/ecommerce-app',
@@ -60,8 +60,8 @@ export class PortafolioComponent implements OnInit {
       title: 'App de Gestión de Tareas',
       description: 'Aplicación móvil multiplataforma para gestión de proyectos y tareas con sincronización en tiempo real y colaboración en equipo.',
       images: [
-        'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
-        'https://images.pexels.com/photos/3184361/pexels-photo-3184361.jpeg'
+        '/assets/img/img-01.jpg',
+        '/assets/img/img-02.jpg'
       ],
       frameworks: ['Flutter', 'Dart', 'Firebase', 'Provider', 'Material Design'],
       githubUrl: 'https://github.com/Miguel-EMC/task-manager-app',
@@ -72,8 +72,8 @@ export class PortafolioComponent implements OnInit {
       title: 'Dashboard de Analytics',
       description: 'Panel de control interactivo con visualización de datos, gráficos dinámicos y reportes personalizables para análisis de negocio.',
       images: [
-        'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
-        'https://images.pexels.com/photos/3184288/pexels-photo-3184288.jpeg'
+        '/assets/img/img-01.jpg',
+        '/assets/img/img-02.jpg'
       ],
       frameworks: ['Vue.js', 'D3.js', 'Python', 'FastAPI', 'Chart.js'],
       githubUrl: 'https://github.com/Miguel-EMC/analytics-dashboard',
@@ -87,8 +87,8 @@ export class PortafolioComponent implements OnInit {
       title: 'Plataforma ASOBANCA',
       description: 'Sistema integral para instituciones financieras con módulos de gestión de clientes, transacciones y reportes regulatorios.',
       images: [
-        'https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg',
-        'https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg'
+        '/assets/img/img-01.jpg',
+        '/assets/img/img-02.jpg'
       ],
       frameworks: ['Laravel', 'Vue.js', 'MySQL', 'Redis', 'Docker'],
       liveUrl: 'https://asobanca-demo.com',
@@ -99,8 +99,8 @@ export class PortafolioComponent implements OnInit {
       title: 'Münster Mind App',
       description: 'Aplicación móvil innovadora para entrenamiento mental y cognitivo con gamificación y seguimiento de progreso.',
       images: [
-        'https://images.pexels.com/photos/3184305/pexels-photo-3184305.jpeg',
-        'https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg'
+        '/assets/img/img-01.jpg',
+        '/assets/img/img-02.jpg'
       ],
       frameworks: ['Flutter', 'Firebase', 'TensorFlow Lite', 'Provider', 'Hive'],
       liveUrl: 'https://munster-mind.app',
@@ -111,8 +111,8 @@ export class PortafolioComponent implements OnInit {
       title: 'Sistema CONAFIS SARAS',
       description: 'Plataforma gubernamental para gestión de recursos y análisis estadístico con alta disponibilidad y seguridad.',
       images: [
-        'https://images.pexels.com/photos/3184312/pexels-photo-3184312.jpeg',
-        'https://images.pexels.com/photos/3184313/pexels-photo-3184313.jpeg'
+        '/assets/img/img-01.jpg',
+        '/assets/img/img-02.jpg'
       ],
       frameworks: ['Angular', 'NestJS', 'PostgreSQL', 'Kubernetes', 'JWT'],
       liveUrl: 'https://conafis-saras.gov.ec',
@@ -123,8 +123,8 @@ export class PortafolioComponent implements OnInit {
       title: 'Billusos Platform',
       description: 'Plataforma de facturación electrónica y gestión empresarial con integración a servicios gubernamentales.',
       images: [
-        'https://images.pexels.com/photos/3184320/pexels-photo-3184320.jpeg',
-        'https://images.pexels.com/photos/3184321/pexels-photo-3184321.jpeg'
+        '/assets/img/img-01.jpg',
+        '/assets/img/img-02.jpg'
       ],
       frameworks: ['Django', 'React', 'PostgreSQL', 'Celery', 'AWS'],
       liveUrl: 'https://billusos.com',

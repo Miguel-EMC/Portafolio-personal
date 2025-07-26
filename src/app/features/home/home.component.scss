@@ -536,12 +536,14 @@
   0%, 50% {
     opacity: 1;
   }
+  51%, 100% {
+    opacity: 0;
     padding: var(--space-6);
     margin-top: var(--space-8);
   }
 }
 
-    font-size: 1.5rem;
+@keyframes rotate {
   from {
     transform: rotate(0deg);
   }

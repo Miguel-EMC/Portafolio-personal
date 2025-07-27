@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LanguageService } from '../../../services/language.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-language-toggle',
@@ -10,26 +10,30 @@ import { LanguageService } from '../../../services/language.service';
   styleUrl: './language-toggle.component.scss'
 })
 export class LanguageToggleComponent implements OnInit {
-  currentLanguage = 'en';
-  availableLanguages: Array<{code: string, label: string, flag: string}> = [];
+  currentLanguage = 'es';
+  availableLanguages: Array<{code: string, label: string, flag: string}> = [
+    { code: 'en', label: 'English', flag: '🇺🇸' },
+    { code: 'es', label: 'Español', flag: '🇪🇸' }
+  ];
 
-  constructor(private languageService: LanguageService) {}
+  constructor(private translate: TranslateService) {}
 
   ngOnInit(): void {
-    this.availableLanguages = this.languageService.getAvailableLanguages();
-    this.languageService.currentLanguage$.subscribe(lang => {
-      this.currentLanguage = lang;
+    this.currentLanguage = this.translate.currentLang || this.translate.defaultLang;
+    this.translate.onLangChange.subscribe(event => {
+      this.currentLanguage = event.lang;
     });
   }
 
   onLanguageChange(langCode: string): void {
     if (langCode !== this.currentLanguage) {
-      this.languageService.setLanguage(langCode);
+      this.translate.use(langCode);
+      localStorage.setItem('portfolio-language', langCode);
     }
   }
 
   getCurrentLanguageFlag(): string {
     const currentLang = this.availableLanguages.find(lang => lang.code === this.currentLanguage);
-    return currentLang?.flag || '🇺🇸';
+    return currentLang?.flag || '🇪🇸';
   }
 }

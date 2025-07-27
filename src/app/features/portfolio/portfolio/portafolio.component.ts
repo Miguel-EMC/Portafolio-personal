@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForOf, NgIf } from "@angular/common";
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { TranslateModule } from '@ngx-translate/core';
 import { Project, Tool } from '../../../interfaces/project.interface';
 
 @Component({
   selector: 'app-portafolio',
   standalone: true,
-  imports: [NgForOf, NgIf],
+  imports: [NgForOf, NgIf, TranslateModule],
   templateUrl: './portafolio.component.html',
   styleUrls: ['./portafolio.component.scss'],
   animations: [

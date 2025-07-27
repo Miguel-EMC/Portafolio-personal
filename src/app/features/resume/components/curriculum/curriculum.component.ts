@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, PLATFORM_ID, Inject } from '@angular/core';
 import { NgClass, NgForOf, NgIf } from "@angular/common";
 import { isPlatformBrowser } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface Experience {
   title: string;
@@ -31,7 +32,7 @@ interface TechCategory {
 @Component({
   selector: 'app-curriculum',
   standalone: true,
-  imports: [NgClass, NgForOf, NgIf],
+  imports: [NgClass, NgForOf, NgIf, TranslateModule],
   templateUrl: './curriculum.component.html',
   styleUrls: ['./curriculum.component.scss']
 })

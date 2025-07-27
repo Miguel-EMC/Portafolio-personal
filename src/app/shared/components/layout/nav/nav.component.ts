@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from "../../../../core/services/theme.service";
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, TranslateModule],
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit, OnDestroy {

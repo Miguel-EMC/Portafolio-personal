@@ -530,6 +530,7 @@
   50% {
     background-position: 100% 50%;
     padding: var(--space-4);
+  }
 }
 
 @keyframes blink {
@@ -564,7 +565,8 @@
 }
 
 @keyframes floatRandom {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
   25% {
@@ -1135,4 +1137,3 @@
     transform: translateY(-1px);
   }
 }
-  padding: var(--space-12) 0;

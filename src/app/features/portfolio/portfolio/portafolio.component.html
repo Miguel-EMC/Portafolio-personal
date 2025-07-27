@@ -2,11 +2,10 @@
   <div class="container">
     <!-- Header Section -->
     <div class="section-header">
-      <h2 class="section-title">
-        Mi <span class="highlight">Portafolio</span>
+      <h2 class="section-title" [innerHTML]="'portfolio.header.title' | translate">
       </h2>
       <p class="section-subtitle">
-        Una selección de proyectos que demuestran mis habilidades y experiencia en desarrollo
+        {{ 'portfolio.header.subtitle' | translate }}
       </p>
     </div>
 
@@ -18,7 +17,7 @@
         (click)="setFilter('all')"
       >
         <i class="bi bi-grid"></i>
-        <span>Todos</span>
+        <span>{{ 'portfolio.filters.all' | translate }}</span>
       </button>
       <button 
         class="filter-tab"
@@ -26,7 +25,7 @@
         (click)="setFilter('personal')"
       >
         <i class="bi bi-person"></i>
-        <span>Personales</span>
+        <span>{{ 'portfolio.filters.personal' | translate }}</span>
       </button>
       <button 
         class="filter-tab"
@@ -34,7 +33,7 @@
         (click)="setFilter('professional')"
       >
         <i class="bi bi-briefcase"></i>
-        <span>Profesionales</span>
+        <span>{{ 'portfolio.filters.professional' | translate }}</span>
       </button>
     </div>
 
@@ -56,7 +55,7 @@
             <div class="overlay-content">
               <button class="overlay-button primary">
                 <i class="bi bi-eye"></i>
-                <span>Ver Detalles</span>
+                <span>{{ 'portfolio.project.viewDetails' | translate }}</span>
               </button>
               <div class="overlay-links">
                 <a 
@@ -86,7 +85,7 @@
           <div class="project-category">
             <span class="category-badge" [class]="project.type">
               <i [class]="project.type === 'personal' ? 'bi bi-person' : 'bi bi-briefcase'"></i>
-              {{ project.type === 'personal' ? 'Personal' : 'Profesional' }}
+              {{ project.type === 'personal' ? ('portfolio.project.personal' | translate) : ('portfolio.project.professional' | translate) }}
             </span>
           </div>
           
@@ -111,9 +110,9 @@
       <div class="empty-icon">
         <i class="bi bi-folder-x"></i>
       </div>
-      <h3 class="empty-title">No hay proyectos</h3>
+      <h3 class="empty-title">{{ 'portfolio.empty.title' | translate }}</h3>
       <p class="empty-description">
-        No se encontraron proyectos para el filtro seleccionado
+        {{ 'portfolio.empty.description' | translate }}
       </p>
     </div>
   </div>
@@ -131,7 +130,7 @@
           <h3 class="modal-title">{{ selectedProject.title }}</h3>
           <span class="modal-category" [class]="selectedProject.type">
             <i [class]="selectedProject.type === 'personal' ? 'bi bi-person' : 'bi bi-briefcase'"></i>
-            {{ selectedProject.type === 'personal' ? 'Personal' : 'Profesional' }}
+            {{ selectedProject.type === 'personal' ? ('portfolio.project.personal' | translate) : ('portfolio.project.professional' | translate) }}
           </span>
         </div>
         <button class="close-button" (click)="closeDetails()">
@@ -201,11 +200,11 @@
 
         <div class="project-info">
           <div class="project-details">
-            <h4 class="details-title">Descripción del Proyecto</h4>
+            <h4 class="details-title">{{ 'portfolio.project.description' | translate }}</h4>
             <p class="project-full-description">{{ selectedProject.description }}</p>
             
             <div class="tech-section">
-              <h4 class="details-title">Tecnologías Utilizadas</h4>
+              <h4 class="details-title">{{ 'portfolio.project.technologies' | translate }}</h4>
               <div class="tech-grid">
                 <div class="tech-badge" *ngFor="let tech of selectedProject.frameworks">
                   <i [class]="getTechIcon(tech)"></i>
@@ -223,7 +222,7 @@
               class="action-button primary"
             >
               <i class="bi bi-box-arrow-up-right"></i>
-              <span>Ver Proyecto</span>
+              <span>{{ 'portfolio.project.viewProject' | translate }}</span>
             </a>
             <a 
               *ngIf="selectedProject.githubUrl" 
@@ -232,7 +231,7 @@
               class="action-button secondary"
             >
               <i class="bi bi-github"></i>
-              <span>Ver Código</span>
+              <span>{{ 'portfolio.project.viewCode' | translate }}</span>
             </a>
           </div>
         </div>

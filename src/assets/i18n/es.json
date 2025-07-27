@@ -1,0 +1,186 @@
+{
+  "nav": {
+    "brandSubtitle": "Full Stack Dev",
+    "about": "Sobre Mí",
+    "resume": "Resume",
+    "portfolio": "Portafolio",
+    "contact": "Contacto"
+  },
+  "home": {
+    "resume": {
+      "title": "Mi Resume",
+      "subtitle": "Un resumen completo de mi experiencia profesional y formación académica"
+    },
+    "experience": {
+      "title": "Experiencia Profesional"
+    },
+    "education": {
+      "title": "Formación Académica"
+    },
+    "skills": {
+      "title": "Technical Skills",
+      "subtitle": "Tecnologías y herramientas que domino en el desarrollo de software"
+    }
+  },
+  "about": {
+    "header": {
+      "title": "Conoce mi historia y pasión por la tecnología",
+      "subtitle": "Descubre mi trayectoria profesional, mis valores y lo que me motiva cada día"
+    },
+    "role": "Desarrollador Full Stack & Estudiante de Ingeniería",
+    "location": "Quito, Ecuador",
+    "bio": "Soy un desarrollador Full Stack apasionado por crear soluciones tecnológicas innovadoras. Me especializo en aplicaciones web eficientes y escalables, utilizando las últimas tecnologías para ofrecer resultados de alta calidad. También tengo un fuerte interés en Inteligencia Artificial, Machine Learning y Deep Learning.",
+    "contact": {
+      "phone": "Teléfono",
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "values": {
+      "title": "Mis Valores",
+      "innovation": {
+        "title": "Innovación",
+        "desc": "Siempre busco nuevas formas de resolver problemas"
+      },
+      "excellence": {
+        "title": "Excelencia",
+        "desc": "Me comprometo con la calidad en cada proyecto"
+      },
+      "collaboration": {
+        "title": "Colaboración",
+        "desc": "Creo en el poder del trabajo en equipo"
+      },
+      "learning": {
+        "title": "Aprendizaje",
+        "desc": "Nunca dejo de aprender y crecer profesionalmente"
+      }
+    },
+    "interests": {
+      "title": "Áreas de Interés",
+      "ai": "Inteligencia Artificial",
+      "ml": "Machine Learning",
+      "dl": "Deep Learning",
+      "cloud": "Cloud Computing",
+      "security": "Ciberseguridad",
+      "mobile": "Desarrollo Móvil"
+    },
+    "stats": {
+      "title": "En Números",
+      "experience": "Años de Experiencia",
+      "projects": "Proyectos Completados",
+      "technologies": "Tecnologías Dominadas",
+      "commitment": "Compromiso"
+    },
+    "cta": {
+      "title": "¿Listo para trabajar juntos?",
+      "subtitle": "Estoy siempre abierto a nuevas oportunidades y colaboraciones interesantes.",
+      "email": "Enviar Email",
+      "whatsapp": "WhatsApp"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Mi Portafolio. Todos los derechos reservados."
+  },
+  "contact": {
+    "header": {
+      "title": "Trabajemos Juntos",
+      "subtitle": "¿Tienes un proyecto en mente? Me encantaría escuchar tus ideas y ayudarte a hacerlas realidad"
+    },
+    "form": {
+      "title": "Envíame un mensaje",
+      "subtitle": "Completa el formulario y te responderé en menos de 24 horas",
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "nameRequired": "El nombre es requerido",
+      "lastName": "Apellido",
+      "lastNamePlaceholder": "Tu apellido",
+      "lastNameRequired": "El apellido es requerido",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "tu@email.com",
+      "emailRequired": "El email es requerido",
+      "emailInvalid": "Ingresa un email válido",
+      "projectType": "Tipo de Proyecto",
+      "projectTypePlaceholder": "Selecciona el tipo de proyecto",
+      "projectTypeRequired": "Selecciona un tipo de proyecto",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntame sobre tu proyecto, objetivos, timeline y presupuesto aproximado...",
+      "messageRequired": "El mensaje es requerido",
+      "sending": "Enviando...",
+      "sendMessage": "Enviar Mensaje",
+      "securityNote": "Tu información está segura y no será compartida"
+    },
+    "projectTypes": {
+      "web": "🌐 Desarrollo Web",
+      "mobile": "📱 Desarrollo Móvil",
+      "ecommerce": "🛒 E-commerce",
+      "api": "⚡ API & Backend",
+      "consulting": "💡 Consultoría Técnica",
+      "collaboration": "🤝 Colaboración",
+      "freelance": "💼 Trabajo Freelance",
+      "other": "🔧 Otro"
+    },
+    "quickContact": {
+      "title": "Contacto Rápido",
+      "email": "Email",
+      "emailDesc": "Respuesta en 24 horas",
+      "whatsapp": "WhatsApp",
+      "whatsappDesc": "Respuesta inmediata",
+      "phone": "Teléfono",
+      "phoneDesc": "Lun - Vie, 9:00 - 18:00",
+      "linkedin": "LinkedIn",
+      "linkedinDesc": "Red profesional"
+    },
+    "availability": {
+      "title": "Estado Actual",
+      "available": "Disponible para proyectos",
+      "responseTime": "Tiempo de respuesta: < 24h",
+      "startTime": "Inicio de proyectos: Inmediato",
+      "location": "Ubicación: Quito, Ecuador (GMT-5)"
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "timeQuestion": "¿Cuánto tiempo toma un proyecto?",
+      "timeAnswer": "Depende de la complejidad, pero típicamente 2-8 semanas",
+      "paymentQuestion": "¿Cómo manejas los pagos?",
+      "paymentAnswer": "50% al inicio, 50% al completar. Acepto transferencias y PayPal",
+      "maintenanceQuestion": "¿Ofreces mantenimiento?",
+      "maintenanceAnswer": "Sí, incluyo 3 meses de soporte gratuito post-entrega"
+    }
+  },
+  "portfolio": {
+    "header": {
+      "title": "Mi Portafolio",
+      "subtitle": "Una selección de proyectos que demuestran mis habilidades y experiencia en desarrollo"
+    },
+    "filters": {
+      "all": "Todos",
+      "personal": "Personales",
+      "professional": "Profesionales"
+    },
+    "project": {
+      "viewDetails": "Ver Detalles",
+      "personal": "Personal",
+      "professional": "Profesional",
+      "viewProject": "Ver Proyecto",
+      "viewCode": "Ver Código",
+      "description": "Descripción del Proyecto",
+      "technologies": "Tecnologías Utilizadas"
+    },
+    "empty": {
+      "title": "No hay proyectos",
+      "description": "No se encontraron proyectos para el filtro seleccionado"
+    }
+  },
+  "resume": {
+    "experience": {
+      "title": "Mi Experiencia",
+      "subtitle": "Un recorrido por mi carrera profesional en el desarrollo de software y tecnología",
+      "technologies": "Tecnologías",
+      "skills": "Skills"
+    },
+    "education": {
+      "title": "Mi Trayectoria Educativa",
+      "subtitle": "El camino académico que ha forjado mi carrera profesional en tecnología"
+    }
+  }
+}

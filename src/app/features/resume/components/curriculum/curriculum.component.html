@@ -1,16 +1,4 @@
-<section id="experience" class="experience-section">
-  <div class="container">
-    <!-- Header Section -->
-    <div class="section-header" data-aos="fade-up">
-      <h2 class="section-title">
-        Mi <span class="highlight">Experiencia</span>
-      </h2>
-      <p class="section-subtitle">
-        Un recorrido por mi carrera profesional en el desarrollo de software y tecnología
-      </p>
-    </div>
-
-    <!-- Experience Grid -->
+<!-- Experience Grid -->
     <div class="experience-grid">
       <div 
         class="experience-card"
@@ -52,56 +40,3 @@
         </div>
       </div>
     </div>
-
-    <!-- Tech Stack Section - Compact Modern -->
-    <div class="tech-stack-section" data-aos="fade-up" data-aos-delay="400">
-      <div class="tech-header">
-        <div class="header-badge">
-          <i class="bi bi-code-slash"></i>
-          <span>Tecnologías</span>
-        </div>
-        <h3 class="tech-title">
-          <span class="highlight">Skills</span>
-        </h3>
-        <div class="category-overview">
-          <div class="overview-item" *ngFor="let overview of getCategoryOverview()">
-            <div class="overview-icon">
-              <i [class]="overview.icon"></i>
-            </div>
-            <div class="overview-info">
-              <span class="overview-name">{{ overview.name }}</span>
-              <div class="overview-level">{{ overview.level }}%</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="skills-container">
-        <div class="skills-grid">
-          <div class="skill-category" *ngFor="let category of getSkillCategories()">
-            <div class="category-header">
-              <div class="category-icon">
-                <i [class]="category.icon"></i>
-              </div>
-              <h4 class="category-name">{{ category.name }}</h4>
-            </div>
-            
-            <div class="skills-list">
-              <div class="skill-item" *ngFor="let skill of category.skills">
-                <div class="skill-info">
-                  <span class="skill-name">{{ skill.name }}</span>
-                  <span class="skill-percentage">{{ skill.level }}%</span>
-                </div>
-                <div class="skill-progress">
-                  <div class="progress-bar">
-                    <div class="progress-fill" [style.width]="skill.level + '%'"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>

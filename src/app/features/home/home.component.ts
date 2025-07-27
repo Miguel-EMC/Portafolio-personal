@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { EducationComponent } from "../resume/components/education/education.component";
 import { AboutMeComponent } from "../contact/about-me/about-me.component";
 import { CurriculumComponent } from "../resume/components/curriculum/curriculum.component";
@@ -13,6 +14,7 @@ import { NgClass, NgForOf, NgIf } from "@angular/common";
   standalone: true,
   templateUrl: './home.component.html',
   imports: [
+    TranslateModule,
     EducationComponent,
     AboutMeComponent,
     CurriculumComponent,

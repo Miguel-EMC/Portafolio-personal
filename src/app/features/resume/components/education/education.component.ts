@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForOf, NgIf } from "@angular/common";
+import { TranslateModule } from '@ngx-translate/core';
 
 interface EducationItem {
   icon: string;
@@ -21,7 +22,7 @@ interface SkillCategory {
   standalone: true,
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.scss'],
-  imports: [NgForOf, NgIf]
+  imports: [NgForOf, NgIf, TranslateModule]
 })
 export class EducationComponent {
   educationItems: EducationItem[] = [

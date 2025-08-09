@@ -3,13 +3,14 @@ import { isPlatformBrowser, NgClass } from '@angular/common';
 import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from "../../../../core/services/theme.service";
+import { LanguageToggleComponent } from "../../ui/language-toggle/language-toggle.component";
 import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   standalone: true,
-  imports: [NgClass, TranslateModule, RouterModule],
+  imports: [NgClass, TranslateModule, RouterModule, LanguageToggleComponent],
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit, OnDestroy {

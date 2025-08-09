@@ -3,12 +3,13 @@ import { RouterOutlet } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { NavComponent } from './shared/components/layout/nav/nav.component';
+import { FooterComponent } from './shared/components/layout/footer/footer.component';
 import { LanguageToggleComponent } from './shared/components/ui/language-toggle/language-toggle.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavComponent, LanguageToggleComponent],
+  imports: [RouterOutlet, NavComponent, FooterComponent, LanguageToggleComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

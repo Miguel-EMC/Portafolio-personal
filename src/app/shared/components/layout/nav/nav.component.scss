@@ -487,6 +487,20 @@
   }
 }
 
+/* ===== LANGUAGE TOGGLE ===== */
+
+.nav-language {
+  margin-left: auto;
+  
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+}
+
 /* ===== ESTADOS DE ACCESIBILIDAD ===== */
 
 .nav-link:focus-visible,

@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LanguageToggleComponent implements OnInit {
   currentLanguage = 'es';
+  isDropdownOpen = false;
   availableLanguages: Array<{code: string, label: string, flag: string}> = [
     { code: 'en', label: 'English', flag: '🇺🇸' },
     { code: 'es', label: 'Español', flag: '🇪🇸' }
@@ -25,11 +26,16 @@ export class LanguageToggleComponent implements OnInit {
     });
   }
 
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
   onLanguageChange(langCode: string): void {
     if (langCode !== this.currentLanguage) {
       this.translate.use(langCode);
       localStorage.setItem('portfolio-language', langCode);
     }
+    this.isDropdownOpen = false; // Close dropdown after selection
   }
 
   getCurrentLanguageFlag(): string {

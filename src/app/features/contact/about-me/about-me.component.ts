@@ -13,7 +13,7 @@ import { NavComponent } from "../../../shared/components/layout/nav/nav.componen
   styleUrl: './about-me.component.scss'
 })
 export class AboutMeComponent implements OnInit {
-  email: string = " eduardomuzo123456@gmail.com";
+  email: string = "eduardomuzo123456@gmail.com";
 
   constructor(private router: Router, private viewportScroller: ViewportScroller) {}
 

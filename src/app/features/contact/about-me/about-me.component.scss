@@ -1,5 +1,5 @@
 .about-section {
-  padding: var(--space-3) 0;
+  padding: var(--space-2) 0;
   background: var(--bg-primary);
   position: relative;
   overflow: hidden;
@@ -71,8 +71,8 @@
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
-  margin-bottom: var(--space-10);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
   
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
@@ -84,9 +84,9 @@
 .info-card {
   background: var(--surface-elevated);
   border: 1px solid var(--border-primary);
-  border-radius: var(--radius-2xl);
-  padding: var(--space-6);
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
   
   &:hover {
@@ -97,8 +97,8 @@
 
 .card-header {
   display: flex;
-  gap: var(--space-4);
-  margin-bottom: var(--space-6);
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
   
   @media (max-width: 480px) {
     flex-direction: column;
@@ -113,12 +113,12 @@
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--accent-primary);
-  box-shadow: var(--shadow-md);
+  border: 2px solid var(--accent-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .avatar-ring {
@@ -150,8 +150,8 @@
 }
 
 .card-title {
-  font-size: 1.75rem;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: 600;
   color: white;
   margin-bottom: var(--space-1);
 }
@@ -177,14 +177,14 @@
 
 .bio {
   font-family: 'Courier New', 'Monaco', 'Lucida Console', monospace;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: var(--text-secondary);
   background: var(--bg-tertiary);
-  padding: var(--space-4);
+  padding: var(--space-3);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-primary);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
   position: relative;
   
   &::before {
@@ -219,7 +219,7 @@
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
+  gap: var(--space-2);
   
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
@@ -228,11 +228,11 @@
 
 .contact-item {
   display: flex;
-  gap: var(--space-3);
-  padding: var(--space-3);
+  gap: var(--space-2);
+  padding: var(--space-2);
   background: var(--bg-tertiary);
   border: 1px solid var(--border-primary);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   transition: all var(--transition-fast);
   cursor: pointer;
   text-decoration: none;
@@ -261,11 +261,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   background: var(--accent-primary);
   color: white;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   flex-shrink: 0;
   transition: all var(--transition-fast);
   
@@ -282,7 +282,7 @@
 }
 
 .contact-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   color: var(--text-tertiary);
   text-transform: uppercase;
@@ -291,7 +291,7 @@
 }
 
 .contact-value {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-primary);
   text-decoration: none;
@@ -306,7 +306,7 @@
 .skills-interests {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-3);
 }
 
 .values-card,
@@ -314,9 +314,9 @@
 .stats-card {
   background: var(--surface-elevated);
   border: 1px solid var(--border-primary);
-  border-radius: var(--radius-xl);
-  padding: var(--space-4);
-  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
   
   &:hover {
@@ -328,10 +328,10 @@
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
     
     i {
       color: var(--accent-primary);
@@ -344,7 +344,7 @@
 .values-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
+  gap: var(--space-2);
   
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
@@ -353,10 +353,10 @@
 
 .value-item {
   display: flex;
-  gap: var(--space-3);
-  padding: var(--space-3);
+  gap: var(--space-2);
+  padding: var(--space-2);
   background: var(--bg-tertiary);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   transition: all var(--transition-fast);
   
   &:hover {
@@ -366,22 +366,22 @@
 }
 
 .value-icon {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   flex-shrink: 0;
 }
 
 .value-content {
   h5 {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: var(--space-1);
   }
   
   p {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-secondary);
-    line-height: 1.4;
+    line-height: 1.3;
     margin: 0;
   }
 }
@@ -390,18 +390,18 @@
 .interests-list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--space-1);
 }
 
 .interest-tag {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-3);
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
   background: var(--bg-accent);
   border: 1px solid var(--border-primary);
   border-radius: var(--radius-full);
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--text-primary);
   transition: all var(--transition-fast);
@@ -428,14 +428,14 @@
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
+  gap: var(--space-2);
 }
 
 .stat-item {
   text-align: center;
-  padding: var(--space-4);
+  padding: var(--space-2);
   background: var(--bg-tertiary);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   transition: all var(--transition-fast);
   
   &:hover {
@@ -445,15 +445,15 @@
 }
 
 .stat-number {
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--accent-primary);
   line-height: 1;
   margin-bottom: var(--space-1);
 }
 
 .stat-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   color: var(--text-secondary);
   text-transform: uppercase;
@@ -469,12 +469,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-8);
-  padding: var(--space-8);
+  gap: var(--space-4);
+  padding: var(--space-4);
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-xl);
   color: white;
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-lg);
   
   @media (max-width: 768px) {
     flex-direction: column;
@@ -487,14 +487,14 @@
   flex: 1;
   
   h3 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: var(--space-2);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: var(--space-1);
     color: white;
   }
   
   p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: white;
     opacity: 0.9;
     margin: 0;
@@ -504,7 +504,7 @@
 
 .cta-actions {
   display: flex;
-  gap: var(--space-3);
+  gap: var(--space-2);
   flex-shrink: 0;
   
   @media (max-width: 480px) {
@@ -515,13 +515,14 @@
   .btn {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-6);
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
     background: rgba(255, 255, 255, 0.1);
     color: white;
     border: 2px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     font-weight: 600;
+    font-size: 0.85rem;
     transition: all var(--transition-fast);
     
     &:hover {

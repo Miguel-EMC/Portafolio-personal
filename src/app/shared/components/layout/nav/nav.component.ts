@@ -1,28 +1,38 @@
 import { Component, OnInit, OnDestroy, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
+import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from "../../../../core/services/theme.service";
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   standalone: true,
-  imports: [NgClass, TranslateModule],
+  imports: [NgClass, TranslateModule, RouterModule],
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit, OnDestroy {
   isMobileMenuOpen = false;
   isScrolled = false;
-  activeSection = 'home';
+  activeRoute = '/about';
 
   constructor(
     private themeService: ThemeService,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.updateActiveSection();
+      this.updateActiveRoute();
+      
+      // Listen to route changes
+      this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)
+      ).subscribe(() => {
+        this.updateActiveRoute();
+      });
     }
   }
 
@@ -37,7 +47,6 @@ export class NavComponent implements OnInit, OnDestroy {
   onWindowScroll(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.isScrolled = window.pageYOffset > 50;
-      this.updateActiveSection();
     }
   }
 
@@ -61,24 +70,12 @@ export class NavComponent implements OnInit, OnDestroy {
     return this.themeService.getCurrentTheme();
   }
 
-  scrollToSection(sectionId: string): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        const offset = isPlatformBrowser(this.platformId) && window.innerWidth <= 768 ? 0 : 0; // Sin offset para navbar vertical
-        const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-
-        // Cerrar menú móvil si está abierto
-        if (this.isMobileMenuOpen) {
-          this.closeMobileMenu();
-        }
-      }
+  navigateToRoute(route: string): void {
+    this.router.navigate([route]);
+    
+    // Cerrar menú móvil si está abierto
+    if (this.isMobileMenuOpen) {
+      this.closeMobileMenu();
     }
   }
 
@@ -103,28 +100,13 @@ export class NavComponent implements OnInit, OnDestroy {
     }
   }
 
-  private updateActiveSection(): void {
+  private updateActiveRoute(): void {
     if (!isPlatformBrowser(this.platformId)) return;
+    
+    this.activeRoute = this.router.url;
+  }
 
-    const sections = ['home', 'sobre-mi', 'educacion', 'experiencia', 'portafolio', 'contacto'];
-    const scrollPosition = window.pageYOffset + 100;
-
-    for (const sectionId of sections) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const offsetTop = element.offsetTop;
-        const offsetHeight = element.offsetHeight;
-
-        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-          this.activeSection = sectionId;
-          break;
-        }
-      }
-    }
-
-    // Si estamos en la parte superior, establecer home como activo
-    if (window.pageYOffset < 100) {
-      this.activeSection = 'home';
-    }
+  isActive(route: string): boolean {
+    return this.activeRoute === route || this.activeRoute === `/${route}`;
   }
 }

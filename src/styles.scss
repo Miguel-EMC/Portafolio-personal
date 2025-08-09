@@ -266,7 +266,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--space-20);
   font-size: 16px;
   line-height: var(--leading-normal);
 }
@@ -290,16 +289,20 @@ section, .section-spacing, .about-section, .education-section, .experience, .con
   background-color: var(--bg-primary) !important;
 }
 
-/* ===== LAYOUT SIMPLE PARA NAVBAR VERTICAL ===== */
+/* ===== LAYOUT PARA NAVBAR HORIZONTAL ===== */
 
-/* Solo padding básico para el cuerpo del documento */
-body {
-  @media (min-width: 769px) {
-    padding-left: 320px;
-  }
+/* Cada página individual necesita padding superior para el navbar horizontal fijo */
+app-about-me,
+app-resume,
+app-contacts,
+app-portafolio {
+  display: block;
+  min-height: calc(100vh - 80px);
+  padding-top: 80px;
   
   @media (max-width: 768px) {
-    padding-left: 0;
+    padding-top: 70px;
+    min-height: calc(100vh - 70px);
   }
 }
 

@@ -3,73 +3,72 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'about',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)
-  },
-  // Redirigir todas las rutas a home para navegación por secciones
-  {
-    path: 'portfolio',
-    redirectTo: 'home'
+    path: 'about',
+    loadComponent: () => import('./features/contact/about-me/about-me.component').then(c => c.AboutMeComponent)
   },
   {
     path: 'resume',
-    redirectTo: 'home'
+    loadChildren: () => import('./features/resume/resume.module').then(m => m.ResumeModule)
   },
   {
-    path: 'about',
-    redirectTo: 'home'
+    path: 'portfolio',
+    loadChildren: () => import('./features/portfolio/portfolio.module').then(m => m.PortfolioModule)
   },
   {
     path: 'contact',
-    redirectTo: 'home'
-  },
-  {
-    path: 'sobre-mi',
-    redirectTo: 'home'
-  },
-  {
-    path: 'educacion',
-    redirectTo: 'home'
-  },
-  {
-    path: 'experiencia',
-    redirectTo: 'home'
-  },
-  {
-    path: 'portafolio',
-    redirectTo: 'home'
-  },
-  {
-    path: 'contacto',
-    redirectTo: 'home'
+    loadComponent: () => import('./features/contact/contacts/contacts.component').then(c => c.ContactsComponent)
   },
   // Backward compatibility routes
   {
+    path: 'home',
+    redirectTo: 'about'
+  },
+  {
+    path: 'sobre-mi',
+    redirectTo: 'about'
+  },
+  {
+    path: 'portafolio',
+    redirectTo: 'portfolio'
+  },
+  {
+    path: 'contacto',
+    redirectTo: 'contact'
+  },
+  {
     path: 'about-me',
-    redirectTo: 'home'
+    redirectTo: 'about'
   },
   {
     path: 'contacts',
-    redirectTo: 'home'
+    redirectTo: 'contact'
   },
   {
     path: 'curriculum',
-    redirectTo: 'home'
+    redirectTo: 'resume'
   },
   {
     path: 'education',
-    redirectTo: 'home'
+    redirectTo: 'resume'
+  },
+  {
+    path: 'experiencia',
+    redirectTo: 'resume'
+  },
+  {
+    path: 'educacion',
+    redirectTo: 'resume'
   },
   {
     path: 'skills',
-    redirectTo: 'home'
+    redirectTo: 'resume'
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'about'
   }
 ];

@@ -11,7 +11,7 @@
   <div class="nav-container">
     <!-- Brand/Logo -->
     <div class="nav-brand">
-      <a (click)="scrollToSection('home')" class="brand-link">
+      <a (click)="navigateToRoute('/about')" class="brand-link">
         <div class="brand-icon">
           <div class="icon-layers">
             <div class="layer layer-1"></div>
@@ -28,28 +28,28 @@
 
     <!-- Desktop Navigation -->
     <div class="nav-links desktop-nav">
-      <a class="nav-link" (click)="scrollToSection('home')" [class.active]="activeSection === 'home'">
+      <a class="nav-link" (click)="navigateToRoute('/about')" [class.active]="isActive('/about')">
         <div class="link-content">
           <i class="bi bi-person-fill"></i>
           <span class="nav-text">{{ 'nav.about' | translate }}</span>
           <div class="link-indicator"></div>
         </div>
       </a>
-      <a class="nav-link" (click)="scrollToSection('resume')" [class.active]="activeSection === 'resume'">
+      <a class="nav-link" (click)="navigateToRoute('/resume')" [class.active]="isActive('/resume')">
         <div class="link-content">
           <i class="bi bi-file-person-fill"></i>
           <span class="nav-text">{{ 'nav.resume' | translate }}</span>
           <div class="link-indicator"></div>
         </div>
       </a>
-      <a class="nav-link" (click)="scrollToSection('portafolio')" [class.active]="activeSection === 'portafolio'">
+      <a class="nav-link" (click)="navigateToRoute('/portfolio')" [class.active]="isActive('/portfolio')">
         <div class="link-content">
           <i class="bi bi-collection-fill"></i>
           <span class="nav-text">{{ 'nav.portfolio' | translate }}</span>
           <div class="link-indicator"></div>
         </div>
       </a>
-      <a class="nav-link" (click)="scrollToSection('contacto')" [class.active]="activeSection === 'contacto'">
+      <a class="nav-link" (click)="navigateToRoute('/contact')" [class.active]="isActive('/contact')">
         <div class="link-content">
           <i class="bi bi-envelope-fill"></i>
           <span class="nav-text">{{ 'nav.contact' | translate }}</span>

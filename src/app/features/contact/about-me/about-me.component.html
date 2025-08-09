@@ -1,195 +1,259 @@
 <section class="about-section">
+  <!-- Background Elements -->
+  <div class="bg-decoration">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+  </div>
+
   <div class="container">
-    <!-- Main Content -->
-    <div class="about-content">
-      <!-- Personal Info Card -->
-      <div class="info-card animate-fade-in-left">
-        <div class="card-header">
-          <div class="avatar-container">
-            <img src="../../../assets/img/about-me.png" alt="Miguel Muzo" class="avatar" />
-            <div class="avatar-ring"></div>
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <div class="profile-side">
+        <div class="profile-image-container">
+          <div class="image-ring"></div>
+          <img src="../../../assets/img/about-me.png" alt="Miguel Muzo" class="profile-image" />
+          <div class="status-badge">
+            <div class="pulse-dot"></div>
           </div>
-          <div class="header-text">
-            <h3 class="card-title">Eduardo Miguel Muzo</h3>
-            <p class="card-subtitle">{{ 'about.role' | translate }}</p>
-            <div class="location">
-              <i class="bi bi-geo-alt"></i>
-              <span>{{ 'about.location' | translate }}</span>
+        </div>
+        
+        <div class="quick-stats">
+          <div class="quick-stat">
+            <div class="stat-icon">
+              <i class="bi bi-calendar3"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number">2+</span>
+              <span class="stat-text">Años</span>
+            </div>
+          </div>
+          <div class="quick-stat">
+            <div class="stat-icon">
+              <i class="bi bi-code-square"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number">15+</span>
+              <span class="stat-text">Proyectos</span>
             </div>
           </div>
         </div>
+      </div>
+      
+      <div class="profile-info">
+        <div class="profile-badge">
+          <i class="bi bi-code-slash"></i>
+          <span>{{ 'about.role' | translate }}</span>
+        </div>
+        <h1 class="profile-name">
+          <span class="name-primary">Eduardo Miguel</span>
+          <span class="name-accent">Muzo</span>
+        </h1>
+        <p class="profile-description" [innerHTML]="'about.bio' | translate"></p>
+        
+        <div class="profile-meta">
+          <div class="meta-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>{{ 'about.location' | translate }}</span>
+          </div>
+          <div class="meta-item">
+            <i class="bi bi-shield-check-fill"></i>
+            <span>Disponible</span>
+          </div>
+        </div>
+        
+        <div class="profile-actions">
+          <a href="mailto:eduardomuzo123456@gmail.com" class="btn btn-primary">
+            <i class="bi bi-envelope-fill"></i>
+            <span>Contactar</span>
+            <div class="btn-shine"></div>
+          </a>
+          <a href="https://wa.me/593999763190?text=Hola%20Miguel" target="_blank" class="btn btn-secondary">
+            <i class="bi bi-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
 
-        <div class="card-content">
-          <p class="bio" [innerHTML]="'about.bio' | translate"></p>
-
-          <!-- Contact Info -->
-          <div class="contact-grid">
-            <a href="mailto:eduardomuzo123456@gmail.com" class="contact-item">
-              <div class="contact-icon">
-                <i class="bi bi-envelope"></i>
-              </div>
-              <div class="contact-details">
-                <span class="contact-label">{{ 'about.contact.email' | translate }}</span>
-                <span class="contact-value">{{ email }}</span>
-              </div>
-            </a>
-
-            <a href="tel:+593999763190" class="contact-item">
-              <div class="contact-icon">
-                <i class="bi bi-phone"></i>
-              </div>
-              <div class="contact-details">
-                <span class="contact-label">{{ 'about.contact.phone' | translate }}</span>
-                <span class="contact-value">+593 999 763 190</span>
-              </div>
-            </a>
-
-            <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/"
-               target="_blank"
-               class="contact-item">
-              <div class="contact-icon">
-                <i class="bi bi-linkedin"></i>
-              </div>
-              <div class="contact-details">
-                <span class="contact-label">{{ 'about.contact.linkedin' | translate }}</span>
-                <span class="contact-value">Eduardo Miguel Muzo</span>
-              </div>
-            </a>
-
-            <a href="https://github.com/Miguel-EMC"
-               target="_blank"
-               class="contact-item">
-              <div class="contact-icon">
-                <i class="bi bi-github"></i>
-              </div>
-              <div class="contact-details">
-                <span class="contact-label">{{ 'about.contact.github' | translate }}</span>
-                <span class="contact-value">Miguel-EMC</span>
-              </div>
-            </a>
+    <!-- Professional Info Cards -->
+    <div class="info-grid">
+      <!-- Contact Info -->
+      <div class="info-card contact-card">
+        <div class="card-decoration"></div>
+        <div class="card-header">
+          <div class="header-icon">
+            <i class="bi bi-person-lines-fill"></i>
+          </div>
+          <div class="header-content">
+            <h3>Información de Contacto</h3>
+            <p>Cómo puedes contactarme</p>
+          </div>
+        </div>
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="contact-icon email-icon">
+              <i class="bi bi-envelope-fill"></i>
+            </div>
+            <div class="contact-details">
+              <span class="label">Email Profesional</span>
+              <a href="mailto:eduardomuzo123456@gmail.com">{{ email }}</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon phone-icon">
+              <i class="bi bi-telephone-fill"></i>
+            </div>
+            <div class="contact-details">
+              <span class="label">Teléfono</span>
+              <a href="tel:+593999763190">+593 999 763 190</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon location-icon">
+              <i class="bi bi-geo-alt-fill"></i>
+            </div>
+            <div class="contact-details">
+              <span class="label">Ubicación</span>
+              <span>{{ 'about.location' | translate }}</span>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Skills & Interests -->
-      <div class="skills-interests animate-fade-in-right">
-        <!-- Interests Card -->
-        <div class="interests-card">
-          <h4 class="card-title">
-            <i class="bi bi-lightbulb"></i>
-            <span>{{ 'about.interests.title' | translate }}</span>
-          </h4>
-          <div class="interests-list">
-            <div class="interest-tag">
+      <div class="info-card skills-card">
+        <div class="card-decoration"></div>
+        <div class="card-header">
+          <div class="header-icon">
+            <i class="bi bi-stars"></i>
+          </div>
+          <div class="header-content">
+            <h3>Especialidades</h3>
+            <p>Áreas de experticia técnica</p>
+          </div>
+        </div>
+        <div class="skills-showcase">
+          <div class="skill-item ai-skill">
+            <div class="skill-icon">
               <i class="bi bi-robot"></i>
-              <span>{{ 'about.interests.ai' | translate }}</span>
             </div>
-            <div class="interest-tag">
-              <i class="bi bi-graph-up"></i>
-              <span>{{ 'about.interests.ml' | translate }}</span>
+            <div class="skill-content">
+              <h4>{{ 'about.interests.ai' | translate }}</h4>
+              <p>Machine Learning & Deep Learning</p>
             </div>
-            <div class="interest-tag">
-              <i class="bi bi-layers"></i>
-              <span>{{ 'about.interests.dl' | translate }}</span>
+          </div>
+          <div class="skill-item cloud-skill">
+            <div class="skill-icon">
+              <i class="bi bi-cloud-arrow-up"></i>
             </div>
-            <div class="interest-tag">
-              <i class="bi bi-cloud"></i>
-              <span>{{ 'about.interests.cloud' | translate }}</span>
+            <div class="skill-content">
+              <h4>{{ 'about.interests.cloud' | translate }}</h4>
+              <p>AWS, Docker, Kubernetes</p>
             </div>
-            <div class="interest-tag">
-              <i class="bi bi-shield-check"></i>
-              <span>{{ 'about.interests.security' | translate }}</span>
-            </div>
-            <div class="interest-tag">
+          </div>
+          <div class="skill-item mobile-skill">
+            <div class="skill-icon">
               <i class="bi bi-phone"></i>
-              <span>{{ 'about.interests.mobile' | translate }}</span>
+            </div>
+            <div class="skill-content">
+              <h4>{{ 'about.interests.mobile' | translate }}</h4>
+              <p>React Native & Flutter</p>
             </div>
           </div>
-        </div>
-
-        <!-- Values Card -->
-        <div class="values-card">
-          <h4 class="card-title">
-            <i class="bi bi-heart"></i>
-            <span>{{ 'about.values.title' | translate }}</span>
-          </h4>
-          <div class="values-grid">
-            <div class="value-item">
-              <div class="value-icon">💡</div>
-              <div class="value-content">
-                <h5>{{ 'about.values.innovation.title' | translate }}</h5>
-                <p>{{ 'about.values.innovation.desc' | translate }}</p>
-              </div>
+          <div class="skill-item security-skill">
+            <div class="skill-icon">
+              <i class="bi bi-shield-check"></i>
             </div>
-            <div class="value-item">
-              <div class="value-icon">🎯</div>
-              <div class="value-content">
-                <h5>{{ 'about.values.excellence.title' | translate }}</h5>
-                <p>{{ 'about.values.excellence.desc' | translate }}</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">🤝</div>
-              <div class="value-content">
-                <h5>{{ 'about.values.collaboration.title' | translate }}</h5>
-                <p>{{ 'about.values.collaboration.desc' | translate }}</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">📚</div>
-              <div class="value-content">
-                <h5>{{ 'about.values.learning.title' | translate }}</h5>
-                <p>{{ 'about.values.learning.desc' | translate }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stats Card -->
-        <div class="stats-card">
-          <h4 class="card-title">
-            <i class="bi bi-bar-chart"></i>
-            <span>{{ 'about.stats.title' | translate }}</span>
-          </h4>
-          <div class="stats-grid">
-            <div class="stat-item">
-              <div class="stat-number">2+</div>
-              <div class="stat-label">{{ 'about.stats.experience' | translate }}</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">15+</div>
-              <div class="stat-label">{{ 'about.stats.projects' | translate }}</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">10+</div>
-              <div class="stat-label">{{ 'about.stats.technologies' | translate }}</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">100%</div>
-              <div class="stat-label">{{ 'about.stats.commitment' | translate }}</div>
+            <div class="skill-content">
+              <h4>{{ 'about.interests.security' | translate }}</h4>
+              <p>Cybersecurity Best Practices</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Call to Action -->
-    <div class="cta-section animate-fade-in-up">
-      <div class="cta-card">
-        <div class="cta-content">
-          <h3>{{ 'about.cta.title' | translate }}</h3>
-          <p>{{ 'about.cta.subtitle' | translate }}</p>
+      <!-- Achievement Stats -->
+      <div class="info-card stats-card">
+        <div class="card-decoration"></div>
+        <div class="card-header">
+          <div class="header-icon">
+            <i class="bi bi-trophy-fill"></i>
+          </div>
+          <div class="header-content">
+            <h3>Logros & Métricas</h3>
+            <p>Números que hablan por sí solos</p>
+          </div>
         </div>
-        <div class="cta-actions">
-          <a href="mailto:eduardomuzo123456@gmail.com" class="btn btn-primary">
-            <i class="bi bi-envelope"></i>
-            <span>{{ 'about.cta.email' | translate }}</span>
+        <div class="achievement-stats">
+          <div class="achievement-item">
+            <div class="achievement-circle experience">
+              <div class="circle-content">
+                <span class="number">2+</span>
+                <span class="unit">años</span>
+              </div>
+            </div>
+            <span class="achievement-label">Experiencia</span>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-circle projects">
+              <div class="circle-content">
+                <span class="number">15+</span>
+                <span class="unit">proyectos</span>
+              </div>
+            </div>
+            <span class="achievement-label">Proyectos</span>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-circle technologies">
+              <div class="circle-content">
+                <span class="number">10+</span>
+                <span class="unit">techs</span>
+              </div>
+            </div>
+            <span class="achievement-label">Tecnologías</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional Networks -->
+      <div class="info-card networks-card">
+        <div class="card-decoration"></div>
+        <div class="card-header">
+          <div class="header-icon">
+            <i class="bi bi-share"></i>
+          </div>
+          <div class="header-content">
+            <h3>Redes Profesionales</h3>
+            <p>Conéctate conmigo</p>
+          </div>
+        </div>
+        <div class="networks-grid">
+          <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank" class="network-item linkedin">
+            <div class="network-icon">
+              <i class="bi bi-linkedin"></i>
+            </div>
+            <div class="network-content">
+              <h4>LinkedIn</h4>
+              <p>Perfil profesional</p>
+            </div>
+            <div class="network-arrow">
+              <i class="bi bi-arrow-up-right"></i>
+            </div>
           </a>
-          <a href="https://wa.me/593999763190?text=Hola%20Miguel"
-             target="_blank"
-             class="btn btn-secondary">
-            <i class="bi bi-whatsapp"></i>
-            <span>{{ 'about.cta.whatsapp' | translate }}</span>
+          <a href="https://github.com/Miguel-EMC" target="_blank" class="network-item github">
+            <div class="network-icon">
+              <i class="bi bi-github"></i>
+            </div>
+            <div class="network-content">
+              <h4>GitHub</h4>
+              <p>Repositorios de código</p>
+            </div>
+            <div class="network-arrow">
+              <i class="bi bi-arrow-up-right"></i>
+            </div>
           </a>
         </div>
       </div>

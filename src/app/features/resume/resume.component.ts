@@ -124,6 +124,7 @@ import { SectionHeaderComponent } from '../../shared/components/ui/section-heade
 export class ResumeComponent {
   // Control del carousel de skills
   currentSkillSet = 0;
+  private skillSetInterval: any;
   
   // Control de pestañas
   activeTab: 'experience' | 'education' = 'experience';
@@ -189,16 +190,43 @@ export class ResumeComponent {
   ];
 
   // Navegación del carousel
+  ngOnInit() {
+    // Auto-rotate skills carousel
+    this.startSkillSetRotation();
+  }
+
+  ngOnDestroy() {
+    if (this.skillSetInterval) {
+      clearInterval(this.skillSetInterval);
+    }
+  }
+
+  private startSkillSetRotation() {
+    this.skillSetInterval = setInterval(() => {
+      this.nextSkillSet();
+    }, 5000); // Change every 5 seconds
+  }
+
+  private resetSkillSetRotation() {
+    if (this.skillSetInterval) {
+      clearInterval(this.skillSetInterval);
+    }
+    this.startSkillSetRotation();
+  }
+
   nextSkillSet() {
     this.currentSkillSet = (this.currentSkillSet + 1) % this.skillSets.length;
+    this.resetSkillSetRotation();
   }
 
   previousSkillSet() {
     this.currentSkillSet = this.currentSkillSet === 0 ? this.skillSets.length - 1 : this.currentSkillSet - 1;
+    this.resetSkillSetRotation();
   }
 
   setSkillSet(index: number) {
     this.currentSkillSet = index;
+    this.resetSkillSetRotation();
   }
 
   // Control de pestañas

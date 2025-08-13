@@ -1,24 +1,37 @@
-<!-- Education Grid -->
-    <div class="education-grid">
-      <div 
-        class="education-card"
-        *ngFor="let item of educationItems; let i = index"
-        [attr.data-aos]="'fade-up'"
-        [attr.data-aos-delay]="i * 150"
-      >
-        <div class="card-header">
-          <div class="education-badge">
+<div class="education-section">
+  <div class="container">
+    <div class="education-list">
+      <div class="education-item" *ngFor="let item of educationItems">
+        <div class="education-header">
+          <div class="education-icon">
             <i [class]="item.icon"></i>
           </div>
-          <div class="header-content">
-            <h3 class="education-title">{{ item.title }}</h3>
-            <h4 class="institution-name">{{ item.institution }}</h4>
+          <div class="education-content">
+            <h3 class="degree-title">{{ item.title }}</h3>
+            <h4 class="institution">{{ item.institution }}</h4>
+            <div class="education-meta">
+              <div class="meta-item">
+                <i class="bi bi-calendar3"></i>
+                <span>{{ item.date }}</span>
+              </div>
+              <div class="meta-item" *ngIf="getStatusText(item.date)">
+                <i [class]="getStatusIcon(item.date)"></i>
+                <span>{{ getStatusText(item.date) }}</span>
+              </div>
+            </div>
           </div>
-          <div class="date-badge">{{ item.date }}</div>
         </div>
         
-        <div class="card-body">
-          <p class="education-description" *ngIf="item.description">{{ item.description }}</p>
+        <div class="education-description" *ngIf="item.description">
+          {{ item.description }}
         </div>
+        
+        <ul class="achievements-list" *ngIf="item.achievements && item.achievements.length > 0">
+          <li class="achievement" *ngFor="let achievement of item.achievements">
+            {{ achievement }}
+          </li>
+        </ul>
       </div>
     </div>
+  </div>
+</div>

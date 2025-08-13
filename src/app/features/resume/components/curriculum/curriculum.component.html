@@ -1,42 +1,40 @@
-<!-- Experience Grid -->
-    <div class="experience-grid">
-      <div 
-        class="experience-card"
-        *ngFor="let exp of experiences; let i = index"
-        [attr.data-aos]="'fade-up'"
-        [attr.data-aos-delay]="i * 150"
-      >
-        <div class="card-header">
-          <div class="experience-badge">
-            <i [class]="getExperienceIcon(i)"></i>
-          </div>
-          <div class="header-content">
-            <h3 class="position-title">{{ exp.title }}</h3>
-            <h4 class="company-name">{{ exp.subtitle }}</h4>
-          </div>
-          <div class="date-badge">{{ exp.date }}</div>
-        </div>
-        
-        <div class="card-body">
-          <div class="location-info" *ngIf="exp.location">
-            <i class="bi bi-geo-alt-fill"></i>
-            <span>{{ exp.location }}</span>
-          </div>
-          
-          <div class="tasks-container" *ngIf="exp.tasks && exp.tasks.length > 0">
-            <div class="task-item" *ngFor="let task of exp.tasks; let j = index">
-              <div class="task-icon">
-                <i class="bi bi-check-circle-fill"></i>
+<div class="experience-section">
+  <div class="container">
+    <div class="timeline">
+      <div class="timeline-item" *ngFor="let exp of experiences; let i = index">
+        <div class="experience-card">
+          <div class="experience-header">
+            <h3 class="job-title">{{ exp.title }}</h3>
+            <h4 class="company">{{ exp.subtitle }}</h4>
+            <div class="job-meta">
+              <div class="meta-item">
+                <i class="bi bi-calendar3"></i>
+                <span>{{ exp.date }}</span>
               </div>
-              <p class="task-text">{{ task }}</p>
+              <div class="meta-item" *ngIf="exp.location">
+                <i class="bi bi-geo-alt"></i>
+                <span>{{ exp.location }}</span>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="card-footer">
-          <div class="tech-tags">
-            <span class="tech-tag" *ngFor="let tech of getTechForExperience(i)">{{ tech }}</span>
+          
+          <div class="job-description" *ngIf="exp.description">
+            {{ exp.description }}
+          </div>
+          
+          <ul class="achievements" *ngIf="exp.tasks && exp.tasks.length > 0">
+            <li class="achievement-item" *ngFor="let task of exp.tasks">
+              {{ task }}
+            </li>
+          </ul>
+          
+          <div class="tech-stack" *ngIf="getTechForExperience(i).length > 0">
+            <span class="tech-tag" *ngFor="let tech of getTechForExperience(i)">
+              {{ tech }}
+            </span>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>

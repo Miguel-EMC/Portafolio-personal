@@ -11,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
-  email: string = 'eduardomuzo123456@gmail.com';
+  email: string = 'eduardomuzo123456&#64;gmail.com';
   isSubmitting: boolean = false;
 
   onSubmit() {

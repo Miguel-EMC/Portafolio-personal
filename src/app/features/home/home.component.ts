@@ -1,24 +1,34 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { PortafolioComponent } from "../portfolio/portfolio/portafolio.component";
 import { RouterLink } from "@angular/router";
-import { NgClass, NgForOf, NgIf } from "@angular/common";
+import { AboutMeComponent } from '../contact/about-me/about-me.component';
+import { SkillsComponent } from '../resume/components/skills/skills.component';
+import { EducationComponent } from '../resume/components/education/education.component';
+import { CurriculumComponent } from '../resume/components/curriculum/curriculum.component';
+import { PortafolioComponent } from "../portfolio/portfolio/portafolio.component";
+import { ContactsComponent } from '../contact/contacts/contacts.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   imports: [
+    CommonModule,
     TranslateModule,
-    PortafolioComponent,
     RouterLink,
-    NgClass,
-    NgForOf,
-    NgIf
+    AboutMeComponent,
+    SkillsComponent,
+    EducationComponent,
+    CurriculumComponent,
+    PortafolioComponent,
+    ContactsComponent
   ],
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
   // Typing animation
   currentRole = '';
   isTyping = false;
@@ -37,9 +47,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Top skills for about section
   topSkills = ['Angular', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL'];
 
+  // Tab management
+  activeTab = 'education';
+
   ngOnInit() {
     this.startTypingAnimation();
     this.initializeActiveCard();
+    
+    if (isPlatformBrowser(this.platformId)) {
+      // Configurar scroll suave
+      document.documentElement.style.scrollBehavior = 'smooth';
+    }
   }
 
   ngOnDestroy() {
@@ -49,21 +67,27 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   scrollToSection(sectionId: string): void {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const offset = 80;
-      const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - offset;
+    if (isPlatformBrowser(this.platformId)) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const offset = 80;
+        const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
     }
   }
 
   setActiveCard(cardType: string): void {
     this.activeCard = cardType;
+  }
+
+  setActiveTab(tab: string): void {
+    this.activeTab = tab;
   }
 
   private startTypingAnimation(): void {

@@ -3,8 +3,12 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'about',
+    redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    loadComponent: () => import('./features/home/home.component').then(c => c.HomeComponent)
   },
   {
     path: 'about',
@@ -24,51 +28,47 @@ export const routes: Routes = [
   },
   // Backward compatibility routes
   {
-    path: 'home',
-    redirectTo: 'about'
-  },
-  {
     path: 'sobre-mi',
-    redirectTo: 'about'
+    redirectTo: 'home'
   },
   {
     path: 'portafolio',
-    redirectTo: 'portfolio'
+    redirectTo: 'home'
   },
   {
     path: 'contacto',
-    redirectTo: 'contact'
+    redirectTo: 'home'
   },
   {
     path: 'about-me',
-    redirectTo: 'about'
+    redirectTo: 'home'
   },
   {
     path: 'contacts',
-    redirectTo: 'contact'
+    redirectTo: 'home'
   },
   {
     path: 'curriculum',
-    redirectTo: 'resume'
+    redirectTo: 'home'
   },
   {
     path: 'education',
-    redirectTo: 'resume'
+    redirectTo: 'home'
   },
   {
     path: 'experiencia',
-    redirectTo: 'resume'
+    redirectTo: 'home'
   },
   {
     path: 'educacion',
-    redirectTo: 'resume'
+    redirectTo: 'home'
   },
   {
     path: 'skills',
-    redirectTo: 'resume'
+    redirectTo: 'home'
   },
   {
     path: '**',
-    redirectTo: 'about'
+    redirectTo: 'home'
   }
 ];

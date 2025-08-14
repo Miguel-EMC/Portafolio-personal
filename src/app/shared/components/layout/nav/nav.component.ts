@@ -72,11 +72,38 @@ export class NavComponent implements OnInit, OnDestroy {
   }
 
   navigateToRoute(route: string): void {
-    this.router.navigate([route]);
+    // Si estamos en la página principal (home), hacer scroll a la sección
+    if (this.router.url === '/' || this.router.url === '/home') {
+      this.scrollToSection(route);
+    } else {
+      // Si estamos en otra página, navegar a home y luego hacer scroll
+      this.router.navigate(['/home']).then(() => {
+        setTimeout(() => this.scrollToSection(route), 100);
+      });
+    }
     
     // Cerrar menú móvil si está abierto
     if (this.isMobileMenuOpen) {
       this.closeMobileMenu();
+    }
+  }
+
+  scrollToSection(sectionId: string): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const offset = 80;
+        const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Actualizar la ruta activa visualmente
+        this.activeRoute = `/${sectionId}`;
+      }
     }
   }
 

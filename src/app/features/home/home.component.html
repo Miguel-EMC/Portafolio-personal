@@ -1,6 +1,6 @@
 <main class="home-main">
   <!-- Hero Section -->
-  <section class="hero-section">
+  <section id="home" class="hero-section">
     <div class="hero-container">
       <div class="hero-content">
         <!-- Main Introduction -->
@@ -25,17 +25,27 @@
         <!-- Quick Stats -->
         <div class="stats-mini">
           <div class="stat-item">
-            <span class="stat-number">2+</span>
+            <span class="stat-number">3+</span>
             <span class="stat-label">Años</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">15+</span>
+            <span class="stat-number">25+</span>
             <span class="stat-label">Proyectos</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">10+</span>
+            <span class="stat-number">15+</span>
             <span class="stat-label">Tecnologías</span>
           </div>
+        </div>
+
+        <!-- Description -->
+        <div class="hero-description">
+          <p>
+            Soy un desarrollador Full Stack apasionado por crear soluciones tecnológicas innovadoras. 
+            Me especializo en aplicaciones web eficientes y escalables, utilizando las últimas tecnologías 
+            para ofrecer resultados de alta calidad. También tengo un fuerte interés en 
+            <strong>Inteligencia Artificial</strong>, <strong>Machine Learning</strong> y <strong>Deep Learning</strong>.
+          </p>
         </div>
 
         <!-- Action Buttons -->
@@ -75,14 +85,14 @@
           </div>
           <div class="card-content">
             <h3>Experiencia</h3>
-            <p>2+ años</p>
+            <p>3+ años</p>
           </div>
         </div>
 
         <div class="floating-card" 
              [class.active]="activeCard === 'tech'" 
              (mouseenter)="setActiveCard('tech')"
-             (click)="scrollToSection('home')">
+             (click)="scrollToSection('skills')">
           <div class="card-icon">
             <i class="bi bi-gear-wide-connected"></i>
           </div>
@@ -100,7 +110,7 @@
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="scroll-indicator" (click)="scrollToSection('resume')">
+    <div class="scroll-indicator" (click)="scrollToSection('skills')">
       <div class="scroll-text">{{ 'home.hero.scroll' | translate }}</div>
       <div class="scroll-arrow">
         <i class="bi bi-chevron-down"></i>
@@ -108,65 +118,68 @@
     </div>
   </section>
 
-  <!-- Quick About -->
-  <section id="resume" class="quick-about">
+  <!-- Skills Section -->
+  <section id="skills" class="section-wrapper">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-text">
-          <h2>{{ 'home.about.title' | translate }}</h2>
-          <p>{{ 'home.about.description' | translate }}</p>
-          <div class="about-skills">
-            <span class="skill-tag" *ngFor="let skill of topSkills">{{ skill }}</span>
-          </div>
-          <button class="btn-outline" routerLink="/about">
-            <span>{{ 'home.about.more' | translate }}</span>
-            <i class="bi bi-arrow-right"></i>
-          </button>
+      <div class="section-header text-center">
+        <h2 class="section-title">Habilidades</h2>
+        <p class="section-subtitle">Tecnologías y herramientas que domino</p>
+      </div>
+      <app-skills></app-skills>
+    </div>
+  </section>
+
+  <!-- Resume Section (Education & Experience with Tabs) -->
+  <section id="resume" class="section-wrapper">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Formación y Experiencia</h2>
+        <p class="section-subtitle">Mi trayectoria académica y profesional</p>
+      </div>
+      
+      <!-- Tab Navigation -->
+      <div class="resume-tabs">
+        <button class="tab-button" [class.active]="activeTab === 'education'" (click)="setActiveTab('education')">
+          <i class="bi bi-mortarboard-fill"></i>
+          <span>Educación</span>
+        </button>
+        <button class="tab-button" [class.active]="activeTab === 'experience'" (click)="setActiveTab('experience')">
+          <i class="bi bi-briefcase-fill"></i>
+          <span>Experiencia</span>
+        </button>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <div class="tab-panel" [class.active]="activeTab === 'education'">
+          <app-education></app-education>
         </div>
-        <div class="about-visual">
-          <div class="experience-card">
-            <div class="exp-icon">
-              <i class="bi bi-briefcase-fill"></i>
-            </div>
-            <div class="exp-content">
-              <h4>Experiencia</h4>
-              <p>Desarrollador Full Stack</p>
-              <span class="exp-time">2+ años</span>
-            </div>
-          </div>
+        <div class="tab-panel" [class.active]="activeTab === 'experience'">
+          <app-curriculum></app-curriculum>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Featured Projects -->
-  <section id="portafolio" class="featured-projects">
+  <!-- Portfolio Section -->
+  <section id="portafolio" class="section-wrapper">
     <div class="container">
-      <div class="section-header">
-        <h2>{{ 'home.projects.title' | translate }}</h2>
-        <p>{{ 'home.projects.subtitle' | translate }}</p>
+      <div class="section-header text-center">
+        <h2 class="section-title">{{ 'home.projects.title' | translate }}</h2>
+        <p class="section-subtitle">{{ 'home.projects.subtitle' | translate }}</p>
       </div>
       <app-portafolio></app-portafolio>
     </div>
   </section>
 
-  <!-- Contact CTA -->
-  <section id="contacto" class="contact-cta">
+  <!-- Contact Section -->
+  <section id="contacto" class="section-wrapper">
     <div class="container">
-      <div class="cta-content">
-        <h2>{{ 'home.contact.title' | translate }}</h2>
-        <p>{{ 'home.contact.subtitle' | translate }}</p>
-        <div class="cta-actions">
-          <a href="mailto:eduardomuzo123456@gmail.com" class="btn-primary">
-            <i class="bi bi-envelope-fill"></i>
-            <span>{{ 'home.contact.email' | translate }}</span>
-          </a>
-          <a href="https://wa.me/593999763190?text=Hola%20Miguel" target="_blank" class="btn-secondary">
-            <i class="bi bi-whatsapp"></i>
-            <span>{{ 'home.contact.whatsapp' | translate }}</span>
-          </a>
-        </div>
+      <div class="section-header text-center">
+        <h2 class="section-title">Contacto</h2>
+        <p class="section-subtitle">¿Tienes un proyecto en mente? ¡Hablemos!</p>
       </div>
+      <app-contacts></app-contacts>
     </div>
   </section>
 </main>

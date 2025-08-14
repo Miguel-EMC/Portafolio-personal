@@ -1,27 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, RouterModule } from '@angular/router';
-import { Router } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { NavComponent } from "../../../shared/components/layout/nav/nav.component";
 
 @Component({
   selector: 'app-about-me',
   standalone: true,
-  imports: [NavComponent, RouterModule, TranslateModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './about-me.component.html',
   styleUrl: './about-me.component.scss'
 })
 export class AboutMeComponent implements OnInit {
-  email: string = "eduardomuzo123456@gmail.com";
+  // Top skills for about section
+  topSkills = ['Angular', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL'];
 
-  constructor(private router: Router, private viewportScroller: ViewportScroller) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.viewportScroller.scrollToPosition([0, 0]);
+    // Component initialization
+  }
+
+  scrollToSection(sectionId: string): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const offset = 80;
+        const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
-    });
+    }
   }
 }

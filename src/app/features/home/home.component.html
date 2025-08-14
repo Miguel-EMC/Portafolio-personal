@@ -112,35 +112,58 @@
       <div class="tab-content">
         <!-- Skills Tab -->
         <div class="tab-pane" [class.active]="activeTab === 'skills'">
-          <div class="skills-carousel-container">
-            <div class="carousel-header">
-              <h3>Tecnologías & Herramientas</h3>
-              <div class="carousel-controls">
-                <button class="carousel-btn" (click)="previousSkillCategory()">
-                  <i class="bi bi-chevron-left"></i>
-                </button>
-                <span class="category-indicator">{{ currentSkillCategoryIndex + 1 }} / {{ techStack.length }}</span>
-                <button class="carousel-btn" (click)="nextSkillCategory()">
-                  <i class="bi bi-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-            
-            <div class="skill-category-carousel">
-              <div class="skill-category" *ngFor="let category of techStack; let i = index" 
-                   [class.active]="i === currentSkillCategoryIndex">
-                <div class="category-header">
-                  <i [class]="category.icon"></i>
-                  <h4>{{ category.name }}</h4>
-                </div>
-                <div class="skills-grid">
-                  <div class="skill-item" *ngFor="let tech of category.technologies">
-                    <div class="skill-info">
-                      <span class="skill-name">{{ tech.name }}</span>
-                      <span class="skill-percentage">{{ tech.level }}%</span>
+          <div class="skills-dashboard">
+
+            <!-- Areas Dashboard -->
+            <div class="areas-dashboard">
+              <div class="areas-grid">
+                <div class="area-card" 
+                     *ngFor="let area of skillAreas; let i = index"
+                     [class.active]="selectedArea === i"
+                     (click)="selectArea(i)">
+                  <div class="area-icon">{{ area.emoji }}</div>
+                  <div class="area-content">
+                    <h3>{{ area.title }}</h3>
+                    <p>{{ area.description }}</p>
+                    <div class="tech-preview">
+                      <span class="tech-badge" *ngFor="let tech of area.technologies.slice(0, 3)">
+                        {{ tech }}
+                      </span>
+                      <span class="more-tech" *ngIf="area.technologies.length > 3">
+                        +{{ area.technologies.length - 3 }}
+                      </span>
                     </div>
-                    <div class="skill-bar">
-                      <div class="skill-progress" [style.width.%]="tech.level"></div>
+                  </div>
+                  <div class="area-status">
+                    <span class="status-indicator" [style.background]="area.color"></span>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Tab -->
+        <div class="tab-pane" [class.active]="activeTab === 'experience'">
+          <div class="experience-section">
+            <div class="experience-timeline">
+              <div class="timeline-item" *ngFor="let exp of experiences; let i = index">
+                <div class="timeline-marker">
+                </div>
+                <div class="timeline-content">
+                  <div class="experience-header">
+                    <h4>{{ exp.title }}</h4>
+                    <span class="date">{{ exp.date }}</span>
+                  </div>
+                  <p class="company">🏢 {{ exp.subtitle }}</p>
+                  <p class="location">
+                    📍 {{ exp.location }}
+                  </p>
+                  <div class="achievements-preview">
+                    <div class="achievement" *ngFor="let task of exp.tasks.slice(0, 2)">
+                      <span class="achievement-emoji">✨</span>
+                      <span class="task-description">{{ task }}</span>
                     </div>
                   </div>
                 </div>
@@ -149,47 +172,26 @@
           </div>
         </div>
 
-        <!-- Experience Tab -->
-        <div class="tab-pane" [class.active]="activeTab === 'experience'">
-          <div class="experience-timeline">
-            <div class="timeline-item" *ngFor="let exp of experiences">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="experience-header">
-                  <h4>{{ exp.title }}</h4>
-                  <span class="date">{{ exp.date }}</span>
-                </div>
-                <p class="company">{{ exp.subtitle }}</p>
-                <p class="location">
-                  <i class="bi bi-geo-alt"></i>
-                  {{ exp.location }}
-                </p>
-                <ul class="tasks-list">
-                  <li *ngFor="let task of exp.tasks.slice(0, 2)">{{ task }}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Education Tab -->
         <div class="tab-pane" [class.active]="activeTab === 'education'">
-          <div class="education-timeline">
-            <div class="education-item" *ngFor="let edu of educationItems">
-              <div class="edu-icon">
-                <i [class]="edu.icon"></i>
-              </div>
-              <div class="edu-content">
-                <div class="edu-header">
-                  <h4>{{ edu.title }}</h4>
-                  <span class="date">{{ edu.date }}</span>
+          <div class="education-section">
+            <div class="education-timeline">
+              <div class="education-item" *ngFor="let edu of educationItems; let i = index">
+                <div class="edu-icon">
+                  <span class="edu-emoji">{{ getEducationEmoji(i) }}</span>
                 </div>
-                <p class="institution">{{ edu.institution }}</p>
-                <p class="description">{{ edu.description }}</p>
-                <div class="achievements-preview">
-                  <div class="achievement" *ngFor="let achievement of edu.achievements.slice(0, 2)">
-                    <i class="bi bi-check-circle"></i>
-                    <span>{{ achievement }}</span>
+                <div class="edu-content">
+                  <div class="edu-header">
+                    <h4>{{ edu.title }}</h4>
+                    <span class="date">{{ edu.date }}</span>
+                  </div>
+                  <p class="institution">🏫 {{ edu.institution }}</p>
+                  <p class="description">{{ edu.description }}</p>
+                  <div class="achievements-preview">
+                    <div class="achievement" *ngFor="let achievement of edu.achievements.slice(0, 2)">
+                      <span class="achievement-emoji">🎯</span>
+                      <span>{{ achievement }}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -199,6 +201,70 @@
       </div>
     </div>
   </section>
+
+  <!-- Skills Area Modal -->
+  <div class="skills-modal-overlay" 
+       *ngIf="selectedArea !== null" 
+       (click)="closeModal()"
+       [@fadeInOut]>
+    <div class="skills-modal" 
+         (click)="$event.stopPropagation()"
+         [@slideInScale]>
+      <div class="modal-header">
+        <div class="modal-title">
+          <span class="modal-emoji">{{ skillAreas[selectedArea].emoji }}</span>
+          <div class="title-content">
+            <h3>{{ skillAreas[selectedArea].title }}</h3>
+            <p>{{ skillAreas[selectedArea].description }}</p>
+          </div>
+        </div>
+        <button class="close-btn" (click)="closeModal()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="tech-mastery-grid">
+          <div class="tech-mastery-item" 
+               *ngFor="let tech of skillAreas[selectedArea].detailedTechs; let i = index"
+               [style.animation-delay]="i * 100 + 'ms'">
+            <div class="tech-card">
+              <div class="tech-header">
+                <span class="tech-name">{{ tech.name }}</span>
+                <div class="mastery-level">
+                  <span class="mastery-dot" 
+                        *ngFor="let dot of [1,2,3,4,5]; let dotIndex = index"
+                        [class.active]="dotIndex < tech.mastery"
+                        [class.animate]="dotIndex < tech.mastery"
+                        [style.background]="dotIndex < tech.mastery ? skillAreas[selectedArea].color : '#e0e0e0'"
+                        [style.animation-delay]="(i * 100) + (dotIndex * 50) + 'ms'">
+                  </span>
+                </div>
+              </div>
+              <div class="mastery-label">
+                <span [style.color]="skillAreas[selectedArea].color">
+                  {{ getMasteryLabel(tech.mastery) }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <div class="tech-summary">
+          <div class="summary-item">
+            <span class="summary-icon">🚀</span>
+            <span>{{ skillAreas[selectedArea].detailedTechs.length }} Tecnologías</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-icon">⭐</span>
+            <span>{{ getExpertCount(selectedArea) }} Nivel Experto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Portfolio Compacto -->
   <section id="portafolio" class="portfolio-compact">

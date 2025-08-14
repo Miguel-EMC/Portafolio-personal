@@ -1,8 +1,15 @@
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterLink, Router } from "@angular/router";
+import { trigger, state, style, transition, animate, query, stagger } from '@angular/animations';
+
+// amCharts imports
+import * as am5 from '@amcharts/amcharts5';
+import * as am5percent from '@amcharts/amcharts5/percent';
+import * as am5xy from '@amcharts/amcharts5/xy';
+import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import { AboutMeComponent } from '../contact/about-me/about-me.component';
 import { SkillsComponent } from '../resume/components/skills/skills.component';
 import { EducationComponent } from '../resume/components/education/education.component';
@@ -26,9 +33,42 @@ import { ContactsComponent } from '../contact/contacts/contacts.component';
     PortafolioComponent,
     ContactsComponent
   ],
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-out', style({ opacity: 0 }))
+      ])
+    ]),
+    trigger('slideInScale', [
+      transition(':enter', [
+        style({ 
+          transform: 'scale(0.7) translateY(-50px)', 
+          opacity: 0 
+        }),
+        animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)', 
+          style({ 
+            transform: 'scale(1) translateY(0)', 
+            opacity: 1 
+          })
+        )
+      ]),
+      transition(':leave', [
+        animate('300ms ease-in', 
+          style({ 
+            transform: 'scale(0.8) translateY(20px)', 
+            opacity: 0 
+          })
+        )
+      ])
+    ])
+  ]
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) {}
   // Typing animation
@@ -242,11 +282,130 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   ];
 
+  // Skill Areas Dashboard
+  skillAreas = [
+    {
+      emoji: '🎨',
+      title: 'Frontend',
+      description: 'Interfaces modernas y experiencias de usuario excepcionales',
+      color: '#FF6B6B',
+      technologies: ['Angular', 'React', 'Vue.js', 'TypeScript'],
+      detailedTechs: [
+        { name: 'Angular', mastery: 5 },
+        { name: 'React', mastery: 4 },
+        { name: 'Vue.js', mastery: 4 },
+        { name: 'TypeScript', mastery: 5 },
+        { name: 'HTML5/CSS3', mastery: 5 },
+        { name: 'Tailwind CSS', mastery: 4 }
+      ]
+    },
+    {
+      emoji: '⚙️',
+      title: 'Backend',
+      description: 'APIs robustas y arquitecturas escalables',
+      color: '#4ECDC4',
+      technologies: ['Node.js', 'Python', 'Laravel', 'PostgreSQL'],
+      detailedTechs: [
+        { name: 'Node.js', mastery: 5 },
+        { name: 'Express.js', mastery: 4 },
+        { name: 'Python', mastery: 4 },
+        { name: 'Django', mastery: 4 },
+        { name: 'Laravel', mastery: 4 },
+        { name: 'PostgreSQL', mastery: 5 }
+      ]
+    },
+    {
+      emoji: '📱',
+      title: 'Mobile',
+      description: 'Aplicaciones móviles multiplataforma innovadoras',
+      color: '#45B7D1',
+      technologies: ['Flutter', 'React Native', 'PWA', 'Firebase'],
+      detailedTechs: [
+        { name: 'Flutter', mastery: 4 },
+        { name: 'Dart', mastery: 4 },
+        { name: 'React Native', mastery: 3 },
+        { name: 'PWA', mastery: 4 },
+        { name: 'Firebase', mastery: 4 }
+      ]
+    },
+    {
+      emoji: '🤖',
+      title: 'IA & Machine Learning',
+      description: 'Inteligencia artificial y análisis de datos avanzado',
+      color: '#96CEB4',
+      technologies: ['TensorFlow', 'Python', 'Pandas', 'Scikit-learn'],
+      detailedTechs: [
+        { name: 'TensorFlow', mastery: 3 },
+        { name: 'Python ML', mastery: 3 },
+        { name: 'Pandas', mastery: 3 },
+        { name: 'NumPy', mastery: 3 },
+        { name: 'Scikit-learn', mastery: 2 }
+      ]
+    },
+    {
+      emoji: '🌐',
+      title: 'Redes & DevOps',
+      description: 'Infraestructura cloud y administración de sistemas',
+      color: '#FFEAA7',
+      technologies: ['Docker', 'AWS', 'Linux', 'Kubernetes'],
+      detailedTechs: [
+        { name: 'Docker', mastery: 4 },
+        { name: 'AWS', mastery: 3 },
+        { name: 'Linux', mastery: 4 },
+        { name: 'Git', mastery: 5 },
+        { name: 'Nginx', mastery: 3 }
+      ]
+    },
+    {
+      emoji: '🔒',
+      title: 'Hacking Ético',
+      description: 'Ciberseguridad y pruebas de penetración',
+      color: '#DDA0DD',
+      technologies: ['Kali Linux', 'Metasploit', 'Burp Suite', 'Nmap'],
+      detailedTechs: [
+        { name: 'Kali Linux', mastery: 3 },
+        { name: 'Metasploit', mastery: 2 },
+        { name: 'Burp Suite', mastery: 2 },
+        { name: 'Nmap', mastery: 3 },
+        { name: 'OWASP', mastery: 3 }
+      ]
+    }
+  ];
+
+  // All skills for the main chart
+  allSkillsForChart = [
+    { name: 'JavaScript', level: 95 },
+    { name: 'HTML5/CSS3', level: 95 },
+    { name: 'Git', level: 95 },
+    { name: 'VS Code', level: 95 },
+    { name: 'Angular', level: 95 },
+    { name: 'TypeScript', level: 90 },
+    { name: 'Node.js', level: 90 },
+    { name: 'PostgreSQL', level: 90 },
+    { name: 'Bootstrap', level: 90 },
+    { name: 'Postman', level: 90 },
+    { name: 'SQL', level: 88 },
+    { name: 'React', level: 85 },
+    { name: 'Python', level: 85 },
+    { name: 'Laravel', level: 85 },
+    { name: 'Express.js', level: 85 },
+    { name: 'MySQL', level: 85 },
+    { name: 'Firebase', level: 85 },
+    { name: 'Docker', level: 85 },
+    { name: 'Flutter', level: 85 },
+    { name: 'Dart', level: 85 },
+    { name: 'Figma', level: 85 },
+    { name: 'Tailwind CSS', level: 85 }
+  ];
+
+  // Chart instances
+  private skillsBarChartRoot?: am5.Root;
+
   // Tab management
   activeTab = 'skills';
   
-  // Carousel management for skills
-  currentSkillCategoryIndex = 0;
+  // Area selection management
+  selectedArea: number | null = null;
 
   ngOnInit() {
     this.startTypingAnimation();
@@ -258,9 +417,22 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() => {
+        this.initializeCharts();
+      }, 500);
+    }
+  }
+
   ngOnDestroy() {
     if (this.typingInterval) {
       clearInterval(this.typingInterval);
+    }
+    
+    // Dispose charts
+    if (this.skillsBarChartRoot) {
+      this.skillsBarChartRoot.dispose();
     }
   }
 
@@ -289,7 +461,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   viewAllProjects(): void {
-    this.router.navigate(['/portfolio']);
+    this.router.navigate(['/portfolio']).then(() => {
+      if (isPlatformBrowser(this.platformId)) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
   }
 
   private startTypingAnimation(): void {
@@ -345,14 +521,49 @@ export class HomeComponent implements OnInit, OnDestroy {
     }, 3000);
   }
 
-  // Carousel navigation methods
-  nextSkillCategory(): void {
-    this.currentSkillCategoryIndex = (this.currentSkillCategoryIndex + 1) % this.techStack.length;
+  // Area selection methods
+  selectArea(index: number): void {
+    this.selectedArea = index;
   }
 
-  previousSkillCategory(): void {
-    this.currentSkillCategoryIndex = this.currentSkillCategoryIndex === 0 
-      ? this.techStack.length - 1 
-      : this.currentSkillCategoryIndex - 1;
+  closeModal(): void {
+    this.selectedArea = null;
+  }
+
+  getMasteryLabel(mastery: number): string {
+    const labels = ['', 'Básico', 'Intermedio', 'Avanzado', 'Experto', 'Maestro'];
+    return labels[mastery] || 'Básico';
+  }
+
+  getExpertCount(areaIndex: number): number {
+    return this.skillAreas[areaIndex].detailedTechs.filter(tech => tech.mastery >= 4).length;
+  }
+
+  // Dashboard utility methods - simplified
+
+  getTotalExperience(): string {
+    return '2+';
+  }
+
+  getSkillColor(level: number): string {
+    if (level >= 90) return 'linear-gradient(135deg, #4CAF50, #45A049)';
+    if (level >= 80) return 'linear-gradient(135deg, #2196F3, #1976D2)';
+    if (level >= 70) return 'linear-gradient(135deg, #FF9800, #F57C00)';
+    return 'linear-gradient(135deg, #9E9E9E, #757575)';
+  }
+
+  getExperienceEmoji(index: number): string {
+    const emojis = ['🚀', '💻', '⚡'];
+    return emojis[index] || '💼';
+  }
+
+  getEducationEmoji(index: number): string {
+    const emojis = ['🎓', '💻', '📚'];
+    return emojis[index] || '🎓';
+  }
+
+  // Chart initialization - removed for new design
+  private initializeCharts(): void {
+    // No charts needed for the new areas dashboard
   }
 }

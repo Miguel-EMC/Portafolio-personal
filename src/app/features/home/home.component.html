@@ -1,185 +1,217 @@
 <main class="home-main">
-  <!-- Hero Section -->
+  <!-- Hero Section Compacta -->
   <section id="home" class="hero-section">
     <div class="hero-container">
       <div class="hero-content">
-        <!-- Main Introduction -->
-        <div class="intro-block">
+        <div class="hero-text">
           <div class="greeting">
-            <span class="greeting-text">{{ 'home.hero.greeting' | translate }}</span>
-            <div class="wave">👋</div>
+            <span class="greeting-badge">👋 Hola, soy</span>
           </div>
           <h1 class="hero-title">
-            <span class="name-line">Eduardo Miguel</span>
-            <span class="name-line gradient-text">Muzo</span>
+            <span class="name">Eduardo Miguel</span>
+            <span class="surname gradient-text">Muzo</span>
           </h1>
           <div class="role-container">
-            <span class="role-label">{{ 'home.hero.role' | translate }}</span>
-            <div class="typing-container">
-              <span class="typing-text" [class.typing]="isTyping">{{ currentRole }}</span>
-              <span class="cursor">|</span>
+            <span class="typing-text">{{ currentRole }}</span>
+            <span class="cursor">|</span>
+          </div>
+          <p class="hero-description">
+            Desarrollador Full Stack especializado en crear soluciones web modernas y escalables. 
+            Apasionado por la <strong>IA</strong> y el <strong>Machine Learning</strong>.
+          </p>
+          
+          <!-- Stats Inline -->
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="number">3+</span>
+              <span class="label">Años</span>
+            </div>
+            <div class="stat">
+              <span class="number">25+</span>
+              <span class="label">Proyectos</span>
+            </div>
+            <div class="stat">
+              <span class="number">15+</span>
+              <span class="label">Tecnologías</span>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="hero-actions">
+            <button class="btn-primary" (click)="scrollToSection('contacto')">
+              <i class="bi bi-chat-dots"></i>
+              <span>Contactar</span>
+            </button>
+            <button class="btn-secondary" (click)="scrollToSection('portafolio')">
+              <i class="bi bi-collection"></i>
+              <span>Ver Proyectos</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Visual -->
+        <div class="hero-visual">
+          <div class="profile-card">
+            <div class="profile-image">
+              <img src="/assets/img/img-mia.png" alt="Eduardo Miguel Muzo" />
+              <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>Disponible</span>
+              </div>
+            </div>
+            <div class="quick-info">
+              <div class="info-item">
+                <i class="bi bi-geo-alt"></i>
+                <span>Quito, Ecuador</span>
+              </div>
+              <div class="info-item">
+                <i class="bi bi-briefcase"></i>
+                <span>Full Stack Developer</span>
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- Quick Stats -->
-        <div class="stats-mini">
-          <div class="stat-item">
-            <span class="stat-number">3+</span>
-            <span class="stat-label">Años</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">25+</span>
-            <span class="stat-label">Proyectos</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">15+</span>
-            <span class="stat-label">Tecnologías</span>
-          </div>
-        </div>
-
-        <!-- Description -->
-        <div class="hero-description">
-          <p>
-            Soy un desarrollador Full Stack apasionado por crear soluciones tecnológicas innovadoras. 
-            Me especializo en aplicaciones web eficientes y escalables, utilizando las últimas tecnologías 
-            para ofrecer resultados de alta calidad. También tengo un fuerte interés en 
-            <strong>Inteligencia Artificial</strong>, <strong>Machine Learning</strong> y <strong>Deep Learning</strong>.
-          </p>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="hero-actions">
-          <button class="btn-primary" (click)="scrollToSection('contacto')">
-            <i class="bi bi-chat-dots"></i>
-            <span>{{ 'home.hero.contact' | translate }}</span>
-          </button>
-          <button class="btn-secondary" (click)="scrollToSection('portafolio')">
-            <i class="bi bi-collection"></i>
-            <span>{{ 'home.hero.portfolio' | translate }}</span>
-          </button>
-        </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Interactive Element -->
-      <div class="hero-visual">
-        <div class="floating-card" 
-             [class.active]="activeCard === 'code'" 
-             (mouseenter)="setActiveCard('code')"
-             (click)="scrollToSection('portafolio')">
-          <div class="card-icon">
+  <!-- Sección Compacta de Información -->
+  <section id="about" class="compact-section">
+    <div class="container">
+      <div class="compact-grid">
+        <!-- Skills Destacadas -->
+        <div class="info-card">
+          <div class="card-header">
             <i class="bi bi-code-slash"></i>
+            <h3>Tecnologías Principales</h3>
           </div>
-          <div class="card-content">
-            <h3>Desarrollo</h3>
-            <p>Apps & Web</p>
-          </div>
-        </div>
-
-        <div class="floating-card" 
-             [class.active]="activeCard === 'design'" 
-             (mouseenter)="setActiveCard('design')"
-             (click)="scrollToSection('resume')">
-          <div class="card-icon">
-            <i class="bi bi-palette"></i>
-          </div>
-          <div class="card-content">
-            <h3>Experiencia</h3>
-            <p>3+ años</p>
+          <div class="tech-list">
+            <span class="tech-tag" *ngFor="let tech of mainTechs">{{ tech }}</span>
           </div>
         </div>
 
-        <div class="floating-card" 
-             [class.active]="activeCard === 'tech'" 
-             (mouseenter)="setActiveCard('tech')"
-             (click)="scrollToSection('skills')">
-          <div class="card-icon">
-            <i class="bi bi-gear-wide-connected"></i>
+        <!-- Experiencia Resumida -->
+        <div class="info-card">
+          <div class="card-header">
+            <i class="bi bi-briefcase"></i>
+            <h3>Experiencia Actual</h3>
           </div>
-          <div class="card-content">
-            <h3>Tecnologías</h3>
-            <p>Modernas</p>
+          <div class="experience-summary">
+            <h4>Full Stack Developer</h4>
+            <p>Lateral Business Thinking</p>
+            <span class="duration">Jun 2024 - Presente</span>
           </div>
         </div>
 
-        <!-- Decorative Elements -->
-        <div class="decoration-dots">
-          <div class="dot" *ngFor="let i of [1,2,3,4,5,6]"></div>
+        <!-- Educación Resumida -->
+        <div class="info-card">
+          <div class="card-header">
+            <i class="bi bi-mortarboard"></i>
+            <h3>Formación</h3>
+          </div>
+          <div class="education-summary">
+            <h4>Ing. Ciencias de la Computación</h4>
+            <p>Escuela Politécnica Nacional</p>
+            <span class="status">En curso</span>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator" (click)="scrollToSection('skills')">
-      <div class="scroll-text">{{ 'home.hero.scroll' | translate }}</div>
-      <div class="scroll-arrow">
-        <i class="bi bi-chevron-down"></i>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="section-wrapper">
+  <!-- Portfolio Compacto -->
+  <section id="portafolio" class="portfolio-compact">
     <div class="container">
-      <div class="section-header text-center">
-        <h2 class="section-title">Habilidades</h2>
-        <p class="section-subtitle">Tecnologías y herramientas que domino</p>
-      </div>
-      <app-skills></app-skills>
-    </div>
-  </section>
-
-  <!-- Resume Section (Education & Experience with Tabs) -->
-  <section id="resume" class="section-wrapper">
-    <div class="container">
-      <div class="section-header text-center">
-        <h2 class="section-title">Formación y Experiencia</h2>
-        <p class="section-subtitle">Mi trayectoria académica y profesional</p>
+      <div class="section-header">
+        <h2>Proyectos Destacados</h2>
+        <p>Una selección de mis mejores trabajos</p>
       </div>
       
-      <!-- Tab Navigation -->
-      <div class="resume-tabs">
-        <button class="tab-button" [class.active]="activeTab === 'education'" (click)="setActiveTab('education')">
-          <i class="bi bi-mortarboard-fill"></i>
-          <span>Educación</span>
-        </button>
-        <button class="tab-button" [class.active]="activeTab === 'experience'" (click)="setActiveTab('experience')">
-          <i class="bi bi-briefcase-fill"></i>
-          <span>Experiencia</span>
-        </button>
+      <div class="projects-showcase">
+        <div class="project-card" *ngFor="let project of featuredProjects">
+          <div class="project-image">
+            <img [src]="project.image" [alt]="project.title" />
+            <div class="project-overlay">
+              <div class="project-actions">
+                <a [href]="project.liveUrl" target="_blank" class="action-btn" *ngIf="project.liveUrl">
+                  <i class="bi bi-eye"></i>
+                </a>
+                <a [href]="project.githubUrl" target="_blank" class="action-btn" *ngIf="project.githubUrl">
+                  <i class="bi bi-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            <div class="project-tech">
+              <span class="tech-badge" *ngFor="let tech of project.tech.slice(0, 3)">{{ tech }}</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Tab Content -->
-      <div class="tab-content">
-        <div class="tab-panel" [class.active]="activeTab === 'education'">
-          <app-education></app-education>
-        </div>
-        <div class="tab-panel" [class.active]="activeTab === 'experience'">
-          <app-curriculum></app-curriculum>
-        </div>
+      <div class="view-all">
+        <button class="btn-outline" (click)="viewAllProjects()">
+          <span>Ver Todos los Proyectos</span>
+          <i class="bi bi-arrow-right"></i>
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Portfolio Section -->
-  <section id="portafolio" class="section-wrapper">
+  <!-- Contacto Compacto -->
+  <section id="contacto" class="contact-compact">
     <div class="container">
-      <div class="section-header text-center">
-        <h2 class="section-title">{{ 'home.projects.title' | translate }}</h2>
-        <p class="section-subtitle">{{ 'home.projects.subtitle' | translate }}</p>
-      </div>
-      <app-portafolio></app-portafolio>
-    </div>
-  </section>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2>¿Tienes un proyecto en mente?</h2>
+          <p>Estoy disponible para nuevos proyectos y colaboraciones. ¡Hablemos!</p>
+          
+          <div class="contact-methods">
+            <a href="mailto:eduardomuzo123456@gmail.com" class="contact-method">
+              <i class="bi bi-envelope"></i>
+              <div>
+                <span class="method-label">Email</span>
+                <span class="method-value">eduardomuzo123456@gmail.com</span>
+              </div>
+            </a>
+            <a href="https://wa.me/593999763190" target="_blank" class="contact-method">
+              <i class="bi bi-whatsapp"></i>
+              <div>
+                <span class="method-label">WhatsApp</span>
+                <span class="method-value">+593 999 763 190</span>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank" class="contact-method">
+              <i class="bi bi-linkedin"></i>
+              <div>
+                <span class="method-label">LinkedIn</span>
+                <span class="method-value">Eduardo Miguel Muzo</span>
+              </div>
+            </a>
+          </div>
+        </div>
 
-  <!-- Contact Section -->
-  <section id="contacto" class="section-wrapper">
-    <div class="container">
-      <div class="section-header text-center">
-        <h2 class="section-title">Contacto</h2>
-        <p class="section-subtitle">¿Tienes un proyecto en mente? ¡Hablemos!</p>
+        <div class="contact-form-compact">
+          <form class="quick-contact-form" #contactForm="ngForm">
+            <div class="form-group">
+              <input type="text" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Tu email" required>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Cuéntame sobre tu proyecto..." rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary full-width">
+              <i class="bi bi-send"></i>
+              <span>Enviar Mensaje</span>
+            </button>
+          </form>
+        </div>
       </div>
-      <app-contacts></app-contacts>
     </div>
   </section>
 </main>

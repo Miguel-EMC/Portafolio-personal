@@ -47,6 +47,37 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Top skills for about section
   topSkills = ['Angular', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL'];
 
+  // Main technologies for compact view
+  mainTechs = ['Angular', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL', 'Docker'];
+
+  // Featured projects for compact portfolio
+  featuredProjects = [
+    {
+      title: 'Plataforma ASOBANCA',
+      description: 'Sistema integral para instituciones financieras con módulos de gestión completos.',
+      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
+      tech: ['Laravel', 'Vue.js', 'MySQL'],
+      liveUrl: 'https://asobanca-demo.com',
+      githubUrl: null
+    },
+    {
+      title: 'Münster Mind App',
+      description: 'Aplicación móvil para entrenamiento mental y cognitivo con gamificación.',
+      image: 'https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg',
+      tech: ['Flutter', 'Firebase', 'TensorFlow'],
+      liveUrl: 'https://munster-mind.app',
+      githubUrl: null
+    },
+    {
+      title: 'Sistema CONAFIS SARAS',
+      description: 'Plataforma gubernamental para gestión de recursos y análisis estadístico.',
+      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg',
+      tech: ['Angular', 'NestJS', 'PostgreSQL'],
+      liveUrl: 'https://conafis-saras.gov.ec',
+      githubUrl: null
+    }
+  ];
+
   // Tab management
   activeTab = 'education';
 
@@ -88,6 +119,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   setActiveTab(tab: string): void {
     this.activeTab = tab;
+  }
+
+  viewAllProjects(): void {
+    this.router.navigate(['/portfolio']);
   }
 
   private startTypingAnimation(): void {

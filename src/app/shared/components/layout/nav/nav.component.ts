@@ -73,12 +73,12 @@ export class NavComponent implements OnInit, OnDestroy {
 
   navigateToRoute(route: string): void {
     // Si estamos en la página principal (home), hacer scroll a la sección
-    if (this.router.url === '/' || this.router.url === '/home') {
+    if (this.router.url === '/' || this.router.url === '/home' || this.router.url.includes('/home')) {
       this.scrollToSection(route);
     } else {
       // Si estamos en otra página, navegar a home y luego hacer scroll
       this.router.navigate(['/home']).then(() => {
-        setTimeout(() => this.scrollToSection(route), 100);
+        setTimeout(() => this.scrollToSection(route), 300);
       });
     }
     
@@ -92,7 +92,7 @@ export class NavComponent implements OnInit, OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       const section = document.getElementById(sectionId);
       if (section) {
-        const offset = 80;
+        const offset = 100;
         const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - offset;
 

@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { RouterLink } from "@angular/router";
+import { RouterLink, Router } from "@angular/router";
 import { AboutMeComponent } from '../contact/about-me/about-me.component';
 import { SkillsComponent } from '../resume/components/skills/skills.component';
 import { EducationComponent } from '../resume/components/education/education.component';
@@ -15,6 +16,7 @@ import { ContactsComponent } from '../contact/contacts/contacts.component';
   templateUrl: './home.component.html',
   imports: [
     CommonModule,
+    FormsModule,
     TranslateModule,
     RouterLink,
     AboutMeComponent,
@@ -28,7 +30,7 @@ import { ContactsComponent } from '../contact/contacts/contacts.component';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) {}
   // Typing animation
   currentRole = '';
   isTyping = false;

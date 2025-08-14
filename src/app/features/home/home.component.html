@@ -75,44 +75,125 @@
     </div>
   </section>
 
-  <!-- Sección Compacta de Información -->
+  <!-- Sección Compacta de Información con Tabs -->
   <section id="about" class="compact-section">
     <div class="container">
-      <div class="compact-grid">
-        <!-- Skills Destacadas -->
-        <div class="info-card">
-          <div class="card-header">
-            <i class="bi bi-code-slash"></i>
-            <h3>Tecnologías Principales</h3>
-          </div>
-          <div class="tech-list">
-            <span class="tech-tag" *ngFor="let tech of mainTechs">{{ tech }}</span>
+      <div class="section-header">
+        <h2>Perfil Profesional</h2>
+        <p>Un vistazo completo a mi experiencia, habilidades y formación</p>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="tab-navigation">
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab === 'skills'" 
+          (click)="setActiveTab('skills')">
+          <i class="bi bi-code-slash"></i>
+          <span>Skills</span>
+        </button>
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab === 'experience'" 
+          (click)="setActiveTab('experience')">
+          <i class="bi bi-briefcase"></i>
+          <span>Experiencia</span>
+        </button>
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab === 'education'" 
+          (click)="setActiveTab('education')">
+          <i class="bi bi-mortarboard"></i>
+          <span>Formación</span>
+        </button>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <!-- Skills Tab -->
+        <div class="tab-pane" [class.active]="activeTab === 'skills'">
+          <div class="skills-carousel-container">
+            <div class="carousel-header">
+              <h3>Tecnologías & Herramientas</h3>
+              <div class="carousel-controls">
+                <button class="carousel-btn" (click)="previousSkillCategory()">
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+                <span class="category-indicator">{{ currentSkillCategoryIndex + 1 }} / {{ techStack.length }}</span>
+                <button class="carousel-btn" (click)="nextSkillCategory()">
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="skill-category-carousel">
+              <div class="skill-category" *ngFor="let category of techStack; let i = index" 
+                   [class.active]="i === currentSkillCategoryIndex">
+                <div class="category-header">
+                  <i [class]="category.icon"></i>
+                  <h4>{{ category.name }}</h4>
+                </div>
+                <div class="skills-grid">
+                  <div class="skill-item" *ngFor="let tech of category.technologies">
+                    <div class="skill-info">
+                      <span class="skill-name">{{ tech.name }}</span>
+                      <span class="skill-percentage">{{ tech.level }}%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-progress" [style.width.%]="tech.level"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Experiencia Resumida -->
-        <div class="info-card">
-          <div class="card-header">
-            <i class="bi bi-briefcase"></i>
-            <h3>Experiencia Actual</h3>
-          </div>
-          <div class="experience-summary">
-            <h4>Full Stack Developer</h4>
-            <p>Lateral Business Thinking</p>
-            <span class="duration">Jun 2024 - Presente</span>
+        <!-- Experience Tab -->
+        <div class="tab-pane" [class.active]="activeTab === 'experience'">
+          <div class="experience-timeline">
+            <div class="timeline-item" *ngFor="let exp of experiences">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="experience-header">
+                  <h4>{{ exp.title }}</h4>
+                  <span class="date">{{ exp.date }}</span>
+                </div>
+                <p class="company">{{ exp.subtitle }}</p>
+                <p class="location">
+                  <i class="bi bi-geo-alt"></i>
+                  {{ exp.location }}
+                </p>
+                <ul class="tasks-list">
+                  <li *ngFor="let task of exp.tasks.slice(0, 2)">{{ task }}</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Educación Resumida -->
-        <div class="info-card">
-          <div class="card-header">
-            <i class="bi bi-mortarboard"></i>
-            <h3>Formación</h3>
-          </div>
-          <div class="education-summary">
-            <h4>Ing. Ciencias de la Computación</h4>
-            <p>Escuela Politécnica Nacional</p>
-            <span class="status">En curso</span>
+        <!-- Education Tab -->
+        <div class="tab-pane" [class.active]="activeTab === 'education'">
+          <div class="education-timeline">
+            <div class="education-item" *ngFor="let edu of educationItems">
+              <div class="edu-icon">
+                <i [class]="edu.icon"></i>
+              </div>
+              <div class="edu-content">
+                <div class="edu-header">
+                  <h4>{{ edu.title }}</h4>
+                  <span class="date">{{ edu.date }}</span>
+                </div>
+                <p class="institution">{{ edu.institution }}</p>
+                <p class="description">{{ edu.description }}</p>
+                <div class="achievements-preview">
+                  <div class="achievement" *ngFor="let achievement of edu.achievements.slice(0, 2)">
+                    <i class="bi bi-check-circle"></i>
+                    <span>{{ achievement }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

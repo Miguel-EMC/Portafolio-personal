@@ -49,8 +49,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Top skills for about section
   topSkills = ['Angular', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL'];
 
-  // Main technologies for compact view
-  mainTechs = ['Angular', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL', 'Docker'];
+  // Main technologies for compact view with details
+  mainTechs = [
+    { name: 'Angular', level: 'Avanzado', years: '3+' },
+    { name: 'TypeScript', level: 'Avanzado', years: '3+' },
+    { name: 'Node.js', level: 'Intermedio', years: '2+' },
+    { name: 'Python', level: 'Intermedio', years: '2+' },
+    { name: 'PostgreSQL', level: 'Intermedio', years: '2+' },
+    { name: 'Docker', level: 'Básico', years: '1+' }
+  ];
 
   // Featured projects for compact portfolio
   featuredProjects = [
@@ -80,8 +87,166 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   ];
 
+  // Detailed data for tabs
+  educationItems = [
+    {
+      icon: 'bi bi-mortarboard-fill',
+      title: 'Ingeniería en Ciencias de la Computación',
+      institution: 'Escuela Politécnica Nacional',
+      date: 'Actualidad',
+      description: 'Formación integral en ciencias de la computación con énfasis en desarrollo de software, algoritmos avanzados, inteligencia artificial y análisis de sistemas complejos.',
+      achievements: [
+        'Especialización en Algoritmos y Estructuras de Datos Avanzadas',
+        'Proyectos de Machine Learning y Deep Learning',
+        'Desarrollo de aplicaciones web full-stack',
+        'Participación en competencias de programación'
+      ]
+    },
+    {
+      icon: 'bi bi-code-slash',
+      title: 'Tecnología Superior en Desarrollo de Software',
+      institution: 'Escuela Politécnica Nacional',
+      date: '2020 - 2023',
+      description: 'Formación técnica especializada en desarrollo de aplicaciones web y móviles, bases de datos, metodologías ágiles y arquitecturas de software modernas.',
+      achievements: [
+        'Desarrollo de más de 15 proyectos web completos',
+        'Dominio de frameworks modernos (Angular, React, Vue.js)',
+        'Implementación de APIs RESTful y microservicios',
+        'Certificación en metodologías ágiles (Scrum)'
+      ]
+    },
+    {
+      icon: 'bi bi-book',
+      title: 'Bachillerato General Unificado',
+      institution: 'Unidad Educativa Leopoldo Mercado',
+      date: '2013 - 2019',
+      description: 'Educación secundaria con especialización en ciencias exactas, matemáticas avanzadas y fundamentos de programación que sentaron las bases para mi carrera tecnológica.',
+      achievements: [
+        'Graduado con honores en Ciencias Exactas',
+        'Participación en olimpiadas de matemáticas',
+        'Primer contacto con programación en Python',
+        'Liderazgo estudiantil y trabajo en equipo'
+      ]
+    }
+  ];
+
+  experiences = [
+    {
+      title: 'Full Stack Developer',
+      subtitle: 'Lateral Business Thinking | Innovate Empresarial Solutions',
+      location: 'Quito, Ecuador',
+      date: 'Jun 2024 - Actualidad',
+      tasks: [
+        'Desarrollo de interfaces web dinámicas con Angular y TypeScript, mejorando la experiencia de usuario en un 40%',
+        'Implementación de arquitecturas escalables con microservicios usando Node.js y Docker',
+        'Liderazgo en el desarrollo del aplicativo móvil Münster Mind con Flutter y Firebase',
+        'Optimización de bases de datos PostgreSQL, reduciendo tiempos de consulta en un 35%'
+      ]
+    },
+    {
+      title: 'Desarrollador de Software',
+      subtitle: 'Freelance',
+      location: 'Quito, Ecuador',
+      date: 'Nov 2023 - Oct 2024',
+      tasks: [
+        'Desarrollo full-stack de la plataforma ASOBANCA con Laravel y Vue.js para 15+ instituciones financieras',
+        'Mejora continua del aplicativo Billusos, implementando nuevas funcionalidades con Python y Django',
+        'Creación de APIs RESTful robustas y documentación técnica completa',
+        'Gestión de proyectos web personalizados con metodologías ágiles, entregando el 100% a tiempo'
+      ]
+    },
+    {
+      title: 'Full Stack Developer Jr',
+      subtitle: 'Centro Ecuatoriano de Eficiencia de Recursos',
+      location: 'Quito, Ecuador',
+      date: 'Ene 2023 - Sep 2023',
+      tasks: [
+        'Maquetación responsive de interfaces cliente para CONAFIS SARAS con HTML5, CSS3 y JavaScript',
+        'Configuración y optimización de entornos de desarrollo para equipos multidisciplinarios',
+        'Administración de bases de datos SQL Server y generación de scripts automatizados',
+        'Implementación de mejores prácticas de desarrollo y control de versiones con Git'
+      ]
+    }
+  ];
+
+  techStack = [
+    {
+      name: 'Frontend Development',
+      icon: 'bi bi-palette',
+      technologies: [
+        { name: 'Angular', level: 95 },
+        { name: 'React', level: 85 },
+        { name: 'Vue.js', level: 80 },
+        { name: 'TypeScript', level: 90 },
+        { name: 'JavaScript', level: 95 },
+        { name: 'HTML5/CSS3', level: 95 }
+      ]
+    },
+    {
+      name: 'Backend Development',
+      icon: 'bi bi-server',
+      technologies: [
+        { name: 'Node.js', level: 90 },
+        { name: 'Python', level: 85 },
+        { name: 'Django', level: 80 },
+        { name: 'Laravel', level: 85 },
+        { name: 'PHP', level: 80 },
+        { name: 'Express.js', level: 85 }
+      ]
+    },
+    {
+      name: 'Bases de Datos',
+      icon: 'bi bi-database',
+      technologies: [
+        { name: 'PostgreSQL', level: 90 },
+        { name: 'MySQL', level: 85 },
+        { name: 'MongoDB', level: 80 },
+        { name: 'Firebase', level: 85 },
+        { name: 'SQL Server', level: 75 },
+        { name: 'Redis', level: 70 }
+      ]
+    },
+    {
+      name: 'DevOps & Cloud',
+      icon: 'bi bi-cloud',
+      technologies: [
+        { name: 'Docker', level: 85 },
+        { name: 'AWS', level: 75 },
+        { name: 'Git', level: 95 },
+        { name: 'Linux', level: 80 },
+        { name: 'Nginx', level: 75 },
+        { name: 'Jenkins', level: 70 }
+      ]
+    },
+    {
+      name: 'Mobile Development',
+      icon: 'bi bi-phone',
+      technologies: [
+        { name: 'Flutter', level: 85 },
+        { name: 'Dart', level: 85 },
+        { name: 'React Native', level: 75 },
+        { name: 'PWA', level: 80 }
+      ]
+    },
+    {
+      name: 'Herramientas & Metodologías',
+      icon: 'bi bi-tools',
+      technologies: [
+        { name: 'Scrum/Agile', level: 90 },
+        { name: 'Figma', level: 85 },
+        { name: 'Jira', level: 80 },
+        { name: 'Postman', level: 90 },
+        { name: 'VS Code', level: 95 },
+        { name: 'Clean Code', level: 85 }
+      ]
+    }
+  ];
+
   // Tab management
-  activeTab = 'education';
+  activeTab = 'skills';
+  
+  // Carousel management for skills
+  currentSkillCategoryIndex = 0;
 
   ngOnInit() {
     this.startTypingAnimation();
@@ -178,5 +343,16 @@ export class HomeComponent implements OnInit, OnDestroy {
       cardIndex = (cardIndex + 1) % cards.length;
       this.activeCard = cards[cardIndex];
     }, 3000);
+  }
+
+  // Carousel navigation methods
+  nextSkillCategory(): void {
+    this.currentSkillCategoryIndex = (this.currentSkillCategoryIndex + 1) % this.techStack.length;
+  }
+
+  previousSkillCategory(): void {
+    this.currentSkillCategoryIndex = this.currentSkillCategoryIndex === 0 
+      ? this.techStack.length - 1 
+      : this.currentSkillCategoryIndex - 1;
   }
 }

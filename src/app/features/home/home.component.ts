@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -34,6 +34,7 @@ import { ContactsComponent } from '../contact/contacts/contacts.component';
     ContactsComponent
   ],
   styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [
@@ -70,7 +71,11 @@ import { ContactsComponent } from '../contact/contacts/contacts.component';
 })
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object, 
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
   // Typing animation
   currentRole = '';
   isTyping = false;
@@ -288,7 +293,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       emoji: '🎨',
       title: 'Frontend',
       description: 'Interfaces modernas y experiencias de usuario excepcionales',
-      color: '#FF6B6B',
+      color: '#A29BFE',
       technologies: ['Angular', 'React', 'Vue.js', 'TypeScript'],
       detailedTechs: [
         { name: 'Angular', mastery: 5 },
@@ -346,7 +351,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       emoji: '🌐',
       title: 'Redes & DevOps',
       description: 'Infraestructura cloud y administración de sistemas',
-      color: '#FFEAA7',
+      color: '#74B9FF',
       technologies: ['Docker', 'AWS', 'Linux', 'Kubernetes'],
       detailedTechs: [
         { name: 'Docker', mastery: 4 },
@@ -360,7 +365,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       emoji: '🔒',
       title: 'Hacking Ético',
       description: 'Ciberseguridad y pruebas de penetración',
-      color: '#DDA0DD',
+      color: '#FD79A8',
       technologies: ['Kali Linux', 'Metasploit', 'Burp Suite', 'Nmap'],
       detailedTechs: [
         { name: 'Kali Linux', mastery: 3 },
@@ -481,9 +486,11 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       if (charIndex < text.length) {
         this.currentRole += text.charAt(charIndex);
         charIndex++;
+        this.cdr.markForCheck(); // Force change detection
         setTimeout(typeChar, 100);
       } else {
         this.isTyping = false;
+        this.cdr.markForCheck(); // Force change detection
         setTimeout(() => {
           this.eraseText();
         }, 2000);
@@ -498,6 +505,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     const eraseChar = () => {
       if (this.currentRole.length > 0) {
         this.currentRole = this.currentRole.slice(0, -1);
+        this.cdr.markForCheck(); // Force change detection
         setTimeout(eraseChar, 50);
       } else {
         this.currentRoleIndex = (this.currentRoleIndex + 1) % this.roles.length;
@@ -537,6 +545,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getExpertCount(areaIndex: number): number {
     return this.skillAreas[areaIndex].detailedTechs.filter(tech => tech.mastery >= 4).length;
+  }
+
+  getMasteryCount(areaIndex: number, level: number): number {
+    return this.skillAreas[areaIndex].detailedTechs.filter(tech => tech.mastery === level).length;
   }
 
   // Dashboard utility methods - simplified

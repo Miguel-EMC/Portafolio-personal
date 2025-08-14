@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NgForOf, NgIf } from "@angular/common";
-import { trigger, state, style, transition, animate } from '@angular/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { Project, Tool } from '../../../interfaces/project.interface';
 
@@ -10,26 +9,14 @@ import { Project, Tool } from '../../../interfaces/project.interface';
   imports: [NgForOf, NgIf, TranslateModule],
   templateUrl: './portafolio.component.html',
   styleUrls: ['./portafolio.component.scss'],
-  animations: [
-    trigger('fadeIn', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('300ms ease-in', style({ opacity: 1 }))
-      ])
-    ]),
-    trigger('slideIn', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'scale(0.95) translateY(20px)' }),
-        animate('400ms cubic-bezier(0.4, 0, 0.2, 1)', 
-          style({ opacity: 1, transform: 'scale(1) translateY(0)' }))
-      ])
-    ])
-  ]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PortafolioComponent implements OnInit {
   activeFilter: 'all' | 'personal' | 'professional' = 'all';
   selectedProject: Project | null = null;
   currentImageIndex: number = 0;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   personalProjects: Project[] = [
     {
@@ -160,6 +147,7 @@ export class PortafolioComponent implements OnInit {
     this.selectedProject = project;
     this.currentImageIndex = 0;
     document.body.style.overflow = 'hidden';
+    this.cdr.detectChanges();
   }
 
   closeDetails(): void {

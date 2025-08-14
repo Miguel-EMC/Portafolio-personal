@@ -42,7 +42,6 @@
       <div 
         *ngFor="let project of filteredProjects; let i = index" 
         class="project-card"
-        [style.animation-delay]="(i * 100) + 'ms'"
         (click)="showDetails(project)"
       >
         <div class="card-image">
@@ -122,9 +121,8 @@
     *ngIf="selectedProject" 
     class="modal-overlay" 
     (click)="closeDetails()"
-    [@fadeIn]
   >
-    <div class="modal-content" (click)="$event.stopPropagation()" [@slideIn]>
+    <div class="modal-content" (click)="$event.stopPropagation()">
       <div class="modal-header">
         <div class="modal-title-section">
           <h3 class="modal-title">{{ selectedProject.title }}</h3>

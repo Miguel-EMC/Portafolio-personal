@@ -145,15 +145,10 @@
   border-radius: var(--radius-2xl);
   overflow: hidden;
   cursor: pointer;
-  transition: all var(--transition-normal);
-  opacity: 0;
-  transform: translateY(var(--space-8));
-  animation: fadeInUp 0.6s ease-out forwards;
   box-shadow: var(--shadow-sm);
   
   &:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-2xl);
+    box-shadow: var(--shadow-lg);
     border-color: var(--accent-primary);
   }
 }
@@ -172,12 +167,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow);
 }
 
-.project-card:hover .project-image {
-  transform: scale(1.05);
-}
+// Removed scale effect for better performance
 
 .image-overlay {
   position: absolute;
@@ -390,7 +382,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: var(--z-modal);
+  z-index: 9999;
   padding: var(--space-4);
 }
 
@@ -769,34 +761,10 @@
   }
 }
 
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(var(--space-8));
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Animations removed for better performance */
 
 /* Angular Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(var(--space-8));
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
+/* All keyframe animations removed for optimal performance */
 
 /* Responsive Design */
 @media (max-width: 768px) {

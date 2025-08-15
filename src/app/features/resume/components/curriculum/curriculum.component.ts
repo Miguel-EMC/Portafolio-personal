@@ -3,14 +3,9 @@ import { NgClass, NgForOf, NgIf } from "@angular/common";
 import { isPlatformBrowser } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
-interface Experience {
-  title: string;
-  subtitle: string;
-  location: string;
-  date: string;
-  tasks: string[];
-  description?: string;
-}
+// Data imports
+import { experiences, type Experience } from '../../../../core/data/experience.data';
+
 
 interface TechSkill {
   name: string;
@@ -39,44 +34,7 @@ interface TechCategory {
 export class CurriculumComponent implements OnInit {
   
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-  experiences: Experience[] = [
-    {
-      title: 'Full Stack Developer',
-      subtitle: 'Lateral Business Thinking | Innovate Empresarial Solutions',
-      location: 'Quito, Ecuador',
-      date: 'Jun 2024 - Actualidad',
-      tasks: [
-        'Desarrollo de interfaces web dinámicas con Angular y TypeScript, mejorando la experiencia de usuario en un 40%',
-        'Implementación de arquitecturas escalables con microservicios usando Node.js y Docker',
-        'Liderazgo en el desarrollo del aplicativo móvil Münster Mind con Flutter y Firebase',
-        'Optimización de bases de datos PostgreSQL, reduciendo tiempos de consulta en un 35%'
-      ]
-    },
-    {
-      title: 'Desarrollador de Software',
-      subtitle: 'Freelance',
-      location: 'Quito, Ecuador',
-      date: 'Nov 2023 - Oct 2024',
-      tasks: [
-        'Desarrollo full-stack de la plataforma ASOBANCA con Laravel y Vue.js para 15+ instituciones financieras',
-        'Mejora continua del aplicativo Billusos, implementando nuevas funcionalidades con Python y Django',
-        'Creación de APIs RESTful robustas y documentación técnica completa',
-        'Gestión de proyectos web personalizados con metodologías ágiles, entregando el 100% a tiempo'
-      ]
-    },
-    {
-      title: 'Full Stack Developer Jr',
-      subtitle: 'Centro Ecuatoriano de Eficiencia de Recursos',
-      location: 'Quito, Ecuador',
-      date: 'Ene 2023 - Sep 2023',
-      tasks: [
-        'Maquetación responsive de interfaces cliente para CONAFIS SARAS con HTML5, CSS3 y JavaScript',
-        'Configuración y optimización de entornos de desarrollo para equipos multidisciplinarios',
-        'Administración de bases de datos SQL Server y generación de scripts automatizados',
-        'Implementación de mejores prácticas de desarrollo y control de versiones con Git'
-      ]
-    }
-  ];
+  experiences: Experience[] = experiences;
 
   techStack: TechCategory[] = [
     {

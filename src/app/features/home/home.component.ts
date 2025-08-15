@@ -1,9 +1,15 @@
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { RouterLink, Router } from "@angular/router";
 import { trigger, state, style, transition, animate, query, stagger } from '@angular/animations';
+
+// Data imports
+import { featuredProjects, type Project } from '../../core/data/projects.data';
+import { experiences, type Experience } from '../../core/data/experience.data';
+import { educationItems, type Education } from '../../core/data/education.data';
+import { skillAreas, type SkillArea } from '../../core/data/skills.data';
 
 // amCharts imports
 import * as am5 from '@amcharts/amcharts5';
@@ -74,7 +80,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private translate: TranslateService
   ) {}
   // Typing animation
   currentRole = '';
@@ -90,204 +97,16 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   activeCard = 'code';
 
   // Featured projects for compact portfolio
-  featuredProjects = [
-    {
-      title: 'Plataforma ASOBANCA',
-      description: 'Sistema integral para instituciones financieras con módulos de gestión completos.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
-      tech: ['Laravel', 'Vue.js', 'MySQL'],
-      liveUrl: 'https://asobanca-demo.com',
-      githubUrl: null
-    },
-    {
-      title: 'Münster Mind App',
-      description: 'Aplicación móvil para entrenamiento mental y cognitivo con gamificación.',
-      image: 'https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg',
-      tech: ['Flutter', 'Firebase', 'TensorFlow'],
-      liveUrl: 'https://munster-mind.app',
-      githubUrl: null
-    },
-    {
-      title: 'Sistema CONAFIS SARAS',
-      description: 'Plataforma gubernamental para gestión de recursos y análisis estadístico.',
-      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg',
-      tech: ['Angular', 'NestJS', 'PostgreSQL'],
-      liveUrl: 'https://conafis-saras.gov.ec',
-      githubUrl: null
-    }
-  ];
+  featuredProjects: Project[] = featuredProjects;
 
   // Detailed data for tabs
-  educationItems = [
-    {
-      icon: 'bi bi-mortarboard-fill',
-      title: 'Ingeniería en Ciencias de la Computación',
-      institution: 'Escuela Politécnica Nacional',
-      date: 'Actualidad',
-      description: 'Formación integral en ciencias de la computación con énfasis en desarrollo de software, algoritmos avanzados, inteligencia artificial y análisis de sistemas complejos.',
-      achievements: [
-        'Especialización en Algoritmos y Estructuras de Datos Avanzadas',
-        'Proyectos de Machine Learning y Deep Learning',
-        'Desarrollo de aplicaciones web full-stack',
-        'Participación en competencias de programación'
-      ]
-    },
-    {
-      icon: 'bi bi-code-slash',
-      title: 'Tecnología Superior en Desarrollo de Software',
-      institution: 'Escuela Politécnica Nacional',
-      date: '2020 - 2023',
-      description: 'Formación técnica especializada en desarrollo de aplicaciones web y móviles, bases de datos, metodologías ágiles y arquitecturas de software modernas.',
-      achievements: [
-        'Desarrollo de más de 15 proyectos web completos',
-        'Dominio de frameworks modernos (Angular, React, Vue.js)',
-        'Implementación de APIs RESTful y microservicios',
-        'Certificación en metodologías ágiles (Scrum)'
-      ]
-    },
-    {
-      icon: 'bi bi-book',
-      title: 'Bachillerato General Unificado',
-      institution: 'Unidad Educativa Leopoldo Mercado',
-      date: '2013 - 2019',
-      description: 'Educación secundaria con especialización en ciencias exactas, matemáticas avanzadas y fundamentos de programación que sentaron las bases para mi carrera tecnológica.',
-      achievements: [
-        'Graduado con honores en Ciencias Exactas',
-        'Participación en olimpiadas de matemáticas',
-        'Primer contacto con programación en Python',
-        'Liderazgo estudiantil y trabajo en equipo'
-      ]
-    }
-  ];
+  educationItems: Education[] = educationItems;
 
-  experiences = [
-    {
-      title: 'Full Stack Developer',
-      subtitle: 'Lateral Business Thinking | Innovate Empresarial Solutions',
-      location: 'Quito, Ecuador',
-      date: 'Jun 2024 - Actualidad',
-      tasks: [
-        'Desarrollo de interfaces web dinámicas con Angular y TypeScript, mejorando la experiencia de usuario en un 40%',
-        'Implementación de arquitecturas escalables con microservicios usando Node.js y Docker',
-        'Liderazgo en el desarrollo del aplicativo móvil Münster Mind con Flutter y Firebase',
-        'Optimización de bases de datos PostgreSQL, reduciendo tiempos de consulta en un 35%'
-      ]
-    },
-    {
-      title: 'Desarrollador de Software',
-      subtitle: 'Freelance',
-      location: 'Quito, Ecuador',
-      date: 'Nov 2023 - Oct 2024',
-      tasks: [
-        'Desarrollo full-stack de la plataforma ASOBANCA con Laravel y Vue.js para 15+ instituciones financieras',
-        'Mejora continua del aplicativo Billusos, implementando nuevas funcionalidades con Python y Django',
-        'Creación de APIs RESTful robustas y documentación técnica completa',
-        'Gestión de proyectos web personalizados con metodologías ágiles, entregando el 100% a tiempo'
-      ]
-    },
-    {
-      title: 'Full Stack Developer Jr',
-      subtitle: 'Centro Ecuatoriano de Eficiencia de Recursos',
-      location: 'Quito, Ecuador',
-      date: 'Ene 2023 - Sep 2023',
-      tasks: [
-        'Maquetación responsive de interfaces cliente para CONAFIS SARAS con HTML5, CSS3 y JavaScript',
-        'Configuración y optimización de entornos de desarrollo para equipos multidisciplinarios',
-        'Administración de bases de datos SQL Server y generación de scripts automatizados',
-        'Implementación de mejores prácticas de desarrollo y control de versiones con Git'
-      ]
-    }
-  ];
+  experiences: Experience[] = experiences;
 
 
   // Skill Areas Dashboard
-skillAreas = [
-  {
-    emoji: '🎨',
-    title: 'Frontend',
-    description: 'Interfaces modernas y experiencias de usuario excepcionales',
-    color: '#A29BFE',
-    technologies: ['Angular', 'React', 'Vue.js', 'HTML5/CSS3', 'Tailwind CSS'],
-    detailedTechs: [
-      { name: 'Angular', mastery: 7 },
-      { name: 'HTML5/CSS3', mastery: 7 },
-      { name: 'Tailwind CSS', mastery: 6 },
-      { name: 'React', mastery: 4 },
-      { name: 'Vue.js', mastery: 4 }
-    ]
-  },
-  {
-    emoji: '⚙️',
-    title: 'Backend',
-    description: 'APIs robustas y arquitecturas escalables',
-    color: '#4ECDC4',
-    technologies: ['Node.js', 'Laravel', 'Django', 'NestJS', 'Express.js'],
-    detailedTechs: [
-      { name: 'Django', mastery: 7 },
-      { name: 'NestJS', mastery: 7 },
-      { name: 'Laravel', mastery: 6 },
-      { name: 'Node.js', mastery: 6 },
-      { name: 'Express.js', mastery: 4 }
-    ]
-  },
-  {
-    emoji: '📱',
-    title: 'Mobile',
-    description: 'Aplicaciones móviles multiplataforma innovadoras',
-    color: '#45B7D1',
-    technologies: ['Flutter', 'React Native', 'PWA', 'Firebase'],
-    detailedTechs: [
-      { name: 'Flutter', mastery: 6 },
-      { name: 'React Native', mastery: 4 },
-      { name: 'Firebase', mastery: 6 }
-    ]
-  },
-  {
-    emoji: '🌐',
-    title: 'Redes & DevOps',
-    description: 'Infraestructura cloud y administración de sistemas',
-    color: '#74B9FF',
-    technologies: ['Docker', 'AWS', 'Linux', 'Kubernetes', 'TerraForm', 'Nginx', 'Git'],
-    detailedTechs: [
-      { name: 'Linux', mastery: 8 },
-      { name: 'Git', mastery: 8 },
-      { name: 'Docker', mastery: 6 },
-      { name: 'AWS', mastery: 4 },
-      { name: 'TerraForm', mastery: 4 },
-      { name: 'Nginx', mastery: 3 }
-    ]
-  },
-  {
-    emoji: '💻',
-    title: 'Lenguajes de Programación',
-    description: 'Base sólida en múltiples lenguajes para distintos entornos',
-    color: '#1ad1ffff',
-    technologies: ['TypeScript', 'Python', 'Dart'],
-    detailedTechs: [
-      { name: 'Python', mastery: 8 },
-      { name: 'TypeScript', mastery: 7 },
-      { name: 'JavaScript', mastery: 7 },
-      { name: 'Dart', mastery: 6 },
-      { name: 'PHP', mastery: 6 },
-      // { name: 'Golang', mastery: 6 },
-      { name: 'Java', mastery: 3 },
-      { name: 'C++/C', mastery: 3  }
-    ]
-  },
-  {
-    emoji: '🗄️',
-    title: 'Bases de Datos',
-    description: 'Almacenamiento y gestión eficiente de datos',
-    color: '#836c42ff',
-    technologies: ['PostgreSQL', 'MySQL'],
-    detailedTechs: [
-      { name: 'PostgreSQL', mastery: 7 },
-      { name: 'MySQL', mastery: 7 }
-    ]
-  },
-  // { // emoji: '🔒', // title: 'Hacking Ético', // description: 'Ciberseguridad y pruebas de penetración', // color: '#FD79A8', // technologies: ['Kali Linux', 'Metasploit', 'Burp Suite', 'Nmap'], // detailedTechs: [ // { name: 'Kali Linux', mastery: 3 }, // { name: 'Metasploit', mastery: 2 }, // { name: 'Burp Suite', mastery: 2 }, // { name: 'Nmap', mastery: 3 }, // { name: 'OWASP', mastery: 3 } // ] // }
-  // { // emoji: '🤖', // title: 'IA & Machine Learning', // description: 'Inteligencia artificial y análisis de datos avanzado', // color: '#96CEB4', // technologies: ['TensorFlow', 'Python', 'Pandas', 'Scikit-learn'], // detailedTechs: [ // { name: 'TensorFlow', mastery: 3 }, // { name: 'Python ML', mastery: 3 }, // { name: 'Pandas', mastery: 3 }, // { name: 'NumPy', mastery: 3 }, // { name: 'Scikit-learn', mastery: 2 } // ] // },
-];
+  skillAreas: SkillArea[] = skillAreas;
 
 
   // Chart instances

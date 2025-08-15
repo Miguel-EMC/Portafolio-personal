@@ -1,151 +1,196 @@
 {
   "nav": {
     "brandSubtitle": "Full Stack Dev",
+    "home": "Home",
     "about": "About Me",
     "resume": "Resume",
     "portfolio": "Portfolio",
     "contact": "Contact"
   },
   "home": {
-    "resume": {
-      "title": "My Resume",
-      "subtitle": "A comprehensive summary of my professional experience and academic background"
-    },
-    "experience": {
-      "title": "Professional Experience"
-    },
-    "education": {
-      "title": "Academic Education"
-    },
-    "skills": {
-      "title": "Technical Skills",
-      "subtitle": "Technologies and tools I master in software development"
-    }
-  },
-  "about": {
-    "header": {
-      "title": "Get to know my story and passion for technology",
-      "subtitle": "Discover my professional journey, my values and what motivates me every day"
-    },
-    "role": "Full Stack Developer & Engineering Student",
-    "location": "Quito, Ecuador",
-    "bio": "I am a Full Stack developer passionate about creating innovative technological solutions. I specialize in efficient and scalable web applications, using the latest technologies to deliver high-quality results. I also have a strong interest in Artificial Intelligence, Machine Learning and Deep Learning.",
-    "contact": {
-      "phone": "Phone",
-      "email": "Email",
-      "linkedin": "LinkedIn",
-      "github": "GitHub"
-    },
-    "values": {
-      "title": "My Values",
-      "innovation": {
-        "title": "Innovation",
-        "desc": "I always look for new ways to solve problems"
+    "hero": {
+      "greeting": "👋 Hello, I'm",
+      "name": "Eduardo Miguel", 
+      "surname": "Muzo",
+      "description": "Full Stack Developer specialized in creating modern and scalable web solutions. Passionate about AI and Machine Learning.",
+      "stats": {
+        "years": "Years",
+        "projects": "Projects",
+        "technologies": "Technologies"
       },
-      "excellence": {
-        "title": "Excellence",
-        "desc": "I commit to quality in every project"
+      "actions": {
+        "contact": "Contact",
+        "projects": "View Projects"
       },
-      "collaboration": {
-        "title": "Collaboration",
-        "desc": "I believe in the power of teamwork"
-      },
-      "learning": {
-        "title": "Learning",
-        "desc": "I never stop learning and growing professionally"
+      "status": "Available",
+      "location": "Quito, Ecuador",
+      "role": "Full Stack Developer"
+    },
+    "profile": {
+      "title": "Professional Profile",
+      "tabs": {
+        "skills": "Skills",
+        "experience": "Experience",
+        "education": "Education"
       }
     },
-    "interests": {
-      "title": "Areas of Interest",
-      "ai": "Artificial Intelligence",
-      "ml": "Machine Learning",
-      "dl": "Deep Learning",
-      "cloud": "Cloud Computing",
-      "security": "Cybersecurity",
-      "mobile": "Mobile Development"
+    "portfolio": {
+      "title": "Featured Projects",
+      "viewAll": "View All Projects"
     },
-    "stats": {
-      "title": "In Numbers",
-      "experience": "Years of Experience",
-      "projects": "Completed Projects",
-      "technologies": "Mastered Technologies",
-      "commitment": "Commitment"
+    "contact": {
+      "title": "Contact Me",
+      "description": "Do you have a project in mind? I'm available for new projects and collaborations. Let's talk!",
+      "methods": {
+        "email": "Email",
+        "whatsapp": "WhatsApp", 
+        "linkedin": "LinkedIn"
+      },
+      "form": {
+        "name": "Your name",
+        "email": "Your email",
+        "message": "Tell me about your project...",
+        "send": "Send Message"
+      }
+    }
+  },
+  "projects": {
+    "asobanca": {
+      "title": "ASOBANCA Platform",
+      "description": "Comprehensive system for financial institutions with client management, transaction processing and regulatory reporting modules.",
+      "longDescription": "Complete web platform developed with Laravel and Vue.js that allows financial institutions to manage clients, process transactions and generate regulatory reports with interactive dashboards."
     },
-    "cta": {
-      "title": "Ready to work together?",
-      "subtitle": "I'm always open to new opportunities and interesting collaborations.",
-      "email": "Send Email",
-      "whatsapp": "WhatsApp"
+    "munsterMind": {
+      "title": "Münster Mind App",
+      "description": "Innovative mobile application for mental and cognitive training with gamification and progress tracking.",
+      "longDescription": "Cross-platform mobile application developed with Flutter that offers innovative mental training exercises, detailed progress tracking and advanced gamification elements."
+    },
+    "conafis": {
+      "title": "CONAFIS SARAS System",
+      "description": "Government platform for resource management and statistical analysis with high availability and security.",
+      "longDescription": "Government web system developed with Angular and NestJS for efficient management of public resources with statistical analysis modules, high availability and maximum security."
+    },
+    "academicSystem": {
+      "title": "Academic Management System",
+      "description": "Complete web platform for managing students, teachers and courses with administrative dashboard and real-time reports.",
+      "longDescription": "Complete academic management system developed with Angular that allows managing students, teachers, courses and generating academic reports with an intuitive administrative interface."
+    },
+    "ecommerce": {
+      "title": "Modern E-Commerce",
+      "description": "Responsive online store with shopping cart, payment gateway, inventory management and administration panel.",
+      "longDescription": "E-commerce platform developed with React and Next.js that includes shopping cart, Stripe integration for payments and complete administration panel for product and inventory management."
+    },
+    "taskApp": {
+      "title": "Task Management App",
+      "description": "Cross-platform mobile application for project and task management with real-time synchronization and team collaboration.",
+      "longDescription": "Mobile application developed with Flutter for project and task management that includes real-time collaboration, task assignment and progress tracking with notifications."
+    },
+    "analyticsApp": {
+      "title": "Analytics Dashboard",
+      "description": "Interactive control panel with data visualization, dynamic charts and customizable reports for business analysis.",
+      "longDescription": "Complete dashboard developed with Vue.js and D3.js that allows visualizing complex data, creating interactive charts and generating customized reports for business analysis."
+    },
+    "billusos": {
+      "title": "Billusos Platform",
+      "description": "Electronic invoicing and business management platform with integration to government services.",
+      "longDescription": "Business system developed with Django and React for electronic invoicing, client management and complete integration with SRI and other government agencies."
+    }
+  },
+  "experiences": {
+    "fullstack-lateral": {
+      "title": "Full Stack Developer",
+      "subtitle": "Lateral Business Thinking | Innovate Empresarial Solutions",
+      "tasks": [
+        "Development of dynamic web interfaces with Angular and TypeScript, improving user experience by 40%",
+        "Implementation of scalable architectures with microservices using Node.js and Docker",
+        "Leadership in developing the Münster Mind mobile app with Flutter and Firebase",
+        "PostgreSQL database optimization, reducing query times by 35%"
+      ]
+    },
+    "freelance-dev": {
+      "title": "Software Developer",
+      "subtitle": "Freelance",
+      "tasks": [
+        "Full-stack development of the ASOBANCA platform with Laravel and Vue.js for 15+ financial institutions",
+        "Continuous improvement of the Billusos application, implementing new features with Python and Django",
+        "Creation of robust RESTful APIs and complete technical documentation",
+        "Management of personalized web projects with agile methodologies, delivering 100% on time"
+      ]
+    },
+    "junior-fullstack": {
+      "title": "Jr Full Stack Developer",
+      "subtitle": "Centro Ecuatoriano de Eficiencia de Recursos",
+      "tasks": [
+        "Responsive client interface layout for CONAFIS SARAS with HTML5, CSS3 and JavaScript",
+        "Configuration and optimization of development environments for multidisciplinary teams",
+        "SQL Server database administration and automated script generation",
+        "Implementation of development best practices and version control with Git"
+      ]
+    }
+  },
+  "education": {
+    "computer-engineering": {
+      "title": "Computer Science Engineering",
+      "institution": "Escuela Politécnica Nacional",
+      "description": "Comprehensive training in computer science with emphasis on software development, advanced algorithms, artificial intelligence and complex systems analysis.",
+      "achievements": [
+        "Specialization in Advanced Algorithms and Data Structures",
+        "Machine Learning and Deep Learning projects",
+        "Full-stack web application development",
+        "Participation in programming competitions"
+      ]
+    },
+    "software-development": {
+      "title": "Higher Technology in Software Development",
+      "institution": "Escuela Politécnica Nacional",
+      "description": "Specialized technical training in web and mobile application development, databases, agile methodologies and modern software architectures.",
+      "achievements": [
+        "Development of more than 15 complete web projects",
+        "Mastery of modern frameworks (Angular, React, Vue.js)",
+        "Implementation of RESTful APIs and microservices",
+        "Certification in agile methodologies (Scrum)"
+      ]
+    },
+    "high-school": {
+      "title": "Unified General Baccalaureate",
+      "institution": "Unidad Educativa Leopoldo Mercado",
+      "description": "Secondary education with specialization in exact sciences, advanced mathematics and programming fundamentals that laid the foundation for my technological career.",
+      "achievements": [
+        "Graduated with honors in Exact Sciences",
+        "Participation in mathematics olympiads",
+        "First contact with Python programming",
+        "Student leadership and teamwork"
+      ]
+    }
+  },
+  "skillAreas": {
+    "frontend": {
+      "title": "Frontend",
+      "description": "Modern interfaces and exceptional user experiences"
+    },
+    "backend": {
+      "title": "Backend",
+      "description": "Robust APIs and scalable architectures"
+    },
+    "mobile": {
+      "title": "Mobile",
+      "description": "Innovative cross-platform mobile applications"
+    },
+    "devops": {
+      "title": "Networks & DevOps",
+      "description": "Cloud infrastructure and systems administration"
+    },
+    "languages": {
+      "title": "Programming Languages",
+      "description": "Solid foundation in multiple languages for different environments"
+    },
+    "databases": {
+      "title": "Databases",
+      "description": "Efficient data storage and management"
     }
   },
   "footer": {
     "copyright": "© 2025 My Portfolio. All rights reserved."
-  },
-  "contact": {
-    "header": {
-      "title": "Let's Work Together",
-      "subtitle": "Do you have a project in mind? I'd love to hear your ideas and help you make them a reality"
-    },
-    "form": {
-      "title": "Send me a message",
-      "subtitle": "Fill out the form and I'll respond in less than 24 hours",
-      "name": "Name",
-      "namePlaceholder": "Your name",
-      "nameRequired": "Name is required",
-      "lastName": "Last Name",
-      "lastNamePlaceholder": "Your last name",
-      "lastNameRequired": "Last name is required",
-      "email": "Email",
-      "emailPlaceholder": "your@email.com",
-      "emailRequired": "Email is required",
-      "emailInvalid": "Enter a valid email",
-      "projectType": "Project Type",
-      "projectTypePlaceholder": "Select project type",
-      "projectTypeRequired": "Select a project type",
-      "message": "Message",
-      "messagePlaceholder": "Tell me about your project, objectives, timeline and approximate budget...",
-      "messageRequired": "Message is required",
-      "sending": "Sending...",
-      "sendMessage": "Send Message",
-      "securityNote": "Your information is secure and will not be shared"
-    },
-    "projectTypes": {
-      "web": "🌐 Web Development",
-      "mobile": "📱 Mobile Development",
-      "ecommerce": "🛒 E-commerce",
-      "api": "⚡ API & Backend",
-      "consulting": "💡 Technical Consulting",
-      "collaboration": "🤝 Collaboration",
-      "freelance": "💼 Freelance Work",
-      "other": "🔧 Other"
-    },
-    "quickContact": {
-      "title": "Quick Contact",
-      "email": "Email",
-      "emailDesc": "Response in 24 hours",
-      "whatsapp": "WhatsApp",
-      "whatsappDesc": "Immediate response",
-      "phone": "Phone",
-      "phoneDesc": "Mon - Fri, 9:00 - 18:00",
-      "linkedin": "LinkedIn",
-      "linkedinDesc": "Professional network"
-    },
-    "availability": {
-      "title": "Current Status",
-      "available": "Available for projects",
-      "responseTime": "Response time: < 24h",
-      "startTime": "Project start: Immediate",
-      "location": "Location: Quito, Ecuador (GMT-5)"
-    },
-    "faq": {
-      "title": "Frequently Asked Questions",
-      "timeQuestion": "How long does a project take?",
-      "timeAnswer": "It depends on complexity, but typically 2-8 weeks",
-      "paymentQuestion": "How do you handle payments?",
-      "paymentAnswer": "50% upfront, 50% on completion. I accept transfers and PayPal",
-      "maintenanceQuestion": "Do you offer maintenance?",
-      "maintenanceAnswer": "Yes, I include 3 months of free post-delivery support"
-    }
   },
   "portfolio": {
     "header": {

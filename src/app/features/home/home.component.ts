@@ -47,22 +47,22 @@ import { ContactsComponent } from '../contact/contacts/contacts.component';
     ]),
     trigger('slideInScale', [
       transition(':enter', [
-        style({ 
-          transform: 'scale(0.7) translateY(-50px)', 
-          opacity: 0 
+        style({
+          transform: 'scale(0.7) translateY(-50px)',
+          opacity: 0
         }),
-        animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)', 
-          style({ 
-            transform: 'scale(1) translateY(0)', 
-            opacity: 1 
+        animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)',
+          style({
+            transform: 'scale(1) translateY(0)',
+            opacity: 1
           })
         )
       ]),
       transition(':leave', [
-        animate('300ms ease-in', 
-          style({ 
-            transform: 'scale(0.8) translateY(20px)', 
-            opacity: 0 
+        animate('300ms ease-in',
+          style({
+            transform: 'scale(0.8) translateY(20px)',
+            opacity: 0
           })
         )
       ])
@@ -70,9 +70,9 @@ import { ContactsComponent } from '../contact/contacts/contacts.component';
   ]
 })
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
-  
+
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object, 
+    @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router,
     private cdr: ChangeDetectorRef
   ) {}
@@ -82,27 +82,12 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   private typingInterval: any;
   private roles = [
     'Full Stack Developer',
-    'Frontend Developer', 
+    'Frontend Developer',
     'Backend Developer',
     'Mobile Developer'
   ];
   private currentRoleIndex = 0;
-
-  // Interactive cards
   activeCard = 'code';
-
-  // Top skills for about section
-  topSkills = ['Angular', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL'];
-
-  // Main technologies for compact view with details
-  mainTechs = [
-    { name: 'Angular', level: 'Avanzado', years: '3+' },
-    { name: 'TypeScript', level: 'Avanzado', years: '3+' },
-    { name: 'Node.js', level: 'Intermedio', years: '2+' },
-    { name: 'Python', level: 'Intermedio', years: '2+' },
-    { name: 'PostgreSQL', level: 'Intermedio', years: '2+' },
-    { name: 'Docker', level: 'Básico', years: '1+' }
-  ];
 
   // Featured projects for compact portfolio
   featuredProjects = [
@@ -214,208 +199,110 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   ];
 
-  techStack = [
-    {
-      name: 'Frontend Development',
-      icon: 'bi bi-palette',
-      technologies: [
-        { name: 'Angular', level: 95 },
-        { name: 'React', level: 85 },
-        { name: 'Vue.js', level: 80 },
-        { name: 'TypeScript', level: 90 },
-        { name: 'JavaScript', level: 95 },
-        { name: 'HTML5/CSS3', level: 95 }
-      ]
-    },
-    {
-      name: 'Backend Development',
-      icon: 'bi bi-server',
-      technologies: [
-        { name: 'Node.js', level: 90 },
-        { name: 'Python', level: 85 },
-        { name: 'Django', level: 80 },
-        { name: 'Laravel', level: 85 },
-        { name: 'PHP', level: 80 },
-        { name: 'Express.js', level: 85 }
-      ]
-    },
-    {
-      name: 'Bases de Datos',
-      icon: 'bi bi-database',
-      technologies: [
-        { name: 'PostgreSQL', level: 90 },
-        { name: 'MySQL', level: 85 },
-        { name: 'MongoDB', level: 80 },
-        { name: 'Firebase', level: 85 },
-        { name: 'SQL Server', level: 75 },
-        { name: 'Redis', level: 70 }
-      ]
-    },
-    {
-      name: 'DevOps & Cloud',
-      icon: 'bi bi-cloud',
-      technologies: [
-        { name: 'Docker', level: 85 },
-        { name: 'AWS', level: 75 },
-        { name: 'Git', level: 95 },
-        { name: 'Linux', level: 80 },
-        { name: 'Nginx', level: 75 },
-        { name: 'Jenkins', level: 70 }
-      ]
-    },
-    {
-      name: 'Mobile Development',
-      icon: 'bi bi-phone',
-      technologies: [
-        { name: 'Flutter', level: 85 },
-        { name: 'Dart', level: 85 },
-        { name: 'React Native', level: 75 },
-        { name: 'PWA', level: 80 }
-      ]
-    },
-    {
-      name: 'Herramientas & Metodologías',
-      icon: 'bi bi-tools',
-      technologies: [
-        { name: 'Scrum/Agile', level: 90 },
-        { name: 'Figma', level: 85 },
-        { name: 'Jira', level: 80 },
-        { name: 'Postman', level: 90 },
-        { name: 'VS Code', level: 95 },
-        { name: 'Clean Code', level: 85 }
-      ]
-    }
-  ];
 
   // Skill Areas Dashboard
-  skillAreas = [
-    {
-      emoji: '🎨',
-      title: 'Frontend',
-      description: 'Interfaces modernas y experiencias de usuario excepcionales',
-      color: '#A29BFE',
-      technologies: ['Angular', 'React', 'Vue.js', 'TypeScript'],
-      detailedTechs: [
-        { name: 'Angular', mastery: 5 },
-        { name: 'React', mastery: 4 },
-        { name: 'Vue.js', mastery: 4 },
-        { name: 'TypeScript', mastery: 5 },
-        { name: 'HTML5/CSS3', mastery: 5 },
-        { name: 'Tailwind CSS', mastery: 4 }
-      ]
-    },
-    {
-      emoji: '⚙️',
-      title: 'Backend',
-      description: 'APIs robustas y arquitecturas escalables',
-      color: '#4ECDC4',
-      technologies: ['Node.js', 'Python', 'Laravel', 'PostgreSQL'],
-      detailedTechs: [
-        { name: 'Node.js', mastery: 5 },
-        { name: 'Express.js', mastery: 4 },
-        { name: 'Python', mastery: 4 },
-        { name: 'Django', mastery: 4 },
-        { name: 'Laravel', mastery: 4 },
-        { name: 'PostgreSQL', mastery: 5 }
-      ]
-    },
-    {
-      emoji: '📱',
-      title: 'Mobile',
-      description: 'Aplicaciones móviles multiplataforma innovadoras',
-      color: '#45B7D1',
-      technologies: ['Flutter', 'React Native', 'PWA', 'Firebase'],
-      detailedTechs: [
-        { name: 'Flutter', mastery: 4 },
-        { name: 'Dart', mastery: 4 },
-        { name: 'React Native', mastery: 3 },
-        { name: 'PWA', mastery: 4 },
-        { name: 'Firebase', mastery: 4 }
-      ]
-    },
-    {
-      emoji: '🤖',
-      title: 'IA & Machine Learning',
-      description: 'Inteligencia artificial y análisis de datos avanzado',
-      color: '#96CEB4',
-      technologies: ['TensorFlow', 'Python', 'Pandas', 'Scikit-learn'],
-      detailedTechs: [
-        { name: 'TensorFlow', mastery: 3 },
-        { name: 'Python ML', mastery: 3 },
-        { name: 'Pandas', mastery: 3 },
-        { name: 'NumPy', mastery: 3 },
-        { name: 'Scikit-learn', mastery: 2 }
-      ]
-    },
-    {
-      emoji: '🌐',
-      title: 'Redes & DevOps',
-      description: 'Infraestructura cloud y administración de sistemas',
-      color: '#74B9FF',
-      technologies: ['Docker', 'AWS', 'Linux', 'Kubernetes'],
-      detailedTechs: [
-        { name: 'Docker', mastery: 4 },
-        { name: 'AWS', mastery: 3 },
-        { name: 'Linux', mastery: 4 },
-        { name: 'Git', mastery: 5 },
-        { name: 'Nginx', mastery: 3 }
-      ]
-    },
-    {
-      emoji: '🔒',
-      title: 'Hacking Ético',
-      description: 'Ciberseguridad y pruebas de penetración',
-      color: '#FD79A8',
-      technologies: ['Kali Linux', 'Metasploit', 'Burp Suite', 'Nmap'],
-      detailedTechs: [
-        { name: 'Kali Linux', mastery: 3 },
-        { name: 'Metasploit', mastery: 2 },
-        { name: 'Burp Suite', mastery: 2 },
-        { name: 'Nmap', mastery: 3 },
-        { name: 'OWASP', mastery: 3 }
-      ]
-    }
-  ];
+skillAreas = [
+  {
+    emoji: '🎨',
+    title: 'Frontend',
+    description: 'Interfaces modernas y experiencias de usuario excepcionales',
+    color: '#A29BFE',
+    technologies: ['Angular', 'React', 'Vue.js', 'HTML5/CSS3', 'Tailwind CSS'],
+    detailedTechs: [
+      { name: 'Angular', mastery: 7 },
+      { name: 'HTML5/CSS3', mastery: 7 },
+      { name: 'Tailwind CSS', mastery: 6 },
+      { name: 'React', mastery: 4 },
+      { name: 'Vue.js', mastery: 4 }
+    ]
+  },
+  {
+    emoji: '⚙️',
+    title: 'Backend',
+    description: 'APIs robustas y arquitecturas escalables',
+    color: '#4ECDC4',
+    technologies: ['Node.js', 'Laravel', 'Django', 'NestJS', 'Express.js'],
+    detailedTechs: [
+      { name: 'Django', mastery: 7 },
+      { name: 'NestJS', mastery: 7 },
+      { name: 'Laravel', mastery: 6 },
+      { name: 'Node.js', mastery: 6 },
+      { name: 'Express.js', mastery: 4 }
+    ]
+  },
+  {
+    emoji: '📱',
+    title: 'Mobile',
+    description: 'Aplicaciones móviles multiplataforma innovadoras',
+    color: '#45B7D1',
+    technologies: ['Flutter', 'React Native', 'PWA', 'Firebase'],
+    detailedTechs: [
+      { name: 'Flutter', mastery: 6 },
+      { name: 'React Native', mastery: 4 },
+      { name: 'Firebase', mastery: 6 }
+    ]
+  },
+  {
+    emoji: '🌐',
+    title: 'Redes & DevOps',
+    description: 'Infraestructura cloud y administración de sistemas',
+    color: '#74B9FF',
+    technologies: ['Docker', 'AWS', 'Linux', 'Kubernetes', 'TerraForm', 'Nginx', 'Git'],
+    detailedTechs: [
+      { name: 'Linux', mastery: 8 },
+      { name: 'Git', mastery: 8 },
+      { name: 'Docker', mastery: 6 },
+      { name: 'AWS', mastery: 4 },
+      { name: 'TerraForm', mastery: 4 },
+      { name: 'Nginx', mastery: 3 }
+    ]
+  },
+  {
+    emoji: '💻',
+    title: 'Lenguajes de Programación',
+    description: 'Base sólida en múltiples lenguajes para distintos entornos',
+    color: '#1ad1ffff',
+    technologies: ['TypeScript', 'Python', 'Dart'],
+    detailedTechs: [
+      { name: 'Python', mastery: 8 },
+      { name: 'TypeScript', mastery: 7 },
+      { name: 'JavaScript', mastery: 7 },
+      { name: 'Dart', mastery: 6 },
+      { name: 'PHP', mastery: 6 },
+      // { name: 'Golang', mastery: 6 },
+      { name: 'Java', mastery: 3 },
+      { name: 'C++/C', mastery: 3  }
+    ]
+  },
+  {
+    emoji: '🗄️',
+    title: 'Bases de Datos',
+    description: 'Almacenamiento y gestión eficiente de datos',
+    color: '#836c42ff',
+    technologies: ['PostgreSQL', 'MySQL'],
+    detailedTechs: [
+      { name: 'PostgreSQL', mastery: 7 },
+      { name: 'MySQL', mastery: 7 }
+    ]
+  },
+  // { // emoji: '🔒', // title: 'Hacking Ético', // description: 'Ciberseguridad y pruebas de penetración', // color: '#FD79A8', // technologies: ['Kali Linux', 'Metasploit', 'Burp Suite', 'Nmap'], // detailedTechs: [ // { name: 'Kali Linux', mastery: 3 }, // { name: 'Metasploit', mastery: 2 }, // { name: 'Burp Suite', mastery: 2 }, // { name: 'Nmap', mastery: 3 }, // { name: 'OWASP', mastery: 3 } // ] // }
+  // { // emoji: '🤖', // title: 'IA & Machine Learning', // description: 'Inteligencia artificial y análisis de datos avanzado', // color: '#96CEB4', // technologies: ['TensorFlow', 'Python', 'Pandas', 'Scikit-learn'], // detailedTechs: [ // { name: 'TensorFlow', mastery: 3 }, // { name: 'Python ML', mastery: 3 }, // { name: 'Pandas', mastery: 3 }, // { name: 'NumPy', mastery: 3 }, // { name: 'Scikit-learn', mastery: 2 } // ] // },
+];
 
-  // All skills for the main chart
-  allSkillsForChart = [
-    { name: 'JavaScript', level: 95 },
-    { name: 'HTML5/CSS3', level: 95 },
-    { name: 'Git', level: 95 },
-    { name: 'VS Code', level: 95 },
-    { name: 'Angular', level: 95 },
-    { name: 'TypeScript', level: 90 },
-    { name: 'Node.js', level: 90 },
-    { name: 'PostgreSQL', level: 90 },
-    { name: 'Bootstrap', level: 90 },
-    { name: 'Postman', level: 90 },
-    { name: 'SQL', level: 88 },
-    { name: 'React', level: 85 },
-    { name: 'Python', level: 85 },
-    { name: 'Laravel', level: 85 },
-    { name: 'Express.js', level: 85 },
-    { name: 'MySQL', level: 85 },
-    { name: 'Firebase', level: 85 },
-    { name: 'Docker', level: 85 },
-    { name: 'Flutter', level: 85 },
-    { name: 'Dart', level: 85 },
-    { name: 'Figma', level: 85 },
-    { name: 'Tailwind CSS', level: 85 }
-  ];
 
   // Chart instances
   private skillsBarChartRoot?: am5.Root;
 
   // Tab management
   activeTab = 'skills';
-  
+
   // Area selection management
   selectedArea: number | null = null;
 
   ngOnInit() {
     this.startTypingAnimation();
     this.initializeActiveCard();
-    
+
     if (isPlatformBrowser(this.platformId)) {
       // Configurar scroll suave
       document.documentElement.style.scrollBehavior = 'smooth';
@@ -434,7 +321,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.typingInterval) {
       clearInterval(this.typingInterval);
     }
-    
+
     // Dispose charts
     if (this.skillsBarChartRoot) {
       this.skillsBarChartRoot.dispose();
@@ -539,12 +426,16 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getMasteryLabel(mastery: number): string {
-    const labels = ['', 'Básico', 'Intermedio', 'Avanzado', 'Experto', 'Maestro'];
-    return labels[mastery] || 'Básico';
+    if ([1, 2].includes(mastery)) return 'Básico';
+    if ([3, 4].includes(mastery)) return 'Intermedio';
+    if ([5, 6].includes(mastery)) return 'Avanzado';
+    if ([7, 8].includes(mastery)) return 'Experto';
+    if ([9, 10].includes(mastery)) return 'Maestro';
+    return 'Básico';
   }
-
   getExpertCount(areaIndex: number): number {
-    return this.skillAreas[areaIndex].detailedTechs.filter(tech => tech.mastery >= 4).length;
+    return this.skillAreas[areaIndex].detailedTechs
+      .filter(tech => [7, 8].includes(tech.mastery)).length;
   }
 
   getMasteryCount(areaIndex: number, level: number): number {

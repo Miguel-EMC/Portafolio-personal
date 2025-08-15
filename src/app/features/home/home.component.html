@@ -23,15 +23,15 @@
           <!-- Stats Inline -->
           <div class="hero-stats">
             <div class="stat">
-              <span class="number">3+</span>
+              <span class="number">2+</span>
               <span class="label">Años</span>
             </div>
             <div class="stat">
-              <span class="number">25+</span>
+              <span class="number">5+</span>
               <span class="label">Proyectos</span>
             </div>
             <div class="stat">
-              <span class="number">15+</span>
+              <span class="number">8+</span>
               <span class="label">Tecnologías</span>
             </div>
           </div>
@@ -69,7 +69,7 @@
                 <span>Full Stack Developer</span>
               </div>
             </div>
-            
+
             <div class="contact-icons">
               <a href="tel:+593999763190" class="contact-icon-btn" title="Teléfono">
                 <i class="bi bi-phone"></i>
@@ -264,11 +264,11 @@
                 <div class="skill-level-visual">
                   <div class="skill-bar">
                     <div class="skill-progress"
-                         [style.width]="(tech.mastery / 5) * 100 + '%'"
+                         [style.width]="(tech.mastery / 10) * 100 + '%'"
                          [style.background]="skillAreas[selectedArea].color">
                     </div>
                   </div>
-                  <span class="skill-percentage">{{ (tech.mastery / 5) * 100 | number:'1.0-0' }}%</span>
+                  <span class="skill-percentage">{{ (tech.mastery / 10) * 100 | number:'1.0-0' }}%</span>
                 </div>
               </div>
             </div>
@@ -278,28 +278,17 @@
                    [class]="'level-' + tech.mastery"
                    [style.background]="skillAreas[selectedArea].color + '20'"
                    [style.border-color]="skillAreas[selectedArea].color">
-                <i class="bi"
-                   [class.bi-circle]="tech.mastery === 1"
-                   [class.bi-triangle]="tech.mastery === 2"
-                   [class.bi-square]="tech.mastery === 3"
-                   [class.bi-pentagon]="tech.mastery === 4"
-                   [class.bi-star-fill]="tech.mastery === 5"
-                   [style.color]="skillAreas[selectedArea].color">
-                </i>
+                    <i class="bi"
+                      [ngClass]="{
+                        'bi-circle': [1, 2].includes(tech.mastery), 'bi-triangle': [3, 4].includes(tech.mastery),
+                        'bi-square': [5, 6].includes(tech.mastery), 'bi-pentagon': [7, 8].includes(tech.mastery),
+                        'bi-star-fill': [9, 10].includes(tech.mastery)
+                      }"
+                      [style.color]="skillAreas[selectedArea].color">
+                    </i>
                 <span [style.color]="skillAreas[selectedArea].color">
                   {{ getMasteryLabel(tech.mastery) }}
                 </span>
-              </div>
-
-              <div class="experience-indicator">
-                <div class="exp-dots">
-                  <span class="exp-dot"
-                        *ngFor="let year of [1,2,3,4,5]; let yearIndex = index"
-                        [class.filled]="yearIndex < tech.mastery"
-                        [style.background]="yearIndex < tech.mastery ? skillAreas[selectedArea].color : 'var(--border-primary)'">
-                  </span>
-                </div>
-                <small>{{ tech.mastery }}+ años</small>
               </div>
             </div>
           </div>
@@ -310,26 +299,7 @@
       <div class="modal-footer">
         <div class="footer-content">
           <div class="progress-overview">
-            <h4>Resumen de Competencias</h4>
             <div class="mastery-breakdown">
-              <div class="mastery-stat">
-                <div class="stat-icon beginner">
-                  <i class="bi bi-circle"></i>
-                </div>
-                <span>{{ getMasteryCount(selectedArea, 1) + getMasteryCount(selectedArea, 2) }} Iniciando</span>
-              </div>
-              <div class="mastery-stat">
-                <div class="stat-icon intermediate">
-                  <i class="bi bi-square"></i>
-                </div>
-                <span>{{ getMasteryCount(selectedArea, 3) }} Intermedio</span>
-              </div>
-              <div class="mastery-stat">
-                <div class="stat-icon expert">
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <span>{{ getMasteryCount(selectedArea, 4) + getMasteryCount(selectedArea, 5) }} Experto</span>
-              </div>
             </div>
           </div>
         </div>
@@ -384,7 +354,7 @@
       <div class="section-header">
         <h2>Contáctame</h2>
       </div>
-      
+
       <div class="contact-content">
         <div class="contact-info">
           <p>¿Tienes un proyecto en mente? Estoy disponible para nuevos proyectos y colaboraciones. ¡Hablemos!</p>

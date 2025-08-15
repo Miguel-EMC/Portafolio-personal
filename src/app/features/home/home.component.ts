@@ -96,12 +96,12 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // Main technologies for compact view with details
   mainTechs = [
-    { name: 'Angular', level: 'Avanzado', years: '3+' },
-    { name: 'TypeScript', level: 'Avanzado', years: '3+' },
-    { name: 'Node.js', level: 'Intermedio', years: '2+' },
-    { name: 'Python', level: 'Intermedio', years: '2+' },
-    { name: 'PostgreSQL', level: 'Intermedio', years: '2+' },
-    { name: 'Docker', level: 'Básico', years: '1+' }
+    { name: 'Angular', level: 'Experto', years: '3+' },
+    { name: 'TypeScript', level: 'Experto', years: '3+' },
+    { name: 'Node.js', level: 'Avanzado', years: '2+' },
+    { name: 'Python', level: 'Avanzado', years: '2+' },
+    { name: 'PostgreSQL', level: 'Avanzado', years: '2+' },
+    { name: 'Docker', level: 'Intermedio', years: '1+' }
   ];
 
   // Featured projects for compact portfolio
@@ -572,6 +572,27 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   getEducationEmoji(index: number): string {
     const emojis = ['🎓', '💻', '📚'];
     return emojis[index] || '🎓';
+  }
+
+  // Método para obtener iconos de tecnologías
+  getTechIcon(tech: string): string {
+    const icons: { [key: string]: string } = {
+      'Angular': 'bi-triangle',
+      'React': 'bi-atom',
+      'Vue.js': 'bi-lightning',
+      'TypeScript': 'bi-braces',
+      'JavaScript': 'bi-braces',
+      'Node.js': 'bi-server',
+      'Python': 'bi-filetype-py',
+      'PostgreSQL': 'bi-database',
+      'Docker': 'bi-box-seam',
+      'Laravel': 'bi-boxes',
+      'Flutter': 'bi-phone',
+      'Firebase': 'bi-fire',
+      'MySQL': 'bi-database-fill',
+      'MongoDB': 'bi-database-down'
+    };
+    return icons[tech] || 'bi-code-slash';
   }
 
   // Chart initialization - removed for new design

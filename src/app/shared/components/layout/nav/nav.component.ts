@@ -73,7 +73,7 @@ export class NavComponent implements OnInit, OnDestroy {
 
   navigateToRoute(route: string): void {
     // Si estamos en la página principal (home), hacer scroll a la sección
-    if (this.router.url === '/' || this.router.url === '/home' || this.router.url.includes('/home')) {
+    if (this.router.url === '/' || this.router.url === '/home') {
       this.scrollToSection(route);
     } else {
       // Si estamos en otra página, navegar a home y luego hacer scroll

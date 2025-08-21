@@ -10,11 +10,14 @@
         </div>
         
         <h1 class="hero-title">
-          <span class="greeting">{{ 'home.hero.greeting' | translate }}</span>
-          <span class="name">{{ 'home.hero.name' | translate }}</span>
-          <span class="surname gradient-text">{{ 'home.hero.surname' | translate }}</span>
-          <span class="role">{{ currentRole }}</span>
-          <span class="cursor">|</span>
+          <span class="name-line">
+            <span class="name">{{ 'home.hero.name' | translate }}</span>
+            <span class="surname gradient-text">{{ 'home.hero.surname' | translate }}</span>
+          </span>
+          <span class="role-line">
+            <span class="role">{{ currentRole }}</span>
+            <span class="cursor">|</span>
+          </span>
         </h1>
         
         <p class="hero-description">
@@ -59,7 +62,6 @@
         <div class="profile-card">
           <div class="profile-image">
             <img src="/assets/img/img-mia.png" alt="Eduardo Miguel Muzo" />
-            <div class="profile-ring"></div>
             <div class="status-indicator">
               <div class="status-dot"></div>
               <span>{{ 'home.hero.status' | translate }}</span>
@@ -192,69 +194,41 @@
 
       <!-- Habilidades -->
       <div class="tab-pane" [class.active]="activeTab === 'skills'">
-        <div class="skills-overview">
-          <!-- Skills Dashboard -->
-          <div class="skills-dashboard">
-            <div class="areas-dashboard">
-              <div class="areas-grid">
-                <div class="area-card"
-                     *ngFor="let area of skillAreas; let i = index"
-                     [class.active]="selectedArea === i"
-                     (click)="selectArea(i)">
-                  <div class="area-icon">{{ area.emoji }}</div>
-                  <div class="area-content">
-                    <h3>{{ 'skillAreas.' + area.id + '.title' | translate }}</h3>
-                    <p>{{ 'skillAreas.' + area.id + '.description' | translate }}</p>
-                    <div class="tech-preview">
-                      <span class="tech-badge" *ngFor="let tech of area.technologies.slice(0, 3)">
-                        {{ tech }}
-                      </span>
-                      <span class="more-tech" *ngIf="area.technologies.length > 3">
-                        +{{ area.technologies.length - 3 }}
-                      </span>
+        <div class="skills-modern-layout">
+          <!-- Stack Tecnológico -->
+          <div class="skills-categories-modern">
+            <h3 class="section-subtitle">Stack Tecnológico</h3>
+            <div class="categories-grid">
+              <div class="category-card-modern" *ngFor="let category of techStack.slice(0, 4)">
+                <div class="category-header-modern">
+                  <div class="category-icon-bg">
+                    <i [class]="category.icon"></i>
+                  </div>
+                  <h4>{{ category.name }}</h4>
+                  <span class="tech-count">{{ category.technologies.length }} techs</span>
+                </div>
+                
+                <div class="skills-grid-modern">
+                  <div class="skill-item-modern" *ngFor="let tech of category.technologies.slice(0, 6)">
+                    <div class="skill-visual">
+                      <div class="skill-circle">
+                        <svg class="progress-ring" width="50" height="50">
+                          <circle class="progress-ring-bg" cx="25" cy="25" r="20" stroke="#e5e7eb" stroke-width="3" fill="transparent"/>
+                          <circle class="progress-ring-progress" cx="25" cy="25" r="20" 
+                                  [style.stroke-dasharray]="2 * 3.14159 * 20"
+                                  [style.stroke-dashoffset]="2 * 3.14159 * 20 * (1 - tech.level / 100)"
+                                  stroke="var(--accent-primary)" stroke-width="3" fill="transparent"/>
+                        </svg>
+                        <span class="skill-percentage">{{ tech.level }}%</span>
+                      </div>
+                      <span class="skill-name-modern">{{ tech.name }}</span>
                     </div>
                   </div>
-                  <div class="area-status">
-                    <span class="status-indicator" [style.background]="area.color"></span>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Skills por Categoría -->
-          <div class="skills-categories">
-            <div class="skill-category" *ngFor="let category of techStack.slice(0, 4)">
-              <div class="category-header">
-                <i [class]="category.icon"></i>
-                <h3>{{ category.name }}</h3>
-              </div>
-              <div class="skills-list">
-                <div class="skill-item" *ngFor="let tech of category.technologies.slice(0, 4)">
-                  <span class="skill-name">{{ tech.name }}</span>
-                  <div class="skill-level">
-                    <div class="level-bar" [style.width.%]="tech.level"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Resumen de Competencias -->
-          <div class="skills-summary">
-            <h3>Competencias Clave</h3>
-            <div class="key-skills">
-              <div class="key-skill" *ngFor="let skill of mainTechs.slice(0, 6)">
-                <div class="skill-icon">
-                  <i [class]="getTechIcon(skill.name)"></i>
-                </div>
-                <div class="skill-info">
-                  <span class="skill-name">{{ skill.name }}</span>
-                  <span class="skill-level">{{ skill.level }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>

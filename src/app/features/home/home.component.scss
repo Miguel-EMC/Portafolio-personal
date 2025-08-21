@@ -1341,20 +1341,3 @@
 }
 
 /* ===== TECH ICONS ===== */
-.getTechIcon(tech: string): string {
-  const icons: { [key: string]: string } = {
-    'Angular': 'bi-triangle',
-    'React': 'bi-atom',
-    'Vue.js': 'bi-lightning',
-    'TypeScript': 'bi-braces',
-    'JavaScript': 'bi-braces',
-    'Node.js': 'bi-server',
-    'Python': 'bi-filetype-py',
-    'PostgreSQL': 'bi-database',
-    'Docker': 'bi-box-seam',
-    'Laravel': 'bi-boxes',
-    'Flutter': 'bi-phone',
-    'Firebase': 'bi-fire'
-  };
-  return icons[tech] || 'bi-code-slash';
-}

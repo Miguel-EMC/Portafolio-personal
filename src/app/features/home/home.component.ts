@@ -112,7 +112,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
       tech: ['Laravel', 'Vue.js', 'MySQL'],
       liveUrl: 'https://asobanca-demo.com',
-      githubUrl: null
+      githubUrl: null,
+      type: 'web'
     },
     {
       title: 'Münster Mind App',
@@ -120,7 +121,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       image: 'https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg',
       tech: ['Flutter', 'Firebase', 'TensorFlow'],
       liveUrl: 'https://munster-mind.app',
-      githubUrl: null
+      githubUrl: null,
+      type: 'mobile'
     },
     {
       title: 'Sistema CONAFIS SARAS',
@@ -128,7 +130,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg',
       tech: ['Angular', 'NestJS', 'PostgreSQL'],
       liveUrl: 'https://conafis-saras.gov.ec',
-      githubUrl: null
+      githubUrl: null,
+      type: 'web'
     }
   ];
 
@@ -598,5 +601,15 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   // Chart initialization - removed for new design
   private initializeCharts(): void {
     // No charts needed for the new areas dashboard
+  }
+
+  // Method to get technologies for specific experience
+  getTechForExperience(index: number): string[] {
+    const techMap = [
+      ['Angular', 'TypeScript', 'Node.js', 'Docker', 'PostgreSQL'],
+      ['Laravel', 'Vue.js', 'Python', 'Django', 'MySQL'],
+      ['Angular', 'NestJS', 'PostgreSQL', 'HTML5', 'CSS3']
+    ];
+    return techMap[index] || [];
   }
 }

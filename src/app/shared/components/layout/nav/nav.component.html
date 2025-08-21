@@ -12,28 +12,28 @@
 
     <!-- Desktop Navigation -->
     <div class="nav-links desktop-nav">
-      <a class="nav-link" (click)="navigateToRoute('home')" [class.active]="isActive('/home')">
+      <a class="nav-link" (click)="navigateToRoute('home')" [class.active]="isActive('/home') || isActive('/')">
         <div class="link-content">
           <i class="bi bi-house-fill"></i>
           <span class="nav-text">{{ 'nav.home' | translate }}</span>
           <div class="link-indicator"></div>
         </div>
       </a>
-      <a class="nav-link" (click)="navigateToRoute('about')" [class.active]="isActive('/about')">
+      <a class="nav-link" (click)="navigateToRoute('resume')" [class.active]="isActive('/resume')">
         <div class="link-content">
           <i class="bi bi-file-person-fill"></i>
           <span class="nav-text">{{ 'nav.resume' | translate }}</span>
           <div class="link-indicator"></div>
         </div>
       </a>
-      <a class="nav-link" (click)="navigateToRoute('portafolio')" [class.active]="isActive('/portafolio')">
+      <a class="nav-link" (click)="navigateToRoute('portafolio')" [class.active]="isActive('/portfolio')">
         <div class="link-content">
           <i class="bi bi-collection-fill"></i>
           <span class="nav-text">{{ 'nav.portfolio' | translate }}</span>
           <div class="link-indicator"></div>
         </div>
       </a>
-      <a class="nav-link" (click)="navigateToRoute('contacto')" [class.active]="isActive('/contacto')">
+      <a class="nav-link" (click)="navigateToRoute('contacto')" [class.active]="isActive('/contact')">
         <div class="link-content">
           <i class="bi bi-envelope-fill"></i>
           <span class="nav-text">{{ 'nav.contact' | translate }}</span>

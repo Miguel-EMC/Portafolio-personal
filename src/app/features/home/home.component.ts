@@ -96,6 +96,63 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   private currentRoleIndex = 0;
   activeCard = 'code';
 
+  // Top skills for about section
+  topSkills = ['Angular', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL'];
+
+  // Main technologies for compact view with details
+  mainTechs = [
+    { name: 'Angular', level: 'Experto', years: '3+' },
+    { name: 'TypeScript', level: 'Experto', years: '3+' },
+    { name: 'Node.js', level: 'Avanzado', years: '2+' },
+    { name: 'Python', level: 'Avanzado', years: '2+' },
+    { name: 'PostgreSQL', level: 'Avanzado', years: '2+' },
+    { name: 'Docker', level: 'Intermedio', years: '1+' }
+  ];
+
+  // Tech Stack for skills section
+  techStack = [
+    {
+      name: 'Frontend',
+      icon: 'bi-palette',
+      technologies: [
+        { name: 'Angular', level: 95 },
+        { name: 'React', level: 80 },
+        { name: 'Vue.js', level: 75 },
+        { name: 'TypeScript', level: 90 }
+      ]
+    },
+    {
+      name: 'Backend',
+      icon: 'bi-server',
+      technologies: [
+        { name: 'Node.js', level: 85 },
+        { name: 'Python', level: 80 },
+        { name: 'Laravel', level: 75 },
+        { name: 'NestJS', level: 85 }
+      ]
+    },
+    {
+      name: 'Database',
+      icon: 'bi-database',
+      technologies: [
+        { name: 'PostgreSQL', level: 85 },
+        { name: 'MySQL', level: 80 },
+        { name: 'MongoDB', level: 70 },
+        { name: 'Firebase', level: 75 }
+      ]
+    },
+    {
+      name: 'DevOps',
+      icon: 'bi-tools',
+      technologies: [
+        { name: 'Docker', level: 70 },
+        { name: 'Git', level: 90 },
+        { name: 'AWS', level: 65 },
+        { name: 'Linux', level: 75 }
+      ]
+    }
+  ];
+
   // Featured projects for compact portfolio
   featuredProjects: Project[] = featuredProjects;
 
@@ -284,8 +341,39 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     return emojis[index] || '🎓';
   }
 
+  // Método para obtener iconos de tecnologías
+  getTechIcon(tech: string): string {
+    const icons: { [key: string]: string } = {
+      'Angular': 'bi-triangle',
+      'React': 'bi-atom',
+      'Vue.js': 'bi-lightning',
+      'TypeScript': 'bi-braces',
+      'JavaScript': 'bi-braces',
+      'Node.js': 'bi-server',
+      'Python': 'bi-filetype-py',
+      'PostgreSQL': 'bi-database',
+      'Docker': 'bi-box-seam',
+      'Laravel': 'bi-boxes',
+      'Flutter': 'bi-phone',
+      'Firebase': 'bi-fire',
+      'MySQL': 'bi-database-fill',
+      'MongoDB': 'bi-database-down'
+    };
+    return icons[tech] || 'bi-code-slash';
+  }
+
   // Chart initialization - removed for new design
   private initializeCharts(): void {
     // No charts needed for the new areas dashboard
+  }
+
+  // Method to get technologies for specific experience
+  getTechForExperience(index: number): string[] {
+    const techMap = [
+      ['Angular', 'TypeScript', 'Node.js', 'Docker', 'PostgreSQL'],
+      ['Laravel', 'Vue.js', 'Python', 'Django', 'MySQL'],
+      ['Angular', 'NestJS', 'PostgreSQL', 'HTML5', 'CSS3']
+    ];
+    return techMap[index] || [];
   }
 }

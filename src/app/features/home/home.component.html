@@ -1,133 +1,200 @@
-<main class="home-main">
-  <!-- Hero Section Compacta -->
-  <section id="home" class="hero-section">
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <div class="greeting">
-            <span class="greeting-badge">{{ 'home.hero.greeting' | translate }}</span>
-          </div>
-          <h1 class="hero-title">
-            <span class="name">{{ 'home.hero.name' | translate }}</span>
-            <span class="surname gradient-text">{{ 'home.hero.surname' | translate }}</span>
-          </h1>
-          <div class="role-container">
-            <span class="typing-text">{{ currentRole }}</span>
-            <span class="cursor">|</span>
-          </div>
-          <p class="hero-description">
-            {{ 'home.hero.description' | translate }}
-          </p>
+<!-- Hero Section Optimizada -->
+<section id="home" class="hero-section">
+  <div class="hero-container">
+    <div class="hero-content">
+      <!-- Contenido Principal -->
+      <div class="hero-main">
+        <div class="hero-badge">
+          <span class="status-dot"></span>
+          <span>{{ 'home.hero.greeting' | translate }}</span>
+        </div>
+        
+        <h1 class="hero-title">
+          <span class="greeting">{{ 'home.hero.greeting' | translate }}</span>
+          <span class="name">{{ 'home.hero.name' | translate }}</span>
+          <span class="surname gradient-text">{{ 'home.hero.surname' | translate }}</span>
+          <span class="role">{{ currentRole }}</span>
+          <span class="cursor">|</span>
+        </h1>
+        
+        <p class="hero-description">
+          {{ 'home.hero.description' | translate }}
+        </p>
 
-          <!-- Stats Inline -->
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="number">2+</span>
-              <span class="label">{{ 'home.hero.stats.years' | translate }}</span>
-            </div>
-            <div class="stat">
-              <span class="number">5+</span>
-              <span class="label">{{ 'home.hero.stats.projects' | translate }}</span>
-            </div>
-            <div class="stat">
-              <span class="number">8+</span>
-              <span class="label">{{ 'home.hero.stats.technologies' | translate }}</span>
-            </div>
+        <!-- Estadísticas Compactas -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">3+</span>
+            <span class="stat-label">{{ 'home.hero.stats.years' | translate }}</span>
           </div>
-
-          <!-- Actions -->
-          <div class="hero-actions">
-            <button class="btn-primary" (click)="scrollToSection('contacto')">
-              <i class="bi bi-chat-dots"></i>
-              <span>{{ 'home.hero.actions.contact' | translate }}</span>
-            </button>
-            <button class="btn-secondary" (click)="scrollToSection('portafolio')">
-              <i class="bi bi-collection"></i>
-              <span>{{ 'home.hero.actions.projects' | translate }}</span>
-            </button>
+          <div class="stat-item">
+            <span class="stat-number">25+</span>
+            <span class="stat-label">{{ 'home.hero.stats.projects' | translate }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">{{ 'home.hero.stats.technologies' | translate }}</span>
           </div>
         </div>
 
-        <!-- Hero Visual -->
-        <div class="hero-visual">
-          <div class="profile-card">
-            <div class="profile-image">
-              <img src="/assets/img/img-mia.png" alt="Eduardo Miguel Muzo" />
-              <div class="status-indicator">
-                <div class="status-dot"></div>
-                <span>{{ 'home.hero.status' | translate }}</span>
-              </div>
-            </div>
-            <div class="quick-info">
-              <div class="info-item">
-                <i class="bi bi-geo-alt"></i>
-                <span>{{ 'home.hero.location' | translate }}</span>
-              </div>
-              <div class="info-item">
-                <i class="bi bi-briefcase"></i>
-                <span>{{ 'home.hero.role' | translate }}</span>
-              </div>
-            </div>
+        <!-- Acciones Principales -->
+        <div class="hero-actions">
+          <button class="btn-primary" (click)="scrollToSection('contacto')">
+            <i class="bi bi-envelope"></i>
+            <span>{{ 'home.hero.actions.contact' | translate }}</span>
+          </button>
+          <button class="btn-secondary" (click)="scrollToSection('portafolio')">
+            <i class="bi bi-eye"></i>
+            <span>{{ 'home.hero.actions.projects' | translate }}</span>
+          </button>
+          <a href="/assets/cv-eduardo-muzo.pdf" target="_blank" class="btn-outline">
+            <i class="bi bi-download"></i>
+            <span>Descargar CV</span>
+          </a>
+        </div>
+      </div>
 
-            <div class="contact-icons">
-              <a href="tel:+593999763190" class="contact-icon-btn" title="Teléfono">
-                <i class="bi bi-phone"></i>
-              </a>
-              <a href="mailto:eduardomuzo123456@gmail.com" class="contact-icon-btn" title="Email">
-                <i class="bi bi-envelope"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank" class="contact-icon-btn" title="LinkedIn">
-                <i class="bi bi-linkedin"></i>
-              </a>
-              <a href="https://github.com/Miguel-EMC" target="_blank" class="contact-icon-btn" title="GitHub">
-                <i class="bi bi-github"></i>
-              </a>
+      <!-- Perfil Visual -->
+      <div class="hero-profile">
+        <div class="profile-card">
+          <div class="profile-image">
+            <img src="/assets/img/img-mia.png" alt="Eduardo Miguel Muzo" />
+            <div class="profile-ring"></div>
+            <div class="status-indicator">
+              <div class="status-dot"></div>
+              <span>{{ 'home.hero.status' | translate }}</span>
             </div>
+          </div>
+          
+          <div class="profile-info">
+            <h3>Eduardo Miguel Muzo</h3>
+            <p>{{ 'home.hero.role' | translate }}</p>
+            <div class="profile-location">
+              <i class="bi bi-geo-alt"></i>
+              <span>{{ 'home.hero.location' | translate }}</span>
+            </div>
+          </div>
+
+          <!-- Tech Stack Rápido -->
+          <div class="quick-tech">
+            <div class="tech-item" *ngFor="let tech of mainTechs.slice(0, 4)">
+              <i [class]="getTechIcon(tech.name)"></i>
+              <span>{{ tech.name }}</span>
+            </div>
+          </div>
+
+          <!-- Contacto Rápido -->
+          <div class="quick-contact">
+            <a href="mailto:eduardomuzo123456@gmail.com" class="contact-btn">
+              <i class="bi bi-envelope"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank" class="contact-btn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://github.com/Miguel-EMC" target="_blank" class="contact-btn">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="https://wa.me/593999763190" target="_blank" class="contact-btn">
+              <i class="bi bi-whatsapp"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Sección Compacta de Información con Tabs -->
-  <section id="about" class="compact-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>{{ 'home.profile.title' | translate }}</h2>
+<!-- Resume Section Compacta -->
+<section id="resume" class="resume-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'home.profile.title' | translate }}</h2>
+      <p class="section-subtitle">Experiencia, formación y habilidades técnicas</p>
+    </div>
+
+    <!-- Navegación de Tabs -->
+    <div class="tab-navigation">
+      <button class="tab-btn" [class.active]="activeTab === 'experience'" (click)="setActiveTab('experience')">
+        <i class="bi bi-briefcase"></i>
+        <span>{{ 'home.profile.tabs.experience' | translate }}</span>
+      </button>
+      <button class="tab-btn" [class.active]="activeTab === 'education'" (click)="setActiveTab('education')">
+        <i class="bi bi-mortarboard"></i>
+        <span>{{ 'home.profile.tabs.education' | translate }}</span>
+      </button>
+      <button class="tab-btn" [class.active]="activeTab === 'skills'" (click)="setActiveTab('skills')">
+        <i class="bi bi-code-slash"></i>
+        <span>{{ 'home.profile.tabs.skills' | translate }}</span>
+      </button>
+    </div>
+
+    <!-- Contenido de Tabs -->
+    <div class="tab-content">
+      <!-- Experiencia -->
+      <div class="tab-pane" [class.active]="activeTab === 'experience'">
+        <div class="experience-grid">
+          <div class="experience-card" *ngFor="let exp of experiences.slice(0, 3)">
+            <div class="card-header">
+              <div class="job-info">
+                <h3 class="job-title">{{ 'experiences.' + exp.id + '.title' | translate }}</h3>
+                <h4 class="company">{{ 'experiences.' + exp.id + '.subtitle' | translate }}</h4>
+                <div class="job-meta">
+                  <span class="date">{{ exp.date }}</span>
+                  <span class="location">{{ exp.location }}</span>
+                </div>
+              </div>
+              <div class="company-logo">
+                <i class="bi bi-building"></i>
+              </div>
+            </div>
+            
+            <div class="job-highlights">
+              <div class="highlight" *ngFor="let task of ('experiences.' + exp.id + '.tasks' | translate).slice(0, 2)">
+                <i class="bi bi-check-circle"></i>
+                <span>{{ task }}</span>
+              </div>
+            </div>
+
+            <div class="tech-used">
+              <span class="tech-tag" *ngFor="let tech of getTechForExperience(experiences.indexOf(exp)).slice(0, 3)">
+                {{ tech }}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Tab Navigation -->
-      <div class="tab-navigation">
-        <button
-          class="tab-btn"
-          [class.active]="activeTab === 'skills'"
-          (click)="setActiveTab('skills')">
-          <i class="bi bi-code-slash"></i>
-          <span>{{ 'home.profile.tabs.skills' | translate }}</span>
-        </button>
-        <button
-          class="tab-btn"
-          [class.active]="activeTab === 'experience'"
-          (click)="setActiveTab('experience')">
-          <i class="bi bi-briefcase"></i>
-          <span>{{ 'home.profile.tabs.experience' | translate }}</span>
-        </button>
-        <button
-          class="tab-btn"
-          [class.active]="activeTab === 'education'"
-          (click)="setActiveTab('education')">
-          <i class="bi bi-mortarboard"></i>
-          <span>{{ 'home.profile.tabs.education' | translate }}</span>
-        </button>
+      <!-- Educación -->
+      <div class="tab-pane" [class.active]="activeTab === 'education'">
+        <div class="education-timeline">
+          <div class="education-item" *ngFor="let edu of educationItems">
+            <div class="edu-marker">
+              <i [class]="edu.icon"></i>
+            </div>
+            <div class="edu-content">
+              <div class="edu-header">
+                <h3 class="degree">{{ 'education.' + edu.id + '.title' | translate }}</h3>
+                <span class="edu-date">{{ edu.date }}</span>
+              </div>
+              <h4 class="institution">{{ 'education.' + edu.id + '.institution' | translate }}</h4>
+              <p class="edu-description">{{ 'education.' + edu.id + '.description' | translate }}</p>
+              
+              <div class="edu-achievements">
+                <div class="achievement" *ngFor="let achievement of ('education.' + edu.id + '.achievements' | translate).slice(0, 2)">
+                  <i class="bi bi-award"></i>
+                  <span>{{ achievement }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Tab Content -->
-      <div class="tab-content">
-        <!-- Skills Tab -->
-        <div class="tab-pane" [class.active]="activeTab === 'skills'">
+      <!-- Habilidades -->
+      <div class="tab-pane" [class.active]="activeTab === 'skills'">
+        <div class="skills-overview">
+          <!-- Skills Dashboard -->
           <div class="skills-dashboard">
-
-            <!-- Areas Dashboard -->
             <div class="areas-dashboard">
               <div class="areas-grid">
                 <div class="area-card"
@@ -152,60 +219,38 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-        </div>
 
-        <!-- Experience Tab -->
-        <div class="tab-pane" [class.active]="activeTab === 'experience'">
-          <div class="experience-section">
-            <div class="experience-timeline">
-              <div class="timeline-item" *ngFor="let exp of experiences; let i = index">
-                <div class="timeline-marker">
-                </div>
-                <div class="timeline-content">
-                  <div class="experience-header">
-                    <h4>{{ 'experiences.' + exp.id + '.title' | translate }}</h4>
-                    <span class="date">{{ exp.date }}</span>
-                  </div>
-                  <p class="company">🏢 {{ 'experiences.' + exp.id + '.subtitle' | translate }}</p>
-                  <p class="location">
-                    📍 {{ exp.location }}
-                  </p>
-                  <div class="achievements-preview">
-                    <div class="achievement" *ngFor="let task of ('experiences.' + exp.id + '.tasks' | translate).slice(0, 2)">
-                      <span class="achievement-emoji">✨</span>
-                      <span class="task-description">{{ task }}</span>
-                    </div>
+          <!-- Skills por Categoría -->
+          <div class="skills-categories">
+            <div class="skill-category" *ngFor="let category of techStack.slice(0, 4)">
+              <div class="category-header">
+                <i [class]="category.icon"></i>
+                <h3>{{ category.name }}</h3>
+              </div>
+              <div class="skills-list">
+                <div class="skill-item" *ngFor="let tech of category.technologies.slice(0, 4)">
+                  <span class="skill-name">{{ tech.name }}</span>
+                  <div class="skill-level">
+                    <div class="level-bar" [style.width.%]="tech.level"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Education Tab -->
-        <div class="tab-pane" [class.active]="activeTab === 'education'">
-          <div class="education-section">
-            <div class="education-timeline">
-              <div class="education-item" *ngFor="let edu of educationItems; let i = index">
-                <div class="edu-icon">
-                  <span class="edu-emoji">{{ getEducationEmoji(i) }}</span>
+          <!-- Resumen de Competencias -->
+          <div class="skills-summary">
+            <h3>Competencias Clave</h3>
+            <div class="key-skills">
+              <div class="key-skill" *ngFor="let skill of mainTechs.slice(0, 6)">
+                <div class="skill-icon">
+                  <i [class]="getTechIcon(skill.name)"></i>
                 </div>
-                <div class="edu-content">
-                  <div class="edu-header">
-                    <h4>{{ 'education.' + edu.id + '.title' | translate }}</h4>
-                    <span class="date">{{ edu.date }}</span>
-                  </div>
-                  <p class="institution">🏫 {{ 'education.' + edu.id + '.institution' | translate }}</p>
-                  <p class="description">{{ 'education.' + edu.id + '.description' | translate }}</p>
-                  <div class="achievements-preview">
-                    <div class="achievement" *ngFor="let achievement of ('education.' + edu.id + '.achievements' | translate).slice(0, 2)">
-                      <span class="achievement-emoji">🎯</span>
-                      <span>{{ achievement }}</span>
-                    </div>
-                  </div>
+                <div class="skill-info">
+                  <span class="skill-name">{{ skill.name }}</span>
+                  <span class="skill-level">{{ skill.level }}</span>
                 </div>
               </div>
             </div>
@@ -213,82 +258,82 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Skills Area Modal -->
-  <div class="skills-modal-overlay"
-       *ngIf="selectedArea !== null"
-       (click)="closeModal()">
-    <div class="skills-modal"
-         (click)="$event.stopPropagation()">
+<!-- Skills Area Modal -->
+<div class="skills-modal-overlay"
+     *ngIf="selectedArea !== null"
+     (click)="closeModal()">
+  <div class="skills-modal"
+       (click)="$event.stopPropagation()">
 
-      <!-- Header redesigned -->
-      <div class="modal-header">
-        <div class="header-content">
-          <div class="area-badge" [style.background]="skillAreas[selectedArea].color">
-            <span class="area-emoji">{{ skillAreas[selectedArea].emoji }}</span>
-          </div>
-          <div class="header-text">
-            <h2 class="area-title">{{ 'skillAreas.' + skillAreas[selectedArea].id + '.title' | translate }}</h2>
-            <p class="area-subtitle">{{ 'skillAreas.' + skillAreas[selectedArea].id + '.description' | translate }}</p>
-            <div class="area-stats">
-              <div class="stat-chip">
-                <i class="bi bi-collection"></i>
-                <span>{{ skillAreas[selectedArea].detailedTechs.length }} Tecnologías</span>
-              </div>
-              <div class="stat-chip expert">
-                <i class="bi bi-star-fill"></i>
-                <span>{{ getExpertCount(selectedArea) }} Experto+</span>
-              </div>
+    <!-- Header redesigned -->
+    <div class="modal-header">
+      <div class="header-content">
+        <div class="area-badge" [style.background]="skillAreas[selectedArea].color">
+          <span class="area-emoji">{{ skillAreas[selectedArea].emoji }}</span>
+        </div>
+        <div class="header-text">
+          <h2 class="area-title">{{ 'skillAreas.' + skillAreas[selectedArea].id + '.title' | translate }}</h2>
+          <p class="area-subtitle">{{ 'skillAreas.' + skillAreas[selectedArea].id + '.description' | translate }}</p>
+          <div class="area-stats">
+            <div class="stat-chip">
+              <i class="bi bi-collection"></i>
+              <span>{{ skillAreas[selectedArea].detailedTechs.length }} Tecnologías</span>
+            </div>
+            <div class="stat-chip expert">
+              <i class="bi bi-star-fill"></i>
+              <span>{{ getExpertCount(selectedArea) }} Experto+</span>
             </div>
           </div>
         </div>
-        <button class="close-button" (click)="closeModal()">
-          <i class="bi bi-x-lg"></i>
-        </button>
       </div>
+      <button class="close-button" (click)="closeModal()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
 
-      <!-- Body redesigned with cards -->
-      <div class="modal-body">
-        <div class="technologies-grid">
-          <div class="tech-card-modern"
-               *ngFor="let tech of skillAreas[selectedArea].detailedTechs; let i = index">
+    <!-- Body redesigned with cards -->
+    <div class="modal-body">
+      <div class="technologies-grid">
+        <div class="tech-card-modern"
+             *ngFor="let tech of skillAreas[selectedArea].detailedTechs; let i = index">
 
-            <div class="tech-card-header">
-              <div class="tech-icon" [style.background]="skillAreas[selectedArea].color">
-                <span>{{ tech.name.charAt(0) }}</span>
-              </div>
-              <div class="tech-info">
-                <h4 class="tech-title">{{ tech.name }}</h4>
-                <div class="skill-level-visual">
-                  <div class="skill-bar">
-                    <div class="skill-progress"
-                         [style.width]="(tech.mastery / 10) * 100 + '%'"
-                         [style.background]="skillAreas[selectedArea].color">
-                    </div>
+          <div class="tech-card-header">
+            <div class="tech-icon" [style.background]="skillAreas[selectedArea].color">
+              <span>{{ tech.name.charAt(0) }}</span>
+            </div>
+            <div class="tech-info">
+              <h4 class="tech-title">{{ tech.name }}</h4>
+              <div class="skill-level-visual">
+                <div class="skill-bar">
+                  <div class="skill-progress"
+                       [style.width]="(tech.mastery / 10) * 100 + '%'"
+                       [style.background]="skillAreas[selectedArea].color">
                   </div>
-                  <span class="skill-percentage">{{ (tech.mastery / 10) * 100 | number:'1.0-0' }}%</span>
                 </div>
+                <span class="skill-percentage">{{ (tech.mastery / 10) * 100 | number:'1.0-0' }}%</span>
               </div>
             </div>
+          </div>
 
-            <div class="tech-card-footer">
-              <div class="mastery-badge"
-                   [class]="'level-' + tech.mastery"
-                   [style.background]="skillAreas[selectedArea].color + '20'"
-                   [style.border-color]="skillAreas[selectedArea].color">
-                    <i class="bi"
-                      [ngClass]="{
-                        'bi-circle': [1, 2].includes(tech.mastery), 'bi-triangle': [3, 4].includes(tech.mastery),
-                        'bi-square': [5, 6].includes(tech.mastery), 'bi-pentagon': [7, 8].includes(tech.mastery),
-                        'bi-star-fill': [9, 10].includes(tech.mastery)
-                      }"
-                      [style.color]="skillAreas[selectedArea].color">
-                    </i>
-                <span [style.color]="skillAreas[selectedArea].color">
-                  {{ getMasteryLabel(tech.mastery) }}
-                </span>
-              </div>
+          <div class="tech-card-footer">
+            <div class="mastery-badge"
+                 [class]="'level-' + tech.mastery"
+                 [style.background]="skillAreas[selectedArea].color + '20'"
+                 [style.border-color]="skillAreas[selectedArea].color">
+                  <i class="bi"
+                    [ngClass]="{
+                      'bi-circle': [1, 2].includes(tech.mastery), 'bi-triangle': [3, 4].includes(tech.mastery),
+                      'bi-square': [5, 6].includes(tech.mastery), 'bi-pentagon': [7, 8].includes(tech.mastery),
+                      'bi-star-fill': [9, 10].includes(tech.mastery)
+                    }"
+                    [style.color]="skillAreas[selectedArea].color">
+                  </i>
+              <span [style.color]="skillAreas[selectedArea].color">
+                {{ getMasteryLabel(tech.mastery) }}
+              </span>
             </div>
           </div>
         </div>
@@ -305,102 +350,177 @@
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Portfolio Compacto -->
-  <section id="portafolio" class="portfolio-compact">
-    <div class="container">
-      <div class="section-header">
-        <h2>{{ 'home.portfolio.title' | translate }}</h2>
-      </div>
+<!-- Portfolio Section Destacada -->
+<section id="portafolio" class="portfolio-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'home.portfolio.title' | translate }}</h2>
+      <p class="section-subtitle">Una selección de mis mejores trabajos</p>
+    </div>
 
-      <div class="projects-showcase">
-        <div class="project-card" *ngFor="let project of featuredProjects">
-          <div class="project-image">
-            <img [src]="project.image" [alt]="'projects.' + project.id + '.title' | translate" />
-            <div class="project-overlay">
-              <div class="project-actions">
-                <a [href]="project.liveUrl" target="_blank" class="action-btn" *ngIf="project.liveUrl">
-                  <i class="bi bi-eye"></i>
-                </a>
-                <a [href]="project.githubUrl" target="_blank" class="action-btn" *ngIf="project.githubUrl">
-                  <i class="bi bi-github"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>{{ 'projects.' + project.id + '.title' | translate }}</h3>
-            <p>{{ 'projects.' + project.id + '.description' | translate }}</p>
-            <div class="project-tech">
-              <span class="tech-badge" *ngFor="let tech of project.tech.slice(0, 3)">{{ tech }}</span>
+    <div class="projects-showcase">
+      <div class="project-card" *ngFor="let project of featuredProjects">
+        <div class="project-image">
+          <img [src]="project.image" [alt]="'projects.' + project.id + '.title' | translate" />
+          <div class="project-overlay">
+            <div class="project-actions">
+              <a [href]="project.liveUrl" target="_blank" class="action-btn primary" *ngIf="project.liveUrl">
+                <i class="bi bi-eye"></i>
+                <span>Ver Proyecto</span>
+              </a>
+              <a [href]="project.githubUrl" target="_blank" class="action-btn secondary" *ngIf="project.githubUrl">
+                <i class="bi bi-github"></i>
+                <span>Código</span>
+              </a>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="view-all">
-        <button class="btn-outline" (click)="viewAllProjects()">
-          <span>{{ 'home.portfolio.viewAll' | translate }}</span>
-          <i class="bi bi-arrow-right"></i>
-        </button>
+        
+        <div class="project-info">
+          <div class="project-header">
+            <h3 class="project-title">{{ 'projects.' + project.id + '.title' | translate }}</h3>
+            <span class="project-type" [class]="project.type">{{ project.type }}</span>
+          </div>
+          <p class="project-description">{{ 'projects.' + project.id + '.description' | translate }}</p>
+          
+          <div class="project-tech">
+            <span class="tech-badge" *ngFor="let tech of project.tech.slice(0, 3)">
+              {{ tech }}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Contacto Compacto -->
-  <section id="contacto" class="contact-compact">
-    <div class="container">
-      <div class="section-header">
-        <h2>{{ 'home.contact.title' | translate }}</h2>
-      </div>
+    <div class="portfolio-cta">
+      <button class="btn-outline-large" (click)="viewAllProjects()">
+        <span>{{ 'home.portfolio.viewAll' | translate }}</span>
+        <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
 
-      <div class="contact-content">
-        <div class="contact-info">
+<!-- Contact Section Optimizada -->
+<section id="contacto" class="contact-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'home.contact.title' | translate }}</h2>
+      <p class="section-subtitle">Estoy disponible para nuevos proyectos y oportunidades</p>
+    </div>
+
+    <div class="contact-content">
+      <!-- Información de Contacto -->
+      <div class="contact-info">
+        <div class="contact-intro">
+          <h3>Hablemos de tu proyecto</h3>
           <p>{{ 'home.contact.description' | translate }}</p>
+        </div>
 
-          <div class="contact-methods">
-            <a href="mailto:eduardomuzo123456@gmail.com" class="contact-method">
+        <div class="contact-methods">
+          <a href="mailto:eduardomuzo123456@gmail.com" class="contact-method">
+            <div class="method-icon email">
               <i class="bi bi-envelope"></i>
-              <div>
-                <span class="method-label">{{ 'home.contact.methods.email' | translate }}</span>
-                <span class="method-value">eduardomuzo123456&#64;gmail.com</span>
-              </div>
-            </a>
-            <a href="https://wa.me/593999763190" target="_blank" class="contact-method">
+            </div>
+            <div class="method-info">
+              <h4>{{ 'home.contact.methods.email' | translate }}</h4>
+              <p>eduardomuzo123456&#64;gmail.com</p>
+              <span>Respuesta en 24h</span>
+            </div>
+          </a>
+
+          <a href="https://wa.me/593999763190" target="_blank" class="contact-method">
+            <div class="method-icon whatsapp">
               <i class="bi bi-whatsapp"></i>
-              <div>
-                <span class="method-label">{{ 'home.contact.methods.whatsapp' | translate }}</span>
-                <span class="method-value">+593 999 763 190</span>
-              </div>
-            </a>
-            <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank" class="contact-method">
+            </div>
+            <div class="method-info">
+              <h4>{{ 'home.contact.methods.whatsapp' | translate }}</h4>
+              <p>+593 999 763 190</p>
+              <span>Respuesta inmediata</span>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank" class="contact-method">
+            <div class="method-icon linkedin">
               <i class="bi bi-linkedin"></i>
-              <div>
-                <span class="method-label">{{ 'home.contact.methods.linkedin' | translate }}</span>
-                <span class="method-value">Eduardo Miguel Muzo</span>
-              </div>
-            </a>
+            </div>
+            <div class="method-info">
+              <h4>{{ 'home.contact.methods.linkedin' | translate }}</h4>
+              <p>Eduardo Miguel Muzo</p>
+              <span>Red profesional</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Estado de Disponibilidad -->
+        <div class="availability-status">
+          <div class="status-indicator">
+            <div class="status-dot active"></div>
+            <span>Disponible para proyectos</span>
+          </div>
+          <div class="availability-details">
+            <div class="detail">
+              <i class="bi bi-clock"></i>
+              <span>Respuesta: < 24h</span>
+            </div>
+            <div class="detail">
+              <i class="bi bi-calendar"></i>
+              <span>Inicio: Inmediato</span>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="contact-form-compact">
-          <form class="quick-contact-form" #contactForm="ngForm">
+      <!-- Formulario de Contacto -->
+      <div class="contact-form-container">
+        <form class="contact-form" #contactForm="ngForm">
+          <div class="form-header">
+            <h3>Envíame un mensaje</h3>
+            <p>Cuéntame sobre tu proyecto</p>
+          </div>
+
+          <div class="form-row">
             <div class="form-group">
-              <input type="text" [placeholder]="'home.contact.form.name' | translate" required>
+              <label for="name">{{ 'home.contact.form.name' | translate }}</label>
+              <input type="text" id="name" name="name" [placeholder]="'home.contact.form.name' | translate" required>
             </div>
             <div class="form-group">
-              <input type="email" [placeholder]="'home.contact.form.email' | translate" required>
+              <label for="email">{{ 'home.contact.form.email' | translate }}</label>
+              <input type="email" id="email" name="email" [placeholder]="'home.contact.form.email' | translate" required>
             </div>
-            <div class="form-group">
-              <textarea [placeholder]="'home.contact.form.message' | translate" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn-primary full-width">
-              <i class="bi bi-send"></i>
-              <span>{{ 'home.contact.form.send' | translate }}</span>
-            </button>
-          </form>
-        </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Tipo de Proyecto</label>
+            <select id="subject" name="subject" required>
+              <option value="">Selecciona una opción</option>
+              <option value="web">Desarrollo Web</option>
+              <option value="mobile">Aplicación Móvil</option>
+              <option value="ecommerce">E-commerce</option>
+              <option value="consulting">Consultoría</option>
+              <option value="other">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">{{ 'home.contact.form.message' | translate }}</label>
+            <textarea id="message" name="message" rows="4" 
+                      [placeholder]="'home.contact.form.message' | translate" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary full-width">
+            <i class="bi bi-send"></i>
+            <span>{{ 'home.contact.form.send' | translate }}</span>
+          </button>
+
+          <p class="form-note">
+            <i class="bi bi-shield-check"></i>
+            Tu información está segura y no será compartida
+          </p>
+        </form>
       </div>
     </div>
-  </section>
-</main>
+  </div>
+</section>

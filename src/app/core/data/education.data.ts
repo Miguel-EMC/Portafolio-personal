@@ -2,6 +2,7 @@ export interface Education {
   id: string;
   date: string;
   achievements: string[];
+  icon?: string;
 }
 
 export const educationItems: Education[] = [
@@ -13,7 +14,8 @@ export const educationItems: Education[] = [
       'Proyectos de Machine Learning y Deep Learning',
       'Desarrollo de aplicaciones web full-stack',
       'Participación en competencias de programación'
-    ]
+    ],
+    icon: 'bi-mortarboard'
   },
   {
     id: 'software-development',
@@ -23,7 +25,8 @@ export const educationItems: Education[] = [
       'Dominio de frameworks modernos (Angular, React, Vue.js)',
       'Implementación de APIs RESTful y microservicios',
       'Certificación en metodologías ágiles (Scrum)'
-    ]
+    ],
+    icon: 'bi-code-slash'
   },
   {
     id: 'high-school',
@@ -33,6 +36,7 @@ export const educationItems: Education[] = [
       'Participación en olimpiadas de matemáticas',
       'Primer contacto con programación en Python',
       'Liderazgo estudiantil y trabajo en equipo'
-    ]
+    ],
+    icon: 'bi-book'
   }
 ];

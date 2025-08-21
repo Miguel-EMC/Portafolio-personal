@@ -1,0 +1,17 @@
+<div class="language-toggle" (click)="toggleDropdown()">
+  <div class="current-language">
+    <span class="flag">{{ getCurrentLanguageFlag() }}</span>
+    <span class="language-code">{{ currentLanguage.toUpperCase() }}</span>
+    <i class="bi bi-chevron-down" [class.rotated]="isDropdownOpen"></i>
+  </div>
+  
+  <div class="dropdown-menu" [class.show]="isDropdownOpen">
+    <div class="dropdown-item" 
+         *ngFor="let lang of availableLanguages"
+         [class.active]="lang.code === currentLanguage"
+         (click)="onLanguageChange(lang.code)">
+      <span class="flag">{{ lang.flag }}</span>
+      <span class="language-name">{{ lang.label }}</span>
+    </div>
+  </div>
+</div>

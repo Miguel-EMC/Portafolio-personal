@@ -1,0 +1,231 @@
+{
+  "nav": {
+    "brandSubtitle": "Full Stack Dev",
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "resume": "Resume",
+    "portfolio": "Portafolio",
+    "contact": "Contacto"
+  },
+  "home": {
+    "hero": {
+      "greeting": "👋 Hola, soy",
+      "name": "Eduardo Miguel",
+      "surname": "Muzo",
+      "description": "Desarrollador Full Stack especializado en crear soluciones web modernas y escalables. Apasionado por la IA y el Machine Learning.",
+      "stats": {
+        "years": "Años",
+        "projects": "Proyectos", 
+        "technologies": "Tecnologías"
+      },
+      "actions": {
+        "contact": "Contactar",
+        "projects": "Ver Proyectos"
+      },
+      "status": "Disponible",
+      "location": "Quito, Ecuador",
+      "role": "Full Stack Developer"
+    },
+    "profile": {
+      "title": "Perfil Profesional",
+      "tabs": {
+        "skills": "Skills",
+        "experience": "Experiencia", 
+        "education": "Formación"
+      }
+    },
+    "portfolio": {
+      "title": "Proyectos Destacados",
+      "viewAll": "Ver Todos los Proyectos"
+    },
+    "contact": {
+      "title": "Contáctame",
+      "description": "¿Tienes un proyecto en mente? Estoy disponible para nuevos proyectos y colaboraciones. ¡Hablemos!",
+      "methods": {
+        "email": "Email",
+        "whatsapp": "WhatsApp",
+        "linkedin": "LinkedIn"
+      },
+      "form": {
+        "name": "Tu nombre",
+        "email": "Tu email", 
+        "message": "Cuéntame sobre tu proyecto...",
+        "send": "Enviar Mensaje"
+      }
+    }
+  },
+  "projects": {
+    "asobanca": {
+      "title": "Plataforma ASOBANCA",
+      "description": "Sistema integral para instituciones financieras con módulos de gestión de clientes, transacciones y reportes regulatorios.",
+      "longDescription": "Plataforma web completa desarrollada con Laravel y Vue.js que permite a las instituciones financieras gestionar clientes, procesar transacciones y generar reportes regulatorios con dashboards interactivos."
+    },
+    "munsterMind": {
+      "title": "Münster Mind App",
+      "description": "Aplicación móvil innovadora para entrenamiento mental y cognitivo con gamificación y seguimiento de progreso.",
+      "longDescription": "Aplicación móvil multiplataforma desarrollada con Flutter que ofrece ejercicios innovadores de entrenamiento mental, seguimiento detallado de progreso y elementos de gamificación avanzados."
+    },
+    "conafis": {
+      "title": "Sistema CONAFIS SARAS",
+      "description": "Plataforma gubernamental para gestión de recursos y análisis estadístico con alta disponibilidad y seguridad.",
+      "longDescription": "Sistema web gubernamental desarrollado con Angular y NestJS para la gestión eficiente de recursos públicos con módulos de análisis estadístico, alta disponibilidad y máxima seguridad."
+    },
+    "academicSystem": {
+      "title": "Sistema de Gestión Académica",
+      "description": "Plataforma web completa para la gestión de estudiantes, profesores y cursos con dashboard administrativo y reportes en tiempo real.",
+      "longDescription": "Sistema completo de gestión académica desarrollado con Angular que permite administrar estudiantes, profesores, cursos y generar reportes académicos con interfaz administrativa intuitiva."
+    },
+    "ecommerce": {
+      "title": "E-Commerce Moderno",
+      "description": "Tienda online responsive con carrito de compras, pasarela de pagos, gestión de inventario y panel de administración.",
+      "longDescription": "Plataforma de comercio electrónico desarrollada con React y Next.js que incluye carrito de compras, integración con Stripe para pagos y panel de administración completo para gestión de productos e inventario."
+    },
+    "taskApp": {
+      "title": "App de Gestión de Tareas",
+      "description": "Aplicación móvil multiplataforma para gestión de proyectos y tareas con sincronización en tiempo real y colaboración en equipo.",
+      "longDescription": "Aplicación móvil desarrollada con Flutter para gestión de proyectos y tareas que incluye colaboración en tiempo real, asignación de tareas y seguimiento de progreso con notificaciones."
+    },
+    "analyticsApp": {
+      "title": "Dashboard de Analytics",
+      "description": "Panel de control interactivo con visualización de datos, gráficos dinámicos y reportes personalizables para análisis de negocio.",
+      "longDescription": "Dashboard completo desarrollado con Vue.js y D3.js que permite visualizar datos complejos, crear gráficos interactivos y generar reportes personalizados para análisis empresarial."
+    },
+    "billusos": {
+      "title": "Billusos Platform",
+      "description": "Plataforma de facturación electrónica y gestión empresarial con integración a servicios gubernamentales.",
+      "longDescription": "Sistema empresarial desarrollado con Django y React para facturación electrónica, gestión de clientes y integración completa con servicios del SRI y otros organismos gubernamentales."
+    }
+  },
+  "experiences": {
+    "fullstack-lateral": {
+      "title": "Full Stack Developer",
+      "subtitle": "Lateral Business Thinking | Innovate Empresarial Solutions",
+      "tasks": [
+        "Desarrollo de interfaces web dinámicas con Angular y TypeScript, mejorando la experiencia de usuario en un 40%",
+        "Implementación de arquitecturas escalables con microservicios usando Node.js y Docker",
+        "Liderazgo en el desarrollo del aplicativo móvil Münster Mind con Flutter y Firebase",
+        "Optimización de bases de datos PostgreSQL, reduciendo tiempos de consulta en un 35%"
+      ]
+    },
+    "freelance-dev": {
+      "title": "Desarrollador de Software",
+      "subtitle": "Freelance",
+      "tasks": [
+        "Desarrollo full-stack de la plataforma ASOBANCA con Laravel y Vue.js para 15+ instituciones financieras",
+        "Mejora continua del aplicativo Billusos, implementando nuevas funcionalidades con Python y Django",
+        "Creación de APIs RESTful robustas y documentación técnica completa",
+        "Gestión de proyectos web personalizados con metodologías ágiles, entregando el 100% a tiempo"
+      ]
+    },
+    "junior-fullstack": {
+      "title": "Full Stack Developer Jr",
+      "subtitle": "Centro Ecuatoriano de Eficiencia de Recursos",
+      "tasks": [
+        "Maquetación responsive de interfaces cliente para CONAFIS SARAS con HTML5, CSS3 y JavaScript",
+        "Configuración y optimización de entornos de desarrollo para equipos multidisciplinarios",
+        "Administración de bases de datos SQL Server y generación de scripts automatizados",
+        "Implementación de mejores prácticas de desarrollo y control de versiones con Git"
+      ]
+    }
+  },
+  "education": {
+    "computer-engineering": {
+      "title": "Ingeniería en Ciencias de la Computación",
+      "institution": "Escuela Politécnica Nacional",
+      "description": "Formación integral en ciencias de la computación con énfasis en desarrollo de software, algoritmos avanzados, inteligencia artificial y análisis de sistemas complejos.",
+      "achievements": [
+        "Especialización en Algoritmos y Estructuras de Datos Avanzadas",
+        "Proyectos de Machine Learning y Deep Learning",
+        "Desarrollo de aplicaciones web full-stack",
+        "Participación en competencias de programación"
+      ]
+    },
+    "software-development": {
+      "title": "Tecnología Superior en Desarrollo de Software",
+      "institution": "Escuela Politécnica Nacional",
+      "description": "Formación técnica especializada en desarrollo de aplicaciones web y móviles, bases de datos, metodologías ágiles y arquitecturas de software modernas.",
+      "achievements": [
+        "Desarrollo de más de 15 proyectos web completos",
+        "Dominio de frameworks modernos (Angular, React, Vue.js)",
+        "Implementación de APIs RESTful y microservicios",
+        "Certificación en metodologías ágiles (Scrum)"
+      ]
+    },
+    "high-school": {
+      "title": "Bachillerato General Unificado",
+      "institution": "Unidad Educativa Leopoldo Mercado",
+      "description": "Educación secundaria con especialización en ciencias exactas, matemáticas avanzadas y fundamentos de programación que sentaron las bases para mi carrera tecnológica.",
+      "achievements": [
+        "Graduado con honores en Ciencias Exactas",
+        "Participación en olimpiadas de matemáticas",
+        "Primer contacto con programación en Python",
+        "Liderazgo estudiantil y trabajo en equipo"
+      ]
+    }
+  },
+  "skillAreas": {
+    "frontend": {
+      "title": "Frontend",
+      "description": "Interfaces modernas y experiencias de usuario excepcionales"
+    },
+    "backend": {
+      "title": "Backend",
+      "description": "APIs robustas y arquitecturas escalables"
+    },
+    "mobile": {
+      "title": "Mobile",
+      "description": "Aplicaciones móviles multiplataforma innovadoras"
+    },
+    "devops": {
+      "title": "Redes & DevOps",
+      "description": "Infraestructura cloud y administración de sistemas"
+    },
+    "languages": {
+      "title": "Lenguajes de Programación",
+      "description": "Base sólida en múltiples lenguajes para distintos entornos"
+    },
+    "databases": {
+      "title": "Bases de Datos",
+      "description": "Almacenamiento y gestión eficiente de datos"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Mi Portafolio. Todos los derechos reservados."
+  },
+  "portfolio": {
+    "header": {
+      "title": "Mi Portafolio",
+      "subtitle": "Una selección de proyectos que demuestran mis habilidades y experiencia en desarrollo"
+    },
+    "filters": {
+      "all": "Todos",
+      "personal": "Personales",
+      "professional": "Profesionales"
+    },
+    "project": {
+      "viewDetails": "Ver Detalles",
+      "personal": "Personal",
+      "professional": "Profesional",
+      "viewProject": "Ver Proyecto",
+      "viewCode": "Ver Código",
+      "description": "Descripción del Proyecto",
+      "technologies": "Tecnologías Utilizadas"
+    },
+    "empty": {
+      "title": "No hay proyectos",
+      "description": "No se encontraron proyectos para el filtro seleccionado"
+    }
+  },
+  "resume": {
+    "experience": {
+      "title": "Mi Experiencia",
+      "subtitle": "Un recorrido por mi carrera profesional en el desarrollo de software y tecnología",
+      "technologies": "Tecnologías",
+      "skills": "Skills"
+    },
+    "education": {
+      "title": "Mi Trayectoria Educativa",
+      "subtitle": "El camino académico que ha forjado mi carrera profesional en tecnología"
+    }
+  }
+}

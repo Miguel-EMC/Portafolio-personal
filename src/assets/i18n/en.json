@@ -1,0 +1,231 @@
+{
+  "nav": {
+    "brandSubtitle": "Full Stack Dev",
+    "home": "Home",
+    "about": "About Me",
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "greeting": "👋 Hello, I'm",
+      "name": "Eduardo Miguel", 
+      "surname": "Muzo",
+      "description": "Full Stack Developer specialized in creating modern and scalable web solutions. Passionate about AI and Machine Learning.",
+      "stats": {
+        "years": "Years",
+        "projects": "Projects",
+        "technologies": "Technologies"
+      },
+      "actions": {
+        "contact": "Contact",
+        "projects": "View Projects"
+      },
+      "status": "Available",
+      "location": "Quito, Ecuador",
+      "role": "Full Stack Developer"
+    },
+    "profile": {
+      "title": "Professional Profile",
+      "tabs": {
+        "skills": "Skills",
+        "experience": "Experience",
+        "education": "Education"
+      }
+    },
+    "portfolio": {
+      "title": "Featured Projects",
+      "viewAll": "View All Projects"
+    },
+    "contact": {
+      "title": "Contact Me",
+      "description": "Do you have a project in mind? I'm available for new projects and collaborations. Let's talk!",
+      "methods": {
+        "email": "Email",
+        "whatsapp": "WhatsApp", 
+        "linkedin": "LinkedIn"
+      },
+      "form": {
+        "name": "Your name",
+        "email": "Your email",
+        "message": "Tell me about your project...",
+        "send": "Send Message"
+      }
+    }
+  },
+  "projects": {
+    "asobanca": {
+      "title": "ASOBANCA Platform",
+      "description": "Comprehensive system for financial institutions with client management, transaction processing and regulatory reporting modules.",
+      "longDescription": "Complete web platform developed with Laravel and Vue.js that allows financial institutions to manage clients, process transactions and generate regulatory reports with interactive dashboards."
+    },
+    "munsterMind": {
+      "title": "Münster Mind App",
+      "description": "Innovative mobile application for mental and cognitive training with gamification and progress tracking.",
+      "longDescription": "Cross-platform mobile application developed with Flutter that offers innovative mental training exercises, detailed progress tracking and advanced gamification elements."
+    },
+    "conafis": {
+      "title": "CONAFIS SARAS System",
+      "description": "Government platform for resource management and statistical analysis with high availability and security.",
+      "longDescription": "Government web system developed with Angular and NestJS for efficient management of public resources with statistical analysis modules, high availability and maximum security."
+    },
+    "academicSystem": {
+      "title": "Academic Management System",
+      "description": "Complete web platform for managing students, teachers and courses with administrative dashboard and real-time reports.",
+      "longDescription": "Complete academic management system developed with Angular that allows managing students, teachers, courses and generating academic reports with an intuitive administrative interface."
+    },
+    "ecommerce": {
+      "title": "Modern E-Commerce",
+      "description": "Responsive online store with shopping cart, payment gateway, inventory management and administration panel.",
+      "longDescription": "E-commerce platform developed with React and Next.js that includes shopping cart, Stripe integration for payments and complete administration panel for product and inventory management."
+    },
+    "taskApp": {
+      "title": "Task Management App",
+      "description": "Cross-platform mobile application for project and task management with real-time synchronization and team collaboration.",
+      "longDescription": "Mobile application developed with Flutter for project and task management that includes real-time collaboration, task assignment and progress tracking with notifications."
+    },
+    "analyticsApp": {
+      "title": "Analytics Dashboard",
+      "description": "Interactive control panel with data visualization, dynamic charts and customizable reports for business analysis.",
+      "longDescription": "Complete dashboard developed with Vue.js and D3.js that allows visualizing complex data, creating interactive charts and generating customized reports for business analysis."
+    },
+    "billusos": {
+      "title": "Billusos Platform",
+      "description": "Electronic invoicing and business management platform with integration to government services.",
+      "longDescription": "Business system developed with Django and React for electronic invoicing, client management and complete integration with SRI and other government agencies."
+    }
+  },
+  "experiences": {
+    "fullstack-lateral": {
+      "title": "Full Stack Developer",
+      "subtitle": "Lateral Business Thinking | Innovate Empresarial Solutions",
+      "tasks": [
+        "Development of dynamic web interfaces with Angular and TypeScript, improving user experience by 40%",
+        "Implementation of scalable architectures with microservices using Node.js and Docker",
+        "Leadership in developing the Münster Mind mobile app with Flutter and Firebase",
+        "PostgreSQL database optimization, reducing query times by 35%"
+      ]
+    },
+    "freelance-dev": {
+      "title": "Software Developer",
+      "subtitle": "Freelance",
+      "tasks": [
+        "Full-stack development of the ASOBANCA platform with Laravel and Vue.js for 15+ financial institutions",
+        "Continuous improvement of the Billusos application, implementing new features with Python and Django",
+        "Creation of robust RESTful APIs and complete technical documentation",
+        "Management of personalized web projects with agile methodologies, delivering 100% on time"
+      ]
+    },
+    "junior-fullstack": {
+      "title": "Jr Full Stack Developer",
+      "subtitle": "Centro Ecuatoriano de Eficiencia de Recursos",
+      "tasks": [
+        "Responsive client interface layout for CONAFIS SARAS with HTML5, CSS3 and JavaScript",
+        "Configuration and optimization of development environments for multidisciplinary teams",
+        "SQL Server database administration and automated script generation",
+        "Implementation of development best practices and version control with Git"
+      ]
+    }
+  },
+  "education": {
+    "computer-engineering": {
+      "title": "Computer Science Engineering",
+      "institution": "Escuela Politécnica Nacional",
+      "description": "Comprehensive training in computer science with emphasis on software development, advanced algorithms, artificial intelligence and complex systems analysis.",
+      "achievements": [
+        "Specialization in Advanced Algorithms and Data Structures",
+        "Machine Learning and Deep Learning projects",
+        "Full-stack web application development",
+        "Participation in programming competitions"
+      ]
+    },
+    "software-development": {
+      "title": "Higher Technology in Software Development",
+      "institution": "Escuela Politécnica Nacional",
+      "description": "Specialized technical training in web and mobile application development, databases, agile methodologies and modern software architectures.",
+      "achievements": [
+        "Development of more than 15 complete web projects",
+        "Mastery of modern frameworks (Angular, React, Vue.js)",
+        "Implementation of RESTful APIs and microservices",
+        "Certification in agile methodologies (Scrum)"
+      ]
+    },
+    "high-school": {
+      "title": "Unified General Baccalaureate",
+      "institution": "Unidad Educativa Leopoldo Mercado",
+      "description": "Secondary education with specialization in exact sciences, advanced mathematics and programming fundamentals that laid the foundation for my technological career.",
+      "achievements": [
+        "Graduated with honors in Exact Sciences",
+        "Participation in mathematics olympiads",
+        "First contact with Python programming",
+        "Student leadership and teamwork"
+      ]
+    }
+  },
+  "skillAreas": {
+    "frontend": {
+      "title": "Frontend",
+      "description": "Modern interfaces and exceptional user experiences"
+    },
+    "backend": {
+      "title": "Backend",
+      "description": "Robust APIs and scalable architectures"
+    },
+    "mobile": {
+      "title": "Mobile",
+      "description": "Innovative cross-platform mobile applications"
+    },
+    "devops": {
+      "title": "Networks & DevOps",
+      "description": "Cloud infrastructure and systems administration"
+    },
+    "languages": {
+      "title": "Programming Languages",
+      "description": "Solid foundation in multiple languages for different environments"
+    },
+    "databases": {
+      "title": "Databases",
+      "description": "Efficient data storage and management"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 My Portfolio. All rights reserved."
+  },
+  "portfolio": {
+    "header": {
+      "title": "My Portfolio",
+      "subtitle": "A selection of projects that demonstrate my skills and experience in development"
+    },
+    "filters": {
+      "all": "All",
+      "personal": "Personal",
+      "professional": "Professional"
+    },
+    "project": {
+      "viewDetails": "View Details",
+      "personal": "Personal",
+      "professional": "Professional",
+      "viewProject": "View Project",
+      "viewCode": "View Code",
+      "description": "Project Description",
+      "technologies": "Technologies Used"
+    },
+    "empty": {
+      "title": "No projects",
+      "description": "No projects found for the selected filter"
+    }
+  },
+  "resume": {
+    "experience": {
+      "title": "My Experience",
+      "subtitle": "A journey through my professional career in software development and technology",
+      "technologies": "Technologies",
+      "skills": "Skills"
+    },
+    "education": {
+      "title": "My Educational Journey",
+      "subtitle": "The academic path that has shaped my professional career in technology"
+    }
+  }
+}

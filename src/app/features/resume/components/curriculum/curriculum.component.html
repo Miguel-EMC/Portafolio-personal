@@ -4,8 +4,8 @@
       <div class="timeline-item" *ngFor="let exp of experiences; let i = index">
         <div class="experience-card">
           <div class="experience-header">
-            <h3 class="job-title">{{ exp.title }}</h3>
-            <h4 class="company">{{ exp.subtitle }}</h4>
+            <h3 class="job-title">{{ 'experiences.' + exp.id + '.title' | translate }}</h3>
+            <h4 class="company">{{ 'experiences.' + exp.id + '.subtitle' | translate }}</h4>
             <div class="job-meta">
               <div class="meta-item">
                 <i class="bi bi-calendar3"></i>
@@ -18,12 +18,8 @@
             </div>
           </div>
           
-          <div class="job-description" *ngIf="exp.description">
-            {{ exp.description }}
-          </div>
-          
           <ul class="achievements" *ngIf="exp.tasks && exp.tasks.length > 0">
-            <li class="achievement-item" *ngFor="let task of exp.tasks">
+            <li class="achievement-item" *ngFor="let task of ('experiences.' + exp.id + '.tasks' | translate); let i = index">
               {{ task }}
             </li>
           </ul>

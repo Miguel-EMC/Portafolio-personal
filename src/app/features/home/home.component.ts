@@ -1,9 +1,15 @@
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { RouterLink, Router } from "@angular/router";
 import { trigger, state, style, transition, animate, query, stagger } from '@angular/animations';
+
+// Data imports
+import { featuredProjects, type Project } from '../../core/data/projects.data';
+import { experiences, type Experience } from '../../core/data/experience.data';
+import { educationItems, type Education } from '../../core/data/education.data';
+import { skillAreas, type SkillArea } from '../../core/data/skills.data';
 
 // amCharts imports
 import * as am5 from '@amcharts/amcharts5';
@@ -47,22 +53,22 @@ import { ContactsComponent } from '../contact/contacts/contacts.component';
     ]),
     trigger('slideInScale', [
       transition(':enter', [
-        style({ 
-          transform: 'scale(0.7) translateY(-50px)', 
-          opacity: 0 
+        style({
+          transform: 'scale(0.7) translateY(-50px)',
+          opacity: 0
         }),
-        animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)', 
-          style({ 
-            transform: 'scale(1) translateY(0)', 
-            opacity: 1 
+        animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)',
+          style({
+            transform: 'scale(1) translateY(0)',
+            opacity: 1
           })
         )
       ]),
       transition(':leave', [
-        animate('300ms ease-in', 
-          style({ 
-            transform: 'scale(0.8) translateY(20px)', 
-            opacity: 0 
+        animate('300ms ease-in',
+          style({
+            transform: 'scale(0.8) translateY(20px)',
+            opacity: 0
           })
         )
       ])
@@ -70,11 +76,12 @@ import { ContactsComponent } from '../contact/contacts/contacts.component';
   ]
 })
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
-  
+
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object, 
+    @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private translate: TranslateService
   ) {}
   // Typing animation
   currentRole = '';
@@ -82,13 +89,11 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   private typingInterval: any;
   private roles = [
     'Full Stack Developer',
-    'Frontend Developer', 
+    'Frontend Developer',
     'Backend Developer',
     'Mobile Developer'
   ];
   private currentRoleIndex = 0;
-
-  // Interactive cards
   activeCard = 'code';
 
   // Top skills for about section
@@ -104,321 +109,76 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     { name: 'Docker', level: 'Intermedio', years: '1+' }
   ];
 
-  // Featured projects for compact portfolio
-  featuredProjects = [
-    {
-      title: 'Plataforma ASOBANCA',
-      description: 'Sistema integral para instituciones financieras con módulos de gestión completos.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
-      tech: ['Laravel', 'Vue.js', 'MySQL'],
-      liveUrl: 'https://asobanca-demo.com',
-      githubUrl: null,
-      type: 'web'
-    },
-    {
-      title: 'Münster Mind App',
-      description: 'Aplicación móvil para entrenamiento mental y cognitivo con gamificación.',
-      image: 'https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg',
-      tech: ['Flutter', 'Firebase', 'TensorFlow'],
-      liveUrl: 'https://munster-mind.app',
-      githubUrl: null,
-      type: 'mobile'
-    },
-    {
-      title: 'Sistema CONAFIS SARAS',
-      description: 'Plataforma gubernamental para gestión de recursos y análisis estadístico.',
-      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg',
-      tech: ['Angular', 'NestJS', 'PostgreSQL'],
-      liveUrl: 'https://conafis-saras.gov.ec',
-      githubUrl: null,
-      type: 'web'
-    }
-  ];
-
-  // Detailed data for tabs
-  educationItems = [
-    {
-      icon: 'bi bi-mortarboard-fill',
-      title: 'Ingeniería en Ciencias de la Computación',
-      institution: 'Escuela Politécnica Nacional',
-      date: 'Actualidad',
-      description: 'Formación integral en ciencias de la computación con énfasis en desarrollo de software, algoritmos avanzados, inteligencia artificial y análisis de sistemas complejos.',
-      achievements: [
-        'Especialización en Algoritmos y Estructuras de Datos Avanzadas',
-        'Proyectos de Machine Learning y Deep Learning',
-        'Desarrollo de aplicaciones web full-stack',
-        'Participación en competencias de programación'
-      ]
-    },
-    {
-      icon: 'bi bi-code-slash',
-      title: 'Tecnología Superior en Desarrollo de Software',
-      institution: 'Escuela Politécnica Nacional',
-      date: '2020 - 2023',
-      description: 'Formación técnica especializada en desarrollo de aplicaciones web y móviles, bases de datos, metodologías ágiles y arquitecturas de software modernas.',
-      achievements: [
-        'Desarrollo de más de 15 proyectos web completos',
-        'Dominio de frameworks modernos (Angular, React, Vue.js)',
-        'Implementación de APIs RESTful y microservicios',
-        'Certificación en metodologías ágiles (Scrum)'
-      ]
-    },
-    {
-      icon: 'bi bi-book',
-      title: 'Bachillerato General Unificado',
-      institution: 'Unidad Educativa Leopoldo Mercado',
-      date: '2013 - 2019',
-      description: 'Educación secundaria con especialización en ciencias exactas, matemáticas avanzadas y fundamentos de programación que sentaron las bases para mi carrera tecnológica.',
-      achievements: [
-        'Graduado con honores en Ciencias Exactas',
-        'Participación en olimpiadas de matemáticas',
-        'Primer contacto con programación en Python',
-        'Liderazgo estudiantil y trabajo en equipo'
-      ]
-    }
-  ];
-
-  experiences = [
-    {
-      title: 'Full Stack Developer',
-      subtitle: 'Lateral Business Thinking | Innovate Empresarial Solutions',
-      location: 'Quito, Ecuador',
-      date: 'Jun 2024 - Actualidad',
-      tasks: [
-        'Desarrollo de interfaces web dinámicas con Angular y TypeScript, mejorando la experiencia de usuario en un 40%',
-        'Implementación de arquitecturas escalables con microservicios usando Node.js y Docker',
-        'Liderazgo en el desarrollo del aplicativo móvil Münster Mind con Flutter y Firebase',
-        'Optimización de bases de datos PostgreSQL, reduciendo tiempos de consulta en un 35%'
-      ]
-    },
-    {
-      title: 'Desarrollador de Software',
-      subtitle: 'Freelance',
-      location: 'Quito, Ecuador',
-      date: 'Nov 2023 - Oct 2024',
-      tasks: [
-        'Desarrollo full-stack de la plataforma ASOBANCA con Laravel y Vue.js para 15+ instituciones financieras',
-        'Mejora continua del aplicativo Billusos, implementando nuevas funcionalidades con Python y Django',
-        'Creación de APIs RESTful robustas y documentación técnica completa',
-        'Gestión de proyectos web personalizados con metodologías ágiles, entregando el 100% a tiempo'
-      ]
-    },
-    {
-      title: 'Full Stack Developer Jr',
-      subtitle: 'Centro Ecuatoriano de Eficiencia de Recursos',
-      location: 'Quito, Ecuador',
-      date: 'Ene 2023 - Sep 2023',
-      tasks: [
-        'Maquetación responsive de interfaces cliente para CONAFIS SARAS con HTML5, CSS3 y JavaScript',
-        'Configuración y optimización de entornos de desarrollo para equipos multidisciplinarios',
-        'Administración de bases de datos SQL Server y generación de scripts automatizados',
-        'Implementación de mejores prácticas de desarrollo y control de versiones con Git'
-      ]
-    }
-  ];
-
+  // Tech Stack for skills section
   techStack = [
     {
-      name: 'Frontend Development',
-      icon: 'bi bi-palette',
+      name: 'Frontend',
+      icon: 'bi-palette',
       technologies: [
         { name: 'Angular', level: 95 },
-        { name: 'React', level: 85 },
-        { name: 'Vue.js', level: 80 },
-        { name: 'TypeScript', level: 90 },
-        { name: 'JavaScript', level: 95 },
-        { name: 'HTML5/CSS3', level: 95 }
+        { name: 'React', level: 80 },
+        { name: 'Vue.js', level: 75 },
+        { name: 'TypeScript', level: 90 }
       ]
     },
     {
-      name: 'Backend Development',
-      icon: 'bi bi-server',
+      name: 'Backend',
+      icon: 'bi-server',
       technologies: [
-        { name: 'Node.js', level: 90 },
-        { name: 'Python', level: 85 },
-        { name: 'Django', level: 80 },
-        { name: 'Laravel', level: 85 },
-        { name: 'PHP', level: 80 },
-        { name: 'Express.js', level: 85 }
+        { name: 'Node.js', level: 85 },
+        { name: 'Python', level: 80 },
+        { name: 'Laravel', level: 75 },
+        { name: 'NestJS', level: 85 }
       ]
     },
     {
-      name: 'Bases de Datos',
-      icon: 'bi bi-database',
+      name: 'Database',
+      icon: 'bi-database',
       technologies: [
-        { name: 'PostgreSQL', level: 90 },
-        { name: 'MySQL', level: 85 },
-        { name: 'MongoDB', level: 80 },
-        { name: 'Firebase', level: 85 },
-        { name: 'SQL Server', level: 75 },
-        { name: 'Redis', level: 70 }
+        { name: 'PostgreSQL', level: 85 },
+        { name: 'MySQL', level: 80 },
+        { name: 'MongoDB', level: 70 },
+        { name: 'Firebase', level: 75 }
       ]
     },
     {
-      name: 'DevOps & Cloud',
-      icon: 'bi bi-cloud',
+      name: 'DevOps',
+      icon: 'bi-tools',
       technologies: [
-        { name: 'Docker', level: 85 },
-        { name: 'AWS', level: 75 },
-        { name: 'Git', level: 95 },
-        { name: 'Linux', level: 80 },
-        { name: 'Nginx', level: 75 },
-        { name: 'Jenkins', level: 70 }
-      ]
-    },
-    {
-      name: 'Mobile Development',
-      icon: 'bi bi-phone',
-      technologies: [
-        { name: 'Flutter', level: 85 },
-        { name: 'Dart', level: 85 },
-        { name: 'React Native', level: 75 },
-        { name: 'PWA', level: 80 }
-      ]
-    },
-    {
-      name: 'Herramientas & Metodologías',
-      icon: 'bi bi-tools',
-      technologies: [
-        { name: 'Scrum/Agile', level: 90 },
-        { name: 'Figma', level: 85 },
-        { name: 'Jira', level: 80 },
-        { name: 'Postman', level: 90 },
-        { name: 'VS Code', level: 95 },
-        { name: 'Clean Code', level: 85 }
+        { name: 'Docker', level: 70 },
+        { name: 'Git', level: 90 },
+        { name: 'AWS', level: 65 },
+        { name: 'Linux', level: 75 }
       ]
     }
   ];
+
+  // Featured projects for compact portfolio
+  featuredProjects: Project[] = featuredProjects;
+
+  // Detailed data for tabs
+  educationItems: Education[] = educationItems;
+
+  experiences: Experience[] = experiences;
+
 
   // Skill Areas Dashboard
-  skillAreas = [
-    {
-      emoji: '🎨',
-      title: 'Frontend',
-      description: 'Interfaces modernas y experiencias de usuario excepcionales',
-      color: '#A29BFE',
-      technologies: ['Angular', 'React', 'Vue.js', 'TypeScript'],
-      detailedTechs: [
-        { name: 'Angular', mastery: 5 },
-        { name: 'React', mastery: 4 },
-        { name: 'Vue.js', mastery: 4 },
-        { name: 'TypeScript', mastery: 5 },
-        { name: 'HTML5/CSS3', mastery: 5 },
-        { name: 'Tailwind CSS', mastery: 4 }
-      ]
-    },
-    {
-      emoji: '⚙️',
-      title: 'Backend',
-      description: 'APIs robustas y arquitecturas escalables',
-      color: '#4ECDC4',
-      technologies: ['Node.js', 'Python', 'Laravel', 'PostgreSQL'],
-      detailedTechs: [
-        { name: 'Node.js', mastery: 5 },
-        { name: 'Express.js', mastery: 4 },
-        { name: 'Python', mastery: 4 },
-        { name: 'Django', mastery: 4 },
-        { name: 'Laravel', mastery: 4 },
-        { name: 'PostgreSQL', mastery: 5 }
-      ]
-    },
-    {
-      emoji: '📱',
-      title: 'Mobile',
-      description: 'Aplicaciones móviles multiplataforma innovadoras',
-      color: '#45B7D1',
-      technologies: ['Flutter', 'React Native', 'PWA', 'Firebase'],
-      detailedTechs: [
-        { name: 'Flutter', mastery: 4 },
-        { name: 'Dart', mastery: 4 },
-        { name: 'React Native', mastery: 3 },
-        { name: 'PWA', mastery: 4 },
-        { name: 'Firebase', mastery: 4 }
-      ]
-    },
-    {
-      emoji: '🤖',
-      title: 'IA & Machine Learning',
-      description: 'Inteligencia artificial y análisis de datos avanzado',
-      color: '#96CEB4',
-      technologies: ['TensorFlow', 'Python', 'Pandas', 'Scikit-learn'],
-      detailedTechs: [
-        { name: 'TensorFlow', mastery: 3 },
-        { name: 'Python ML', mastery: 3 },
-        { name: 'Pandas', mastery: 3 },
-        { name: 'NumPy', mastery: 3 },
-        { name: 'Scikit-learn', mastery: 2 }
-      ]
-    },
-    {
-      emoji: '🌐',
-      title: 'Redes & DevOps',
-      description: 'Infraestructura cloud y administración de sistemas',
-      color: '#74B9FF',
-      technologies: ['Docker', 'AWS', 'Linux', 'Kubernetes'],
-      detailedTechs: [
-        { name: 'Docker', mastery: 4 },
-        { name: 'AWS', mastery: 3 },
-        { name: 'Linux', mastery: 4 },
-        { name: 'Git', mastery: 5 },
-        { name: 'Nginx', mastery: 3 }
-      ]
-    },
-    {
-      emoji: '🔒',
-      title: 'Hacking Ético',
-      description: 'Ciberseguridad y pruebas de penetración',
-      color: '#FD79A8',
-      technologies: ['Kali Linux', 'Metasploit', 'Burp Suite', 'Nmap'],
-      detailedTechs: [
-        { name: 'Kali Linux', mastery: 3 },
-        { name: 'Metasploit', mastery: 2 },
-        { name: 'Burp Suite', mastery: 2 },
-        { name: 'Nmap', mastery: 3 },
-        { name: 'OWASP', mastery: 3 }
-      ]
-    }
-  ];
+  skillAreas: SkillArea[] = skillAreas;
 
-  // All skills for the main chart
-  allSkillsForChart = [
-    { name: 'JavaScript', level: 95 },
-    { name: 'HTML5/CSS3', level: 95 },
-    { name: 'Git', level: 95 },
-    { name: 'VS Code', level: 95 },
-    { name: 'Angular', level: 95 },
-    { name: 'TypeScript', level: 90 },
-    { name: 'Node.js', level: 90 },
-    { name: 'PostgreSQL', level: 90 },
-    { name: 'Bootstrap', level: 90 },
-    { name: 'Postman', level: 90 },
-    { name: 'SQL', level: 88 },
-    { name: 'React', level: 85 },
-    { name: 'Python', level: 85 },
-    { name: 'Laravel', level: 85 },
-    { name: 'Express.js', level: 85 },
-    { name: 'MySQL', level: 85 },
-    { name: 'Firebase', level: 85 },
-    { name: 'Docker', level: 85 },
-    { name: 'Flutter', level: 85 },
-    { name: 'Dart', level: 85 },
-    { name: 'Figma', level: 85 },
-    { name: 'Tailwind CSS', level: 85 }
-  ];
 
   // Chart instances
   private skillsBarChartRoot?: am5.Root;
 
   // Tab management
   activeTab = 'skills';
-  
+
   // Area selection management
   selectedArea: number | null = null;
 
   ngOnInit() {
     this.startTypingAnimation();
     this.initializeActiveCard();
-    
+
     if (isPlatformBrowser(this.platformId)) {
       // Configurar scroll suave
       document.documentElement.style.scrollBehavior = 'smooth';
@@ -437,7 +197,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.typingInterval) {
       clearInterval(this.typingInterval);
     }
-    
+
     // Dispose charts
     if (this.skillsBarChartRoot) {
       this.skillsBarChartRoot.dispose();
@@ -542,12 +302,16 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getMasteryLabel(mastery: number): string {
-    const labels = ['', 'Básico', 'Intermedio', 'Avanzado', 'Experto', 'Maestro'];
-    return labels[mastery] || 'Básico';
+    if ([1, 2].includes(mastery)) return 'Básico';
+    if ([3, 4].includes(mastery)) return 'Intermedio';
+    if ([5, 6].includes(mastery)) return 'Avanzado';
+    if ([7, 8].includes(mastery)) return 'Experto';
+    if ([9, 10].includes(mastery)) return 'Maestro';
+    return 'Básico';
   }
-
   getExpertCount(areaIndex: number): number {
-    return this.skillAreas[areaIndex].detailedTechs.filter(tech => tech.mastery >= 4).length;
+    return this.skillAreas[areaIndex].detailedTechs
+      .filter(tech => [7, 8].includes(tech.mastery)).length;
   }
 
   getMasteryCount(areaIndex: number, level: number): number {

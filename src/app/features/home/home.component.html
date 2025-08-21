@@ -6,34 +6,34 @@
       <div class="hero-main">
         <div class="hero-badge">
           <span class="status-dot"></span>
-          <span>Disponible para proyectos</span>
+          <span>{{ 'home.hero.greeting' | translate }}</span>
         </div>
         
         <h1 class="hero-title">
-          <span class="greeting">Hola, soy</span>
-          <span class="name">Eduardo Miguel Muzo</span>
+          <span class="greeting">{{ 'home.hero.greeting' | translate }}</span>
+          <span class="name">{{ 'home.hero.name' | translate }}</span>
+          <span class="surname gradient-text">{{ 'home.hero.surname' | translate }}</span>
           <span class="role">{{ currentRole }}</span>
           <span class="cursor">|</span>
         </h1>
         
         <p class="hero-description">
-          Desarrollador Full Stack especializado en crear soluciones web modernas y escalables. 
-          Apasionado por la <strong>IA</strong> y el <strong>Machine Learning</strong>.
+          {{ 'home.hero.description' | translate }}
         </p>
 
         <!-- Estadísticas Compactas -->
         <div class="hero-stats">
           <div class="stat-item">
             <span class="stat-number">3+</span>
-            <span class="stat-label">Años</span>
+            <span class="stat-label">{{ 'home.hero.stats.years' | translate }}</span>
           </div>
           <div class="stat-item">
             <span class="stat-number">25+</span>
-            <span class="stat-label">Proyectos</span>
+            <span class="stat-label">{{ 'home.hero.stats.projects' | translate }}</span>
           </div>
           <div class="stat-item">
             <span class="stat-number">15+</span>
-            <span class="stat-label">Tecnologías</span>
+            <span class="stat-label">{{ 'home.hero.stats.technologies' | translate }}</span>
           </div>
         </div>
 
@@ -41,11 +41,11 @@
         <div class="hero-actions">
           <button class="btn-primary" (click)="scrollToSection('contacto')">
             <i class="bi bi-envelope"></i>
-            <span>Contactar</span>
+            <span>{{ 'home.hero.actions.contact' | translate }}</span>
           </button>
           <button class="btn-secondary" (click)="scrollToSection('portafolio')">
             <i class="bi bi-eye"></i>
-            <span>Ver Proyectos</span>
+            <span>{{ 'home.hero.actions.projects' | translate }}</span>
           </button>
           <a href="/assets/cv-eduardo-muzo.pdf" target="_blank" class="btn-outline">
             <i class="bi bi-download"></i>
@@ -60,14 +60,18 @@
           <div class="profile-image">
             <img src="/assets/img/img-mia.png" alt="Eduardo Miguel Muzo" />
             <div class="profile-ring"></div>
+            <div class="status-indicator">
+              <div class="status-dot"></div>
+              <span>{{ 'home.hero.status' | translate }}</span>
+            </div>
           </div>
           
           <div class="profile-info">
             <h3>Eduardo Miguel Muzo</h3>
-            <p>Full Stack Developer</p>
+            <p>{{ 'home.hero.role' | translate }}</p>
             <div class="profile-location">
               <i class="bi bi-geo-alt"></i>
-              <span>Quito, Ecuador</span>
+              <span>{{ 'home.hero.location' | translate }}</span>
             </div>
           </div>
 
@@ -104,7 +108,7 @@
 <section id="resume" class="resume-section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Mi Trayectoria Profesional</h2>
+      <h2 class="section-title">{{ 'home.profile.title' | translate }}</h2>
       <p class="section-subtitle">Experiencia, formación y habilidades técnicas</p>
     </div>
 
@@ -112,15 +116,15 @@
     <div class="tab-navigation">
       <button class="tab-btn" [class.active]="activeTab === 'experience'" (click)="setActiveTab('experience')">
         <i class="bi bi-briefcase"></i>
-        <span>Experiencia</span>
+        <span>{{ 'home.profile.tabs.experience' | translate }}</span>
       </button>
       <button class="tab-btn" [class.active]="activeTab === 'education'" (click)="setActiveTab('education')">
         <i class="bi bi-mortarboard"></i>
-        <span>Educación</span>
+        <span>{{ 'home.profile.tabs.education' | translate }}</span>
       </button>
       <button class="tab-btn" [class.active]="activeTab === 'skills'" (click)="setActiveTab('skills')">
         <i class="bi bi-code-slash"></i>
-        <span>Habilidades</span>
+        <span>{{ 'home.profile.tabs.skills' | translate }}</span>
       </button>
     </div>
 
@@ -132,8 +136,8 @@
           <div class="experience-card" *ngFor="let exp of experiences.slice(0, 3)">
             <div class="card-header">
               <div class="job-info">
-                <h3 class="job-title">{{ exp.title }}</h3>
-                <h4 class="company">{{ exp.subtitle }}</h4>
+                <h3 class="job-title">{{ 'experiences.' + exp.id + '.title' | translate }}</h3>
+                <h4 class="company">{{ 'experiences.' + exp.id + '.subtitle' | translate }}</h4>
                 <div class="job-meta">
                   <span class="date">{{ exp.date }}</span>
                   <span class="location">{{ exp.location }}</span>
@@ -145,7 +149,7 @@
             </div>
             
             <div class="job-highlights">
-              <div class="highlight" *ngFor="let task of exp.tasks.slice(0, 2)">
+              <div class="highlight" *ngFor="let task of ('experiences.' + exp.id + '.tasks' | translate).slice(0, 2)">
                 <i class="bi bi-check-circle"></i>
                 <span>{{ task }}</span>
               </div>
@@ -169,14 +173,14 @@
             </div>
             <div class="edu-content">
               <div class="edu-header">
-                <h3 class="degree">{{ edu.title }}</h3>
+                <h3 class="degree">{{ 'education.' + edu.id + '.title' | translate }}</h3>
                 <span class="edu-date">{{ edu.date }}</span>
               </div>
-              <h4 class="institution">{{ edu.institution }}</h4>
-              <p class="edu-description">{{ edu.description }}</p>
+              <h4 class="institution">{{ 'education.' + edu.id + '.institution' | translate }}</h4>
+              <p class="edu-description">{{ 'education.' + edu.id + '.description' | translate }}</p>
               
               <div class="edu-achievements">
-                <div class="achievement" *ngFor="let achievement of edu.achievements.slice(0, 2)">
+                <div class="achievement" *ngFor="let achievement of ('education.' + edu.id + '.achievements' | translate).slice(0, 2)">
                   <i class="bi bi-award"></i>
                   <span>{{ achievement }}</span>
                 </div>
@@ -189,6 +193,35 @@
       <!-- Habilidades -->
       <div class="tab-pane" [class.active]="activeTab === 'skills'">
         <div class="skills-overview">
+          <!-- Skills Dashboard -->
+          <div class="skills-dashboard">
+            <div class="areas-dashboard">
+              <div class="areas-grid">
+                <div class="area-card"
+                     *ngFor="let area of skillAreas; let i = index"
+                     [class.active]="selectedArea === i"
+                     (click)="selectArea(i)">
+                  <div class="area-icon">{{ area.emoji }}</div>
+                  <div class="area-content">
+                    <h3>{{ 'skillAreas.' + area.id + '.title' | translate }}</h3>
+                    <p>{{ 'skillAreas.' + area.id + '.description' | translate }}</p>
+                    <div class="tech-preview">
+                      <span class="tech-badge" *ngFor="let tech of area.technologies.slice(0, 3)">
+                        {{ tech }}
+                      </span>
+                      <span class="more-tech" *ngIf="area.technologies.length > 3">
+                        +{{ area.technologies.length - 3 }}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="area-status">
+                    <span class="status-indicator" [style.background]="area.color"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Skills por Categoría -->
           <div class="skills-categories">
             <div class="skill-category" *ngFor="let category of techStack.slice(0, 4)">
@@ -228,18 +261,109 @@
   </div>
 </section>
 
+<!-- Skills Area Modal -->
+<div class="skills-modal-overlay"
+     *ngIf="selectedArea !== null"
+     (click)="closeModal()">
+  <div class="skills-modal"
+       (click)="$event.stopPropagation()">
+
+    <!-- Header redesigned -->
+    <div class="modal-header">
+      <div class="header-content">
+        <div class="area-badge" [style.background]="skillAreas[selectedArea].color">
+          <span class="area-emoji">{{ skillAreas[selectedArea].emoji }}</span>
+        </div>
+        <div class="header-text">
+          <h2 class="area-title">{{ 'skillAreas.' + skillAreas[selectedArea].id + '.title' | translate }}</h2>
+          <p class="area-subtitle">{{ 'skillAreas.' + skillAreas[selectedArea].id + '.description' | translate }}</p>
+          <div class="area-stats">
+            <div class="stat-chip">
+              <i class="bi bi-collection"></i>
+              <span>{{ skillAreas[selectedArea].detailedTechs.length }} Tecnologías</span>
+            </div>
+            <div class="stat-chip expert">
+              <i class="bi bi-star-fill"></i>
+              <span>{{ getExpertCount(selectedArea) }} Experto+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="close-button" (click)="closeModal()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+    <!-- Body redesigned with cards -->
+    <div class="modal-body">
+      <div class="technologies-grid">
+        <div class="tech-card-modern"
+             *ngFor="let tech of skillAreas[selectedArea].detailedTechs; let i = index">
+
+          <div class="tech-card-header">
+            <div class="tech-icon" [style.background]="skillAreas[selectedArea].color">
+              <span>{{ tech.name.charAt(0) }}</span>
+            </div>
+            <div class="tech-info">
+              <h4 class="tech-title">{{ tech.name }}</h4>
+              <div class="skill-level-visual">
+                <div class="skill-bar">
+                  <div class="skill-progress"
+                       [style.width]="(tech.mastery / 10) * 100 + '%'"
+                       [style.background]="skillAreas[selectedArea].color">
+                  </div>
+                </div>
+                <span class="skill-percentage">{{ (tech.mastery / 10) * 100 | number:'1.0-0' }}%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card-footer">
+            <div class="mastery-badge"
+                 [class]="'level-' + tech.mastery"
+                 [style.background]="skillAreas[selectedArea].color + '20'"
+                 [style.border-color]="skillAreas[selectedArea].color">
+                  <i class="bi"
+                    [ngClass]="{
+                      'bi-circle': [1, 2].includes(tech.mastery), 'bi-triangle': [3, 4].includes(tech.mastery),
+                      'bi-square': [5, 6].includes(tech.mastery), 'bi-pentagon': [7, 8].includes(tech.mastery),
+                      'bi-star-fill': [9, 10].includes(tech.mastery)
+                    }"
+                    [style.color]="skillAreas[selectedArea].color">
+                  </i>
+              <span [style.color]="skillAreas[selectedArea].color">
+                {{ getMasteryLabel(tech.mastery) }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer redesigned -->
+      <div class="modal-footer">
+        <div class="footer-content">
+          <div class="progress-overview">
+            <div class="mastery-breakdown">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Portfolio Section Destacada -->
 <section id="portafolio" class="portfolio-section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Proyectos Destacados</h2>
+      <h2 class="section-title">{{ 'home.portfolio.title' | translate }}</h2>
       <p class="section-subtitle">Una selección de mis mejores trabajos</p>
     </div>
 
     <div class="projects-showcase">
       <div class="project-card" *ngFor="let project of featuredProjects">
         <div class="project-image">
-          <img [src]="project.image" [alt]="project.title" />
+          <img [src]="project.image" [alt]="'projects.' + project.id + '.title' | translate" />
           <div class="project-overlay">
             <div class="project-actions">
               <a [href]="project.liveUrl" target="_blank" class="action-btn primary" *ngIf="project.liveUrl">
@@ -256,10 +380,10 @@
         
         <div class="project-info">
           <div class="project-header">
-            <h3 class="project-title">{{ project.title }}</h3>
+            <h3 class="project-title">{{ 'projects.' + project.id + '.title' | translate }}</h3>
             <span class="project-type" [class]="project.type">{{ project.type }}</span>
           </div>
-          <p class="project-description">{{ project.description }}</p>
+          <p class="project-description">{{ 'projects.' + project.id + '.description' | translate }}</p>
           
           <div class="project-tech">
             <span class="tech-badge" *ngFor="let tech of project.tech.slice(0, 3)">
@@ -272,7 +396,7 @@
 
     <div class="portfolio-cta">
       <button class="btn-outline-large" (click)="viewAllProjects()">
-        <span>Ver Todos los Proyectos</span>
+        <span>{{ 'home.portfolio.viewAll' | translate }}</span>
         <i class="bi bi-arrow-right"></i>
       </button>
     </div>
@@ -283,7 +407,7 @@
 <section id="contacto" class="contact-section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">¿Trabajamos Juntos?</h2>
+      <h2 class="section-title">{{ 'home.contact.title' | translate }}</h2>
       <p class="section-subtitle">Estoy disponible para nuevos proyectos y oportunidades</p>
     </div>
 
@@ -292,7 +416,7 @@
       <div class="contact-info">
         <div class="contact-intro">
           <h3>Hablemos de tu proyecto</h3>
-          <p>¿Tienes una idea? Me encantaría escucharla y ayudarte a hacerla realidad.</p>
+          <p>{{ 'home.contact.description' | translate }}</p>
         </div>
 
         <div class="contact-methods">
@@ -301,7 +425,7 @@
               <i class="bi bi-envelope"></i>
             </div>
             <div class="method-info">
-              <h4>Email</h4>
+              <h4>{{ 'home.contact.methods.email' | translate }}</h4>
               <p>eduardomuzo123456&#64;gmail.com</p>
               <span>Respuesta en 24h</span>
             </div>
@@ -312,7 +436,7 @@
               <i class="bi bi-whatsapp"></i>
             </div>
             <div class="method-info">
-              <h4>WhatsApp</h4>
+              <h4>{{ 'home.contact.methods.whatsapp' | translate }}</h4>
               <p>+593 999 763 190</p>
               <span>Respuesta inmediata</span>
             </div>
@@ -323,7 +447,7 @@
               <i class="bi bi-linkedin"></i>
             </div>
             <div class="method-info">
-              <h4>LinkedIn</h4>
+              <h4>{{ 'home.contact.methods.linkedin' | translate }}</h4>
               <p>Eduardo Miguel Muzo</p>
               <span>Red profesional</span>
             </div>
@@ -359,12 +483,12 @@
 
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Nombre</label>
-              <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+              <label for="name">{{ 'home.contact.form.name' | translate }}</label>
+              <input type="text" id="name" name="name" [placeholder]="'home.contact.form.name' | translate" required>
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+              <label for="email">{{ 'home.contact.form.email' | translate }}</label>
+              <input type="email" id="email" name="email" [placeholder]="'home.contact.form.email' | translate" required>
             </div>
           </div>
 
@@ -381,14 +505,14 @@
           </div>
 
           <div class="form-group">
-            <label for="message">Mensaje</label>
+            <label for="message">{{ 'home.contact.form.message' | translate }}</label>
             <textarea id="message" name="message" rows="4" 
-                      placeholder="Cuéntame sobre tu proyecto, objetivos y timeline..." required></textarea>
+                      [placeholder]="'home.contact.form.message' | translate" required></textarea>
           </div>
 
           <button type="submit" class="btn-primary full-width">
             <i class="bi bi-send"></i>
-            <span>Enviar Mensaje</span>
+            <span>{{ 'home.contact.form.send' | translate }}</span>
           </button>
 
           <p class="form-note">

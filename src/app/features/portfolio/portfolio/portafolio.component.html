@@ -87,8 +87,8 @@
             </span>
           </div>
           
-          <h3 class="project-title">{{ project.title }}</h3>
-          <p class="project-description">{{ project.description }}</p>
+          <h3 class="project-title">{{ 'projects.' + project.id + '.title' | translate }}</h3>
+          <p class="project-description">{{ 'projects.' + project.id + '.description' | translate }}</p>
           
           <div class="tech-stack">
             <div class="tech-item" *ngFor="let tech of project.frameworks.slice(0, 4)">
@@ -124,7 +124,7 @@
     <div class="modal-content" (click)="$event.stopPropagation()">
       <div class="modal-header">
         <div class="modal-title-section">
-          <h3 class="modal-title">{{ selectedProject.title }}</h3>
+          <h3 class="modal-title">{{ 'projects.' + selectedProject.id + '.title' | translate }}</h3>
           <span class="modal-category" [class]="selectedProject.type">
             <i [class]="selectedProject.type === 'personal' ? 'bi bi-person' : 'bi bi-briefcase'"></i>
             {{ selectedProject.type === 'personal' ? ('portfolio.project.personal' | translate) : ('portfolio.project.professional' | translate) }}
@@ -198,7 +198,7 @@
         <div class="project-info">
           <div class="project-details">
             <h4 class="details-title">{{ 'portfolio.project.description' | translate }}</h4>
-            <p class="project-full-description">{{ selectedProject.description }}</p>
+            <p class="project-full-description">{{ 'projects.' + selectedProject.id + '.longDescription' | translate }}</p>
             
             <div class="tech-section">
               <h4 class="details-title">{{ 'portfolio.project.technologies' | translate }}</h4>

@@ -1,7 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NgForOf, NgIf } from "@angular/common";
 import { TranslateModule } from '@ngx-translate/core';
-import { Project, Tool } from '../../../interfaces/project.interface';
+
+// Data imports
+import { portfolioProjects, type PortfolioProject } from '../../../core/data/portfolio-projects.data';
 
 @Component({
   selector: 'app-portafolio',
@@ -13,119 +15,24 @@ import { Project, Tool } from '../../../interfaces/project.interface';
 })
 export class PortafolioComponent implements OnInit {
   activeFilter: 'all' | 'personal' | 'professional' = 'all';
-  selectedProject: Project | null = null;
+  selectedProject: any = null;
   currentImageIndex: number = 0;
+  allProjects: any[] = [];
+  filteredProjects: any[] = [];
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  personalProjects: Project[] = [
-    {
-      id: 1,
-      title: 'Sistema de Gestión Académica',
-      description: 'Plataforma web completa para la gestión de estudiantes, profesores y cursos con dashboard administrativo y reportes en tiempo real.',
-      images: [
-        '/assets/img/img-01.jpg',
-        '/assets/img/img-02.jpg'
-      ],
-      frameworks: ['Angular', 'TypeScript', 'Node.js', 'PostgreSQL', 'Bootstrap'],
-      githubUrl: 'https://github.com/Miguel-EMC/academic-system',
-      type: 'personal'
-    },
-    {
-      id: 2,
-      title: 'E-Commerce Moderno',
-      description: 'Tienda online responsive con carrito de compras, pasarela de pagos, gestión de inventario y panel de administración.',
-      images: [
-        '/assets/img/img-01.jpg',
-        '/assets/img/img-02.jpg'
-      ],
-      frameworks: ['React', 'Next.js', 'Stripe', 'MongoDB', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/Miguel-EMC/ecommerce-app',
-      type: 'personal'
-    },
-    {
-      id: 3,
-      title: 'App de Gestión de Tareas',
-      description: 'Aplicación móvil multiplataforma para gestión de proyectos y tareas con sincronización en tiempo real y colaboración en equipo.',
-      images: [
-        '/assets/img/img-01.jpg',
-        '/assets/img/img-02.jpg'
-      ],
-      frameworks: ['Flutter', 'Dart', 'Firebase', 'Provider', 'Material Design'],
-      githubUrl: 'https://github.com/Miguel-EMC/task-manager-app',
-      type: 'personal'
-    },
-    {
-      id: 4,
-      title: 'Dashboard de Analytics',
-      description: 'Panel de control interactivo con visualización de datos, gráficos dinámicos y reportes personalizables para análisis de negocio.',
-      images: [
-        '/assets/img/img-01.jpg',
-        '/assets/img/img-02.jpg'
-      ],
-      frameworks: ['Vue.js', 'D3.js', 'Python', 'FastAPI', 'Chart.js'],
-      githubUrl: 'https://github.com/Miguel-EMC/analytics-dashboard',
-      type: 'personal'
-    }
-  ];
-
-  professionalProjects: Project[] = [
-    {
-      id: 5,
-      title: 'Plataforma ASOBANCA',
-      description: 'Sistema integral para instituciones financieras con módulos de gestión de clientes, transacciones y reportes regulatorios.',
-      images: [
-        '/assets/img/img-01.jpg',
-        '/assets/img/img-02.jpg'
-      ],
-      frameworks: ['Laravel', 'Vue.js', 'MySQL', 'Redis', 'Docker'],
-      liveUrl: 'https://asobanca-demo.com',
-      type: 'professional'
-    },
-    {
-      id: 6,
-      title: 'Münster Mind App',
-      description: 'Aplicación móvil innovadora para entrenamiento mental y cognitivo con gamificación y seguimiento de progreso.',
-      images: [
-        '/assets/img/img-01.jpg',
-        '/assets/img/img-02.jpg'
-      ],
-      frameworks: ['Flutter', 'Firebase', 'TensorFlow Lite', 'Provider', 'Hive'],
-      liveUrl: 'https://munster-mind.app',
-      type: 'professional'
-    },
-    {
-      id: 7,
-      title: 'Sistema CONAFIS SARAS',
-      description: 'Plataforma gubernamental para gestión de recursos y análisis estadístico con alta disponibilidad y seguridad.',
-      images: [
-        '/assets/img/img-01.jpg',
-        '/assets/img/img-02.jpg'
-      ],
-      frameworks: ['Angular', 'NestJS', 'PostgreSQL', 'Kubernetes', 'JWT'],
-      liveUrl: 'https://conafis-saras.gov.ec',
-      type: 'professional'
-    },
-    {
-      id: 8,
-      title: 'Billusos Platform',
-      description: 'Plataforma de facturación electrónica y gestión empresarial con integración a servicios gubernamentales.',
-      images: [
-        '/assets/img/img-01.jpg',
-        '/assets/img/img-02.jpg'
-      ],
-      frameworks: ['Django', 'React', 'PostgreSQL', 'Celery', 'AWS'],
-      liveUrl: 'https://billusos.com',
-      type: 'professional'
-    }
-  ];
-
-  allProjects: Project[] = [];
-  filteredProjects: Project[] = [];
-
   ngOnInit() {
-    this.allProjects = [...this.personalProjects, ...this.professionalProjects];
+    this.allProjects = portfolioProjects;
     this.filteredProjects = this.allProjects;
+  }
+
+  get personalProjects(): any[] {
+    return this.allProjects.filter(project => project.type === 'personal');
+  }
+
+  get professionalProjects(): any[] {
+    return this.allProjects.filter(project => project.type === 'professional');
   }
 
   setFilter(filter: 'all' | 'personal' | 'professional') {
@@ -141,9 +48,10 @@ export class PortafolioComponent implements OnInit {
       default:
         this.filteredProjects = this.allProjects;
     }
+    this.cdr.detectChanges();
   }
 
-  showDetails(project: Project): void {
+  showDetails(project: any): void {
     this.selectedProject = project;
     this.currentImageIndex = 0;
     document.body.style.overflow = 'hidden';
@@ -170,21 +78,19 @@ export class PortafolioComponent implements OnInit {
 
   getTechIcon(tech: string): string {
     const icons: { [key: string]: string } = {
-      // Frontend Frameworks
+      // Frontend
       'Angular': 'bi-triangle',
       'React': 'bi-atom',
       'Vue.js': 'bi-lightning',
-      'Next.js': 'bi-arrow-right-circle',
-      
-      // Languages
       'TypeScript': 'bi-braces',
       'JavaScript': 'bi-braces',
-      'Python': 'bi-filetype-py',
-      'Dart': 'bi-lightning-charge',
-      'PHP': 'bi-filetype-php',
+      'HTML5': 'bi-filetype-html',
+      'CSS3': 'bi-filetype-css',
+      'Next.js': 'bi-arrow-repeat',
       
       // Backend
       'Node.js': 'bi-server',
+      'Python': 'bi-filetype-py',
       'Django': 'bi-diagram-3',
       'Laravel': 'bi-boxes',
       'NestJS': 'bi-hexagon',
@@ -200,20 +106,18 @@ export class PortafolioComponent implements OnInit {
       // Mobile
       'Flutter': 'bi-phone',
       'React Native': 'bi-phone-landscape',
+      'Dart': 'bi-lightning-charge',
       
       // Styling
       'Bootstrap': 'bi-bootstrap',
       'Tailwind CSS': 'bi-wind',
       'Material Design': 'bi-palette',
-      'CSS3': 'bi-filetype-css',
-      'SASS': 'bi-palette2',
       
       // Tools & Services
       'Docker': 'bi-box-seam',
       'Kubernetes': 'bi-diagram-3',
       'AWS': 'bi-cloud',
       'Stripe': 'bi-credit-card',
-      'JWT': 'bi-shield-check',
       'Chart.js': 'bi-bar-chart',
       'D3.js': 'bi-graph-up',
       'TensorFlow Lite': 'bi-cpu',
@@ -222,8 +126,7 @@ export class PortafolioComponent implements OnInit {
       'Provider': 'bi-arrow-repeat',
       'Redux': 'bi-arrow-clockwise',
       
-      // Storage
-      'Hive': 'bi-archive',
+      // Others
       'Celery': 'bi-gear'
     };
 

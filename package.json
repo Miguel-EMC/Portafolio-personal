@@ -4,7 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:es": "ng serve --configuration=es",
     "build": "ng build",
+    "build:es": "ng build --configuration=es",
+    "build:all": "npm run build && npm run build:es",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:protafolio-personal": "node dist/protafolio-personal/server/server.mjs"

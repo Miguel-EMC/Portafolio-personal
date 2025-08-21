@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "brandSubtitle": "Full Stack Dev",
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "resume": "Resume",
+    "portfolio": "Portafolio",
+    "contact": "Contacto"
+  },
+  "home": {
+    "hero": {
+      "greeting": "👋 Hola, soy",
+      "name": "Eduardo Miguel",
+      "surname": "Muzo",
+      "description": "Desarrollador Full Stack especializado en crear soluciones web modernas y escalables. Apasionado por la IA y el Machine Learning.",
+      "stats": {
+        "years": "Años",
+        "projects": "Proyectos", 
+        "technologies": "Tecnologías"
+      },
+      "actions": {
+        "contact": "Contactar",
+        "projects": "Ver Proyectos"
+      },
+      "status": "Disponible",
+      "location": "Quito, Ecuador",
+      "role": "Full Stack Developer"
+    },
+    "profile": {
+      "title": "Perfil Profesional",
+      "tabs": {
+        "skills": "Skills",
+        "experience": "Experiencia", 
+        "education": "Formación"
+      }
+    },
+    "portfolio": {
+      "title": "Proyectos Destacados",
+      "viewAll": "Ver Todos los Proyectos"
+    },
+    "contact": {
+      "title": "Contáctame",
+      "description": "¿Tienes un proyecto en mente? Estoy disponible para nuevos proyectos y colaboraciones. ¡Hablemos!",
+      "methods": {
+        "email": "Email",
+        "whatsapp": "WhatsApp",
+        "linkedin": "LinkedIn"
+      },
+      "form": {
+        "name": "Tu nombre",
+        "email": "Tu email", 
+        "message": "Cuéntame sobre tu proyecto...",
+        "send": "Enviar Mensaje"
+      }
+    }
+  },
+  "projects": {
+    "asobanca": {
+      "title": "Plataforma ASOBANCA",
+      "description": "Sistema integral para instituciones financieras con módulos de gestión completos."
+    },
+    "munsterMind": {
+      "title": "Münster Mind App",
+      "description": "Aplicación móvil para entrenamiento mental y cognitivo con gamificación."
+    },
+    "conafis": {
+      "title": "Sistema CONAFIS SARAS",
+      "description": "Plataforma gubernamental para gestión de recursos y análisis estadístico."
+    }
+  },
+  "experiences": {
+    "fullstack-lateral": {
+      "title": "Full Stack Developer",
+      "subtitle": "Lateral Business Thinking | Innovate Empresarial Solutions"
+    },
+    "freelance-dev": {
+      "title": "Desarrollador de Software",
+      "subtitle": "Freelance"
+    },
+    "junior-fullstack": {
+      "title": "Full Stack Developer Jr",
+      "subtitle": "Centro Ecuatoriano de Eficiencia de Recursos"
+    }
+  },
+  "education": {
+    "computer-engineering": {
+      "title": "Ingeniería en Ciencias de la Computación",
+      "institution": "Escuela Politécnica Nacional",
+      "description": "Formación integral en ciencias de la computación con énfasis en desarrollo de software, algoritmos avanzados, inteligencia artificial y análisis de sistemas complejos."
+    },
+    "software-development": {
+      "title": "Tecnología Superior en Desarrollo de Software",
+      "institution": "Escuela Politécnica Nacional",
+      "description": "Formación técnica especializada en desarrollo de aplicaciones web y móviles, bases de datos, metodologías ágiles y arquitecturas de software modernas."
+    },
+    "high-school": {
+      "title": "Bachillerato General Unificado",
+      "institution": "Unidad Educativa Leopoldo Mercado",
+      "description": "Educación secundaria con especialización en ciencias exactas, matemáticas avanzadas y fundamentos de programación que sentaron las bases para mi carrera tecnológica."
+    }
+  },
+  "skillAreas": {
+    "frontend": {
+      "title": "Frontend",
+      "description": "Interfaces modernas y experiencias de usuario excepcionales"
+    },
+    "backend": {
+      "title": "Backend",
+      "description": "APIs robustas y arquitecturas escalables"
+    },
+    "mobile": {
+      "title": "Mobile",
+      "description": "Aplicaciones móviles multiplataforma innovadoras"
+    },
+    "devops": {
+      "title": "Redes & DevOps",
+      "description": "Infraestructura cloud y administración de sistemas"
+    },
+    "languages": {
+      "title": "Lenguajes de Programación",
+      "description": "Base sólida en múltiples lenguajes para distintos entornos"
+    },
+    "databases": {
+      "title": "Bases de Datos",
+      "description": "Almacenamiento y gestión eficiente de datos"
+    }
+  }
+}

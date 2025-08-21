@@ -111,7 +111,7 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">{{ 'home.profile.title' | translate }}</h2>
-      <p class="section-subtitle">Experiencia, formación y habilidades técnicas</p>
+      <p class="section-subtitle">{{ 'home.profile.subtitle' | translate }}</p>
     </div>
 
     <!-- Navegación de Tabs -->
@@ -134,33 +134,58 @@
     <div class="tab-content">
       <!-- Experiencia -->
       <div class="tab-pane" [class.active]="activeTab === 'experience'">
-        <div class="experience-grid">
-          <div class="experience-card" *ngFor="let exp of experiences.slice(0, 3)">
-            <div class="card-header">
-              <div class="job-info">
-                <h3 class="job-title">{{ 'experiences.' + exp.id + '.title' | translate }}</h3>
-                <h4 class="company">{{ 'experiences.' + exp.id + '.subtitle' | translate }}</h4>
-                <div class="job-meta">
-                  <span class="date">{{ exp.date }}</span>
-                  <span class="location">{{ exp.location }}</span>
+        <div class="experience-modern-grid">
+          <div class="experience-card-modern" *ngFor="let exp of experiences.slice(0, 3); let i = index">
+            <div class="experience-gradient-bg" [style.background]="getExperienceGradient(i)"></div>
+            
+            <div class="card-header-modern">
+              <div class="job-info-modern">
+                <div class="job-title-section">
+                  <h3 class="job-title-modern">{{ 'experiences.' + exp.id + '.title' | translate }}</h3>
+                  <h4 class="company-modern">{{ 'experiences.' + exp.id + '.subtitle' | translate }}</h4>
+                </div>
+                <div class="job-meta-modern">
+                  <div class="date-badge" [style.background]="getExperienceColor(i) + '15'" [style.color]="getExperienceColor(i)">
+                    <i class="bi bi-calendar3"></i>
+                    <span>{{ exp.date }}</span>
+                  </div>
+                  <div class="location-badge" [style.background]="getExperienceColor(i) + '15'" [style.color]="getExperienceColor(i)">
+                    <i class="bi bi-geo-alt"></i>
+                    <span>{{ exp.location }}</span>
+                  </div>
                 </div>
               </div>
-              <div class="company-logo">
-                <i class="bi bi-building"></i>
+              <div class="company-logo-modern" [style.background]="getExperienceColor(i)">
+                <span class="company-emoji">{{ getExperienceEmoji(i) }}</span>
               </div>
             </div>
             
-            <div class="job-highlights">
-              <div class="highlight" *ngFor="let task of ('experiences.' + exp.id + '.tasks' | translate).slice(0, 2)">
-                <i class="bi bi-check-circle"></i>
+            <div class="job-highlights-modern">
+              <div class="highlight-modern" *ngFor="let task of ('experiences.' + exp.id + '.tasks' | translate).slice(0, 3)">
+                <div class="highlight-icon" [style.background]="getExperienceColor(i) + '20'" [style.color]="getExperienceColor(i)">
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
                 <span>{{ task }}</span>
               </div>
             </div>
 
-            <div class="tech-used">
-              <span class="tech-tag" *ngFor="let tech of getTechForExperience(experiences.indexOf(exp)).slice(0, 3)">
-                {{ tech }}
-              </span>
+            <div class="tech-section-modern">
+              <h5 class="tech-title">{{ 'home.profile.skills.technologiesUsed' | translate }}</h5>
+              <div class="tech-used-modern">
+                <span class="tech-tag-modern" *ngFor="let tech of getTechForExperience(experiences.indexOf(exp)).slice(0, 4)"
+                      [style.background]="getExperienceColor(i) + '10'"
+                      [style.color]="getExperienceColor(i)"
+                      [style.border-color]="getExperienceColor(i) + '30'">
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
+
+            <div class="experience-footer">
+              <div class="experience-status">
+                <div class="status-dot" [style.background]="getExperienceColor(i)"></div>
+                <span>Experiencia {{ i + 1 }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -168,23 +193,36 @@
 
       <!-- Educación -->
       <div class="tab-pane" [class.active]="activeTab === 'education'">
-        <div class="education-timeline">
-          <div class="education-item" *ngFor="let edu of educationItems">
-            <div class="edu-marker">
+        <div class="education-modern-timeline">
+          <div class="education-item-modern" *ngFor="let edu of educationItems; let i = index">
+            <div class="edu-marker-modern" [style.background]="getEducationColor(i)">
               <i [class]="edu.icon"></i>
             </div>
-            <div class="edu-content">
-              <div class="edu-header">
-                <h3 class="degree">{{ 'education.' + edu.id + '.title' | translate }}</h3>
-                <span class="edu-date">{{ edu.date }}</span>
-              </div>
-              <h4 class="institution">{{ 'education.' + edu.id + '.institution' | translate }}</h4>
-              <p class="edu-description">{{ 'education.' + edu.id + '.description' | translate }}</p>
-              
-              <div class="edu-achievements">
-                <div class="achievement" *ngFor="let achievement of ('education.' + edu.id + '.achievements' | translate).slice(0, 2)">
-                  <i class="bi bi-award"></i>
-                  <span>{{ achievement }}</span>
+            <div class="edu-content-modern">
+              <div class="edu-card">
+                <div class="edu-header-modern">
+                  <div class="edu-title-section">
+                    <h3 class="degree-modern">{{ 'education.' + edu.id + '.title' | translate }}</h3>
+                    <h4 class="institution-modern">{{ 'education.' + edu.id + '.institution' | translate }}</h4>
+                  </div>
+                  <div class="edu-date-badge" [style.background]="getEducationColor(i) + '15'" [style.color]="getEducationColor(i)">
+                    {{ edu.date }}
+                  </div>
+                </div>
+                
+                <p class="edu-description-modern">{{ 'education.' + edu.id + '.description' | translate }}</p>
+                
+                <div class="edu-achievements-modern">
+                  <div class="achievement-modern" *ngFor="let achievement of ('education.' + edu.id + '.achievements' | translate).slice(0, 3)">
+                    <div class="achievement-icon" [style.background]="getEducationColor(i) + '20'" [style.color]="getEducationColor(i)">
+                      <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                    <span>{{ achievement }}</span>
+                  </div>
+                </div>
+                
+                <div class="edu-progress-indicator">
+                  <div class="progress-bar" [style.background]="getEducationColor(i)"></div>
                 </div>
               </div>
             </div>
@@ -196,33 +234,22 @@
       <div class="tab-pane" [class.active]="activeTab === 'skills'">
         <div class="skills-modern-layout">
           <!-- Stack Tecnológico -->
-          <div class="skills-categories-modern">
-            <h3 class="section-subtitle">Stack Tecnológico</h3>
-            <div class="categories-grid">
-              <div class="category-card-modern" *ngFor="let category of techStack.slice(0, 4)">
-                <div class="category-header-modern">
-                  <div class="category-icon-bg">
-                    <i [class]="category.icon"></i>
-                  </div>
+          <div class="skills-categories-compact">
+            <h3 class="section-subtitle">{{ 'home.profile.skills.techStack' | translate }}</h3>
+            <div class="categories-compact-grid">
+              <div class="category-compact" *ngFor="let category of techStack; let categoryIndex = index">
+                <div class="category-header-compact">
+                  <i [class]="category.icon" [style.color]="getSkillColor(categoryIndex)"></i>
                   <h4>{{ category.name }}</h4>
-                  <span class="tech-count">{{ category.technologies.length }} techs</span>
                 </div>
                 
-                <div class="skills-grid-modern">
-                  <div class="skill-item-modern" *ngFor="let tech of category.technologies.slice(0, 6)">
-                    <div class="skill-visual">
-                      <div class="skill-circle">
-                        <svg class="progress-ring" width="50" height="50">
-                          <circle class="progress-ring-bg" cx="25" cy="25" r="20" stroke="#e5e7eb" stroke-width="3" fill="transparent"/>
-                          <circle class="progress-ring-progress" cx="25" cy="25" r="20" 
-                                  [style.stroke-dasharray]="2 * 3.14159 * 20"
-                                  [style.stroke-dashoffset]="2 * 3.14159 * 20 * (1 - tech.level / 100)"
-                                  stroke="var(--accent-primary)" stroke-width="3" fill="transparent"/>
-                        </svg>
-                        <span class="skill-percentage">{{ tech.level }}%</span>
-                      </div>
-                      <span class="skill-name-modern">{{ tech.name }}</span>
-                    </div>
+                <div class="skills-chips-container">
+                  <div class="skill-chip" 
+                       *ngFor="let tech of category.technologies.slice(0, 6); let techIndex = index"
+                       [style.background]="'linear-gradient(135deg, ' + getSkillColor(techIndex) + '15, ' + getSkillColor(techIndex) + '25)'"
+                       [style.border-color]="getSkillColor(techIndex)">
+                    <span class="chip-name">{{ tech.name }}</span>
+                    <span class="chip-level" [style.background]="getSkillColor(techIndex)">{{ tech.level }}%</span>
                   </div>
                 </div>
               </div>
@@ -331,7 +358,7 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">{{ 'home.portfolio.title' | translate }}</h2>
-      <p class="section-subtitle">Una selección de mis mejores trabajos</p>
+      <p class="section-subtitle">{{ 'home.portfolio.subtitle' | translate }}</p>
     </div>
 
     <div class="projects-showcase">
@@ -342,11 +369,11 @@
             <div class="project-actions">
               <a [href]="project.liveUrl" target="_blank" class="action-btn primary" *ngIf="project.liveUrl">
                 <i class="bi bi-eye"></i>
-                <span>Ver Proyecto</span>
+                <span>{{ 'home.portfolio.viewProject' | translate }}</span>
               </a>
               <a [href]="project.githubUrl" target="_blank" class="action-btn secondary" *ngIf="project.githubUrl">
                 <i class="bi bi-github"></i>
-                <span>Código</span>
+                <span>{{ 'home.portfolio.viewCode' | translate }}</span>
               </a>
             </div>
           </div>
@@ -382,14 +409,14 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">{{ 'home.contact.title' | translate }}</h2>
-      <p class="section-subtitle">Estoy disponible para nuevos proyectos y oportunidades</p>
+      <p class="section-subtitle">{{ 'home.contact.subtitle' | translate }}</p>
     </div>
 
     <div class="contact-content">
       <!-- Información de Contacto -->
       <div class="contact-info">
         <div class="contact-intro">
-          <h3>Hablemos de tu proyecto</h3>
+          <h3>{{ 'home.contact.projectTitle' | translate }}</h3>
           <p>{{ 'home.contact.description' | translate }}</p>
         </div>
 
@@ -401,7 +428,7 @@
             <div class="method-info">
               <h4>{{ 'home.contact.methods.email' | translate }}</h4>
               <p>eduardomuzo123456&#64;gmail.com</p>
-              <span>Respuesta en 24h</span>
+              <span>{{ 'home.contact.methods.responses.email' | translate }}</span>
             </div>
           </a>
 
@@ -412,7 +439,7 @@
             <div class="method-info">
               <h4>{{ 'home.contact.methods.whatsapp' | translate }}</h4>
               <p>+593 999 763 190</p>
-              <span>Respuesta inmediata</span>
+              <span>{{ 'home.contact.methods.responses.whatsapp' | translate }}</span>
             </div>
           </a>
 
@@ -423,7 +450,7 @@
             <div class="method-info">
               <h4>{{ 'home.contact.methods.linkedin' | translate }}</h4>
               <p>Eduardo Miguel Muzo</p>
-              <span>Red profesional</span>
+              <span>{{ 'home.contact.methods.responses.linkedin' | translate }}</span>
             </div>
           </a>
         </div>
@@ -432,16 +459,16 @@
         <div class="availability-status">
           <div class="status-indicator">
             <div class="status-dot active"></div>
-            <span>Disponible para proyectos</span>
+            <span>{{ 'home.contact.availability.title' | translate }}</span>
           </div>
           <div class="availability-details">
             <div class="detail">
               <i class="bi bi-clock"></i>
-              <span>Respuesta: < 24h</span>
+              <span>{{ 'home.contact.availability.response' | translate }}</span>
             </div>
             <div class="detail">
               <i class="bi bi-calendar"></i>
-              <span>Inicio: Inmediato</span>
+              <span>{{ 'home.contact.availability.start' | translate }}</span>
             </div>
           </div>
         </div>
@@ -451,8 +478,8 @@
       <div class="contact-form-container">
         <form class="contact-form" #contactForm="ngForm">
           <div class="form-header">
-            <h3>Envíame un mensaje</h3>
-            <p>Cuéntame sobre tu proyecto</p>
+            <h3>{{ 'home.contact.form.title' | translate }}</h3>
+            <p>{{ 'home.contact.form.description' | translate }}</p>
           </div>
 
           <div class="form-row">
@@ -467,14 +494,14 @@
           </div>
 
           <div class="form-group">
-            <label for="subject">Tipo de Proyecto</label>
+            <label for="subject">{{ 'home.contact.form.projectType' | translate }}</label>
             <select id="subject" name="subject" required>
-              <option value="">Selecciona una opción</option>
-              <option value="web">Desarrollo Web</option>
-              <option value="mobile">Aplicación Móvil</option>
-              <option value="ecommerce">E-commerce</option>
-              <option value="consulting">Consultoría</option>
-              <option value="other">Otro</option>
+              <option value="">{{ 'home.contact.form.selectType' | translate }}</option>
+              <option value="web">{{ 'home.contact.form.types.web' | translate }}</option>
+              <option value="mobile">{{ 'home.contact.form.types.mobile' | translate }}</option>
+              <option value="ecommerce">{{ 'home.contact.form.types.ecommerce' | translate }}</option>
+              <option value="consulting">{{ 'home.contact.form.types.consulting' | translate }}</option>
+              <option value="other">{{ 'home.contact.form.types.other' | translate }}</option>
             </select>
           </div>
 

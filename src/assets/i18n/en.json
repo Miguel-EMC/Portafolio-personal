@@ -28,29 +28,61 @@
     },
     "profile": {
       "title": "Professional Profile",
+      "subtitle": "Experience, education and technical skills",
       "tabs": {
         "skills": "Skills",
         "experience": "Experience",
         "education": "Education"
+      },
+      "skills": {
+        "techStack": "Tech Stack",
+        "technologiesUsed": "Technologies Used",
+        "techs": "techs"
       }
     },
     "portfolio": {
       "title": "Featured Projects",
-      "viewAll": "View All Projects"
+      "subtitle": "A selection of my best work",
+      "viewAll": "View All Projects",
+      "viewProject": "View Project",
+      "viewCode": "Code"
     },
     "contact": {
       "title": "Contact Me",
+      "subtitle": "I'm available for new projects and opportunities",
       "description": "Do you have a project in mind? I'm available for new projects and collaborations. Let's talk!",
+      "projectTitle": "Let's talk about your project",
       "methods": {
         "email": "Email",
         "whatsapp": "WhatsApp", 
-        "linkedin": "LinkedIn"
+        "linkedin": "LinkedIn",
+        "responses": {
+          "email": "Response in 24h",
+          "whatsapp": "Immediate response",
+          "linkedin": "Professional network"
+        }
+      },
+      "availability": {
+        "title": "Available for projects",
+        "response": "Response: < 24h",
+        "start": "Start: Immediate"
       },
       "form": {
+        "title": "Send me a message",
+        "description": "Tell me about your project",
         "name": "Your name",
         "email": "Your email",
         "message": "Tell me about your project...",
-        "send": "Send Message"
+        "send": "Send Message",
+        "projectType": "Project Type",
+        "selectType": "Select an option",
+        "types": {
+          "web": "Web Development",
+          "mobile": "Mobile App",
+          "ecommerce": "E-commerce",
+          "consulting": "Consulting",
+          "other": "Other"
+        }
       }
     }
   },

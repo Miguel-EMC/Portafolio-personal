@@ -28,29 +28,61 @@
     },
     "profile": {
       "title": "Perfil Profesional",
+      "subtitle": "Experiencia, formación y habilidades técnicas",
       "tabs": {
         "skills": "Skills",
         "experience": "Experiencia", 
         "education": "Formación"
+      },
+      "skills": {
+        "techStack": "Stack Tecnológico",
+        "technologiesUsed": "Tecnologías Utilizadas",
+        "techs": "techs"
       }
     },
     "portfolio": {
       "title": "Proyectos Destacados",
-      "viewAll": "Ver Todos los Proyectos"
+      "subtitle": "Una selección de mis mejores trabajos",
+      "viewAll": "Ver Todos los Proyectos",
+      "viewProject": "Ver Proyecto",
+      "viewCode": "Código"
     },
     "contact": {
       "title": "Contáctame",
+      "subtitle": "Estoy disponible para nuevos proyectos y oportunidades",
       "description": "¿Tienes un proyecto en mente? Estoy disponible para nuevos proyectos y colaboraciones. ¡Hablemos!",
+      "projectTitle": "Hablemos de tu proyecto",
       "methods": {
         "email": "Email",
         "whatsapp": "WhatsApp",
-        "linkedin": "LinkedIn"
+        "linkedin": "LinkedIn",
+        "responses": {
+          "email": "Respuesta en 24h",
+          "whatsapp": "Respuesta inmediata",
+          "linkedin": "Red profesional"
+        }
+      },
+      "availability": {
+        "title": "Disponible para proyectos",
+        "response": "Respuesta: < 24h",
+        "start": "Inicio: Inmediato"
       },
       "form": {
+        "title": "Envíame un mensaje",
+        "description": "Cuéntame sobre tu proyecto",
         "name": "Tu nombre",
         "email": "Tu email", 
         "message": "Cuéntame sobre tu proyecto...",
-        "send": "Enviar Mensaje"
+        "send": "Enviar Mensaje",
+        "projectType": "Tipo de Proyecto",
+        "selectType": "Selecciona una opción",
+        "types": {
+          "web": "Desarrollo Web",
+          "mobile": "Aplicación Móvil",
+          "ecommerce": "E-commerce",
+          "consulting": "Consultoría",
+          "other": "Otro"
+        }
       }
     }
   },

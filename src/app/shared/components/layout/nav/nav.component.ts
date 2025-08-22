@@ -4,13 +4,14 @@ import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from "../../../../core/services/theme.service";
 import { LanguageToggleComponent } from "../../ui/language-toggle/language-toggle.component";
+import { ThemeToggleComponent } from "../../ui/theme-toggle/theme-toggle.component";
 import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   standalone: true,
-  imports: [NgClass, TranslateModule, RouterModule, LanguageToggleComponent],
+  imports: [NgClass, TranslateModule, RouterModule, LanguageToggleComponent, ThemeToggleComponent],
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit, OnDestroy {

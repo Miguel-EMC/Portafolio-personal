@@ -6,6 +6,7 @@ import { NavComponent } from './shared/components/layout/nav/nav.component';
 import { FooterComponent } from './shared/components/layout/footer/footer.component';
 import { LanguageToggleComponent } from './shared/components/ui/language-toggle/language-toggle.component';
 import { LoadingService } from './core/services/loading.service';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private translate: TranslateService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private themeService: ThemeService
   ) {
     if (isPlatformBrowser(this.platformId)) {
       this.translate.addLangs(['en', 'es']);

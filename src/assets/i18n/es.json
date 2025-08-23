@@ -94,8 +94,8 @@
     },
     "munsterMind": {
       "title": "Münster Mind App",
-      "description": "Aplicación móvil innovadora para entrenamiento mental y cognitivo con gamificación y seguimiento de progreso.",
-      "longDescription": "Aplicación móvil multiplataforma desarrollada con Flutter que ofrece ejercicios innovadores de entrenamiento mental, seguimiento detallado de progreso y elementos de gamificación avanzados."
+      "description": "Solución estratégica de RH que ayuda a las empresas a entender a las personas, alinear fortalezas con la cultura y crear ambientes laborales prósperos.",
+      "longDescription": "Aplicación móvil que va más allá de los procesos tradicionales de RH analizando datos significativos sobre candidatos y equipos, facilitando mejores decisiones de contratación y reduciendo la rotación mediante insights estratégicos de talento."
     },
     "conafis": {
       "title": "Sistema CONAFIS SARAS",
@@ -122,8 +122,13 @@
       "description": "Panel de control interactivo con visualización de datos, gráficos dinámicos y reportes personalizables para análisis de negocio.",
       "longDescription": "Dashboard completo desarrollado con Vue.js y D3.js que permite visualizar datos complejos, crear gráficos interactivos y generar reportes personalizados para análisis empresarial."
     },
+    "sinapsekEducation": {
+      "title": "Sinapsek Education",
+      "description": "Plataforma educativa enfocada al crecimiento profesional en áreas tecnológicas y matemáticas, diseñada para el ingreso a la universidad.",
+      "longDescription": "Plataforma educativa integral desarrollada con Django y React que ofrece cursos especializados en tecnología y matemáticas. Incluye rutas de aprendizaje personalizadas, seguimiento de progreso y módulos de preparación para exámenes de ingreso universitario."
+    },
     "billusos": {
-      "title": "Billusos Platform",
+      "title": "billusos",
       "description": "Plataforma de facturación electrónica y gestión empresarial con integración a servicios gubernamentales.",
       "longDescription": "Sistema empresarial desarrollado con Django y React para facturación electrónica, gestión de clientes y integración completa con servicios del SRI y otros organismos gubernamentales."
     }
@@ -194,6 +199,10 @@
         "Liderazgo estudiantil y trabajo en equipo"
       ]
     }
+  },
+  "common": {
+    "current": "Actualidad",
+    "actualidad": "Actualidad"
   },
   "skillAreas": {
     "frontend": {

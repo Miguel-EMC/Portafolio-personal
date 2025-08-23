@@ -109,79 +109,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     { name: 'Docker', level: 'Intermedio', years: '1+' }
   ];
 
-  // Tech Stack for skills section
-  techStack = [
-    {
-      name: 'Lenguajes',
-      icon: 'bi-code-slash',
-      technologies: [
-        { name: 'TypeScript', level: 95 },
-        { name: 'JavaScript', level: 90 },
-        { name: 'Python', level: 85 },
-        { name: 'PHP', level: 80 },
-        { name: 'Java', level: 75 },
-        { name: 'C#', level: 70 },
-        { name: 'SQL', level: 85 },
-        { name: 'HTML/CSS', level: 95 }
-      ]
-    },
-    {
-      name: 'Frontend',
-      icon: 'bi-palette',
-      technologies: [
-        { name: 'Angular', level: 95 },
-        { name: 'React', level: 80 },
-        { name: 'Vue.js', level: 75 },
-        { name: 'Next.js', level: 78 },
-        { name: 'Tailwind', level: 90 },
-        { name: 'Bootstrap', level: 85 },
-        { name: 'Sass/SCSS', level: 88 },
-        { name: 'Material UI', level: 82 }
-      ]
-    },
-    {
-      name: 'Backend',
-      icon: 'bi-server',
-      technologies: [
-        { name: 'Node.js', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'Laravel', level: 75 },
-        { name: 'NestJS', level: 85 },
-        { name: 'Express.js', level: 88 },
-        { name: 'Django', level: 72 },
-        { name: 'FastAPI', level: 75 },
-        { name: 'Spring Boot', level: 68 }
-      ]
-    },
-    {
-      name: 'Database',
-      icon: 'bi-database',
-      technologies: [
-        { name: 'PostgreSQL', level: 85 },
-        { name: 'MySQL', level: 80 },
-        { name: 'MongoDB', level: 70 },
-        { name: 'Firebase', level: 75 },
-        { name: 'Redis', level: 70 },
-        { name: 'SQLite', level: 82 },
-        { name: 'Supabase', level: 78 },
-        { name: 'Oracle', level: 65 }
-      ]
-    },
-    {
-      name: 'DevOps',
-      icon: 'bi-tools',
-      technologies: [
-        { name: 'Docker', level: 70 },
-        { name: 'Git', level: 90 },
-        { name: 'AWS', level: 65 },
-        { name: 'Linux', level: 75 },
-        { name: 'GitHub Actions', level: 72 },
-        { name: 'Nginx', level: 68 },
-        { name: 'Jenkins', level: 60 },
-        { name: 'Kubernetes', level: 55 }
-      ]
-    }
-  ];
+  // Use skillAreas from data file instead of duplicating
 
   // Featured projects for compact portfolio
   featuredProjects: Project[] = featuredProjects;
@@ -373,7 +301,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   getEducationColor(index: number): string {
     const educationColors = [
       '#3B82F6', // Blue
-      '#6366F1', // Indigo  
+      '#6366F1', // Indigo
       '#8B5CF6', // Violet
       '#A855F7'  // Purple
     ];

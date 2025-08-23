@@ -8,7 +8,7 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: 'fullstack-lateral',
-    date: 'Jun 2024 - Actualidad',
+    date: 'Jun 2024 - common.current',
     location: 'Quito, Ecuador',
     tasks: [
       'Desarrollo de interfaces web dinámicas con Angular y TypeScript, mejorando la experiencia de usuario en un 40%',

@@ -10,87 +10,55 @@ export interface PortfolioProject {
 export const portfolioProjects: PortfolioProject[] = [
   // Personal Projects
   {
-    id: 'academicSystem',
+    id: 'sinapsekEducation',
     type: 'personal',
-    frameworks: ['Angular', 'TypeScript', 'Node.js', 'PostgreSQL', 'Bootstrap'],
+    frameworks: ['Django', 'React', 'PostgreSQL', 'Docker'],
     images: [
-      'https://images.pexels.com/photos/5940721/pexels-photo-5940721.jpeg',
+      '/assets/img/sinapsekEducation.png',
       'https://images.pexels.com/photos/3184293/pexels-photo-3184293.jpeg'
     ],
-    githubUrl: 'https://github.com/Miguel-EMC/academic-system'
-  },
-  {
-    id: 'ecommerce',
-    type: 'personal',
-    frameworks: ['React', 'Next.js', 'Stripe', 'MongoDB', 'Tailwind CSS'],
-    images: [
-      'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg',
-      'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg'
-    ],
-    githubUrl: 'https://github.com/Miguel-EMC/ecommerce-app',
-    liveUrl: 'https://ecommerce-demo.vercel.app'
-  },
-  {
-    id: 'taskApp',
-    type: 'personal',
-    frameworks: ['Flutter', 'Dart', 'Firebase', 'Provider', 'Material Design'],
-    images: [
-      'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg',
-      'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg'
-    ],
-    githubUrl: 'https://github.com/Miguel-EMC/task-management-app'
-  },
-  {
-    id: 'analyticsApp',
-    type: 'personal',
-    frameworks: ['Vue.js', 'D3.js', 'Python', 'FastAPI', 'Chart.js'],
-    images: [
-      'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg',
-      'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg'
-    ],
-    githubUrl: 'https://github.com/Miguel-EMC/analytics-dashboard',
-    liveUrl: 'https://analytics-demo.netlify.app'
+    liveUrl: 'https://import-synapsek-plat-5b7i.bolt.host/'
   },
   
   // Professional Projects
   {
     id: 'asobanca',
     type: 'professional',
-    frameworks: ['Laravel', 'Vue.js', 'MySQL', 'Redis', 'Docker'],
+    frameworks: ['Laravel', 'Angular', 'PostgreSQL'],
     images: [
-      'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
+      '/assets/img/asobancaPlataforma.png',
       'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg'
     ],
-    liveUrl: 'https://asobanca.fin.ec'
+    liveUrl: 'https://plataformariesgos.app/'
   },
   {
     id: 'munsterMind',
     type: 'professional',
-    frameworks: ['Flutter', 'Firebase', 'TensorFlow Lite', 'Provider', 'Material Design'],
+    frameworks: ['Flutter', 'PostgreSQL', 'NestJS'],
     images: [
-      'https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg',
+      '/assets/img/munstermain.png',
       'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg'
     ],
-    liveUrl: 'https://munster-mind.app'
+    liveUrl: 'https://play.google.com/store/apps/details?id=io.munstermind.dev&pcampaignid=web_share'
   },
   {
     id: 'conafis',
     type: 'professional',
-    frameworks: ['Angular', 'NestJS', 'PostgreSQL', 'Kubernetes', 'Redis'],
+    frameworks: ['Laravel', 'Angular', 'PostgreSQL'],
     images: [
-      'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg',
+      '/assets/img/conafis.png',
       'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg'
     ],
-    liveUrl: 'https://conafis-saras.gov.ec'
+    liveUrl: 'https://saras.finanzaspopulares.gob.ec/View/SARAS/index.php'
   },
   {
     id: 'billusos',
     type: 'professional',
-    frameworks: ['Django', 'React', 'PostgreSQL', 'Celery', 'Redis'],
+    frameworks: ['Django', 'PostgreSQL', 'Docker', 'React Native'],
     images: [
-      'https://images.pexels.com/photos/3184454/pexels-photo-3184454.jpeg',
+      '/assets/img/billusos.png',
       'https://images.pexels.com/photos/3184632/pexels-photo-3184632.jpeg'
     ],
-    liveUrl: 'https://billusos.com'
+    liveUrl: 'https://ecuador.billusos.com/#'
   }
 ];

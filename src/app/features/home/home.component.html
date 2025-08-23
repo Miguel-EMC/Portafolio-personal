@@ -8,7 +8,7 @@
           <span class="status-dot"></span>
           <span>{{ 'home.hero.greeting' | translate }}</span>
         </div>
-        
+
         <h1 class="hero-title">
           <span class="name-line">
             <span class="name">{{ 'home.hero.name' | translate }}</span>
@@ -19,7 +19,7 @@
             <span class="cursor">|</span>
           </span>
         </h1>
-        
+
         <p class="hero-description">
           {{ 'home.hero.description' | translate }}
         </p>
@@ -27,15 +27,15 @@
         <!-- Estadísticas Compactas -->
         <div class="hero-stats">
           <div class="stat-item">
-            <span class="stat-number">3+</span>
+            <span class="stat-number">2+</span>
             <span class="stat-label">{{ 'home.hero.stats.years' | translate }}</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">25+</span>
+            <span class="stat-number">8+</span>
             <span class="stat-label">{{ 'home.hero.stats.projects' | translate }}</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">15+</span>
+            <span class="stat-number">10+</span>
             <span class="stat-label">{{ 'home.hero.stats.technologies' | translate }}</span>
           </div>
         </div>
@@ -50,7 +50,7 @@
             <i class="bi bi-eye"></i>
             <span>{{ 'home.hero.actions.projects' | translate }}</span>
           </button>
-          <a href="/assets/cv-eduardo-muzo.pdf" target="_blank" class="btn-outline">
+          <a href="/assets/documents/CV_MuzoMiguel.pdf" target="_blank" class="btn-outline">
             <i class="bi bi-download"></i>
             <span>Descargar CV</span>
           </a>
@@ -67,7 +67,7 @@
               <span>{{ 'home.hero.status' | translate }}</span>
             </div>
           </div>
-          
+
           <div class="profile-info">
             <h3>Eduardo Miguel Muzo</h3>
             <p>{{ 'home.hero.role' | translate }}</p>
@@ -137,7 +137,7 @@
         <div class="experience-modern-grid">
           <div class="experience-card-modern" *ngFor="let exp of experiences.slice(0, 3); let i = index">
             <div class="experience-gradient-bg" [style.background]="getExperienceGradient(i)"></div>
-            
+
             <div class="card-header-modern">
               <div class="job-info-modern">
                 <div class="job-title-section">
@@ -147,7 +147,7 @@
                 <div class="job-meta-modern">
                   <div class="date-badge" [style.background]="getExperienceColor(i) + '15'" [style.color]="getExperienceColor(i)">
                     <i class="bi bi-calendar3"></i>
-                    <span>{{ exp.date }}</span>
+                    <span>{{ exp.date | translate }}</span>
                   </div>
                   <div class="location-badge" [style.background]="getExperienceColor(i) + '15'" [style.color]="getExperienceColor(i)">
                     <i class="bi bi-geo-alt"></i>
@@ -159,7 +159,7 @@
                 <span class="company-emoji">{{ getExperienceEmoji(i) }}</span>
               </div>
             </div>
-            
+
             <div class="job-highlights-modern">
               <div class="highlight-modern" *ngFor="let task of ('experiences.' + exp.id + '.tasks' | translate).slice(0, 3)">
                 <div class="highlight-icon" [style.background]="getExperienceColor(i) + '20'" [style.color]="getExperienceColor(i)">
@@ -206,12 +206,12 @@
                     <h4 class="institution-modern">{{ 'education.' + edu.id + '.institution' | translate }}</h4>
                   </div>
                   <div class="edu-date-badge" [style.background]="getEducationColor(i) + '15'" [style.color]="getEducationColor(i)">
-                    {{ edu.date }}
+                    {{ edu.date | translate }}
                   </div>
                 </div>
-                
+
                 <p class="edu-description-modern">{{ 'education.' + edu.id + '.description' | translate }}</p>
-                
+
                 <div class="edu-achievements-modern">
                   <div class="achievement-modern" *ngFor="let achievement of ('education.' + edu.id + '.achievements' | translate).slice(0, 3)">
                     <div class="achievement-icon" [style.background]="getEducationColor(i) + '20'" [style.color]="getEducationColor(i)">
@@ -220,7 +220,7 @@
                     <span>{{ achievement }}</span>
                   </div>
                 </div>
-                
+
                 <div class="edu-progress-indicator">
                   <div class="progress-bar" [style.background]="getEducationColor(i)"></div>
                 </div>
@@ -237,25 +237,25 @@
           <div class="skills-categories-compact">
             <h3 class="section-subtitle">{{ 'home.profile.skills.techStack' | translate }}</h3>
             <div class="categories-compact-grid">
-              <div class="category-compact" *ngFor="let category of techStack; let categoryIndex = index">
+              <div class="category-compact" *ngFor="let category of skillAreas; let categoryIndex = index">
                 <div class="category-header-compact">
-                  <i [class]="category.icon" [style.color]="getSkillColor(categoryIndex)"></i>
-                  <h4>{{ category.name }}</h4>
+                  <span [style.font-size]="'1.2em'" [style.color]="getSkillColor(categoryIndex)">{{ category.emoji }}</span>
+                  <h4>{{ 'skillAreas.' + category.id + '.title' | translate }}</h4>
                 </div>
-                
+
                 <div class="skills-chips-container">
-                  <div class="skill-chip" 
-                       *ngFor="let tech of category.technologies.slice(0, 6); let techIndex = index"
+                  <div class="skill-chip"
+                       *ngFor="let tech of category.detailedTechs.slice(0, 6); let techIndex = index"
                        [style.background]="'linear-gradient(135deg, ' + getSkillColor(techIndex) + '15, ' + getSkillColor(techIndex) + '25)'"
                        [style.border-color]="getSkillColor(techIndex)">
                     <span class="chip-name">{{ tech.name }}</span>
-                    <span class="chip-level" [style.background]="getSkillColor(techIndex)">{{ tech.level }}%</span>
+                    <span class="chip-level" [style.background]="getSkillColor(techIndex)">{{ (tech.mastery / 10) * 100 | number:'1.0-0' }}%</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -378,14 +378,14 @@
             </div>
           </div>
         </div>
-        
+
         <div class="project-info">
           <div class="project-header">
             <h3 class="project-title">{{ 'projects.' + project.id + '.title' | translate }}</h3>
             <span class="project-type" [class]="project.type">{{ project.type }}</span>
           </div>
           <p class="project-description">{{ 'projects.' + project.id + '.description' | translate }}</p>
-          
+
           <div class="project-tech">
             <span class="tech-badge" *ngFor="let tech of project.tech.slice(0, 3)">
               {{ tech }}
@@ -507,7 +507,7 @@
 
           <div class="form-group">
             <label for="message">{{ 'home.contact.form.message' | translate }}</label>
-            <textarea id="message" name="message" rows="4" 
+            <textarea id="message" name="message" rows="4"
                       [placeholder]="'home.contact.form.message' | translate" required></textarea>
           </div>
 

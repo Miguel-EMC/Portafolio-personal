@@ -94,8 +94,8 @@
     },
     "munsterMind": {
       "title": "Münster Mind App",
-      "description": "Innovative mobile application for mental and cognitive training with gamification and progress tracking.",
-      "longDescription": "Cross-platform mobile application developed with Flutter that offers innovative mental training exercises, detailed progress tracking and advanced gamification elements."
+      "description": "Strategic HR solution helping companies understand people, align strengths with culture, and create thriving work environments.",
+      "longDescription": "Mobile app that goes beyond traditional HR processes by analyzing meaningful data about candidates and teams, empowering better hiring decisions and reducing turnover through strategic people insights."
     },
     "conafis": {
       "title": "CONAFIS SARAS System",
@@ -122,8 +122,13 @@
       "description": "Interactive control panel with data visualization, dynamic charts and customizable reports for business analysis.",
       "longDescription": "Complete dashboard developed with Vue.js and D3.js that allows visualizing complex data, creating interactive charts and generating customized reports for business analysis."
     },
+    "sinapsekEducation": {
+      "title": "Sinapsek Education",
+      "description": "Educational platform focused on professional growth in technological and mathematical areas, designed for university preparation.",
+      "longDescription": "Comprehensive educational platform developed with Django and React that offers specialized courses in technology and mathematics. Features include personalized learning paths, progress tracking, and preparation modules for university entrance exams."
+    },
     "billusos": {
-      "title": "Billusos Platform",
+      "title": "billusos",
       "description": "Electronic invoicing and business management platform with integration to government services.",
       "longDescription": "Business system developed with Django and React for electronic invoicing, client management and complete integration with SRI and other government agencies."
     }
@@ -194,6 +199,10 @@
         "Student leadership and teamwork"
       ]
     }
+  },
+  "common": {
+    "current": "Present",
+    "actualidad": "Present"
   },
   "skillAreas": {
     "frontend": {

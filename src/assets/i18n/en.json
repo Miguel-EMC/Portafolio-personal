@@ -137,6 +137,7 @@
     "fullstack-lateral": {
       "title": "Full Stack Developer",
       "subtitle": "Lateral Business Thinking | Innovate Empresarial Solutions",
+      "date": "Jun 2024 - Present",
       "tasks": [
         "Development of dynamic web interfaces with Angular and TypeScript, improving user experience by 40%",
         "Implementation of scalable architectures with microservices using Node.js and Docker",
@@ -147,6 +148,7 @@
     "freelance-dev": {
       "title": "Software Developer",
       "subtitle": "Freelance",
+      "date": "Nov 2023 - Oct 2024",
       "tasks": [
         "Full-stack development of the ASOBANCA platform with Laravel and Vue.js for 15+ financial institutions",
         "Continuous improvement of the Billusos application, implementing new features with Python and Django",
@@ -157,6 +159,7 @@
     "junior-fullstack": {
       "title": "Jr Full Stack Developer",
       "subtitle": "Centro Ecuatoriano de Eficiencia de Recursos",
+      "date": "Jan 2023 - Sep 2023",
       "tasks": [
         "Responsive client interface layout for CONAFIS SARAS with HTML5, CSS3 and JavaScript",
         "Configuration and optimization of development environments for multidisciplinary teams",
@@ -169,6 +172,7 @@
     "computer-engineering": {
       "title": "Computer Science Engineering",
       "institution": "Escuela Politécnica Nacional",
+      "date": "Present",
       "description": "Comprehensive training in computer science with emphasis on software development, advanced algorithms, artificial intelligence and complex systems analysis.",
       "achievements": [
         "Specialization in Advanced Algorithms and Data Structures",

@@ -9,7 +9,7 @@
             <div class="job-meta">
               <div class="meta-item">
                 <i class="bi bi-calendar3"></i>
-                <span>{{ exp.date | translate }}</span>
+                <span>{{ 'experiences.' + exp.id + '.date' | translate }}</span>
               </div>
               <div class="meta-item" *ngIf="exp.location">
                 <i class="bi bi-geo-alt"></i>

@@ -147,7 +147,7 @@
                 <div class="job-meta-modern">
                   <div class="date-badge" [style.background]="getExperienceColor(i) + '15'" [style.color]="getExperienceColor(i)">
                     <i class="bi bi-calendar3"></i>
-                    <span>{{ exp.date | translate }}</span>
+                    <span>{{ 'experiences.' + exp.id + '.date' | translate }}</span>
                   </div>
                   <div class="location-badge" [style.background]="getExperienceColor(i) + '15'" [style.color]="getExperienceColor(i)">
                     <i class="bi bi-geo-alt"></i>
@@ -206,7 +206,7 @@
                     <h4 class="institution-modern">{{ 'education.' + edu.id + '.institution' | translate }}</h4>
                   </div>
                   <div class="edu-date-badge" [style.background]="getEducationColor(i) + '15'" [style.color]="getEducationColor(i)">
-                    {{ edu.date | translate }}
+                    {{ 'education.' + edu.id + '.date' | translate }}
                   </div>
                 </div>
 

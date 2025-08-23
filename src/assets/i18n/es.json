@@ -137,6 +137,7 @@
     "fullstack-lateral": {
       "title": "Full Stack Developer",
       "subtitle": "Lateral Business Thinking | Innovate Empresarial Solutions",
+      "date": "Jun 2024 - Actualidad",
       "tasks": [
         "Desarrollo de interfaces web dinámicas con Angular y TypeScript, mejorando la experiencia de usuario en un 40%",
         "Implementación de arquitecturas escalables con microservicios usando Node.js y Docker",
@@ -147,6 +148,7 @@
     "freelance-dev": {
       "title": "Desarrollador de Software",
       "subtitle": "Freelance",
+      "date": "Nov 2023 - Oct 2024",
       "tasks": [
         "Desarrollo full-stack de la plataforma ASOBANCA con Laravel y Vue.js para 15+ instituciones financieras",
         "Mejora continua del aplicativo Billusos, implementando nuevas funcionalidades con Python y Django",
@@ -157,6 +159,7 @@
     "junior-fullstack": {
       "title": "Full Stack Developer Jr",
       "subtitle": "Centro Ecuatoriano de Eficiencia de Recursos",
+      "date": "Ene 2023 - Sep 2023",
       "tasks": [
         "Maquetación responsive de interfaces cliente para CONAFIS SARAS con HTML5, CSS3 y JavaScript",
         "Configuración y optimización de entornos de desarrollo para equipos multidisciplinarios",
@@ -169,6 +172,7 @@
     "computer-engineering": {
       "title": "Ingeniería en Ciencias de la Computación",
       "institution": "Escuela Politécnica Nacional",
+      "date": "Actualidad",
       "description": "Formación integral en ciencias de la computación con énfasis en desarrollo de software, algoritmos avanzados, inteligencia artificial y análisis de sistemas complejos.",
       "achievements": [
         "Especialización en Algoritmos y Estructuras de Datos Avanzadas",

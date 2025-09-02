@@ -476,7 +476,11 @@
 
       <!-- Formulario de Contacto -->
       <div class="contact-form-container">
-        <form class="contact-form" #contactForm="ngForm">
+      <form class="contact-form"
+            (ngSubmit)="onSubmit($event)"
+            #contactForm="ngForm"
+            novalidate>
+
           <div class="form-header">
             <h3>{{ 'home.contact.form.title' | translate }}</h3>
             <p>{{ 'home.contact.form.description' | translate }}</p>
@@ -515,11 +519,6 @@
             <i class="bi bi-send"></i>
             <span>{{ 'home.contact.form.send' | translate }}</span>
           </button>
-
-          <p class="form-note">
-            <i class="bi bi-shield-check"></i>
-            Tu información está segura y no será compartida
-          </p>
         </form>
       </div>
     </div>

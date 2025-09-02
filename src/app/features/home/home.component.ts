@@ -373,4 +373,27 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     ];
     return techMap[index] || [];
   }
+
+  onSubmit(event: Event) {
+  event.preventDefault();
+
+  const form = event.target as HTMLFormElement;
+  const data = new FormData(form);
+
+  fetch("https://formspree.io/f/xandpyvw", {
+    method: "POST",
+    body: data,
+    headers: { Accept: "application/json" }
+  }).then(response => {
+    if (response.ok) {
+      console.log("✅ Formulario enviado con éxito.");
+      form.reset();
+    } else {
+      console.error("❌ Error al enviar el formulario.");
+    }
+  }).catch(() => {
+    alert("⚠️ Error de conexión. Revisa tu internet.");
+  });
+}
+
 }

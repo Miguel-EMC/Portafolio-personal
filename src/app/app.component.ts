@@ -1,10 +1,12 @@
-import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, OnInit, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { NavComponent } from './shared/components/layout/nav/nav.component';
 import { FooterComponent } from './shared/components/layout/footer/footer.component';
 import { LanguageToggleComponent } from './shared/components/ui/language-toggle/language-toggle.component';
+import { LoadingService } from './core/services/loading.service';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +15,14 @@ import { LanguageToggleComponent } from './shared/components/ui/language-toggle/
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'portfolio-personal';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private loadingService: LoadingService,
+    private themeService: ThemeService
   ) {
     if (isPlatformBrowser(this.platformId)) {
       this.translate.addLangs(['en', 'es']);
@@ -42,6 +46,12 @@ export class AppComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    // Canvas animado desactivado para mantener fondo oscuro estático
+    // Ocultar el loader inicial después de que la vista esté lista
+    if (isPlatformBrowser(this.platformId)) {
+      // Esperamos un poco para asegurar que todo esté cargado
+      setTimeout(() => {
+        this.loadingService.hideInitialLoader();
+      }, 500);
+    }
   }
 }

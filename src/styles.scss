@@ -1060,3 +1060,120 @@ p {
   .xl\:text-4xl { font-size: var(--text-4xl); }
   .xl\:text-5xl { font-size: var(--text-5xl); }
 }
+
+/* ===== SISTEMA DE TEMAS ===== */
+
+/* Variables base en :root ya definidas arriba */
+
+/* TEMA CLARO */
+.light-theme {
+  /* Fondos */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-accent: #e2e8f0;
+  --bg-muted: #f8fafc;
+
+  /* Textos */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* Bordes */
+  --border-primary: #e2e8f0;
+  --border-secondary: #cbd5e1;
+  --border-tertiary: #94a3b8;
+
+  /* Colores de acento */
+  --accent-primary: var(--turquoise-600);
+  --accent-secondary: var(--blue-600);
+  --accent-tertiary: var(--violet-600);
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, var(--turquoise-500), var(--blue-600));
+  --gradient-secondary: linear-gradient(135deg, var(--blue-500), var(--violet-600));
+  --gradient-accent: linear-gradient(135deg, var(--violet-500), var(--turquoise-500));
+
+  /* Sombras específicas para tema claro */
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Estados */
+  --success-bg: #f0fdf4;
+  --success-text: #166534;
+  --success-border: #bbf7d0;
+  
+  --warning-bg: #fffbeb;
+  --warning-text: #a16207;
+  --warning-border: #fde68a;
+  
+  --error-bg: #fef2f2;
+  --error-text: #dc2626;
+  --error-border: #fecaca;
+}
+
+/* TEMA OSCURO */
+.dark-theme {
+  /* Fondos */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-accent: #475569;
+  --bg-muted: #1e293b;
+
+  /* Textos */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+
+  /* Bordes */
+  --border-primary: #334155;
+  --border-secondary: #475569;
+  --border-tertiary: #64748b;
+
+  /* Colores de acento - más brillantes para tema oscuro */
+  --accent-primary: var(--turquoise-400);
+  --accent-secondary: var(--blue-400);
+  --accent-tertiary: var(--violet-400);
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, var(--turquoise-400), var(--blue-500));
+  --gradient-secondary: linear-gradient(135deg, var(--blue-400), var(--violet-500));
+  --gradient-accent: linear-gradient(135deg, var(--violet-400), var(--turquoise-400));
+
+  /* Sombras específicas para tema oscuro */
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+
+  /* Estados */
+  --success-bg: #064e3b;
+  --success-text: #6ee7b7;
+  --success-border: #047857;
+  
+  --warning-bg: #78350f;
+  --warning-text: #fbbf24;
+  --warning-border: #a16207;
+  
+  --error-bg: #7f1d1d;
+  --error-text: #fca5a5;
+  --error-border: #dc2626;
+}
+
+/* Transiciones suaves para cambio de tema */
+* {
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    fill 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Deshabilitar transiciones en animaciones específicas */
+[data-no-theme-transition] * {
+  transition: none !important;
+}

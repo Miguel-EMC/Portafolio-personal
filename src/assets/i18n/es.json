@@ -28,29 +28,61 @@
     },
     "profile": {
       "title": "Perfil Profesional",
+      "subtitle": "Experiencia, formación y habilidades técnicas",
       "tabs": {
         "skills": "Skills",
         "experience": "Experiencia", 
         "education": "Formación"
+      },
+      "skills": {
+        "techStack": "Stack Tecnológico",
+        "technologiesUsed": "Tecnologías Utilizadas",
+        "techs": "techs"
       }
     },
     "portfolio": {
       "title": "Proyectos Destacados",
-      "viewAll": "Ver Todos los Proyectos"
+      "subtitle": "Una selección de mis mejores trabajos",
+      "viewAll": "Ver Todos los Proyectos",
+      "viewProject": "Ver Proyecto",
+      "viewCode": "Código"
     },
     "contact": {
       "title": "Contáctame",
+      "subtitle": "Estoy disponible para nuevos proyectos y oportunidades",
       "description": "¿Tienes un proyecto en mente? Estoy disponible para nuevos proyectos y colaboraciones. ¡Hablemos!",
+      "projectTitle": "Hablemos de tu proyecto",
       "methods": {
         "email": "Email",
         "whatsapp": "WhatsApp",
-        "linkedin": "LinkedIn"
+        "linkedin": "LinkedIn",
+        "responses": {
+          "email": "Respuesta en 24h",
+          "whatsapp": "Respuesta inmediata",
+          "linkedin": "Red profesional"
+        }
+      },
+      "availability": {
+        "title": "Disponible para proyectos",
+        "response": "Respuesta: < 24h",
+        "start": "Inicio: Inmediato"
       },
       "form": {
+        "title": "Envíame un mensaje",
+        "description": "Cuéntame sobre tu proyecto",
         "name": "Tu nombre",
         "email": "Tu email", 
         "message": "Cuéntame sobre tu proyecto...",
-        "send": "Enviar Mensaje"
+        "send": "Enviar Mensaje",
+        "projectType": "Tipo de Proyecto",
+        "selectType": "Selecciona una opción",
+        "types": {
+          "web": "Desarrollo Web",
+          "mobile": "Aplicación Móvil",
+          "ecommerce": "E-commerce",
+          "consulting": "Consultoría",
+          "other": "Otro"
+        }
       }
     }
   },
@@ -62,8 +94,8 @@
     },
     "munsterMind": {
       "title": "Münster Mind App",
-      "description": "Aplicación móvil innovadora para entrenamiento mental y cognitivo con gamificación y seguimiento de progreso.",
-      "longDescription": "Aplicación móvil multiplataforma desarrollada con Flutter que ofrece ejercicios innovadores de entrenamiento mental, seguimiento detallado de progreso y elementos de gamificación avanzados."
+      "description": "Solución estratégica de RH que ayuda a las empresas a entender a las personas, alinear fortalezas con la cultura y crear ambientes laborales prósperos.",
+      "longDescription": "Aplicación móvil que va más allá de los procesos tradicionales de RH analizando datos significativos sobre candidatos y equipos, facilitando mejores decisiones de contratación y reduciendo la rotación mediante insights estratégicos de talento."
     },
     "conafis": {
       "title": "Sistema CONAFIS SARAS",
@@ -90,8 +122,13 @@
       "description": "Panel de control interactivo con visualización de datos, gráficos dinámicos y reportes personalizables para análisis de negocio.",
       "longDescription": "Dashboard completo desarrollado con Vue.js y D3.js que permite visualizar datos complejos, crear gráficos interactivos y generar reportes personalizados para análisis empresarial."
     },
+    "sinapsekEducation": {
+      "title": "Sinapsek Education",
+      "description": "Plataforma educativa enfocada al crecimiento profesional en áreas tecnológicas y matemáticas, diseñada para el ingreso a la universidad.",
+      "longDescription": "Plataforma educativa integral desarrollada con Django y React que ofrece cursos especializados en tecnología y matemáticas. Incluye rutas de aprendizaje personalizadas, seguimiento de progreso y módulos de preparación para exámenes de ingreso universitario."
+    },
     "billusos": {
-      "title": "Billusos Platform",
+      "title": "billusos",
       "description": "Plataforma de facturación electrónica y gestión empresarial con integración a servicios gubernamentales.",
       "longDescription": "Sistema empresarial desarrollado con Django y React para facturación electrónica, gestión de clientes y integración completa con servicios del SRI y otros organismos gubernamentales."
     }
@@ -100,6 +137,7 @@
     "fullstack-lateral": {
       "title": "Full Stack Developer",
       "subtitle": "Lateral Business Thinking | Innovate Empresarial Solutions",
+      "date": "Jun 2024 - Actualidad",
       "tasks": [
         "Desarrollo de interfaces web dinámicas con Angular y TypeScript, mejorando la experiencia de usuario en un 40%",
         "Implementación de arquitecturas escalables con microservicios usando Node.js y Docker",
@@ -110,6 +148,7 @@
     "freelance-dev": {
       "title": "Desarrollador de Software",
       "subtitle": "Freelance",
+      "date": "Nov 2023 - Oct 2024",
       "tasks": [
         "Desarrollo full-stack de la plataforma ASOBANCA con Laravel y Vue.js para 15+ instituciones financieras",
         "Mejora continua del aplicativo Billusos, implementando nuevas funcionalidades con Python y Django",
@@ -120,6 +159,7 @@
     "junior-fullstack": {
       "title": "Full Stack Developer Jr",
       "subtitle": "Centro Ecuatoriano de Eficiencia de Recursos",
+      "date": "Ene 2023 - Sep 2023",
       "tasks": [
         "Maquetación responsive de interfaces cliente para CONAFIS SARAS con HTML5, CSS3 y JavaScript",
         "Configuración y optimización de entornos de desarrollo para equipos multidisciplinarios",
@@ -132,6 +172,7 @@
     "computer-engineering": {
       "title": "Ingeniería en Ciencias de la Computación",
       "institution": "Escuela Politécnica Nacional",
+      "date": "Actualidad",
       "description": "Formación integral en ciencias de la computación con énfasis en desarrollo de software, algoritmos avanzados, inteligencia artificial y análisis de sistemas complejos.",
       "achievements": [
         "Especialización en Algoritmos y Estructuras de Datos Avanzadas",
@@ -162,6 +203,10 @@
         "Liderazgo estudiantil y trabajo en equipo"
       ]
     }
+  },
+  "common": {
+    "current": "Actualidad",
+    "actualidad": "Actualidad"
   },
   "skillAreas": {
     "frontend": {

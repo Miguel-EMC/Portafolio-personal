@@ -52,6 +52,10 @@
       }
     }
   }
+  
+  @media (max-width: 480px) {
+    height: 50px;
+  }
 }
 
 .nav-container {
@@ -70,6 +74,12 @@
   @media (max-width: 768px) {
     justify-content: flex-start;
     gap: var(--space-3);
+    padding: 0 var(--space-3);
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 var(--space-2);
+    gap: var(--space-2);
   }
 }
 
@@ -119,10 +129,11 @@
   
   &:hover {
     .nav-text {
-      color: var(--text-primary);
+      color: #ffffff;
     }
     
     i {
+      color: #ffffff;
       transform: scale(1.1);
     }
   }
@@ -240,19 +251,19 @@
   width: 36px;
   height: 36px;
   background: transparent;
-  border: 1px solid rgba(20, 184, 166, 0.3);
+  border: 1px solid var(--border-primary);
   border-radius: var(--radius-lg);
-  color: #99f6e4;
+  color: var(--text-tertiary);
   text-decoration: none;
   transition: all var(--transition-fast);
   
   &:hover {
     transform: translateY(-2px);
-    border-color: #14b8a6;
-    background: rgba(20, 184, 166, 0.1);
+    border-color: var(--accent-primary);
+    background: var(--state-hover);
     
     i {
-      color: #14b8a6;
+      color: var(--accent-primary);
       transform: scale(1.1);
     }
   }
@@ -284,7 +295,7 @@
   
   &:hover {
     .hamburger span {
-      background: #3b82f6;
+      background: var(--accent-primary);
     }
   }
 }
@@ -368,38 +379,54 @@
 /* ===== RESPONSIVE DESIGN ===== */
 
 @media (max-width: 768px) {
-  .nav-container {
-    padding: var(--space-6);
-  }
-  
   .social-links {
     flex-wrap: wrap;
     justify-content: center;
+    gap: var(--space-1-5);
   }
   
   .social-link {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
+    
+    i {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .desktop-nav {
+    padding: var(--space-5);
   }
 }
 
 @media (max-width: 480px) {
   .mobile-toggle {
-    width: 48px;
-    height: 48px;
-    top: 16px;
-    left: 16px;
+    width: 44px;
+    height: 44px;
   }
   
   .nav-container {
+    padding: var(--space-2);
+  }
+  
+  .desktop-nav {
     padding: var(--space-4);
+  }
+  
+  .nav-link {
+    .link-content {
+      padding: var(--space-3);
+    }
   }
 }
 
 /* ===== LANGUAGE TOGGLE ===== */
 
-.nav-language {
+.nav-controls {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   
   @media (max-width: 768px) {
     position: absolute;
@@ -407,6 +434,12 @@
     right: 60px;
     transform: translateY(-50%);
     z-index: 10;
+    gap: 0.25rem;
+  }
+  
+  @media (max-width: 480px) {
+    right: 50px;
+    gap: 0.125rem;
   }
 }
 

@@ -28,29 +28,61 @@
     },
     "profile": {
       "title": "Professional Profile",
+      "subtitle": "Experience, education and technical skills",
       "tabs": {
         "skills": "Skills",
         "experience": "Experience",
         "education": "Education"
+      },
+      "skills": {
+        "techStack": "Tech Stack",
+        "technologiesUsed": "Technologies Used",
+        "techs": "techs"
       }
     },
     "portfolio": {
       "title": "Featured Projects",
-      "viewAll": "View All Projects"
+      "subtitle": "A selection of my best work",
+      "viewAll": "View All Projects",
+      "viewProject": "View Project",
+      "viewCode": "Code"
     },
     "contact": {
       "title": "Contact Me",
+      "subtitle": "I'm available for new projects and opportunities",
       "description": "Do you have a project in mind? I'm available for new projects and collaborations. Let's talk!",
+      "projectTitle": "Let's talk about your project",
       "methods": {
         "email": "Email",
         "whatsapp": "WhatsApp", 
-        "linkedin": "LinkedIn"
+        "linkedin": "LinkedIn",
+        "responses": {
+          "email": "Response in 24h",
+          "whatsapp": "Immediate response",
+          "linkedin": "Professional network"
+        }
+      },
+      "availability": {
+        "title": "Available for projects",
+        "response": "Response: < 24h",
+        "start": "Start: Immediate"
       },
       "form": {
+        "title": "Send me a message",
+        "description": "Tell me about your project",
         "name": "Your name",
         "email": "Your email",
         "message": "Tell me about your project...",
-        "send": "Send Message"
+        "send": "Send Message",
+        "projectType": "Project Type",
+        "selectType": "Select an option",
+        "types": {
+          "web": "Web Development",
+          "mobile": "Mobile App",
+          "ecommerce": "E-commerce",
+          "consulting": "Consulting",
+          "other": "Other"
+        }
       }
     }
   },
@@ -62,8 +94,8 @@
     },
     "munsterMind": {
       "title": "Münster Mind App",
-      "description": "Innovative mobile application for mental and cognitive training with gamification and progress tracking.",
-      "longDescription": "Cross-platform mobile application developed with Flutter that offers innovative mental training exercises, detailed progress tracking and advanced gamification elements."
+      "description": "Strategic HR solution helping companies understand people, align strengths with culture, and create thriving work environments.",
+      "longDescription": "Mobile app that goes beyond traditional HR processes by analyzing meaningful data about candidates and teams, empowering better hiring decisions and reducing turnover through strategic people insights."
     },
     "conafis": {
       "title": "CONAFIS SARAS System",
@@ -90,8 +122,13 @@
       "description": "Interactive control panel with data visualization, dynamic charts and customizable reports for business analysis.",
       "longDescription": "Complete dashboard developed with Vue.js and D3.js that allows visualizing complex data, creating interactive charts and generating customized reports for business analysis."
     },
+    "sinapsekEducation": {
+      "title": "Sinapsek Education",
+      "description": "Educational platform focused on professional growth in technological and mathematical areas, designed for university preparation.",
+      "longDescription": "Comprehensive educational platform developed with Django and React that offers specialized courses in technology and mathematics. Features include personalized learning paths, progress tracking, and preparation modules for university entrance exams."
+    },
     "billusos": {
-      "title": "Billusos Platform",
+      "title": "billusos",
       "description": "Electronic invoicing and business management platform with integration to government services.",
       "longDescription": "Business system developed with Django and React for electronic invoicing, client management and complete integration with SRI and other government agencies."
     }
@@ -100,6 +137,7 @@
     "fullstack-lateral": {
       "title": "Full Stack Developer",
       "subtitle": "Lateral Business Thinking | Innovate Empresarial Solutions",
+      "date": "Jun 2024 - Present",
       "tasks": [
         "Development of dynamic web interfaces with Angular and TypeScript, improving user experience by 40%",
         "Implementation of scalable architectures with microservices using Node.js and Docker",
@@ -110,6 +148,7 @@
     "freelance-dev": {
       "title": "Software Developer",
       "subtitle": "Freelance",
+      "date": "Nov 2023 - Oct 2024",
       "tasks": [
         "Full-stack development of the ASOBANCA platform with Laravel and Vue.js for 15+ financial institutions",
         "Continuous improvement of the Billusos application, implementing new features with Python and Django",
@@ -120,6 +159,7 @@
     "junior-fullstack": {
       "title": "Jr Full Stack Developer",
       "subtitle": "Centro Ecuatoriano de Eficiencia de Recursos",
+      "date": "Jan 2023 - Sep 2023",
       "tasks": [
         "Responsive client interface layout for CONAFIS SARAS with HTML5, CSS3 and JavaScript",
         "Configuration and optimization of development environments for multidisciplinary teams",
@@ -132,6 +172,7 @@
     "computer-engineering": {
       "title": "Computer Science Engineering",
       "institution": "Escuela Politécnica Nacional",
+      "date": "Present",
       "description": "Comprehensive training in computer science with emphasis on software development, advanced algorithms, artificial intelligence and complex systems analysis.",
       "achievements": [
         "Specialization in Advanced Algorithms and Data Structures",
@@ -162,6 +203,10 @@
         "Student leadership and teamwork"
       ]
     }
+  },
+  "common": {
+    "current": "Present",
+    "actualidad": "Present"
   },
   "skillAreas": {
     "frontend": {

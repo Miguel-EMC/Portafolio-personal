@@ -109,49 +109,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     { name: 'Docker', level: 'Intermedio', years: '1+' }
   ];
 
-  // Tech Stack for skills section
-  techStack = [
-    {
-      name: 'Frontend',
-      icon: 'bi-palette',
-      technologies: [
-        { name: 'Angular', level: 95 },
-        { name: 'React', level: 80 },
-        { name: 'Vue.js', level: 75 },
-        { name: 'TypeScript', level: 90 }
-      ]
-    },
-    {
-      name: 'Backend',
-      icon: 'bi-server',
-      technologies: [
-        { name: 'Node.js', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'Laravel', level: 75 },
-        { name: 'NestJS', level: 85 }
-      ]
-    },
-    {
-      name: 'Database',
-      icon: 'bi-database',
-      technologies: [
-        { name: 'PostgreSQL', level: 85 },
-        { name: 'MySQL', level: 80 },
-        { name: 'MongoDB', level: 70 },
-        { name: 'Firebase', level: 75 }
-      ]
-    },
-    {
-      name: 'DevOps',
-      icon: 'bi-tools',
-      technologies: [
-        { name: 'Docker', level: 70 },
-        { name: 'Git', level: 90 },
-        { name: 'AWS', level: 65 },
-        { name: 'Linux', level: 75 }
-      ]
-    }
-  ];
+  // Use skillAreas from data file instead of duplicating
 
   // Featured projects for compact portfolio
   featuredProjects: Project[] = featuredProjects;
@@ -324,11 +282,50 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     return '2+';
   }
 
-  getSkillColor(level: number): string {
-    if (level >= 90) return 'linear-gradient(135deg, #4CAF50, #45A049)';
-    if (level >= 80) return 'linear-gradient(135deg, #2196F3, #1976D2)';
-    if (level >= 70) return 'linear-gradient(135deg, #FF9800, #F57C00)';
-    return 'linear-gradient(135deg, #9E9E9E, #757575)';
+  getSkillColor(index: number): string {
+    const colors = [
+      '#14B8A6', // Turquoise
+      '#06B6D4', // Cyan
+      '#0EA5E9', // Sky
+      '#3B82F6', // Blue
+      '#6366F1', // Indigo
+      '#8B5CF6', // Violet
+      '#A855F7', // Purple
+      '#D946EF', // Fuchsia
+      '#EC4899', // Pink
+      '#F43F5E'  // Rose
+    ];
+    return colors[index % colors.length];
+  }
+
+  getEducationColor(index: number): string {
+    const educationColors = [
+      '#3B82F6', // Blue
+      '#6366F1', // Indigo
+      '#8B5CF6', // Violet
+      '#A855F7'  // Purple
+    ];
+    return educationColors[index % educationColors.length];
+  }
+
+  getExperienceColor(index: number): string {
+    const experienceColors = [
+      '#14B8A6', // Turquoise
+      '#06B6D4', // Cyan
+      '#0EA5E9', // Sky
+      '#3B82F6'  // Blue
+    ];
+    return experienceColors[index % experienceColors.length];
+  }
+
+  getExperienceGradient(index: number): string {
+    const gradients = [
+      'linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(20, 184, 166, 0.02))',
+      'linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(6, 182, 212, 0.02))',
+      'linear-gradient(135deg, rgba(14, 165, 233, 0.05), rgba(14, 165, 233, 0.02))',
+      'linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(59, 130, 246, 0.02))'
+    ];
+    return gradients[index % gradients.length];
   }
 
   getExperienceEmoji(index: number): string {
@@ -376,4 +373,27 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     ];
     return techMap[index] || [];
   }
+
+  onSubmit(event: Event) {
+  event.preventDefault();
+
+  const form = event.target as HTMLFormElement;
+  const data = new FormData(form);
+
+  fetch("https://formspree.io/f/xandpyvw", {
+    method: "POST",
+    body: data,
+    headers: { Accept: "application/json" }
+  }).then(response => {
+    if (response.ok) {
+      console.log("✅ Formulario enviado con éxito.");
+      form.reset();
+    } else {
+      console.error("❌ Error al enviar el formulario.");
+    }
+  }).catch(() => {
+    alert("⚠️ Error de conexión. Revisa tu internet.");
+  });
+}
+
 }

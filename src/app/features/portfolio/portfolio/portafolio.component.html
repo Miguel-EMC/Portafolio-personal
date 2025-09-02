@@ -151,11 +151,12 @@
                   <span>{{ selectedProject.liveUrl }}</span>
                 </div>
               </div>
-              <iframe 
-                [src]="selectedProject.liveUrl" 
-                frameborder="0"
-                class="preview-iframe"
-              ></iframe>
+              <img 
+                [src]="selectedProject.images[0]" 
+                [alt]="selectedProject.title"
+                class="preview-image"
+                style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;"
+              />
             </div>
           </div>
 
@@ -166,6 +167,7 @@
                 [src]="selectedProject.images[currentImageIndex]" 
                 [alt]="selectedProject.title"
                 class="gallery-image"
+                style="width: 100%; height: 250px; object-fit: cover;"
               />
               <button 
                 *ngIf="selectedProject.images.length > 1"

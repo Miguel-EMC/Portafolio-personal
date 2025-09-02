@@ -16,13 +16,14 @@ export const skillAreas: SkillArea[] = [
     id: 'frontend',
     emoji: '🎨',
     color: '#A29BFE',
-    technologies: ['Angular', 'React', 'Vue.js', 'HTML5/CSS3', 'Tailwind CSS'],
+    technologies: ['Angular', 'React', 'Vue.js', 'HTML5/CSS3', 'Tailwind CSS', 'Bootstrap'],
     detailedTechs: [
-      { name: 'Angular', mastery: 7 },
+      { name: 'Angular', mastery: 7.5 },
       { name: 'HTML5/CSS3', mastery: 7 },
       { name: 'Tailwind CSS', mastery: 6 },
-      { name: 'React', mastery: 4 },
-      { name: 'Vue.js', mastery: 4 }
+      { name: 'React', mastery: 6 },
+      { name: 'Vue.js', mastery: 4 },
+      { name: 'Bootstrap', mastery: 7 }
     ]
   },
   {
@@ -67,14 +68,15 @@ export const skillAreas: SkillArea[] = [
     id: 'languages',
     emoji: '💻',
     color: '#1ad1ffff',
-    technologies: ['TypeScript', 'Python', 'Dart'],
+    technologies: ['JavaScript', 'Python', 'TypeScript', 'PHP'],
     detailedTechs: [
       { name: 'Python', mastery: 8 },
-      { name: 'TypeScript', mastery: 7 },
-      { name: 'JavaScript', mastery: 7 },
+      { name: 'JavaScript', mastery: 8 },
+      { name: 'TypeScript', mastery: 7.5 },
+      { name: 'PHP', mastery: 6.5 },
       { name: 'Dart', mastery: 6 },
-      { name: 'PHP', mastery: 6 },
-      { name: 'Java', mastery: 3 },
+      { name: 'Java', mastery: 3.5 },
+      { name: 'C#', mastery: 2 },
       { name: 'C++/C', mastery: 3 }
     ]
   },

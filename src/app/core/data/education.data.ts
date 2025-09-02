@@ -8,7 +8,7 @@ export interface Education {
 export const educationItems: Education[] = [
   {
     id: 'computer-engineering',
-    date: 'Actualidad',
+    date: 'common.current',
     achievements: [
       'Especialización en Algoritmos y Estructuras de Datos Avanzadas',
       'Proyectos de Machine Learning y Deep Learning',

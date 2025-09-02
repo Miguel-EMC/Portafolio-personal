@@ -4,13 +4,14 @@ import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from "../../../../core/services/theme.service";
 import { LanguageToggleComponent } from "../../ui/language-toggle/language-toggle.component";
+import { ThemeToggleComponent } from "../../ui/theme-toggle/theme-toggle.component";
 import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   standalone: true,
-  imports: [NgClass, TranslateModule, RouterModule, LanguageToggleComponent],
+  imports: [NgClass, TranslateModule, RouterModule, LanguageToggleComponent, ThemeToggleComponent],
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit, OnDestroy {
@@ -48,6 +49,7 @@ export class NavComponent implements OnInit, OnDestroy {
   onWindowScroll(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.isScrolled = window.pageYOffset > 50;
+      this.updateActiveSection();
     }
   }
 
@@ -132,6 +134,43 @@ export class NavComponent implements OnInit, OnDestroy {
     if (!isPlatformBrowser(this.platformId)) return;
     
     this.activeRoute = this.router.url;
+  }
+
+  private updateActiveSection(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    
+    // Solo actualizar secciones si estamos en la página home
+    if (this.router.url !== '/' && this.router.url !== '/home') return;
+
+    const sections = [
+      { id: 'home', route: '/home' },
+      { id: 'resume', route: '/resume' },
+      { id: 'portafolio', route: '/portfolio' },
+      { id: 'contacto', route: '/contact' }
+    ];
+
+    const scrollPosition = window.pageYOffset + 150; // Offset para mejor detección
+
+    let activeSection = '/home'; // Por defecto
+
+    // Encontrar qué sección está visible
+    for (const section of sections) {
+      const element = document.getElementById(section.id);
+      if (element) {
+        const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+        const elementHeight = element.offsetHeight;
+        
+        if (scrollPosition >= elementTop && scrollPosition < elementTop + elementHeight) {
+          activeSection = section.route;
+          break;
+        }
+      }
+    }
+
+    // Actualizar activeRoute solo si cambió
+    if (this.activeRoute !== activeSection) {
+      this.activeRoute = activeSection;
+    }
   }
 
   isActive(route: string): boolean {

@@ -8,6 +8,13 @@ import { BlogService } from '../../../core/services/blog.service';
 import { SeoService } from '../../../core/services/seo.service';
 import { BlogPost, BlogPostMeta, BLOG_CATEGORIES } from '../../../interfaces/blog.interface';
 
+interface TocItem {
+  id: string;
+  text: string;
+  level: number;
+  active: boolean;
+}
+
 @Component({
   selector: 'app-blog-post',
   standalone: true,
@@ -23,6 +30,7 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private destroy$ = new Subject<void>();
   private platformId = inject(PLATFORM_ID);
+  private observer?: IntersectionObserver;
 
   post = signal<BlogPost | null>(null);
   relatedPosts = signal<BlogPostMeta[]>([]);
@@ -30,6 +38,8 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   error = signal<string | null>(null);
   imageError = signal(false);
   relatedImageErrors = signal<{ [slug: string]: boolean }>({});
+  readingProgress = signal(0);
+  toc = signal<TocItem[]>([]);
 
   onImageError(): void {
     this.imageError.set(true);
@@ -40,6 +50,11 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    // Listen to window scroll event for reading progress bar
+    if (isPlatformBrowser(this.platformId)) {
+      window.addEventListener('scroll', this.onScroll, { passive: true });
+    }
+
     this.route.paramMap.pipe(
       takeUntil(this.destroy$),
       switchMap(params => {
@@ -50,9 +65,16 @@ export class BlogPostComponent implements OnInit, OnDestroy {
           return [];
         }
         this.isLoading.set(true);
-        // Reset image error states when routing between posts
+        // Reset image error, reading states, and TOC when routing between posts
         this.imageError.set(false);
         this.relatedImageErrors.set({});
+        this.readingProgress.set(0);
+        this.toc.set([]);
+        
+        if (this.observer) {
+          this.observer.disconnect();
+        }
+
         return this.blogService.getPostBySlug(slug);
       })
     ).subscribe({
@@ -62,6 +84,7 @@ export class BlogPostComponent implements OnInit, OnDestroy {
           this.updateSeo(post);
           this.loadRelatedPosts(post.slug);
           this.addCopyButtons();
+          this.buildToc();
         } else {
           this.error.set('Post not found');
         }
@@ -78,7 +101,27 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+
+    // Clean up scroll listener
+    if (isPlatformBrowser(this.platformId)) {
+      window.removeEventListener('scroll', this.onScroll);
+    }
+
+    // Clean up intersection observer
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
+
+  private onScroll = (): void => {
+    const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    if (totalHeight > 0) {
+      const percentage = (window.scrollY / totalHeight) * 100;
+      this.readingProgress.set(percentage);
+    } else {
+      this.readingProgress.set(0);
+    }
+  };
 
   private loadRelatedPosts(currentSlug: string): void {
     this.blogService.getRelatedPosts(currentSlug, 3).pipe(
@@ -132,6 +175,103 @@ export class BlogPostComponent implements OnInit, OnDestroy {
 
   goBack(): void {
     this.router.navigate(['/blog']);
+  }
+
+  scrollToHeading(id: string): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 100;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  private buildToc(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    // Wait slightly to make sure the markdown innerHTML is fully rendered in the DOM
+    setTimeout(() => {
+      const postContentEl = document.querySelector('.post-content');
+      if (!postContentEl) return;
+
+      const headings = postContentEl.querySelectorAll('h2, h3');
+      const tocItems: TocItem[] = [];
+
+      headings.forEach((heading, index) => {
+        let id = heading.getAttribute('id');
+        if (!id) {
+          // Generate a safe unique ID based on the text contents
+          const slug = heading.textContent
+            ?.trim()
+            .toLowerCase()
+            .normalize('NFD') // remove accents
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)/g, ''); // remove leading/trailing dashes
+          
+          id = `toc-${index}-${slug}`;
+          heading.setAttribute('id', id);
+        }
+
+        tocItems.push({
+          id: id,
+          text: heading.textContent?.trim() || '',
+          level: heading.tagName.toLowerCase() === 'h2' ? 2 : 3,
+          active: false
+        });
+      });
+
+      this.toc.set(tocItems);
+      this.setupIntersectionObserver();
+    }, 400);
+  }
+
+  private setupIntersectionObserver(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+
+    const headingElements: Element[] = [];
+    this.toc().forEach(item => {
+      const el = document.getElementById(item.id);
+      if (el) headingElements.push(el);
+    });
+
+    if (headingElements.length === 0) return;
+
+    const options = {
+      root: null,
+      rootMargin: '-100px 0px -70% 0px',
+      threshold: 0
+    };
+
+    this.observer = new IntersectionObserver((entries) => {
+      // Find the first intersecting entry
+      const intersectingEntry = entries.find(entry => entry.isIntersecting);
+      if (intersectingEntry) {
+        const id = intersectingEntry.target.getAttribute('id');
+        if (id) {
+          this.toc.update(items =>
+            items.map(item => ({
+              ...item,
+              active: item.id === id
+            }))
+          );
+        }
+      }
+    }, options);
+
+    headingElements.forEach(el => this.observer?.observe(el));
   }
 
   private addCopyButtons(): void {

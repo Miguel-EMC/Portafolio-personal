@@ -1,4 +1,7 @@
 <article class="blog-post-page animate-fade-in">
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" [style.width.%]="readingProgress()"></div>
+
   <!-- Loading State -->
   @if (isLoading()) {
     <div class="loading-state">
@@ -25,12 +28,17 @@
   <!-- Post Content -->
   @if (!isLoading() && !error() && post()) {
     <div class="post-container">
-      <!-- Back Button -->
-      <nav class="post-nav">
-        <button class="back-btn glass" (click)="goBack()">
-          <i class="bi bi-arrow-left"></i>
-          {{ 'blog.backToBlog' | translate }}
-        </button>
+      <!-- Breadcrumbs Bar -->
+      <nav class="post-breadcrumbs" aria-label="Breadcrumb">
+        <a class="breadcrumb-link" routerLink="/home">Inicio</a>
+        <span class="breadcrumb-separator"><i class="bi bi-chevron-right"></i></span>
+        <a class="breadcrumb-link" routerLink="/blog">Blog</a>
+        <span class="breadcrumb-separator"><i class="bi bi-chevron-right"></i></span>
+        <a class="breadcrumb-link" [routerLink]="['/blog/category', post()!.category]">
+          {{ getCategoryInfo(post()!.category)?.name }}
+        </a>
+        <span class="breadcrumb-separator"><i class="bi bi-chevron-right"></i></span>
+        <span class="breadcrumb-current">{{ post()!.title }}</span>
       </nav>
 
       <!-- Post Header -->
@@ -120,6 +128,31 @@
 
         <!-- Sidebar Column (Right) -->
         <aside class="post-sidebar-col">
+          <!-- Table of Contents Widget -->
+          @if (toc().length > 0) {
+            <div class="sidebar-widget toc-widget glass">
+              <h4 class="widget-title">
+                <i class="bi bi-list-nested"></i>
+                Tabla de Contenidos
+              </h4>
+              <nav class="toc-navigation">
+                <ul class="toc-list">
+                  @for (item of toc(); track item.id) {
+                    <li 
+                      class="toc-item" 
+                      [class.toc-h3]="item.level === 3" 
+                      [class.active]="item.active"
+                    >
+                      <a (click)="scrollToHeading(item.id)" role="button" tabindex="0">
+                        {{ item.text }}
+                      </a>
+                    </li>
+                  }
+                </ul>
+              </nav>
+            </div>
+          }
+
           <!-- Author Profile Card -->
           <div class="sidebar-widget author-widget glass">
             <h4 class="widget-title">

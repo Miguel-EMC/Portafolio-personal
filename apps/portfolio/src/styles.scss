@@ -207,7 +207,7 @@
   --bg-primary: #f8fafc;
   --bg-secondary: #f1f5f9;
   --bg-tertiary: var(--gray-50);
-  --bg-accent: rgba(22, 163, 74, 0.06);
+  --bg-accent: rgba(13, 148, 136, 0.06);
   --bg-muted: var(--gray-100);
 
   /* Superficies */
@@ -222,35 +222,55 @@
   --text-secondary: var(--gray-700);
   --text-tertiary: var(--gray-600);
   --text-muted: var(--gray-500);
-  --text-accent: var(--brand-green-dark);
+  --text-accent: var(--turquoise-600);
   --text-inverse: #ffffff;
 
   /* Bordes */
   --border-primary: #e2e8f0;
   --border-secondary: #cbd5e1;
   --border-muted: #f1f5f9;
-  --border-focus: var(--brand-green-dim);
+  --border-focus: var(--turquoise-500);
 
-  /* Colores de Marca — Verde MiguelDev11 */
-  --accent-primary: var(--brand-green-dark);
-  --accent-secondary: var(--brand-green-deeper);
+  /* Colores de Marca — Verde Turquesa */
+  --accent-primary: var(--turquoise-600);
+  --accent-secondary: var(--turquoise-700);
   --accent-tertiary: var(--violet-600);
-  --accent-primary-rgb: 22, 163, 74;
-  --accent-secondary-rgb: 21, 128, 61;
+  --accent-primary-rgb: 13, 148, 136;
+  --accent-secondary-rgb: 15, 118, 110;
   --accent-tertiary-rgb: 124, 58, 237;
-  --accent-glow: rgba(22, 163, 74, 0.3);
+  --accent-glow: rgba(13, 148, 136, 0.3);
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, var(--turquoise-600), var(--blue-600));
+  --gradient-secondary: linear-gradient(135deg, var(--blue-500), var(--violet-600));
+  --gradient-accent: linear-gradient(135deg, var(--violet-500), var(--turquoise-600));
+
+  /* Sombras */
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
 
   /* Estados */
-  --state-hover: rgba(22, 163, 74, 0.06);
-  --state-active: rgba(22, 163, 74, 0.12);
-  --state-focus: rgba(22, 163, 74, 0.1);
+  --success-bg: #f0fdf4;
+  --success-text: #15803d;
+  --success-border: #bbf7d0;
+  --warning-bg: #fffbeb;
+  --warning-text: #b45309;
+  --warning-border: #fde68a;
+  --error-bg: #fef2f2;
+  --error-text: #b91c1c;
+  --error-border: #fecaca;
+
+  /* Estados de interacción */
+  --state-hover: rgba(13, 148, 136, 0.06);
+  --state-active: rgba(13, 148, 136, 0.12);
+  --state-focus: rgba(13, 148, 136, 0.1);
   --state-disabled: var(--gray-100);
 
   /* Sombras de marca (light) */
-  --shadow-brand-sm:   0 0 8px rgba(22, 163, 74, 0.15);
-  --shadow-brand-md:   0 0 12px rgba(22, 163, 74, 0.2), 0 4px 16px rgba(0,0,0,0.08);
-  --shadow-brand-glow: 0 0 0 3px rgba(22, 163, 74, 0.2);
-  --shadow-brand-card: 0 0 0 1px rgba(22, 163, 74, 0.15), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-brand-sm:   0 0 8px rgba(13, 148, 136, 0.15);
+  --shadow-brand-md:   0 0 12px rgba(13, 148, 136, 0.2), 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-brand-glow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+  --shadow-brand-card: 0 0 0 1px rgba(13, 148, 136, 0.15), 0 4px 16px rgba(0,0,0,0.06);
 }
 
 /* Tema Oscuro — Identidad visual del logo */
@@ -259,7 +279,7 @@
   --bg-primary: var(--brand-bg-base);
   --bg-secondary: var(--brand-bg-panel);
   --bg-tertiary: var(--brand-bg-elevated);
-  --bg-accent: var(--brand-green-subtle);
+  --bg-accent: rgba(45, 212, 191, 0.08);
   --bg-muted: var(--brand-bg-panel);
 
   /* Superficies */
@@ -274,35 +294,54 @@
   --text-secondary: var(--gray-300);
   --text-tertiary: var(--gray-400);
   --text-muted: var(--gray-500);
-  --text-accent: var(--brand-green);
+  --text-accent: var(--turquoise-400);
   --text-inverse: var(--brand-bg-base);
 
-  /* Bordes — verde neón con opacidad baja */
-  --border-primary: var(--brand-green-border);
-  --border-secondary: rgba(57, 255, 20, 0.12);
+  /* Bordes — verde turquesa con opacidad baja */
+  --border-primary: rgba(45, 212, 191, 0.25);
+  --border-secondary: rgba(45, 212, 191, 0.15);
   --border-muted: rgba(255, 255, 255, 0.06);
-  --border-focus: var(--brand-green);
+  --border-focus: var(--turquoise-400);
 
-  /* Colores de Marca — Neón del logo */
-  --accent-primary: var(--brand-green);
-  --accent-secondary: var(--brand-green-dim);
+  /* Colores de Marca — Verde Turquesa */
+  --accent-primary: var(--turquoise-400);
+  --accent-secondary: var(--turquoise-500);
   --accent-tertiary: var(--violet-400);
-  --accent-primary-rgb: 57, 255, 20;
-  --accent-secondary-rgb: 34, 197, 94;
+  --accent-primary-rgb: 45, 212, 191;
+  --accent-secondary-rgb: 20, 184, 166;
   --accent-tertiary-rgb: 167, 139, 250;
-  --accent-glow: var(--brand-green-glow);
+  --accent-glow: rgba(45, 212, 191, 0.4);
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, var(--turquoise-400), var(--blue-500));
+  --gradient-secondary: linear-gradient(135deg, var(--blue-400), var(--violet-500));
+  --gradient-accent: linear-gradient(135deg, var(--violet-400), var(--turquoise-400));
+
+  /* Sombras */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(45, 212, 191, 0.15);
 
   /* Estados */
-  --state-hover: var(--brand-green-subtle);
-  --state-active: var(--brand-green-muted);
-  --state-focus: rgba(57, 255, 20, 0.15);
-  --state-disabled: rgba(255, 255, 255, 0.04);
+  --success-bg: rgba(34, 197, 94, 0.1);
+  --success-text: #4ade80;
+  --success-border: rgba(34, 197, 94, 0.3);
+  --warning-bg: rgba(245, 158, 11, 0.1);
+  --warning-text: #fbbf24;
+  --warning-border: rgba(245, 158, 11, 0.3);
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --error-text: #fca5a5;
+  --error-border: rgba(239, 68, 68, 0.3);
 
-  /* Sombras de marca (dark — glow neón) */
-  --shadow-brand-sm:   var(--shadow-brand-sm);
-  --shadow-brand-md:   var(--shadow-brand-md);
-  --shadow-brand-glow: var(--shadow-brand-glow);
-  --shadow-brand-card: var(--shadow-brand-card);
+  /* Estados de interacción */
+  --state-hover: rgba(45, 212, 191, 0.08);
+  --state-active: rgba(45, 212, 191, 0.15);
+  --state-focus: rgba(45, 212, 191, 0.15);
+
+  /* Sombras de marca (dark — glow turquesa) */
+  --shadow-brand-sm:   0 0 8px rgba(45, 212, 191, 0.25);
+  --shadow-brand-md:   0 0 12px rgba(45, 212, 191, 0.35), 0 0 24px rgba(45, 212, 191, 0.15);
+  --shadow-brand-glow: 0 0 0 3px rgba(45, 212, 191, 0.3);
+  --shadow-brand-card: 0 0 0 1px rgba(45, 212, 191, 0.25), 0 8px 24px rgba(45, 212, 191, 0.1);
 }
 
 /* ===== RESET Y BASE ===== */
@@ -1115,107 +1154,7 @@ p {
   .xl\:text-5xl { font-size: var(--text-5xl); }
 }
 
-/* ===== SISTEMA DE TEMAS ===== */
 
-/* Variables base en :root ya definidas arriba */
-
-/* TEMA CLARO */
-.light-theme {
-  /* Fondos */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --bg-accent: #e2e8f0;
-  --bg-muted: #f8fafc;
-
-  /* Textos */
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-tertiary: #64748b;
-  --text-muted: #94a3b8;
-  --text-inverse: #ffffff;
-
-  /* Bordes */
-  --border-primary: #e2e8f0;
-  --border-secondary: #cbd5e1;
-  --border-tertiary: #94a3b8;
-
-  /* Colores de acento */
-  --accent-primary: var(--turquoise-600);
-  --accent-secondary: var(--blue-600);
-  --accent-tertiary: var(--violet-600);
-
-  /* Gradientes */
-  --gradient-primary: linear-gradient(135deg, var(--turquoise-500), var(--blue-600));
-  --gradient-secondary: linear-gradient(135deg, var(--blue-500), var(--violet-600));
-  --gradient-accent: linear-gradient(135deg, var(--violet-500), var(--turquoise-500));
-
-  /* Sombras específicas para tema claro */
-  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-
-  /* Estados */
-  --success-bg: #f0fdf4;
-  --success-text: #166534;
-  --success-border: #bbf7d0;
-  
-  --warning-bg: #fffbeb;
-  --warning-text: #a16207;
-  --warning-border: #fde68a;
-  
-  --error-bg: #fef2f2;
-  --error-text: #dc2626;
-  --error-border: #fecaca;
-}
-
-/* TEMA OSCURO */
-.dark-theme {
-  /* Fondos */
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
-  --bg-accent: #475569;
-  --bg-muted: #1e293b;
-
-  /* Textos */
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-tertiary: #94a3b8;
-  --text-muted: #64748b;
-  --text-inverse: #0f172a;
-
-  /* Bordes */
-  --border-primary: #334155;
-  --border-secondary: #475569;
-  --border-tertiary: #64748b;
-
-  /* Colores de acento - más brillantes para tema oscuro */
-  --accent-primary: var(--turquoise-400);
-  --accent-secondary: var(--blue-400);
-  --accent-tertiary: var(--violet-400);
-
-  /* Gradientes */
-  --gradient-primary: linear-gradient(135deg, var(--turquoise-400), var(--blue-500));
-  --gradient-secondary: linear-gradient(135deg, var(--blue-400), var(--violet-500));
-  --gradient-accent: linear-gradient(135deg, var(--violet-400), var(--turquoise-400));
-
-  /* Sombras específicas para tema oscuro */
-  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-
-  /* Estados */
-  --success-bg: #064e3b;
-  --success-text: #6ee7b7;
-  --success-border: #047857;
-  
-  --warning-bg: #78350f;
-  --warning-text: #fbbf24;
-  --warning-border: #a16207;
-  
-  --error-bg: #7f1d1d;
-  --error-text: #fca5a5;
-  --error-border: #dc2626;
-}
 
 /* Transiciones administradas individualmente por componente para evitar cuellos de botella */
 /* ===== CUSTOM TOAST STYLES ===== */

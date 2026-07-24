@@ -8,12 +8,30 @@
     <!-- Header -->
     <header class="blog-header">
       <h1 class="blog-title">{{ 'blog.title' | translate }}</h1>
-      <p class="blog-subtitle">{{ 'blog.subtitle' | translate }}</p>
+      <p class="blog-subtitle">{{ 'blog.subtitle' | translate }}<span class="terminal-cursor"></span></p>
+
+      <!-- Cyber System Status Bar -->
+      <div class="cyber-status-bar">
+        <span class="status-item">
+          <span class="status-dot green"></span>
+          <span class="status-label">SYS:</span> ACTIVE
+        </span>
+        <span class="status-separator">|</span>
+        <span class="status-item">
+          <i class="bi bi-shield-check"></i>
+          <span class="status-label">CONN:</span> SECURE
+        </span>
+        <span class="status-separator">|</span>
+        <span class="status-item">
+          <i class="bi bi-cpu"></i>
+          <span class="status-label">NODE:</span> MIGUELDEV-11
+        </span>
+      </div>
       
       <!-- Futuristic Center-Aligned Search Bar -->
       <div class="blog-search-wrapper">
         <div class="search-box glass">
-          <i class="bi bi-search search-icon"></i>
+          <span class="terminal-prompt">guest&#64;migueldev:~$</span>
           <input 
             type="text" 
             [value]="searchQuery()"
@@ -98,7 +116,9 @@
     @if (!isLoading()) {
       <!-- Featured Hero Post (Shown only on first page and with no active filters) -->
       @if (featuredPosts().length > 0 && !activeCategory() && !activeTag() && !searchQuery() && currentPage() === 1) {
-        <div class="blog-hero animate-scale-in" [routerLink]="['/blog/post', featuredPosts()[0].slug]">
+        <div class="blog-hero animate-scale-in" [routerLink]="['/blog/post', featuredPosts()[0].slug]" [style.--card-glow-color]="getCategoryInfo(featuredPosts()[0].category)?.color">
+          <!-- Cyberpunk Card Grid Pattern -->
+          <div class="card-grid-pattern"></div>
           <div class="blog-hero-image" [class.no-image]="imageErrors()[featuredPosts()[0].slug]">
             @if (!imageErrors()[featuredPosts()[0].slug]) {
               <img [src]="featuredPosts()[0].coverImage" [alt]="featuredPosts()[0].title" (error)="onImageError(featuredPosts()[0].slug)" loading="eager" />
@@ -156,9 +176,12 @@
           
           <div class="posts-grid">
             @for (post of paginatedPosts(); track post.slug) {
-              <article class="post-card" [routerLink]="['/blog/post', post.slug]">
+              <article class="post-card" [routerLink]="['/blog/post', post.slug]" [style.--card-glow-color]="getCategoryInfo(post.category)?.color">
                 <!-- Border laser glow container -->
                 <div class="laser-border-glow"></div>
+                
+                <!-- Cyberpunk Card Grid Pattern -->
+                <div class="card-grid-pattern"></div>
                 
                 <div class="card-image" [class.no-image]="imageErrors()[post.slug]">
                   @if (!imageErrors()[post.slug]) {

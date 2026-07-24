@@ -297,6 +297,10 @@
   align-items: center;
   justify-content: center;
 
+  :host-context(.light-theme) & {
+    background: radial-gradient(circle at 100% 100%, #eff6ff 0%, #f8fafc 80%);
+  }
+
   .glow-sphere {
     position: absolute;
     border-radius: 50%;
@@ -304,6 +308,12 @@
     opacity: 0.5;
     mix-blend-mode: screen;
     animation: floatDetailSphere 15s infinite alternate ease-in-out;
+
+    :host-context(.light-theme) & {
+      mix-blend-mode: multiply;
+      opacity: 0.12;
+      filter: blur(50px);
+    }
   }
 
   .glow-sphere-1 {
@@ -343,11 +353,19 @@
     align-items: center;
     gap: var(--space-4);
 
+    :host-context(.light-theme) & {
+      color: var(--text-primary);
+    }
+
     i {
       font-size: var(--text-5xl);
       color: var(--accent-primary);
       text-shadow: 0 0 20px rgba(var(--accent-primary-rgb), 0.5);
       animation: bouncePulse 3s infinite ease-in-out;
+
+      :host-context(.light-theme) & {
+        text-shadow: 0 0 15px rgba(var(--accent-primary-rgb), 0.2);
+      }
     }
 
     .category-name {
@@ -720,14 +738,63 @@
     }
   }
 
-  pre {
+  .code-block-wrapper {
     margin: var(--space-8) 0;
-    padding: var(--space-6);
-    background: #0d0e12; // deep background for code
-    border-radius: var(--radius-xl);
-    overflow-x: auto;
     border: 1px solid var(--border-primary);
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: #0d0e12; // deep background for code
+    position: relative;
+  }
+
+  .code-block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-5);
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border-muted);
+    user-select: none;
+
+    :host-context(.light-theme) & {
+      background: rgba(15, 23, 42, 0.03);
+    }
+
+    .code-block-dots {
+      display: flex;
+      gap: 6px;
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+
+        &.red { background: #ef4444; }
+        &.yellow { background: #f59e0b; }
+        &.green { background: #10b981; }
+      }
+    }
+
+    .code-block-lang {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  pre {
+    margin: 0;
+    padding: var(--space-5) var(--space-6);
+    background: transparent;
+    overflow-x: auto;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
     position: relative;
 
     code {

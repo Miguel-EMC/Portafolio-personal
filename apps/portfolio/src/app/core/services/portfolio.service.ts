@@ -31,7 +31,17 @@ export class PortfolioService {
     renderer.code = ({ text, lang }: { text: string; lang?: string }) => {
       const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext';
       const highlighted = hljs.highlight(text, { language }).value;
-      return `<pre><code class="hljs language-${language}">${highlighted}</code></pre>`;
+      return `<div class="code-block-wrapper">
+        <div class="code-block-header">
+          <div class="code-block-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="code-block-lang">${language}</span>
+        </div>
+        <pre><code class="hljs language-${language}">${highlighted}</code></pre>
+      </div>`;
     };
 
     renderer.image = ({ href, title, text }: { href: string; title?: string | null; text: string }) => {

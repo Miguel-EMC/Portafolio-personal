@@ -52,7 +52,7 @@
             }
         },
         "portfolio": {
-            "eyebrow": "// Own projects",
+            "eyebrow": "Own projects",
             "title": "Featured Projects",
             "subtitle": "A selection of my best work",
             "viewAll": "View All Projects",
@@ -60,18 +60,18 @@
             "viewCode": "Code"
         },
         "blog": {
-            "eyebrow": "// Blog",
+            "eyebrow": "Blog",
             "title": "From the Blog",
             "subtitle": "Technical notes on AI, cloud, and backend",
             "viewAll": "View all posts",
             "empty": "No posts published yet."
         },
         "clientProjects": {
-            "eyebrow": "// Client work",
+            "eyebrow": "Client work",
             "title": "Client Work",
             "subtitle": "Professional work for companies and organizations"
         },
-        "experienceEyebrow": "// Career",
+        "experienceEyebrow": "Career",
         "experienceRoles": {
             "munsterMind": "I design production AI agents (LangGraph, RAG) and integrate multiple LLM providers (Bedrock, OpenAI, Anthropic, Gemini) on serverless AWS Lambda and NestJS backends, plus the Flutter mobile app.",
             "billusos": "Built backend services in Django for automated financial reporting and optimized the PostgreSQL queries behind the operational dashboards.",

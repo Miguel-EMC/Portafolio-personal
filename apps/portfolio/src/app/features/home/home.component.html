@@ -153,22 +153,25 @@
     </div>
 
     <ng-container *ngIf="recentPosts.length; else noPosts">
-      <div class="blog-preview-grid">
+      <div class="blog-preview-list">
         <a
           *ngFor="let post of recentPosts"
-          class="blog-preview-card"
+          class="blog-row"
           [routerLink]="['/blog', 'post', post.slug]"
         >
-          <div class="blog-preview-glow" [style.--cat-color]="getCategoryInfo(post.category).color">
+          <span class="blog-row-icon" [style.--cat-color]="getCategoryInfo(post.category).color">
             <i [class]="getCategoryInfo(post.category).icon"></i>
-          </div>
-          <div class="blog-preview-content">
-            <span class="blog-preview-category">
-              {{ getCategoryInfo(post.category).name }}
+          </span>
+          <span class="blog-row-content">
+            <span class="blog-row-meta">
+              <span class="blog-row-category">{{ getCategoryInfo(post.category).name }}</span>
+              <span class="blog-row-dot">·</span>
+              <span class="blog-row-read">{{ post.readingTime }} min</span>
             </span>
-            <h3 class="blog-preview-title">{{ post.title }}</h3>
-            <p class="blog-preview-excerpt">{{ post.excerpt }}</p>
-          </div>
+            <span class="blog-row-title">{{ post.title }}</span>
+            <span class="blog-row-excerpt">{{ post.excerpt }}</span>
+          </span>
+          <i class="bi bi-arrow-right blog-row-arrow"></i>
         </a>
       </div>
     </ng-container>
@@ -247,7 +250,7 @@
       <h2 class="section-title">{{ 'home.resume.education' | translate }}</h2>
     </div>
 
-    <div class="experience-condensed quiet">
+    <div class="experience-condensed">
       <div class="experience-role">
         <span class="role-icon"><i class="bi bi-mortarboard-fill"></i></span>
         <div class="role-body">

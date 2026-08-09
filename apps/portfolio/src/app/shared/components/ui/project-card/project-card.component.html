@@ -72,12 +72,20 @@
   }
 
   @case ('client-secondary') {
-    <a class="project-card client-card" [class]="'category-' + category" *ngIf="project as p" [routerLink]="detailLink">
-      <h4 class="project-title">{{ p.title }}</h4>
-      <p class="project-description">{{ p.description }}</p>
+    <a class="project-card client-card" *ngIf="project as p" [routerLink]="detailLink">
+      <div class="card-glow small" [class]="'category-' + category">
+        <span class="category-icon">
+          <i [class]="p.type === 'personal' ? 'bi bi-person' : 'bi bi-briefcase'"></i>
+        </span>
+      </div>
 
-      <div class="tech-stack compact">
-        <span class="tech-tag" *ngFor="let tech of stackTags">{{ tech }}</span>
+      <div class="card-content">
+        <h4 class="project-title">{{ p.title }}</h4>
+        <p class="project-description">{{ p.description }}</p>
+
+        <div class="tech-stack compact">
+          <span class="tech-tag" *ngFor="let tech of stackTags">{{ tech }}</span>
+        </div>
       </div>
     </a>
   }

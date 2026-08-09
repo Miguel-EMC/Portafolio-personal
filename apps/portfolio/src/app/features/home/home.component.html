@@ -244,11 +244,39 @@
   </div>
 </section>
 
-<!-- Education (bottom, quiet) -->
+<!-- Education (bottom, quiet — condensed, same card language as experience) -->
 <section id="educacion" class="education-section-quiet">
   <div class="container">
     <h3 class="quiet-title">{{ 'home.resume.education' | translate }}</h3>
-    <app-education></app-education>
+
+    <div class="experience-condensed quiet">
+      <div class="experience-role">
+        <div class="role-head">
+          <span class="role-title">
+            {{ 'education.computer-engineering.title' | translate }} — {{ 'education.computer-engineering.institution' | translate }}
+          </span>
+          <span class="role-date">{{ 'education.computer-engineering.date' | translate }}</span>
+        </div>
+      </div>
+
+      <div class="experience-role">
+        <div class="role-head">
+          <span class="role-title">
+            {{ 'education.software-development.title' | translate }} — {{ 'education.software-development.institution' | translate }}
+          </span>
+          <span class="role-date">{{ 'education.software-development.date' | translate }}</span>
+        </div>
+      </div>
+
+      <div class="experience-role">
+        <div class="role-head">
+          <span class="role-title">
+            {{ 'education.high-school.title' | translate }} — {{ 'education.high-school.institution' | translate }}
+          </span>
+          <span class="role-date">{{ 'education.high-school.date' | translate }}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

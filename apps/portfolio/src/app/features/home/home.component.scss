@@ -1355,6 +1355,20 @@
   gap: var(--space-5);
   max-width: 760px;
   margin: 0 auto;
+
+  &.quiet {
+    gap: var(--space-3);
+
+    .experience-role {
+      padding: var(--space-3) var(--space-4);
+      border-left-color: var(--border-secondary);
+    }
+
+    .role-title {
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+  }
 }
 
 .experience-role {

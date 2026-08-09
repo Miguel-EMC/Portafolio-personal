@@ -17,7 +17,6 @@ import { PortfolioProjectMeta } from '../../interfaces/project.interface';
 
 import { LottieAnimationComponent } from '../../shared/components/ui/lottie-animation/lottie-animation.component';
 import { ProjectCardComponent } from '../../shared/components/ui/project-card/project-card.component';
-import { EducationComponent } from '../resume/components/education/education.component';
 
 @Component({
   selector: 'app-home',
@@ -28,7 +27,6 @@ import { EducationComponent } from '../resume/components/education/education.com
     FormsModule,
     TranslateModule,
     RouterLink,
-    EducationComponent,
     ProjectCardComponent,
     LottieAnimationComponent,
     LottieComponent

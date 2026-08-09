@@ -245,6 +245,31 @@
   &.category-web::before {
     background: radial-gradient(circle at 30% 30%, #4FA6A6, transparent 65%);
   }
+
+  &.small {
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+.category-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  color: white;
+
+  i {
+    font-size: 0.9375rem;
+  }
 }
 
 .coming-soon-card .card-content {
@@ -277,13 +302,8 @@
 
 /* ===== client-secondary ===== */
 
-.client-card {
-  padding: var(--space-4) var(--space-5);
-  border-left: 3px solid var(--border-secondary);
-
-  &.category-ai { border-left-color: #7C7FE0; }
-  &.category-mobile { border-left-color: #D9A441; }
-  &.category-web { border-left-color: #4FA6A6; }
+.client-card .card-content {
+  padding: var(--space-4);
 }
 
 .client-card .project-title {

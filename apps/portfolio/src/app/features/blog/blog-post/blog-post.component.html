@@ -197,6 +197,36 @@
         </aside>
       </div>
 
+      <!-- Feedback / Reactions Section -->
+      <section class="feedback-section">
+        <div class="feedback-card glass">
+          <div class="feedback-copy">
+            <h2 class="feedback-title">
+              <i class="bi bi-chat-square-heart"></i>
+              ¿Te sirvió este artículo?
+            </h2>
+            <p class="feedback-subtitle">Deja una reacción rápida o escríbeme una sugerencia directa.</p>
+          </div>
+          <div class="reaction-buttons">
+            @for (reaction of reactionTypes; track reaction.id) {
+              <button
+                type="button"
+                class="reaction-btn"
+                [class.active]="reactions()[reaction.id]"
+                (click)="toggleReaction(reaction.id)"
+              >
+                <span class="reaction-emoji">{{ reaction.emoji }}</span>
+                <span>{{ reaction.label }}</span>
+              </button>
+            }
+          </div>
+          <a class="feedback-cta" [href]="feedbackMailto">
+            <i class="bi bi-envelope-paper"></i>
+            Enviar sugerencia
+          </a>
+        </div>
+      </section>
+
       <!-- Related Posts Section -->
       @if (relatedPosts().length > 0) {
         <section class="related-section">

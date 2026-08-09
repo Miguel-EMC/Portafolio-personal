@@ -65,15 +65,14 @@
   animation: fadeInDown 0.6s ease-out;
 
   .blog-title {
-    font-size: var(--text-4xl);
-    font-weight: 850;
-    letter-spacing: -0.04em;
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    letter-spacing: -0.03em;
     color: var(--text-primary);
     margin: 0;
-    text-shadow: 0 0 24px rgba(var(--accent-primary-rgb), 0.1);
 
     @media (min-width: 768px) {
-      font-size: var(--text-5xl);
+      font-size: var(--text-4xl);
     }
   }
 
@@ -81,63 +80,7 @@
     font-size: var(--text-base);
     color: var(--text-secondary);
     max-width: 50ch;
-    margin: 0 0 var(--space-3);
-
-    @media (min-width: 768px) {
-      font-size: var(--text-lg);
-    }
-  }
-
-  .terminal-cursor {
-    display: inline-block;
-    width: 7px;
-    height: 14px;
-    background-color: var(--accent-primary);
-    margin-left: 6px;
-    animation: blinkTerminalCursor 1s step-end infinite;
-    vertical-align: middle;
-  }
-
-  .cyber-status-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-4);
-    margin-bottom: var(--space-6);
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--text-muted);
-    user-select: none;
-    letter-spacing: 0.05em;
-
-    .status-item {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-1-5);
-      font-weight: 500;
-    }
-
-    .status-label {
-      color: var(--accent-primary);
-      font-weight: 700;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      display: inline-block;
-      
-      &.green {
-        background-color: #22c55e;
-        box-shadow: 0 0 8px #22c55e;
-      }
-    }
-
-    .status-separator {
-      color: var(--border-secondary);
-      opacity: 0.4;
-    }
+    margin: 0 0 var(--space-5);
   }
 }
 
@@ -162,17 +105,9 @@
       box-shadow: 0 0 15px rgba(var(--accent-primary-rgb), 0.2);
     }
 
-    .terminal-prompt {
-      font-family: var(--font-mono);
-      font-size: var(--text-sm);
-      color: var(--accent-primary);
-      font-weight: 700;
-      white-space: nowrap;
-      user-select: none;
-      
-      @media (max-width: 640px) {
-        font-size: var(--text-xs);
-      }
+    .search-icon {
+      color: var(--text-muted);
+      font-size: var(--text-base);
     }
 
     .search-input {
@@ -382,32 +317,18 @@
 .blog-hero {
   display: grid;
   grid-template-columns: 1fr;
-  
-  // Custom futuristic background gradient & variables
-  --card-bg: linear-gradient(135deg, rgba(16, 20, 28, 0.82) 0%, rgba(9, 11, 16, 0.96) 100%);
-  --card-grid-color: color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 12%, transparent);
-  --card-grid-opacity: 0.65;
-  
-  background: radial-gradient(circle at bottom right, color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 3%, transparent), transparent 60%), var(--card-bg);
+
+  background: var(--surface-primary);
   border: 1px solid var(--border-primary);
   border-radius: var(--radius-3xl);
   overflow: hidden;
   margin-bottom: var(--space-16);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-card);
   cursor: pointer;
-  backdrop-filter: blur(20px);
   position: relative;
 
-  :host-context(.light-theme) & {
-    --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(245, 247, 250, 0.96) 100%);
-    --card-grid-color: color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 8%, transparent);
-    --card-grid-opacity: 0.8;
-    background: radial-gradient(circle at bottom right, color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 2%, transparent), transparent 65%), var(--card-bg);
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-  }
-
-  // Cyberpunk category glow (appears in corner)
+  // Ambient category glow (appears in corner)
   &::after {
     content: '';
     position: absolute;
@@ -417,42 +338,19 @@
     height: 220px;
     border-radius: 50%;
     background: var(--card-glow-color, var(--accent-primary));
-    filter: blur(60px);
-    opacity: 0.06;
+    filter: blur(70px);
+    opacity: 0.08;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     z-index: 1;
   }
 
   &:hover::after {
-    opacity: 0.15;
+    opacity: 0.16;
     width: 280px;
     height: 280px;
     bottom: -70px;
     right: -70px;
-    filter: blur(70px);
-  }
-
-  // Futuristic repeating grid pattern overlay
-  .card-grid-pattern {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(var(--card-grid-color) 1px, transparent 1px);
-    background-size: 16px 16px;
-    pointer-events: none;
-    z-index: 1;
-    opacity: var(--card-grid-opacity);
-    transition: opacity 0.3s ease, background-image 0.3s ease;
-  }
-
-  &:hover .card-grid-pattern {
-    background-image: radial-gradient(color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 18%, transparent) 1px, transparent 1px);
-    
-    :host-context(.light-theme) & {
-      background-image: radial-gradient(color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 12%, transparent) 1px, transparent 1px);
-    }
   }
 
   &::before {
@@ -705,28 +603,15 @@
 .post-card {
   display: flex;
   flex-direction: column;
-  
-  // Custom background gradient and theme configurations
-  --card-bg: linear-gradient(135deg, rgba(16, 20, 28, 0.85) 0%, rgba(9, 11, 16, 0.96) 100%);
-  --card-grid-color: color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 12%, transparent);
-  --card-grid-opacity: 0.6;
-  
-  background: radial-gradient(circle at bottom right, color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 3%, transparent), transparent 60%), var(--card-bg);
+
+  background: var(--surface-primary);
   border: 1px solid var(--border-primary);
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   height: 100%;
   cursor: pointer;
-  backdrop-filter: blur(16px);
   position: relative;
-
-  :host-context(.light-theme) & {
-    --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(245, 247, 250, 0.96) 100%);
-    --card-grid-color: color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 8%, transparent);
-    --card-grid-opacity: 0.75;
-    background: radial-gradient(circle at bottom right, color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 2%, transparent), transparent 65%), var(--card-bg);
-  }
 
   // Ambient category glow (appears in corner)
   &::after {
@@ -738,42 +623,19 @@
     height: 160px;
     border-radius: 50%;
     background: var(--card-glow-color, var(--accent-primary));
-    filter: blur(50px);
-    opacity: 0.05;
+    filter: blur(60px);
+    opacity: 0.06;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     z-index: 1;
   }
 
   &:hover::after {
-    opacity: 0.15;
+    opacity: 0.16;
     width: 200px;
     height: 200px;
     bottom: -50px;
     right: -50px;
-    filter: blur(60px);
-  }
-
-  // Futuristic repeating grid pattern overlay
-  .card-grid-pattern {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(var(--card-grid-color) 1px, transparent 1px);
-    background-size: 14px 14px;
-    pointer-events: none;
-    z-index: 1;
-    opacity: var(--card-grid-opacity);
-    transition: opacity 0.3s ease, background-image 0.3s ease;
-  }
-
-  &:hover .card-grid-pattern {
-    background-image: radial-gradient(color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 18%, transparent) 1px, transparent 1px);
-    
-    :host-context(.light-theme) & {
-      background-image: radial-gradient(color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 12%, transparent) 1px, transparent 1px);
-    }
   }
 
   .laser-border-glow {
@@ -791,12 +653,7 @@
   &:hover {
     transform: translateY(-6px);
     border-color: color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 45%, var(--border-primary));
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 25px color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 15%, transparent);
-
-    :host-context(.light-theme) & {
-      border-color: color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 40%, var(--border-primary));
-      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08), 0 0 20px color-mix(in srgb, var(--card-glow-color, var(--accent-primary)) 10%, transparent);
-    }
+    box-shadow: var(--shadow-card-hover);
 
     .laser-border-glow {
       transform: scaleX(1);
@@ -820,14 +677,26 @@
       position: absolute;
       top: var(--space-4);
       left: var(--space-4);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1-5);
       padding: var(--space-1) var(--space-2-5);
       border-radius: var(--radius-lg);
       font-size: 10px;
       font-weight: 700;
-      color: white;
+      color: var(--text-primary);
+      background: var(--surface-overlay);
+      border: 1px solid var(--border-primary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(8px);
+
+      .category-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
     }
   }
 
@@ -1239,9 +1108,4 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-@keyframes blinkTerminalCursor {
-  from, to { background-color: transparent }
-  50% { background-color: var(--accent-primary); }
 }

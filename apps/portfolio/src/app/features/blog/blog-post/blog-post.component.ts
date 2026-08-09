@@ -40,6 +40,12 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   relatedImageErrors = signal<{ [slug: string]: boolean }>({});
   readingProgress = signal(0);
   toc = signal<TocItem[]>([]);
+  reactions = signal<Record<string, boolean>>({});
+  readonly reactionTypes = [
+    { id: 'insightful', emoji: '💡', label: 'Insightful' },
+    { id: 'helpful', emoji: '🙌', label: 'Útil' },
+    { id: 'love', emoji: '🔥', label: 'Me encantó' },
+  ];
 
   onImageError(): void {
     this.imageError.set(true);
@@ -83,6 +89,7 @@ export class BlogPostComponent implements OnInit, OnDestroy {
           this.post.set(post);
           this.updateSeo(post);
           this.loadRelatedPosts(post.slug);
+          this.loadReactions(post.slug);
           this.addCopyButtons();
           this.buildToc();
         } else {
@@ -175,6 +182,37 @@ export class BlogPostComponent implements OnInit, OnDestroy {
 
   goBack(): void {
     this.router.navigate(['/blog']);
+  }
+
+  private loadReactions(slug: string): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const state: Record<string, boolean> = {};
+    this.reactionTypes.forEach(({ id }) => {
+      state[id] = localStorage.getItem(`blog-reaction-${slug}-${id}`) === '1';
+    });
+    this.reactions.set(state);
+  }
+
+  toggleReaction(id: string): void {
+    const post = this.post();
+    if (!post || !isPlatformBrowser(this.platformId)) return;
+    const key = `blog-reaction-${post.slug}-${id}`;
+    const active = !this.reactions()[id];
+    if (active) {
+      localStorage.setItem(key, '1');
+    } else {
+      localStorage.removeItem(key);
+    }
+    this.reactions.update(r => ({ ...r, [id]: active }));
+  }
+
+  get feedbackMailto(): string {
+    const post = this.post();
+    const subject = encodeURIComponent(`Sugerencia sobre: ${post?.title ?? 'el blog'}`);
+    const body = encodeURIComponent(
+      `Hola Miguel,\n\nTengo una sugerencia sobre el artículo "${post?.title ?? ''}"${isPlatformBrowser(this.platformId) ? ' (' + window.location.href + ')' : ''}:\n\n`
+    );
+    return `mailto:eduardomuzo123456@gmail.com?subject=${subject}&body=${body}`;
   }
 
   scrollToHeading(id: string): void {

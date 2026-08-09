@@ -1,24 +1,23 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, PLATFORM_ID, inject, NgZone } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, PLATFORM_ID, inject, NgZone } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from "@angular/router";
+import { RouterLink } from "@angular/router";
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 import { ToastrService } from 'ngx-toastr';
 
 // Data imports
-import { educationItems, type Education } from '../../core/data/education.data';
-import { experiences, type Experience } from '../../core/data/experience.data';
-import { skillAreas, type SkillArea } from '../../core/data/skills.data';
+import { upcomingProjects, type UpcomingProject } from '../../core/data/upcoming-projects.data';
+import { BlogService } from '../../core/services/blog.service';
 import { EmailService } from '../../core/services/email.service';
 import { PortfolioService } from '../../core/services/portfolio.service';
+import { BlogPostMeta } from '../../interfaces/blog.interface';
 import { PortfolioProjectMeta } from '../../interfaces/project.interface';
 
 import { LottieAnimationComponent } from '../../shared/components/ui/lottie-animation/lottie-animation.component';
-import { CurriculumComponent } from '../resume/components/curriculum/curriculum.component';
+import { ProjectCardComponent } from '../../shared/components/ui/project-card/project-card.component';
 import { EducationComponent } from '../resume/components/education/education.component';
-import { SkillsComponent } from '../resume/components/skills/skills.component';
 
 @Component({
   selector: 'app-home',
@@ -29,9 +28,8 @@ import { SkillsComponent } from '../resume/components/skills/skills.component';
     FormsModule,
     TranslateModule,
     RouterLink,
-    SkillsComponent,
     EducationComponent,
-    CurriculumComponent,
+    ProjectCardComponent,
     LottieAnimationComponent,
     LottieComponent
   ],
@@ -71,7 +69,7 @@ import { SkillsComponent } from '../resume/components/skills/skills.component';
     ])
   ]
 })
-export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
+export class HomeComponent implements OnInit, OnDestroy {
   private ngZone = inject(NgZone);
 
   // Lottie Animation Options
@@ -85,10 +83,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private portfolioService = inject(PortfolioService);
   private emailService = inject(EmailService);
+  private blogService = inject(BlogService);
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private router: Router,
     private cdr: ChangeDetectorRef,
     private translate: TranslateService,
     private toastr: ToastrService
@@ -154,80 +152,44 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   currentRole = '';
   isTyping = false;
   private typingInterval: any;
-  private roles = [
-    'Backend Developer'
-  ];
+  private roles: string[] = ['Backend Developer'];
   private currentRoleIndex = 0;
-  activeCard = 'code';
 
-  // Top skills for about section
-  topSkills = ['Python', 'FastAPI', 'LangGraph', 'AWS', 'Flutter', 'Angular'];
-
-  // Main technologies for compact view with details
-  mainTechs = [
-    { name: 'Python', level: 'Experto', years: '3+' },
-    { name: 'FastAPI', level: 'Avanzado', years: '2+' },
-    { name: 'LangGraph', level: 'Avanzado', years: '1+' },
-    { name: 'AWS', level: 'Avanzado', years: '2+' },
-    { name: 'Flutter', level: 'Avanzado', years: '2+' },
-    { name: 'Angular', level: 'Avanzado', years: '3+' }
-  ];
-
-  // Use skillAreas from data file instead of duplicating
-
-  // Featured projects for compact portfolio (loaded from portfolio service)
-  featuredProjects: PortfolioProjectMeta[] = [];
   currentLang: 'es' | 'en' = 'es';
 
-  // Detailed data for tabs
-  educationItems: Education[] = educationItems;
+  // Own projects (featured + coming-soon), loaded from the portfolio service
+  ownProjects: PortfolioProjectMeta[] = [];
+  // Client work, shown as a secondary grid — no business figures, see ProjectCardComponent's client-secondary variant
+  clientProjects: PortfolioProjectMeta[] = [];
+  readonly upcomingProjects: UpcomingProject[] = upcomingProjects;
 
-  experiences: Experience[] = experiences;
-
-
-  // Skill Areas Dashboard
-  skillAreas: SkillArea[] = skillAreas;
-
-  // Tab management
-  activeTab = 'skills';
-
-  // Area selection management
-  selectedArea: number | null = null;
-
-  // Scroll Spy
-  activeSection: string = 'experience';
-  private observer: IntersectionObserver | null = null;
+  recentPosts: BlogPostMeta[] = [];
 
   ngOnInit() {
     // Track current language
     this.currentLang = (this.translate.currentLang || this.translate.defaultLang || 'es') as 'es' | 'en';
+    this.loadRoles();
     this.translate.onLangChange.subscribe(event => {
       this.currentLang = (event.lang || 'es') as 'es' | 'en';
+      this.loadRoles();
       this.cdr.markForCheck();
     });
 
-    // Load featured projects from portfolio service
-    this.portfolioService.getFeaturedProjects().subscribe((projects: PortfolioProjectMeta[]) => {
-      this.featuredProjects = projects;
+    this.portfolioService.getAllProjects().subscribe((projects: PortfolioProjectMeta[]) => {
+      this.ownProjects = projects.filter(p => p.type === 'personal');
+      this.clientProjects = projects.filter(p => p.type === 'professional');
+      this.cdr.markForCheck();
+    });
+
+    this.blogService.getRecentPosts(3).subscribe((posts: BlogPostMeta[]) => {
+      this.recentPosts = posts;
       this.cdr.markForCheck();
     });
 
     if (isPlatformBrowser(this.platformId)) {
       this.startTypingAnimation();
-      this.initializeActiveCard();
       // Configurar scroll suave
       document.documentElement.style.scrollBehavior = 'smooth';
-    }
-  }
-
-  ngAfterViewInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.ngZone.runOutsideAngular(() => {
-        setTimeout(() => {
-          this.initializeCharts();
-          this.setupIntersectionObserver();
-        }, 500);
-      });
     }
   }
 
@@ -235,68 +197,14 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.typingInterval) {
       clearInterval(this.typingInterval);
     }
+  }
 
-    if (this.observer) {
-      this.observer.disconnect();
+  private loadRoles(): void {
+    const roles = this.translate.instant('home.hero.roles');
+    if (Array.isArray(roles) && roles.length > 0) {
+      this.roles = roles;
+      this.currentRoleIndex = 0;
     }
-  }
-
-  scrollToSection(sectionId: string): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        const offset = 100;
-        const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-
-        // Update active section if it's a sub-section of resume
-        if (['experience', 'education', 'skills'].includes(sectionId)) {
-          this.activeSection = sectionId;
-        }
-      }
-    }
-  }
-
-  private setupIntersectionObserver() {
-    const options = {
-      root: null,
-      rootMargin: '-20% 0px -60% 0px',
-      threshold: 0
-    };
-
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.activeSection = entry.target.id;
-        }
-      });
-    }, options);
-
-    const sections = document.querySelectorAll('.resume-section-content');
-    sections.forEach(section => {
-      this.observer?.observe(section);
-    });
-  }
-
-  setActiveCard(cardType: string): void {
-    this.activeCard = cardType;
-  }
-
-  setActiveTab(tab: string): void {
-    this.activeTab = tab;
-  }
-
-  viewAllProjects(): void {
-    this.router.navigate(['/portfolio']).then(() => {
-      if (isPlatformBrowser(this.platformId)) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
   }
 
   private startTypingAnimation(): void {
@@ -346,154 +254,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     };
 
     this.ngZone.runOutsideAngular(() => eraseChar());
-  }
-
-  private initializeActiveCard(): void {
-    // Rotate active card every 3 seconds
-    const cards = ['code', 'design', 'tech'];
-    let cardIndex = 0;
-
-    this.ngZone.runOutsideAngular(() => {
-      setInterval(() => {
-        cardIndex = (cardIndex + 1) % cards.length;
-        this.activeCard = cards[cardIndex];
-        this.cdr.detectChanges();
-      }, 3000);
-    });
-  }
-
-  // Area selection methods
-  selectArea(index: number): void {
-    this.selectedArea = index;
-  }
-
-  closeModal(): void {
-    this.selectedArea = null;
-  }
-
-  getMasteryLabel(mastery: number): string {
-    if ([1, 2].includes(mastery)) return 'Básico';
-    if ([3, 4].includes(mastery)) return 'Intermedio';
-    if ([5, 6].includes(mastery)) return 'Avanzado';
-    if ([7, 8].includes(mastery)) return 'Experto';
-    if ([9, 10].includes(mastery)) return 'Maestro';
-    return 'Básico';
-  }
-  getExpertCount(areaIndex: number): number {
-    return this.skillAreas[areaIndex].detailedTechs
-      .filter(tech => [7, 8].includes(tech.mastery)).length;
-  }
-
-  getMasteryCount(areaIndex: number, level: number): number {
-    return this.skillAreas[areaIndex].detailedTechs.filter(tech => tech.mastery === level).length;
-  }
-
-  // Dashboard utility methods - simplified
-
-  getTotalExperience(): string {
-    return '2+';
-  }
-
-  getSkillColor(index: number): string {
-    const colors = [
-      '#14B8A6', // Turquoise
-      '#06B6D4', // Cyan
-      '#0EA5E9', // Sky
-      '#3B82F6', // Blue
-      '#6366F1', // Indigo
-      '#8B5CF6', // Violet
-      '#A855F7', // Purple
-      '#D946EF', // Fuchsia
-      '#EC4899', // Pink
-      '#F43F5E'  // Rose
-    ];
-    return colors[index % colors.length];
-  }
-
-  getEducationColor(index: number): string {
-    const educationColors = [
-      '#3B82F6', // Blue
-      '#6366F1', // Indigo
-      '#8B5CF6', // Violet
-      '#A855F7'  // Purple
-    ];
-    return educationColors[index % educationColors.length];
-  }
-
-  getExperienceColor(index: number): string {
-    const experienceColors = [
-      '#14B8A6', // Turquoise
-      '#06B6D4', // Cyan
-      '#0EA5E9', // Sky
-      '#3B82F6'  // Blue
-    ];
-    return experienceColors[index % experienceColors.length];
-  }
-
-  getExperienceGradient(index: number): string {
-    const gradients = [
-      'linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(20, 184, 166, 0.02))',
-      'linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(6, 182, 212, 0.02))',
-      'linear-gradient(135deg, rgba(14, 165, 233, 0.05), rgba(14, 165, 233, 0.02))',
-      'linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(59, 130, 246, 0.02))'
-    ];
-    return gradients[index % gradients.length];
-  }
-
-  getExperienceEmoji(index: number): string {
-    const emojis = ['🚀', '💻', '⚡'];
-    return emojis[index] || '💼';
-  }
-
-  getEducationEmoji(index: number): string {
-    const emojis = ['🎓', '💻', '📚'];
-    return emojis[index] || '🎓';
-  }
-
-  // Método para obtener iconos de tecnologías
-  getTechIcon(tech: string): string {
-    const icons: { [key: string]: string } = {
-      'Python': 'bi-filetype-py',
-      'FastAPI': 'bi-lightning',
-      'Django': 'bi-file-code',
-      'NestJS': 'bi-server',
-      'LangGraph': 'bi-diagram-3',
-      'LangChain': 'bi-link-45deg',
-      'AWS Bedrock': 'bi-robot',
-      'RAG': 'bi-cpu',
-      'SQL Agents': 'bi-database-gear',
-      'AWS Lambdas': 'bi-cloud',
-      'Terraform': 'bi-bricks',
-      'Docker': 'bi-box-seam',
-      'Angular': 'bi-triangle',
-      'React': 'bi-atom',
-      'TypeScript': 'bi-braces',
-      'JavaScript': 'bi-braces',
-      'Flutter': 'bi-phone',
-      'React Native': 'bi-phone-landscape',
-      'PostgreSQL': 'bi-database',
-      'SQL Server': 'bi-database-fill',
-      'MySQL': 'bi-database',
-      'Firebase': 'bi-fire',
-      'Prisma': 'bi-boxes',
-      'Laravel': 'bi-boxes'
-    };
-    return icons[tech] || 'bi-code-slash';
-  }
-
-  // Chart initialization - removed for new design
-  private initializeCharts(): void {
-    // No charts needed for the new areas dashboard
-  }
-
-  // Method to get technologies for specific experience
-  getTechForExperience(index: number): string[] {
-    const techMap = [
-      ['Python', 'FastAPI', 'LangGraph', 'AWS', 'Flutter', 'NestJS', 'Angular'],
-      ['Python', 'Django', 'React Native', 'PostgreSQL'],
-      ['Laravel', 'Angular', 'PostgreSQL', 'PHP']
-    ];
-    return techMap[index] || [];
   }
 
   // Get CV URL based on current language

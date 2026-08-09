@@ -2,7 +2,7 @@
   <div class="nav-container">
     <!-- Brand -->
     <div class="nav-brand">
-      <a (click)="navigateToRoute('home')" class="brand-link">
+      <a routerLink="/home" class="brand-link">
         <span class="brand-logo">M</span>
         <div class="brand-text">
           <span class="brand-name">Miguel Muzo</span>
@@ -13,16 +13,16 @@
 
     <!-- Desktop Navigation -->
     <div class="nav-links desktop-nav">
-      <a class="nav-link" (click)="navigateToRoute('home')" [class.active]="isActive('home')">
+      <a class="nav-link" routerLink="/home" [class.active]="isActive('home')">
         Inicio
       </a>
-      <a class="nav-link" (click)="navigateToRoute('resume')" [class.active]="isActive('/resume')">
+      <a class="nav-link" routerLink="/resume" [class.active]="isActive('/resume')">
         Resume
       </a>
-      <a class="nav-link" (click)="navigateToRoute('portafolio')" [class.active]="isActive('/portfolio')">
+      <a class="nav-link" routerLink="/portfolio" [class.active]="isActive('/portfolio')">
         Portafolio
       </a>
-      <a class="nav-link" (click)="navigateToRoute('contacto')" [class.active]="isActive('/contact')">
+      <a class="nav-link" routerLink="/contact" [class.active]="isActive('/contact')">
         Contacto
       </a>
       <a class="nav-link blog-link" routerLink="/blog" [class.active]="isActive('/blog')">
@@ -49,19 +49,19 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-overlay" [class.active]="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
-  
+
   <div class="mobile-menu" [class.open]="isMobileMenuOpen">
     <div class="mobile-menu-content">
-      <a class="nav-link" (click)="navigateToRoute('home')" [class.active]="isActive('home')">
+      <a class="nav-link" routerLink="/home" [class.active]="isActive('home')" (click)="closeMobileMenu()">
         <i class="bi bi-house-fill"></i> Inicio
       </a>
-      <a class="nav-link" (click)="navigateToRoute('resume')" [class.active]="isActive('/resume')">
+      <a class="nav-link" routerLink="/resume" [class.active]="isActive('/resume')" (click)="closeMobileMenu()">
         <i class="bi bi-file-person-fill"></i> Resume
       </a>
-      <a class="nav-link" (click)="navigateToRoute('portafolio')" [class.active]="isActive('/portfolio')">
+      <a class="nav-link" routerLink="/portfolio" [class.active]="isActive('/portfolio')" (click)="closeMobileMenu()">
         <i class="bi bi-collection-fill"></i> Portafolio
       </a>
-      <a class="nav-link" (click)="navigateToRoute('contacto')" [class.active]="isActive('/contact')">
+      <a class="nav-link" routerLink="/contact" [class.active]="isActive('/contact')" (click)="closeMobileMenu()">
         <i class="bi bi-envelope-fill"></i> Contacto
       </a>
       <div class="divider"></div>

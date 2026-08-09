@@ -1,6 +1,4 @@
-<!-- Hero Section Optimizada -->
-<!-- Hero Section Optimizada -->
-<!-- Hero Section: Modern Minimalist -->
+<!-- Hero Section -->
 <section id="home" class="hero-section">
   <div class="hero-background">
     <div class="fluid-shape shape-1"></div>
@@ -39,13 +37,13 @@
         </p>
 
         <div class="hero-actions">
-          <button class="btn-primary-fluid" (click)="scrollToSection('contacto')">
+          <a routerLink="/contact" class="btn-primary-fluid">
             <span>{{ 'home.hero.actions.contact' | translate }}</span>
             <i class="bi bi-arrow-right"></i>
-          </button>
-          <button class="btn-secondary-fluid" (click)="scrollToSection('portafolio')">
+          </a>
+          <a routerLink="/portfolio" class="btn-secondary-fluid">
             <span>{{ 'home.hero.actions.projects' | translate }}</span>
-          </button>
+          </a>
           <a [href]="getCvUrl()" target="_blank" class="btn-outline-fluid" download>
             <span>{{ 'home.hero.actions.downloadCV' | translate }}</span>
             <i class="bi bi-download"></i>
@@ -114,134 +112,8 @@
   </div>
 </section>
 
-<!-- Resume Section Redesigned -->
-<section id="resume" class="resume-section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">{{ 'home.resume.title' | translate }}</h2>
-      <p class="section-subtitle">{{ 'home.resume.subtitle' | translate }}</p>
-    </div>
-
-    <div class="resume-layout-modern">
-      <!-- Row 1: Skills (Full Width) -->
-      <div class="resume-row-skills">
-        <div class="section-label">
-          <i class="bi bi-tools"></i>
-          <span>{{ 'home.resume.skills' | translate }}</span>
-        </div>
-        <app-skills></app-skills>
-      </div>
-
-      <!-- Row 2: Experience & Education (2 Columns) -->
-      <div class="resume-grid-columns">
-        <!-- Col 1: Experience -->
-        <div class="resume-col">
-          <div class="section-label">
-            <i class="bi bi-briefcase"></i>
-            <span>{{ 'home.resume.experience' | translate }}</span>
-          </div>
-          <app-curriculum></app-curriculum>
-        </div>
-
-        <!-- Col 2: Education -->
-        <div class="resume-col">
-          <div class="section-label">
-            <i class="bi bi-mortarboard"></i>
-            <span>{{ 'home.resume.education' | translate }}</span>
-          </div>
-          <app-education></app-education>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Skills Area Modal -->
-<div class="skills-modal-overlay" *ngIf="selectedArea !== null" (click)="closeModal()">
-  <div class="skills-modal" (click)="$event.stopPropagation()">
-
-    <!-- Header redesigned -->
-    <div class="modal-header">
-      <div class="header-content">
-        <div class="area-badge" [style.background]="skillAreas[selectedArea].color">
-          <span class="area-emoji">{{ skillAreas[selectedArea].emoji }}</span>
-        </div>
-        <div class="header-text">
-          <h2 class="area-title">{{ 'skillAreas.' + skillAreas[selectedArea].id + '.title' | translate }}</h2>
-          <p class="area-subtitle">{{ 'skillAreas.' + skillAreas[selectedArea].id + '.description' | translate }}</p>
-          <div class="area-stats">
-            <div class="stat-chip">
-              <i class="bi bi-collection"></i>
-              <span>{{ skillAreas[selectedArea].detailedTechs.length }} {{ 'home.skillsModal.technologies' | translate
-                }}</span>
-            </div>
-            <div class="stat-chip expert">
-              <i class="bi bi-star-fill"></i>
-              <span>{{ getExpertCount(selectedArea) }} {{ 'home.skillsModal.expert' | translate }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="close-button" (click)="closeModal()">
-        <i class="bi bi-x-lg"></i>
-      </button>
-    </div>
-
-    <!-- Body redesigned with cards -->
-    <div class="modal-body">
-      <div class="technologies-grid">
-        <div class="tech-card-modern" *ngFor="let tech of skillAreas[selectedArea].detailedTechs; let i = index">
-
-          <div class="tech-card-header">
-            <div class="tech-icon" [style.background]="skillAreas[selectedArea].color">
-              <span>{{ tech.name.charAt(0) }}</span>
-            </div>
-            <div class="tech-info">
-              <h4 class="tech-title">{{ tech.name }}</h4>
-              <div class="skill-level-visual">
-                <div class="skill-bar">
-                  <div class="skill-progress" [style.width]="(tech.mastery / 10) * 100 + '%'"
-                    [style.background]="skillAreas[selectedArea].color">
-                  </div>
-                </div>
-                <span class="skill-percentage">{{ (tech.mastery / 10) * 100 | number:'1.0-0' }}%</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="tech-card-footer">
-            <div class="mastery-badge" [class]="'level-' + tech.mastery"
-              [style.background]="skillAreas[selectedArea].color + '20'"
-              [style.border-color]="skillAreas[selectedArea].color">
-              <i class="bi" [ngClass]="{
-                      'bi-circle': [1, 2].includes(tech.mastery), 'bi-triangle': [3, 4].includes(tech.mastery),
-                      'bi-square': [5, 6].includes(tech.mastery), 'bi-pentagon': [7, 8].includes(tech.mastery),
-                      'bi-star-fill': [9, 10].includes(tech.mastery)
-                    }" [style.color]="skillAreas[selectedArea].color">
-              </i>
-              <span [style.color]="skillAreas[selectedArea].color">
-                {{ getMasteryLabel(tech.mastery) }}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer redesigned -->
-      <div class="modal-footer">
-        <div class="footer-content">
-          <div class="progress-overview">
-            <div class="mastery-breakdown">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Portfolio Section Destacada -->
-<section id="portafolio" class="portfolio-section">
+<!-- Featured own projects -->
+<section id="proyectos" class="portfolio-section">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">{{ 'home.portfolio.title' | translate }}</h2>
@@ -249,49 +121,134 @@
     </div>
 
     <div class="projects-showcase">
-      <div class="project-card" *ngFor="let project of featuredProjects">
-        <div class="project-image">
-          <img [src]="project.images[0]" [alt]="project.title" />
-          <div class="project-overlay">
-            <div class="project-actions">
-              <a [href]="project.liveUrl" target="_blank" class="action-btn primary" *ngIf="project.liveUrl">
-                <i class="bi bi-eye"></i>
-                <span>{{ 'home.portfolio.viewProject' | translate }}</span>
-              </a>
-              <a [href]="project.githubUrl" target="_blank" class="action-btn secondary" *ngIf="project.githubUrl">
-                <i class="bi bi-github"></i>
-                <span>{{ 'home.portfolio.viewCode' | translate }}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-info">
-          <div class="project-header">
-            <h3 class="project-title">{{ project.title }}</h3>
-            <span class="project-type" [class]="project.type">{{ project.type }}</span>
-          </div>
-          <p class="project-description">{{ project.description }}</p>
-
-          <div class="project-tech">
-            <span class="tech-badge" *ngFor="let tech of project.frameworks?.slice(0, 3)">
-              {{ tech }}
-            </span>
-          </div>
-        </div>
-      </div>
+      <app-project-card
+        *ngFor="let project of ownProjects"
+        variant="featured"
+        [project]="project"
+      ></app-project-card>
+      <app-project-card
+        *ngFor="let project of upcomingProjects"
+        variant="coming-soon"
+        [upcoming]="project"
+      ></app-project-card>
     </div>
 
-    <div class="portfolio-cta">
-      <button class="btn-text-explore" (click)="viewAllProjects()">
-        <span>Explorar todos los proyectos</span>
+    <div class="section-cta">
+      <a routerLink="/portfolio" class="btn-text-explore">
+        <span>{{ 'home.portfolio.viewAll' | translate }}</span>
         <i class="bi bi-arrow-right"></i>
-      </button>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- Contact Section Optimizada -->
+<!-- Blog -->
+<section id="blog" class="blog-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'home.blog.title' | translate }}</h2>
+      <p class="section-subtitle">{{ 'home.blog.subtitle' | translate }}</p>
+    </div>
+
+    <ng-container *ngIf="recentPosts.length; else noPosts">
+      <div class="blog-preview-grid">
+        <a
+          *ngFor="let post of recentPosts"
+          class="blog-preview-card"
+          [routerLink]="['/blog', 'post', post.slug]"
+        >
+          <img [src]="post.coverImage" [alt]="post.title" class="blog-preview-image" />
+          <div class="blog-preview-content">
+            <span class="blog-preview-category">{{ post.category }}</span>
+            <h3 class="blog-preview-title">{{ post.title }}</h3>
+            <p class="blog-preview-excerpt">{{ post.excerpt }}</p>
+          </div>
+        </a>
+      </div>
+    </ng-container>
+    <ng-template #noPosts>
+      <p class="section-subtitle">{{ 'home.blog.empty' | translate }}</p>
+    </ng-template>
+
+    <div class="section-cta">
+      <a routerLink="/blog" class="btn-text-explore">
+        <span>{{ 'home.blog.viewAll' | translate }}</span>
+        <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Client work (secondary) -->
+<section id="clientes" class="client-projects-section" *ngIf="clientProjects.length">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'home.clientProjects.title' | translate }}</h2>
+      <p class="section-subtitle">{{ 'home.clientProjects.subtitle' | translate }}</p>
+    </div>
+
+    <div class="client-projects-grid">
+      <app-project-card
+        *ngFor="let project of clientProjects"
+        variant="client-secondary"
+        [project]="project"
+      ></app-project-card>
+    </div>
+  </div>
+</section>
+
+<!-- Experience (condensed, secondary) -->
+<section id="experiencia" class="experience-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ 'home.resume.experience' | translate }}</h2>
+    </div>
+
+    <div class="experience-condensed">
+      <div class="experience-role">
+        <div class="role-head">
+          <span class="role-title">
+            {{ 'experiences.fullstack-lateral.title' | translate }} — {{ 'experiences.fullstack-lateral.subtitle' | translate }}
+          </span>
+          <span class="role-date">{{ 'experiences.fullstack-lateral.date' | translate }}</span>
+        </div>
+        <p>{{ 'home.experienceRoles.munsterMind' | translate }}</p>
+      </div>
+
+      <div class="experience-role">
+        <div class="role-head">
+          <span class="role-title">
+            {{ 'experiences.billusos-dev.title' | translate }} — {{ 'experiences.billusos-dev.subtitle' | translate }}
+          </span>
+          <span class="role-date">{{ 'experiences.billusos-dev.date' | translate }}</span>
+        </div>
+        <p>{{ 'home.experienceRoles.billusos' | translate }}</p>
+      </div>
+
+      <div class="experience-role">
+        <div class="role-head">
+          <span class="role-title">
+            {{ 'experiences.junior-fullstack.title' | translate }} — {{ 'experiences.junior-fullstack.subtitle' | translate }}
+          </span>
+          <span class="role-date">{{ 'experiences.junior-fullstack.date' | translate }}</span>
+        </div>
+        <p>{{ 'home.experienceRoles.ceer' | translate }}</p>
+      </div>
+    </div>
+
+    <p class="interest-line">{{ 'home.experienceRoles.security' | translate }}</p>
+  </div>
+</section>
+
+<!-- Education (bottom, quiet) -->
+<section id="educacion" class="education-section-quiet">
+  <div class="container">
+    <h3 class="quiet-title">{{ 'home.resume.education' | translate }}</h3>
+    <app-education></app-education>
+  </div>
+</section>
+
+<!-- Contact -->
 <section id="contacto" class="contact-section">
   <div class="container">
     <div class="section-header">

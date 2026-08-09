@@ -1,0 +1,81 @@
+@switch (variant) {
+
+  @case ('featured') {
+    <div class="project-card featured-card" *ngIf="project as p">
+      <div class="card-image">
+        <img
+          [src]="p.images[0] || 'https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg'"
+          [alt]="p.title"
+          class="project-image"
+        />
+        <div class="image-overlay">
+          <div class="overlay-content">
+            <a class="overlay-button primary" [routerLink]="detailLink">
+              <i class="bi bi-eye"></i>
+              <span>{{ 'portfolio.project.viewDetails' | translate }}</span>
+            </a>
+            <div class="overlay-links">
+              <a *ngIf="p.githubUrl" [href]="p.githubUrl" target="_blank" class="overlay-link">
+                <i class="bi bi-github"></i>
+              </a>
+              <a *ngIf="p.liveUrl" [href]="p.liveUrl" target="_blank" class="overlay-link">
+                <i class="bi bi-box-arrow-up-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-content">
+        <span class="category-badge" [class]="p.type">
+          <i [class]="p.type === 'personal' ? 'bi bi-person' : 'bi bi-briefcase'"></i>
+          {{ p.type === 'personal' ? ('portfolio.project.personal' | translate) : ('portfolio.project.professional' | translate) }}
+        </span>
+
+        <h3 class="project-title">{{ p.title }}</h3>
+        <p class="project-description">{{ p.description }}</p>
+
+        <div class="tech-stack">
+          <div class="tech-item" *ngFor="let tech of stackTags">
+            <i [class]="getTechIcon(tech)"></i>
+            <span>{{ tech }}</span>
+          </div>
+          <div *ngIf="p.frameworks.length > 4" class="tech-more">
+            +{{ p.frameworks.length - 4 }}
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  @case ('coming-soon') {
+    <div class="project-card coming-soon-card" *ngIf="upcoming as u">
+      <span class="status-chip">
+        <span class="status-dot"></span>
+        {{ 'portfolio.project.comingSoon' | translate }}
+      </span>
+
+      <h3 class="project-title">{{ u.title }}</h3>
+      <p class="project-description">{{ u.description }}</p>
+
+      <div class="tech-stack">
+        <div class="tech-item" *ngFor="let tech of stackTags">
+          <i [class]="getTechIcon(tech)"></i>
+          <span>{{ tech }}</span>
+        </div>
+      </div>
+    </div>
+  }
+
+  @case ('client-secondary') {
+    <a class="project-card client-card" *ngIf="project as p" [routerLink]="detailLink">
+      <h4 class="project-title">{{ p.title }}</h4>
+      <p class="project-description">{{ p.description }}</p>
+
+      <div class="tech-stack compact">
+        <span class="tech-tag" *ngFor="let tech of stackTags">{{ tech }}</span>
+      </div>
+    </a>
+  }
+
+}

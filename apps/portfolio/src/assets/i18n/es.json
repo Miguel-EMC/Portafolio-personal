@@ -13,7 +13,7 @@
             "greeting": "",
             "name": "Eduardo Miguel",
             "surname": "Muzo",
-            "description": "Ingeniero de Software enfocado en el desarrollo de arquitecturas de Backend y soluciones de Inteligencia Artificial. Experiencia en la integración de modelos de lenguaje (LLMs) mediante agentes para consultas SQL utilizando LangGraph y AWS Bedrock. Especialista en la construcción de servicios escalables sobre AWS (Lambdas, S3) y la creación de dashboards técnicos, conectando eficientemente la lógica de servidor con aplicaciones web y móviles.",
+            "description": "Construyo sistemas de IA que llegan a producción — backend, cloud y LLMs aplicados sobre AWS.",
             "stats": {
                 "years": "Años",
                 "projects": "Proyectos",
@@ -25,9 +25,10 @@
                 "downloadCV": "Descargar CV"
             },
             "rolePrefix": "Soy un",
+            "roles": ["Backend Developer", "AI Engineer", "Cloud Engineer"],
             "status": "Disponible",
             "location": "Quito, Ecuador",
-            "role": "Software Engineer | Backend & AI Focus"
+            "role": "Software Engineer · AI, Cloud & Backend"
         },
         "resume": {
             "title": "Mi Trayectoria",
@@ -56,6 +57,22 @@
             "viewAll": "Ver Todos los Proyectos",
             "viewProject": "Ver Proyecto",
             "viewCode": "Código"
+        },
+        "blog": {
+            "title": "Del Blog",
+            "subtitle": "Notas técnicas sobre IA, cloud y backend",
+            "viewAll": "Ver todos los posts",
+            "empty": "Todavía no hay posts publicados."
+        },
+        "clientProjects": {
+            "title": "Proyectos con Clientes",
+            "subtitle": "Trabajo profesional para empresas y organizaciones"
+        },
+        "experienceRoles": {
+            "munsterMind": "Diseño e implemento agentes de IA en producción (LangGraph, AWS Bedrock) y los servicios backend serverless en AWS Lambda y NestJS que los exponen a las apps web y móvil de la compañía.",
+            "billusos": "Construí servicios backend en Django para reportería financiera automatizada y optimicé las consultas PostgreSQL detrás de los dashboards operacionales.",
+            "ceer": "Desarrollé dashboards y reportes con Angular y Laravel/Lumen para la plataforma pública CONAFIPS SARAS.",
+            "security": "Explorando seguridad ofensiva y hardening en cloud — en aprendizaje, no es mi especialidad hoy."
         },
         "skillsModal": {
             "technologies": "Tecnologías",
@@ -292,6 +309,7 @@
         },
         "project": {
             "viewDetails": "Ver Detalles",
+            "comingSoon": "En construcción",
             "personal": "Personal",
             "professional": "Profesional",
             "viewProject": "Ver Proyecto",

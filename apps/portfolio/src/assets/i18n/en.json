@@ -13,7 +13,7 @@
             "greeting": "",
             "name": "Eduardo Miguel",
             "surname": "Muzo",
-            "description": "Software Engineer focused on Backend architecture development and Artificial Intelligence solutions. Experience integrating language models (LLMs) through agents for SQL queries using LangGraph and AWS Bedrock. Specialist in building scalable services on AWS (Lambdas, S3) and creating technical dashboards, efficiently connecting server logic with web and mobile applications.",
+            "description": "I build AI systems that reach production — backend, cloud, and applied LLMs on AWS.",
             "stats": {
                 "years": "Years",
                 "projects": "Projects",
@@ -25,9 +25,10 @@
                 "downloadCV": "Download CV"
             },
             "rolePrefix": "I am a",
+            "roles": ["Backend Developer", "AI Engineer", "Cloud Engineer"],
             "status": "Available",
             "location": "Quito, Ecuador",
-            "role": "Software Engineer | Backend & AI Focus"
+            "role": "Software Engineer · AI, Cloud & Backend"
         },
         "resume": {
             "title": "My Journey",
@@ -56,6 +57,22 @@
             "viewAll": "View All Projects",
             "viewProject": "View Project",
             "viewCode": "Code"
+        },
+        "blog": {
+            "title": "From the Blog",
+            "subtitle": "Technical notes on AI, cloud, and backend",
+            "viewAll": "View all posts",
+            "empty": "No posts published yet."
+        },
+        "clientProjects": {
+            "title": "Client Work",
+            "subtitle": "Professional work for companies and organizations"
+        },
+        "experienceRoles": {
+            "munsterMind": "I design and implement AI agents in production (LangGraph, AWS Bedrock) and the serverless backend services on AWS Lambda and NestJS that expose them to the company's web and mobile apps.",
+            "billusos": "Built backend services in Django for automated financial reporting and optimized the PostgreSQL queries behind the operational dashboards.",
+            "ceer": "Developed dashboards and reports with Angular and Laravel/Lumen for the public CONAFIPS SARAS platform.",
+            "security": "Exploring offensive security and cloud hardening — still learning, not a specialty yet."
         },
         "skillsModal": {
             "technologies": "Technologies",
@@ -292,6 +309,7 @@
         },
         "project": {
             "viewDetails": "View Details",
+            "comingSoon": "In progress",
             "personal": "Personal",
             "professional": "Professional",
             "viewProject": "View Project",

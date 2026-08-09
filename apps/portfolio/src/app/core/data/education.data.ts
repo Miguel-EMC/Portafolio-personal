@@ -24,15 +24,5 @@ export const educationItems: Education[] = [
       'Introducción a infraestructura cloud y prácticas DevOps'
     ],
     icon: 'bi-code-slash'
-  },
-  {
-    id: 'high-school',
-    achievements: [
-      'Graduado con honores en Ciencias Exactas',
-      'Participación en olimpiadas de matemáticas',
-      'Primer contacto con programación en Python',
-      'Liderazgo estudiantil y trabajo en equipo'
-    ],
-    icon: 'bi-book'
   }
 ];

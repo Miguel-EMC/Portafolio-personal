@@ -11,13 +11,11 @@ import { ToastrService } from 'ngx-toastr';
 import { educationItems, type Education } from '../../core/data/education.data';
 import { experiences, type Experience } from '../../core/data/experience.data';
 import { skillAreas, type SkillArea } from '../../core/data/skills.data';
+import { EmailService } from '../../core/services/email.service';
 import { PortfolioService } from '../../core/services/portfolio.service';
 import { PortfolioProjectMeta } from '../../interfaces/project.interface';
 
 import { LottieAnimationComponent } from '../../shared/components/ui/lottie-animation/lottie-animation.component';
-import { AboutMeComponent } from '../contact/about-me/about-me.component';
-import { ContactsComponent } from '../contact/contacts/contacts.component';
-import { PortafolioComponent } from "../portfolio/portfolio/portafolio.component";
 import { CurriculumComponent } from '../resume/components/curriculum/curriculum.component';
 import { EducationComponent } from '../resume/components/education/education.component';
 import { SkillsComponent } from '../resume/components/skills/skills.component';
@@ -31,12 +29,9 @@ import { SkillsComponent } from '../resume/components/skills/skills.component';
     FormsModule,
     TranslateModule,
     RouterLink,
-    AboutMeComponent,
     SkillsComponent,
     EducationComponent,
     CurriculumComponent,
-    PortafolioComponent,
-    ContactsComponent,
     LottieAnimationComponent,
     LottieComponent
   ],
@@ -89,6 +84,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   };
 
   private portfolioService = inject(PortfolioService);
+  private emailService = inject(EmailService);
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -509,7 +505,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     return '/assets/documents/CV_MuzoMiguel.pdf';
   }
 
-  onSubmit(event: Event) {
+  async onSubmit(event: Event) {
     // Solo ejecutar en el navegador, no en SSR
     if (!isPlatformBrowser(this.platformId)) {
       return;
@@ -526,47 +522,37 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     });
     this.forceToastStyles();
 
-    fetch("https://formspree.io/f/xandpyvw", {
-      method: "POST",
-      body: data,
-      headers: { Accept: "application/json" }
-    }).then(response => {
-      if (response.ok) {
-        // Toast de éxito con traducción
-        this.toastr.success(
-          this.translate.instant('home.contact.toast.successMessage'),
-          this.translate.instant('home.contact.toast.successTitle'),
-          {
-            timeOut: 5000,
-            progressBar: true
-          }
-        );
-        this.forceToastStyles();
-        form.reset();
-      } else {
-        // Toast de error con traducción
-        this.toastr.error(
-          this.translate.instant('home.contact.toast.errorMessage'),
-          this.translate.instant('home.contact.toast.errorTitle'),
-          {
-            timeOut: 5000,
-            progressBar: true
-          }
-        );
-        this.forceToastStyles();
-      }
-    }).catch((error) => {
-      // Toast de error de conexión con traducción
-      this.toastr.error(
-        this.translate.instant('home.contact.toast.connectionErrorMessage'),
-        this.translate.instant('home.contact.toast.connectionErrorTitle'),
+    const sent = await this.emailService.sendContactForm({
+      from_name: (data.get('name') as string) ?? '',
+      from_email: (data.get('email') as string) ?? '',
+      subject: (data.get('subject') as string) ?? '',
+      message: (data.get('message') as string) ?? ''
+    });
+
+    if (sent) {
+      // Toast de éxito con traducción
+      this.toastr.success(
+        this.translate.instant('home.contact.toast.successMessage'),
+        this.translate.instant('home.contact.toast.successTitle'),
         {
           timeOut: 5000,
           progressBar: true
         }
       );
       this.forceToastStyles();
-    });
+      form.reset();
+    } else {
+      // Toast de error con traducción
+      this.toastr.error(
+        this.translate.instant('home.contact.toast.errorMessage'),
+        this.translate.instant('home.contact.toast.errorTitle'),
+        {
+          timeOut: 5000,
+          progressBar: true
+        }
+      );
+      this.forceToastStyles();
+    }
   }
 
 }

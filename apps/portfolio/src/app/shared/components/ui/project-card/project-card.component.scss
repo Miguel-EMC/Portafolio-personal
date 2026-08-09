@@ -216,15 +216,16 @@
   }
 }
 
-/* Diffused category-tinted blur, standing in for a screenshot we don't have yet */
+/* Diffused category-tinted blur, standing in for a screenshot we intentionally don't require */
 .card-glow {
   position: relative;
   height: 140px;
   display: flex;
-  align-items: flex-end;
-  padding: var(--space-4);
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   background: var(--bg-tertiary);
+  text-decoration: none;
 
   &::before {
     content: '';
@@ -246,11 +247,18 @@
     background: radial-gradient(circle at 30% 30%, #4FA6A6, transparent 65%);
   }
 
+  &.align-bottom {
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: var(--space-4);
+  }
+
   &.small {
     height: 56px;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
+  }
+
+  &:hover .category-icon {
+    transform: scale(1.08);
   }
 }
 
@@ -266,9 +274,19 @@
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
   color: white;
+  transition: transform var(--transition-fast);
 
   i {
     font-size: 0.9375rem;
+  }
+
+  &.lg {
+    width: 3.5rem;
+    height: 3.5rem;
+
+    i {
+      font-size: 1.5rem;
+    }
   }
 }
 

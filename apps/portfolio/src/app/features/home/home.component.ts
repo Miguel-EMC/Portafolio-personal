@@ -12,7 +12,7 @@ import { upcomingProjects, type UpcomingProject } from '../../core/data/upcoming
 import { BlogService } from '../../core/services/blog.service';
 import { EmailService } from '../../core/services/email.service';
 import { PortfolioService } from '../../core/services/portfolio.service';
-import { BlogPostMeta } from '../../interfaces/blog.interface';
+import { BLOG_CATEGORIES, BlogCategory, BlogCategoryInfo, BlogPostMeta } from '../../interfaces/blog.interface';
 import { PortfolioProjectMeta } from '../../interfaces/project.interface';
 
 import { LottieAnimationComponent } from '../../shared/components/ui/lottie-animation/lottie-animation.component';
@@ -252,6 +252,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     };
 
     this.ngZone.runOutsideAngular(() => eraseChar());
+  }
+
+  getCategoryInfo(category: BlogCategory): BlogCategoryInfo {
+    return BLOG_CATEGORIES.find(c => c.id === category) ?? BLOG_CATEGORIES[BLOG_CATEGORIES.length - 1];
   }
 
   // Get CV URL based on current language

@@ -159,9 +159,13 @@
           class="blog-preview-card"
           [routerLink]="['/blog', 'post', post.slug]"
         >
-          <img [src]="post.coverImage" [alt]="post.title" class="blog-preview-image" />
+          <div class="blog-preview-glow" [style.background]="getCategoryInfo(post.category).color">
+            <i [class]="getCategoryInfo(post.category).icon"></i>
+          </div>
           <div class="blog-preview-content">
-            <span class="blog-preview-category">{{ post.category }}</span>
+            <span class="blog-preview-category" [style.color]="getCategoryInfo(post.category).color">
+              {{ getCategoryInfo(post.category).name }}
+            </span>
             <h3 class="blog-preview-title">{{ post.title }}</h3>
             <p class="blog-preview-excerpt">{{ post.excerpt }}</p>
           </div>
@@ -210,33 +214,42 @@
 
     <div class="experience-condensed">
       <div class="experience-role">
-        <div class="role-head">
-          <span class="role-title">
-            {{ 'experiences.fullstack-lateral.title' | translate }} — {{ 'experiences.fullstack-lateral.subtitle' | translate }}
-          </span>
-          <span class="role-date">{{ 'experiences.fullstack-lateral.date' | translate }}</span>
+        <span class="role-icon"><i class="bi bi-briefcase-fill"></i></span>
+        <div class="role-body">
+          <div class="role-head">
+            <span class="role-title">
+              {{ 'experiences.fullstack-lateral.title' | translate }} — {{ 'experiences.fullstack-lateral.subtitle' | translate }}
+            </span>
+            <span class="role-date">{{ 'experiences.fullstack-lateral.date' | translate }}</span>
+          </div>
+          <p>{{ 'home.experienceRoles.munsterMind' | translate }}</p>
         </div>
-        <p>{{ 'home.experienceRoles.munsterMind' | translate }}</p>
       </div>
 
       <div class="experience-role">
-        <div class="role-head">
-          <span class="role-title">
-            {{ 'experiences.billusos-dev.title' | translate }} — {{ 'experiences.billusos-dev.subtitle' | translate }}
-          </span>
-          <span class="role-date">{{ 'experiences.billusos-dev.date' | translate }}</span>
+        <span class="role-icon"><i class="bi bi-briefcase-fill"></i></span>
+        <div class="role-body">
+          <div class="role-head">
+            <span class="role-title">
+              {{ 'experiences.billusos-dev.title' | translate }} — {{ 'experiences.billusos-dev.subtitle' | translate }}
+            </span>
+            <span class="role-date">{{ 'experiences.billusos-dev.date' | translate }}</span>
+          </div>
+          <p>{{ 'home.experienceRoles.billusos' | translate }}</p>
         </div>
-        <p>{{ 'home.experienceRoles.billusos' | translate }}</p>
       </div>
 
       <div class="experience-role">
-        <div class="role-head">
-          <span class="role-title">
-            {{ 'experiences.junior-fullstack.title' | translate }} — {{ 'experiences.junior-fullstack.subtitle' | translate }}
-          </span>
-          <span class="role-date">{{ 'experiences.junior-fullstack.date' | translate }}</span>
+        <span class="role-icon"><i class="bi bi-briefcase-fill"></i></span>
+        <div class="role-body">
+          <div class="role-head">
+            <span class="role-title">
+              {{ 'experiences.junior-fullstack.title' | translate }} — {{ 'experiences.junior-fullstack.subtitle' | translate }}
+            </span>
+            <span class="role-date">{{ 'experiences.junior-fullstack.date' | translate }}</span>
+          </div>
+          <p>{{ 'home.experienceRoles.ceer' | translate }}</p>
         </div>
-        <p>{{ 'home.experienceRoles.ceer' | translate }}</p>
       </div>
     </div>
 
@@ -251,29 +264,38 @@
 
     <div class="experience-condensed quiet">
       <div class="experience-role">
-        <div class="role-head">
-          <span class="role-title">
-            {{ 'education.computer-engineering.title' | translate }} — {{ 'education.computer-engineering.institution' | translate }}
-          </span>
-          <span class="role-date">{{ 'education.computer-engineering.date' | translate }}</span>
+        <span class="role-icon"><i class="bi bi-mortarboard-fill"></i></span>
+        <div class="role-body">
+          <div class="role-head">
+            <span class="role-title">
+              {{ 'education.computer-engineering.title' | translate }} — {{ 'education.computer-engineering.institution' | translate }}
+            </span>
+            <span class="role-date">{{ 'education.computer-engineering.date' | translate }}</span>
+          </div>
         </div>
       </div>
 
       <div class="experience-role">
-        <div class="role-head">
-          <span class="role-title">
-            {{ 'education.software-development.title' | translate }} — {{ 'education.software-development.institution' | translate }}
-          </span>
-          <span class="role-date">{{ 'education.software-development.date' | translate }}</span>
+        <span class="role-icon"><i class="bi bi-mortarboard-fill"></i></span>
+        <div class="role-body">
+          <div class="role-head">
+            <span class="role-title">
+              {{ 'education.software-development.title' | translate }} — {{ 'education.software-development.institution' | translate }}
+            </span>
+            <span class="role-date">{{ 'education.software-development.date' | translate }}</span>
+          </div>
         </div>
       </div>
 
       <div class="experience-role">
-        <div class="role-head">
-          <span class="role-title">
-            {{ 'education.high-school.title' | translate }} — {{ 'education.high-school.institution' | translate }}
-          </span>
-          <span class="role-date">{{ 'education.high-school.date' | translate }}</span>
+        <span class="role-icon"><i class="bi bi-mortarboard-fill"></i></span>
+        <div class="role-body">
+          <div class="role-head">
+            <span class="role-title">
+              {{ 'education.high-school.title' | translate }} — {{ 'education.high-school.institution' | translate }}
+            </span>
+            <span class="role-date">{{ 'education.high-school.date' | translate }}</span>
+          </div>
         </div>
       </div>
     </div>

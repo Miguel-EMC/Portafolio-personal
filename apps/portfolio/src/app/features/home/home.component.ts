@@ -155,10 +155,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   currentLang: 'es' | 'en' = 'es';
 
-  // Own projects (featured + coming-soon), loaded from the portfolio service
+  // Own projects (featured + coming-soon), loaded from the portfolio service.
+  // Client work stays on /portfolio only — no longer duplicated as a home section.
   ownProjects: PortfolioProjectMeta[] = [];
-  // Client work, shown as a secondary grid — no business figures, see ProjectCardComponent's client-secondary variant
-  clientProjects: PortfolioProjectMeta[] = [];
   readonly upcomingProjects: UpcomingProject[] = upcomingProjects;
 
   recentPosts: BlogPostMeta[] = [];
@@ -175,7 +174,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.portfolioService.getAllProjects().subscribe((projects: PortfolioProjectMeta[]) => {
       this.ownProjects = projects.filter(p => p.type === 'personal');
-      this.clientProjects = projects.filter(p => p.type === 'professional');
       this.cdr.markForCheck();
     });
 

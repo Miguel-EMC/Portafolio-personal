@@ -1352,18 +1352,6 @@
   overflow: hidden;
 }
 
-/* ===== CLIENT PROJECTS (SECONDARY) ===== */
-.client-projects-section {
-  padding: 4rem 0;
-  background: var(--bg-primary);
-}
-
-.client-projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-4);
-}
-
 /* ===== EXPERIENCE (CONDENSED) ===== */
 .experience-section {
   padding: 4rem 0;

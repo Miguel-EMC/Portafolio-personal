@@ -185,25 +185,6 @@
   </div>
 </section>
 
-<!-- Client work (secondary) -->
-<section id="clientes" class="client-projects-section" *ngIf="clientProjects.length">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-eyebrow">{{ 'home.clientProjects.eyebrow' | translate }}</span>
-      <h2 class="section-title">{{ 'home.clientProjects.title' | translate }}</h2>
-      <p class="section-subtitle">{{ 'home.clientProjects.subtitle' | translate }}</p>
-    </div>
-
-    <div class="client-projects-grid">
-      <app-project-card
-        *ngFor="let project of clientProjects"
-        variant="client-secondary"
-        [project]="project"
-      ></app-project-card>
-    </div>
-  </div>
-</section>
-
 <!-- Experience (condensed, secondary) -->
 <section id="experiencia" class="experience-section">
   <div class="container">

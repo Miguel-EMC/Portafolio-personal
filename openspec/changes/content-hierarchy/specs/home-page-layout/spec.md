@@ -1,11 +1,15 @@
 ## ADDED Requirements
 
 ### Requirement: Fixed home section order
-The home page SHALL render its sections in this order, top to bottom: hero, featured own projects, blog, client projects (secondary), experience, education, contact.
+The home page SHALL render its sections in this order, top to bottom: hero, featured own projects, blog, experience, education, contact. Client/professional work SHALL NOT have its own section on home — it stays reachable only through `/portfolio`, which remains the full listing (own and client projects, filterable).
 
 #### Scenario: Visitor scrolls through home
 - **WHEN** a visitor loads `/home` and scrolls from top to bottom
-- **THEN** they encounter hero, then featured own projects, then blog, then client projects, then experience, then education, then contact, in that order
+- **THEN** they encounter hero, then featured own projects, then blog, then experience, then education, then contact, in that order — with no separate client-projects section
+
+#### Scenario: Visitor wants to see client/professional work
+- **WHEN** a visitor wants to see Miguel's client work
+- **THEN** they go to `/portfolio`, the only place it's listed — home does not summarize it separately (removed because it read as near-duplicate of the featured-projects section and lengthened the page)
 
 ### Requirement: Home sections are bounded summaries, not the source of truth
 Each home section SHALL show a bounded preview of its content (not the full list) with a link to the corresponding full page, which remains the source of truth for that content.

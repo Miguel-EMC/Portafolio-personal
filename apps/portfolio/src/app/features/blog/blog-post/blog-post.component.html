@@ -85,16 +85,12 @@
         </div>
       </header>
 
-      <!-- Cover Image or Beautiful Mesh Gradient -->
-      <div class="post-cover shadow-lg" [class.no-image]="imageError()">
+      <!-- Cover Image or category-tinted placeholder -->
+      <div class="post-cover shadow-lg" [class.no-image]="imageError()" [style.--card-glow-color]="getCategoryInfo(post()!.category)?.color">
         @if (!imageError() && post()!.coverImage) {
           <img [src]="post()!.coverImage" [alt]="post()!.title" (error)="onImageError()" class="animate-scale-in" />
         } @else {
-          <!-- Premium mesh gradient backdrop for posts without images -->
           <div class="mesh-gradient-placeholder detail-placeholder">
-            <div class="glow-sphere glow-sphere-1"></div>
-            <div class="glow-sphere glow-sphere-2"></div>
-            <div class="glow-sphere glow-sphere-3"></div>
             <div class="placeholder-content">
               <i [class]="getCategoryInfo(post()!.category)?.icon"></i>
               <span class="category-name">{{ getCategoryInfo(post()!.category)?.name }}</span>
@@ -236,14 +232,15 @@
           </h2>
           <div class="related-grid">
             @for (relatedPost of relatedPosts(); track relatedPost.slug) {
-              <article class="related-card shadow-sm" [routerLink]="['/blog/post', relatedPost.slug]">
+              <article class="related-card shadow-sm" [routerLink]="['/blog/post', relatedPost.slug]" [style.--card-glow-color]="getCategoryInfo(relatedPost.category)?.color">
                 <div class="related-image" [class.no-image]="relatedImageErrors()[relatedPost.slug]">
                   @if (!relatedImageErrors()[relatedPost.slug] && relatedPost.coverImage) {
                     <img [src]="relatedPost.coverImage" [alt]="relatedPost.title" (error)="onRelatedImageError(relatedPost.slug)" />
                   } @else {
                     <div class="mesh-gradient-placeholder related-placeholder">
-                      <div class="glow-sphere glow-sphere-1"></div>
-                      <div class="glow-sphere glow-sphere-2"></div>
+                      <div class="placeholder-icon">
+                        <i [class]="getCategoryInfo(relatedPost.category)?.icon"></i>
+                      </div>
                     </div>
                   }
                 </div>

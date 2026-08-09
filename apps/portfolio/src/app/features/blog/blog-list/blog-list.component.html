@@ -104,9 +104,9 @@
               <img [src]="featuredPosts()[0].coverImage" [alt]="featuredPosts()[0].title" (error)="onImageError(featuredPosts()[0].slug)" loading="eager" />
             } @else {
               <div class="mesh-gradient-placeholder">
-                <div class="glow-sphere glow-sphere-1"></div>
-                <div class="glow-sphere glow-sphere-2"></div>
-                <div class="glow-sphere glow-sphere-3"></div>
+                <div class="placeholder-icon lg">
+                  <i [class]="getCategoryInfo(featuredPosts()[0].category)?.icon"></i>
+                </div>
               </div>
             }
             <div class="blog-hero-overlay"></div>
@@ -165,9 +165,6 @@
                     <img [src]="post.coverImage" [alt]="post.title" (error)="onImageError(post.slug)" loading="lazy" />
                   } @else {
                     <div class="mesh-gradient-placeholder">
-                      <div class="glow-sphere glow-sphere-1"></div>
-                      <div class="glow-sphere glow-sphere-2"></div>
-                      <div class="glow-sphere glow-sphere-3"></div>
                       <div class="placeholder-icon">
                         <i [class]="getCategoryInfo(post.category)?.icon"></i>
                       </div>

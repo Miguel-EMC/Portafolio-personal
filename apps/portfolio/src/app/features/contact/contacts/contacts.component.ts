@@ -38,7 +38,7 @@ export class ContactsComponent {
     this.showErrorMessage = false;
 
     const formData: ContactFormData = {
-      from_name: `${form.value.firstName} ${form.value.lastName}`,
+      from_name: form.value.name,
       from_email: form.value.email,
       subject: form.value.subject,
       message: form.value.message

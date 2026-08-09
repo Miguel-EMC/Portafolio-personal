@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { getTechIcon } from '../../../../core/utils/tech-icon.util';
+import { getProjectCategory } from '../../../../core/utils/project-category.util';
 import { PortfolioProjectMeta } from '../../../../interfaces/project.interface';
 import { UpcomingProject } from '../../../../core/data/upcoming-projects.data';
 
@@ -37,5 +38,9 @@ export class ProjectCardComponent {
 
   get detailLink(): string[] | null {
     return this.project ? ['/portfolio', 'project', this.project.slug] : null;
+  }
+
+  get category(): string {
+    return getProjectCategory(this.stackTags);
   }
 }

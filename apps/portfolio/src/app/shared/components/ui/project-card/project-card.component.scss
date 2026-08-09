@@ -206,7 +206,6 @@
 /* ===== coming-soon ===== */
 
 .coming-soon-card {
-  padding: var(--space-5);
   border-style: dashed;
   border-color: var(--border-secondary);
   box-shadow: none;
@@ -217,7 +216,43 @@
   }
 }
 
+/* Diffused category-tinted blur, standing in for a screenshot we don't have yet */
+.card-glow {
+  position: relative;
+  height: 140px;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-4);
+  overflow: hidden;
+  background: var(--bg-tertiary);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -40%;
+    filter: blur(32px);
+    opacity: 0.55;
+  }
+
+  &.category-ai::before {
+    background: radial-gradient(circle at 30% 30%, #7C7FE0, transparent 65%);
+  }
+
+  &.category-mobile::before {
+    background: radial-gradient(circle at 30% 30%, #D9A441, transparent 65%);
+  }
+
+  &.category-web::before {
+    background: radial-gradient(circle at 30% 30%, #4FA6A6, transparent 65%);
+  }
+}
+
+.coming-soon-card .card-content {
+  padding-top: var(--space-4);
+}
+
 .status-chip {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -230,7 +265,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-bottom: var(--space-3);
+  backdrop-filter: blur(6px);
 }
 
 .status-dot {
@@ -244,6 +279,11 @@
 
 .client-card {
   padding: var(--space-4) var(--space-5);
+  border-left: 3px solid var(--border-secondary);
+
+  &.category-ai { border-left-color: #7C7FE0; }
+  &.category-mobile { border-left-color: #D9A441; }
+  &.category-web { border-left-color: #4FA6A6; }
 }
 
 .client-card .project-title {
@@ -252,7 +292,7 @@
 }
 
 .client-card .project-description {
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   margin-bottom: 0;
 }
 

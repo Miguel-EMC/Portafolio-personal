@@ -52,6 +52,7 @@
             }
         },
         "portfolio": {
+            "eyebrow": "// Own projects",
             "title": "Featured Projects",
             "subtitle": "A selection of my best work",
             "viewAll": "View All Projects",
@@ -59,15 +60,18 @@
             "viewCode": "Code"
         },
         "blog": {
+            "eyebrow": "// Blog",
             "title": "From the Blog",
             "subtitle": "Technical notes on AI, cloud, and backend",
             "viewAll": "View all posts",
             "empty": "No posts published yet."
         },
         "clientProjects": {
+            "eyebrow": "// Client work",
             "title": "Client Work",
             "subtitle": "Professional work for companies and organizations"
         },
+        "experienceEyebrow": "// Career",
         "experienceRoles": {
             "munsterMind": "I design and implement AI agents in production (LangGraph, AWS Bedrock) and the serverless backend services on AWS Lambda and NestJS that expose them to the company's web and mobile apps.",
             "billusos": "Built backend services in Django for automated financial reporting and optimized the PostgreSQL queries behind the operational dashboards.",

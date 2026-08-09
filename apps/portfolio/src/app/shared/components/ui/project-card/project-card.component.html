@@ -50,25 +50,29 @@
 
   @case ('coming-soon') {
     <div class="project-card coming-soon-card" *ngIf="upcoming as u">
-      <span class="status-chip">
-        <span class="status-dot"></span>
-        {{ 'portfolio.project.comingSoon' | translate }}
-      </span>
+      <div class="card-glow" [class]="'category-' + category">
+        <span class="status-chip">
+          <span class="status-dot"></span>
+          {{ 'portfolio.project.comingSoon' | translate }}
+        </span>
+      </div>
 
-      <h3 class="project-title">{{ u.title }}</h3>
-      <p class="project-description">{{ u.description }}</p>
+      <div class="card-content">
+        <h3 class="project-title">{{ u.title }}</h3>
+        <p class="project-description">{{ u.description }}</p>
 
-      <div class="tech-stack">
-        <div class="tech-item" *ngFor="let tech of stackTags">
-          <i [class]="getTechIcon(tech)"></i>
-          <span>{{ tech }}</span>
+        <div class="tech-stack">
+          <div class="tech-item" *ngFor="let tech of stackTags">
+            <i [class]="getTechIcon(tech)"></i>
+            <span>{{ tech }}</span>
+          </div>
         </div>
       </div>
     </div>
   }
 
   @case ('client-secondary') {
-    <a class="project-card client-card" *ngIf="project as p" [routerLink]="detailLink">
+    <a class="project-card client-card" [class]="'category-' + category" *ngIf="project as p" [routerLink]="detailLink">
       <h4 class="project-title">{{ p.title }}</h4>
       <p class="project-description">{{ p.description }}</p>
 

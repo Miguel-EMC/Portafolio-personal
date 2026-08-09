@@ -19,11 +19,11 @@ A `coming-soon` project card SHALL NOT render a link, `routerLink`, or anchor of
 - **THEN** it clearly indicates an in-progress/planned state and does not present the project as available or complete
 
 ### Requirement: Client-secondary cards omit business-result content
-A `client-secondary` project card SHALL render only the project title, a one-line description, and stack tags. It SHALL NOT render challenge, solution, or results content, including any business or usage figures.
+A `client-secondary` project card SHALL render only the project title, a short (1-2 line) description, and stack tags. It SHALL NOT render challenge, solution, or results content, including any business or usage figures. The description SHALL NOT be truncated so aggressively that it cuts off before completing a clause (e.g. "Comprehensive system for...") — widen the clamp or the card before shortening the source text.
 
 #### Scenario: Visitor views the client-projects grid on home
 - **WHEN** a visitor views a `client-secondary` card in home's client-projects section
-- **THEN** they see only a title, one line of description, and stack tags — no numeric business metrics, no "Resultados"/"Desafíos"/"Soluciones" content
+- **THEN** they see a title, a short but legible description (not cut off mid-clause), and stack tags — no numeric business metrics, no "Resultados"/"Desafíos"/"Soluciones" content
 
 ### Requirement: Client-secondary cards link to the unchanged full case study
 A `client-secondary` card SHALL link to the existing `/portfolio/project/:slug` detail page, whose content is not modified by this capability.

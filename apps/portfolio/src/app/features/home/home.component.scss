@@ -912,6 +912,17 @@
   margin-bottom: var(--space-10);
 }
 
+.section-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-green);
+  margin-bottom: var(--space-3);
+}
+
 .section-title {
   font-size: 2.5rem;
   font-weight: 800;
@@ -1328,7 +1339,7 @@
 
 .client-projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-4);
 }
 

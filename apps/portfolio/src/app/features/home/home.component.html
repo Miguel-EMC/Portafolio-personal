@@ -217,9 +217,10 @@
         <span class="role-icon"><i class="bi bi-briefcase-fill"></i></span>
         <div class="role-body">
           <div class="role-head">
-            <span class="role-title">
-              {{ 'experiences.fullstack-lateral.title' | translate }} — {{ 'experiences.fullstack-lateral.subtitle' | translate }}
-            </span>
+            <div class="role-heading">
+              <span class="role-title">{{ 'experiences.fullstack-lateral.title' | translate }}</span>
+              <span class="role-company">{{ 'experiences.fullstack-lateral.subtitle' | translate }}</span>
+            </div>
             <span class="role-date">{{ 'experiences.fullstack-lateral.date' | translate }}</span>
           </div>
           <p>{{ 'home.experienceRoles.munsterMind' | translate }}</p>
@@ -230,9 +231,10 @@
         <span class="role-icon"><i class="bi bi-briefcase-fill"></i></span>
         <div class="role-body">
           <div class="role-head">
-            <span class="role-title">
-              {{ 'experiences.billusos-dev.title' | translate }} — {{ 'experiences.billusos-dev.subtitle' | translate }}
-            </span>
+            <div class="role-heading">
+              <span class="role-title">{{ 'experiences.billusos-dev.title' | translate }}</span>
+              <span class="role-company">{{ 'experiences.billusos-dev.subtitle' | translate }}</span>
+            </div>
             <span class="role-date">{{ 'experiences.billusos-dev.date' | translate }}</span>
           </div>
           <p>{{ 'home.experienceRoles.billusos' | translate }}</p>
@@ -243,9 +245,10 @@
         <span class="role-icon"><i class="bi bi-briefcase-fill"></i></span>
         <div class="role-body">
           <div class="role-head">
-            <span class="role-title">
-              {{ 'experiences.junior-fullstack.title' | translate }} — {{ 'experiences.junior-fullstack.subtitle' | translate }}
-            </span>
+            <div class="role-heading">
+              <span class="role-title">{{ 'experiences.junior-fullstack.title' | translate }}</span>
+              <span class="role-company">{{ 'experiences.junior-fullstack.subtitle' | translate }}</span>
+            </div>
             <span class="role-date">{{ 'experiences.junior-fullstack.date' | translate }}</span>
           </div>
           <p>{{ 'home.experienceRoles.ceer' | translate }}</p>
@@ -257,21 +260,26 @@
   </div>
 </section>
 
-<!-- Education (bottom, quiet — condensed, same card language as experience) -->
+<!-- Education (bottom, secondary — same structure as experience, smaller scale) -->
 <section id="educacion" class="education-section-quiet">
   <div class="container">
-    <h3 class="quiet-title">{{ 'home.resume.education' | translate }}</h3>
+    <div class="section-header">
+      <span class="section-eyebrow">{{ 'home.educationEyebrow' | translate }}</span>
+      <h2 class="section-title">{{ 'home.resume.education' | translate }}</h2>
+    </div>
 
     <div class="experience-condensed quiet">
       <div class="experience-role">
         <span class="role-icon"><i class="bi bi-mortarboard-fill"></i></span>
         <div class="role-body">
           <div class="role-head">
-            <span class="role-title">
-              {{ 'education.computer-engineering.title' | translate }} — {{ 'education.computer-engineering.institution' | translate }}
-            </span>
+            <div class="role-heading">
+              <span class="role-title">{{ 'education.computer-engineering.title' | translate }}</span>
+              <span class="role-company">{{ 'education.computer-engineering.institution' | translate }}</span>
+            </div>
             <span class="role-date">{{ 'education.computer-engineering.date' | translate }}</span>
           </div>
+          <p>{{ 'education.computer-engineering.description' | translate }}</p>
         </div>
       </div>
 
@@ -279,11 +287,13 @@
         <span class="role-icon"><i class="bi bi-mortarboard-fill"></i></span>
         <div class="role-body">
           <div class="role-head">
-            <span class="role-title">
-              {{ 'education.software-development.title' | translate }} — {{ 'education.software-development.institution' | translate }}
-            </span>
+            <div class="role-heading">
+              <span class="role-title">{{ 'education.software-development.title' | translate }}</span>
+              <span class="role-company">{{ 'education.software-development.institution' | translate }}</span>
+            </div>
             <span class="role-date">{{ 'education.software-development.date' | translate }}</span>
           </div>
+          <p>{{ 'education.software-development.description' | translate }}</p>
         </div>
       </div>
 
@@ -291,11 +301,13 @@
         <span class="role-icon"><i class="bi bi-mortarboard-fill"></i></span>
         <div class="role-body">
           <div class="role-head">
-            <span class="role-title">
-              {{ 'education.high-school.title' | translate }} — {{ 'education.high-school.institution' | translate }}
-            </span>
+            <div class="role-heading">
+              <span class="role-title">{{ 'education.high-school.title' | translate }}</span>
+              <span class="role-company">{{ 'education.high-school.institution' | translate }}</span>
+            </div>
             <span class="role-date">{{ 'education.high-school.date' | translate }}</span>
           </div>
+          <p>{{ 'education.high-school.description' | translate }}</p>
         </div>
       </div>
     </div>

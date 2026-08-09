@@ -1445,16 +1445,29 @@
 .role-head {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   gap: var(--space-3);
   flex-wrap: wrap;
   margin-bottom: var(--space-2);
+}
+
+.role-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
 .role-title {
   font-weight: 700;
   font-size: 0.9375rem;
   color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.role-company {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--brand-green);
 }
 
 .role-date {
@@ -1462,6 +1475,7 @@
   font-size: 0.75rem;
   color: var(--text-muted);
   white-space: nowrap;
+  padding-top: 0.2rem;
 }
 
 .interest-line {
@@ -1473,19 +1487,42 @@
   color: var(--text-muted);
 }
 
-/* ===== EDUCATION (QUIET) ===== */
+/* ===== EDUCATION (SECONDARY — same structure as experience, smaller scale) ===== */
 .education-section-quiet {
   padding: 3rem 0 4rem;
   background: var(--bg-primary);
-}
 
-.quiet-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin: 0 0 var(--space-5);
+  .section-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-eyebrow {
+    color: var(--text-muted);
+  }
+
+  .role-icon {
+    background: transparent;
+    color: var(--text-muted);
+    width: 1.75rem;
+    height: 1.75rem;
+
+    i {
+      font-size: 0.875rem;
+    }
+  }
+
+  .role-company {
+    color: var(--text-secondary);
+  }
+
+  .experience-role {
+    padding: var(--space-4);
+    border-left-color: var(--border-secondary);
+  }
 }
 
 /* ===== CONTACT SECTION ===== */

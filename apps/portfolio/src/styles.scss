@@ -7,71 +7,31 @@
 /* ===== SISTEMA DE DISEÑO PROFESIONAL ===== */
 
 :root {
-  /* === PALETA DE COLORES PROFESIONAL === */
-  
-  /* Colores Primarios - Azul Corporativo */
-  --blue-50: #eff6ff;
-  --blue-100: #dbeafe;
-  --blue-200: #bfdbfe;
-  --blue-300: #93c5fd;
-  --blue-400: #60a5fa;
-  --blue-500: #3b82f6;
-  --blue-600: #2563eb;
-  --blue-700: #1d4ed8;
-  --blue-800: #1e40af;
-  --blue-900: #1e3a8a;
-  --blue-950: #172554;
-
-  /* Colores Secundarios - Verde Turquesa Profesional */
-  --turquoise-50: #f0fdfa;
-  --turquoise-100: #ccfbf1;
-  --turquoise-200: #99f6e4;
-  --turquoise-300: #5eead4;
-  --turquoise-400: #2dd4bf;
-  --turquoise-500: #14b8a6;
-  --turquoise-600: #0d9488;
-  --turquoise-700: #0f766e;
-  --turquoise-800: #115e59;
-  --turquoise-900: #134e4a;
-  --turquoise-950: #042f2e;
-
-  /* Colores de Acento - Violeta Moderno */
-  --violet-50: #f5f3ff;
-  --violet-100: #ede9fe;
-  --violet-200: #ddd6fe;
-  --violet-300: #c4b5fd;
-  --violet-400: #a78bfa;
-  --violet-500: #8b5cf6;
-  --violet-600: #7c3aed;
-  --violet-700: #6d28d9;
-  --violet-800: #5b21b6;
-  --violet-900: #4c1d95;
-
   /* === PALETA DE MARCA — MiguelDev11 === */
-  /* Extraída del logo: dark bg + neon green circuit glow */
+  /* Un solo acento: esmeralda. Nada de azul/turquesa/violeta como color de marca. */
 
-  /* Verde Neón — Color primario de marca */
-  --brand-green:         #39FF14;
-  --brand-green-dim:     #22c55e;
-  --brand-green-dark:    #16a34a;
-  --brand-green-deeper:  #15803d;
-  --brand-green-glow:    rgba(57, 255, 20, 0.4);
-  --brand-green-subtle:  rgba(57, 255, 20, 0.08);
-  --brand-green-muted:   rgba(57, 255, 20, 0.15);
-  --brand-green-border:  rgba(57, 255, 20, 0.2);
+  /* Esmeralda — Color primario de marca */
+  --brand-green:         #34D399;
+  --brand-green-dim:     #10B981;
+  --brand-green-dark:    #059669;
+  --brand-green-deeper:  #047857;
+  --brand-green-glow:    rgba(52, 211, 153, 0.4);
+  --brand-green-subtle:  rgba(52, 211, 153, 0.08);
+  --brand-green-muted:   rgba(52, 211, 153, 0.15);
+  --brand-green-border:  rgba(52, 211, 153, 0.2);
 
-  /* Fondos de Marca — Dark base del logo */
+  /* Fondos de Marca — dark base único */
   --brand-bg-base:       #0f1117;
   --brand-bg-panel:      #1a1d24;
   --brand-bg-elevated:   #22262f;
   --brand-bg-overlay:    rgba(15, 17, 23, 0.95);
   --brand-bg-glass:      rgba(26, 29, 36, 0.85);
 
-  /* Sombras de Marca — Glow neón */
-  --shadow-brand-sm:     0 0 8px rgba(57, 255, 20, 0.2);
-  --shadow-brand-md:     0 0 12px rgba(57, 255, 20, 0.3), 0 0 24px rgba(57, 255, 20, 0.15);
-  --shadow-brand-glow:   0 0 0 3px rgba(57, 255, 20, 0.25);
-  --shadow-brand-card:   0 0 0 1px rgba(57, 255, 20, 0.2), 0 8px 24px rgba(57, 255, 20, 0.1);
+  /* Sombras de Marca — glow esmeralda */
+  --shadow-brand-sm:     0 0 8px rgba(52, 211, 153, 0.2);
+  --shadow-brand-md:     0 0 12px rgba(52, 211, 153, 0.3), 0 0 24px rgba(52, 211, 153, 0.15);
+  --shadow-brand-glow:   0 0 0 3px rgba(52, 211, 153, 0.25);
+  --shadow-brand-card:   0 0 0 1px rgba(52, 211, 153, 0.2), 0 8px 24px rgba(52, 211, 153, 0.1);
 
   /* Escala de Grises Profesional */
   --gray-50: #f9fafb;
@@ -86,11 +46,11 @@
   --gray-900: #111827;
   --gray-950: #030712;
 
-  /* Colores de Estado */
-  --success: var(--turquoise-500);
+  /* Colores de Estado — semánticos, independientes del acento de marca */
+  --success: #22c55e;
   --warning: #f59e0b;
   --error: #ef4444;
-  --info: var(--blue-500);
+  --info: #3b82f6;
 
   /* === TIPOGRAFÍA PROFESIONAL === */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -199,87 +159,16 @@
   --z-tooltip: 1070;
 }
 
-/* ===== TEMAS PROFESIONALES ===== */
+/* ===== TEMA — dark único, sin toggle ===== */
+/* Fusionado directo en :root: el tema no depende de una clase que
+   JS agrega después de hidratar. Nada que parpadear en SSR. */
 
-/* Tema Claro */
-.light-theme {
+:root {
   /* Fondos */
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --bg-tertiary: var(--gray-50);
-  --bg-accent: rgba(13, 148, 136, 0.06);
-  --bg-muted: var(--gray-100);
-
-  /* Superficies */
-  --surface-primary: #ffffff;
-  --surface-secondary: #f8fafc;
-  --surface-elevated: #ffffff;
-  --surface-overlay: rgba(255, 255, 255, 0.95);
-  --surface-glass: rgba(255, 255, 255, 0.9);
-
-  /* Textos */
-  --text-primary: var(--gray-900);
-  --text-secondary: var(--gray-700);
-  --text-tertiary: var(--gray-600);
-  --text-muted: var(--gray-500);
-  --text-accent: var(--turquoise-600);
-  --text-inverse: #ffffff;
-
-  /* Bordes */
-  --border-primary: #e2e8f0;
-  --border-secondary: #cbd5e1;
-  --border-muted: #f1f5f9;
-  --border-focus: var(--turquoise-500);
-
-  /* Colores de Marca — Verde Turquesa */
-  --accent-primary: var(--turquoise-600);
-  --accent-secondary: var(--turquoise-700);
-  --accent-tertiary: var(--violet-600);
-  --accent-primary-rgb: 13, 148, 136;
-  --accent-secondary-rgb: 15, 118, 110;
-  --accent-tertiary-rgb: 124, 58, 237;
-  --accent-glow: rgba(13, 148, 136, 0.3);
-
-  /* Gradientes */
-  --gradient-primary: linear-gradient(135deg, var(--turquoise-600), var(--blue-600));
-  --gradient-secondary: linear-gradient(135deg, var(--blue-500), var(--violet-600));
-  --gradient-accent: linear-gradient(135deg, var(--violet-500), var(--turquoise-600));
-
-  /* Sombras */
-  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-
-  /* Estados */
-  --success-bg: #f0fdf4;
-  --success-text: #15803d;
-  --success-border: #bbf7d0;
-  --warning-bg: #fffbeb;
-  --warning-text: #b45309;
-  --warning-border: #fde68a;
-  --error-bg: #fef2f2;
-  --error-text: #b91c1c;
-  --error-border: #fecaca;
-
-  /* Estados de interacción */
-  --state-hover: rgba(13, 148, 136, 0.06);
-  --state-active: rgba(13, 148, 136, 0.12);
-  --state-focus: rgba(13, 148, 136, 0.1);
-  --state-disabled: var(--gray-100);
-
-  /* Sombras de marca (light) */
-  --shadow-brand-sm:   0 0 8px rgba(13, 148, 136, 0.15);
-  --shadow-brand-md:   0 0 12px rgba(13, 148, 136, 0.2), 0 4px 16px rgba(0,0,0,0.08);
-  --shadow-brand-glow: 0 0 0 3px rgba(13, 148, 136, 0.2);
-  --shadow-brand-card: 0 0 0 1px rgba(13, 148, 136, 0.15), 0 4px 16px rgba(0,0,0,0.06);
-}
-
-/* Tema Oscuro — Identidad visual del logo */
-.dark-theme {
-  /* Fondos — del logo: charcoal #1e2124 con circuitos verdes */
   --bg-primary: var(--brand-bg-base);
   --bg-secondary: var(--brand-bg-panel);
   --bg-tertiary: var(--brand-bg-elevated);
-  --bg-accent: rgba(45, 212, 191, 0.08);
+  --bg-accent: var(--brand-green-subtle);
   --bg-muted: var(--brand-bg-panel);
 
   /* Superficies */
@@ -294,34 +183,34 @@
   --text-secondary: var(--gray-300);
   --text-tertiary: var(--gray-400);
   --text-muted: var(--gray-500);
-  --text-accent: var(--turquoise-400);
+  --text-accent: var(--brand-green);
   --text-inverse: var(--brand-bg-base);
 
-  /* Bordes — verde turquesa con opacidad baja */
-  --border-primary: rgba(45, 212, 191, 0.25);
-  --border-secondary: rgba(45, 212, 191, 0.15);
+  /* Bordes */
+  --border-primary: var(--brand-green-border);
+  --border-secondary: var(--brand-green-muted);
   --border-muted: rgba(255, 255, 255, 0.06);
-  --border-focus: var(--turquoise-400);
+  --border-focus: var(--brand-green);
 
-  /* Colores de Marca — Verde Turquesa */
-  --accent-primary: var(--turquoise-400);
-  --accent-secondary: var(--turquoise-500);
-  --accent-tertiary: var(--violet-400);
-  --accent-primary-rgb: 45, 212, 191;
-  --accent-secondary-rgb: 20, 184, 166;
-  --accent-tertiary-rgb: 167, 139, 250;
-  --accent-glow: rgba(45, 212, 191, 0.4);
+  /* Acento — uno solo, con dos tonos de profundidad, sin cambio de matiz */
+  --accent-primary: var(--brand-green);
+  --accent-secondary: var(--brand-green-dim);
+  --accent-tertiary: var(--brand-green-dark);
+  --accent-primary-rgb: 52, 211, 153;
+  --accent-secondary-rgb: 16, 185, 129;
+  --accent-tertiary-rgb: 5, 150, 105;
+  --accent-glow: var(--brand-green-glow);
 
-  /* Gradientes */
-  --gradient-primary: linear-gradient(135deg, var(--turquoise-400), var(--blue-500));
-  --gradient-secondary: linear-gradient(135deg, var(--blue-400), var(--violet-500));
-  --gradient-accent: linear-gradient(135deg, var(--violet-400), var(--turquoise-400));
+  /* Gradientes — mismo matiz, solo profundidad */
+  --gradient-primary: linear-gradient(135deg, var(--brand-green), var(--brand-green-dim));
+  --gradient-secondary: linear-gradient(135deg, var(--brand-green-dim), var(--brand-green-dark));
+  --gradient-accent: linear-gradient(135deg, var(--brand-green), var(--brand-green-dark));
 
   /* Sombras */
   --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.35);
-  --shadow-card-hover: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(45, 212, 191, 0.15);
+  --shadow-card-hover: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(52, 211, 153, 0.15);
 
-  /* Estados */
+  /* Estados — semánticos, no dependen del acento */
   --success-bg: rgba(34, 197, 94, 0.1);
   --success-text: #4ade80;
   --success-border: rgba(34, 197, 94, 0.3);
@@ -333,15 +222,10 @@
   --error-border: rgba(239, 68, 68, 0.3);
 
   /* Estados de interacción */
-  --state-hover: rgba(45, 212, 191, 0.08);
-  --state-active: rgba(45, 212, 191, 0.15);
-  --state-focus: rgba(45, 212, 191, 0.15);
-
-  /* Sombras de marca (dark — glow turquesa) */
-  --shadow-brand-sm:   0 0 8px rgba(45, 212, 191, 0.25);
-  --shadow-brand-md:   0 0 12px rgba(45, 212, 191, 0.35), 0 0 24px rgba(45, 212, 191, 0.15);
-  --shadow-brand-glow: 0 0 0 3px rgba(45, 212, 191, 0.3);
-  --shadow-brand-card: 0 0 0 1px rgba(45, 212, 191, 0.25), 0 8px 24px rgba(45, 212, 191, 0.1);
+  --state-hover: var(--brand-green-subtle);
+  --state-active: var(--brand-green-muted);
+  --state-focus: var(--brand-green-muted);
+  --state-disabled: rgba(255, 255, 255, 0.04);
 }
 
 /* ===== RESET Y BASE ===== */

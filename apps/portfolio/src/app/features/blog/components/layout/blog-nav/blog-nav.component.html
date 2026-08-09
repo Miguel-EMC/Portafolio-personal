@@ -19,12 +19,6 @@
       </a>
     </div>
 
-    <div class="nav-actions desktop-only">
-      <button class="theme-toggle" (click)="toggleTheme()" [title]="'Cambiar tema'">
-        <i class="bi" [class.bi-sun]="themeService.isDarkTheme()" [class.bi-moon-stars]="!themeService.isDarkTheme()"></i>
-      </button>
-    </div>
-
     <button class="menu-toggle" (click)="toggleMenu()">
       <i class="bi" [class.bi-list]="!isMenuOpen" [class.bi-x-lg]="isMenuOpen"></i>
     </button>

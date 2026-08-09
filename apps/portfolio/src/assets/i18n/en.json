@@ -73,6 +73,7 @@
         },
         "experienceEyebrow": "Career",
         "educationEyebrow": "Education",
+        "contactEyebrow": "Contact",
         "experienceRoles": {
             "munsterMind": "I design production AI agents (LangGraph, RAG) and integrate multiple LLM providers (Bedrock, OpenAI, Anthropic, Gemini) on serverless AWS Lambda and NestJS backends, plus the Flutter mobile app.",
             "billusos": "Built backend services in Django for automated financial reporting and optimized the PostgreSQL queries behind the operational dashboards.",

@@ -1,21 +1,16 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, PLATFORM_ID, inject, NgZone } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { RouterLink } from "@angular/router";
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { AnimationOptions, LottieComponent } from 'ngx-lottie';
-import { ToastrService } from 'ngx-toastr';
 
 // Data imports
 import { upcomingProjects, type UpcomingProject } from '../../core/data/upcoming-projects.data';
 import { BlogService } from '../../core/services/blog.service';
-import { EmailService } from '../../core/services/email.service';
 import { PortfolioService } from '../../core/services/portfolio.service';
 import { BLOG_CATEGORIES, BlogCategory, BlogCategoryInfo, BlogPostMeta } from '../../interfaces/blog.interface';
 import { PortfolioProjectMeta } from '../../interfaces/project.interface';
 
-import { LottieAnimationComponent } from '../../shared/components/ui/lottie-animation/lottie-animation.component';
 import { ProjectCardComponent } from '../../shared/components/ui/project-card/project-card.component';
 
 @Component({
@@ -24,12 +19,9 @@ import { ProjectCardComponent } from '../../shared/components/ui/project-card/pr
   templateUrl: './home.component.html',
   imports: [
     CommonModule,
-    FormsModule,
     TranslateModule,
     RouterLink,
-    ProjectCardComponent,
-    LottieAnimationComponent,
-    LottieComponent
+    ProjectCardComponent
   ],
   styleUrls: ['./home.component.scss', './toast-fix.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -70,81 +62,14 @@ import { ProjectCardComponent } from '../../shared/components/ui/project-card/pr
 export class HomeComponent implements OnInit, OnDestroy {
   private ngZone = inject(NgZone);
 
-  // Lottie Animation Options
-  options: AnimationOptions = {
-    path: '/assets/jsons/Artificial Intelligence Chatbot.json',
-  };
-
-  contactOptions: AnimationOptions = {
-    path: '/assets/jsons/tech startup.json',
-  };
-
   private portfolioService = inject(PortfolioService);
-  private emailService = inject(EmailService);
   private blogService = inject(BlogService);
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private cdr: ChangeDetectorRef,
-    private translate: TranslateService,
-    private toastr: ToastrService
+    private translate: TranslateService
   ) { }
-
-  // Función helper para forzar estilos del toast
-  private forceToastStyles() {
-    this.ngZone.runOutsideAngular(() => {
-      setTimeout(() => {
-        const container = document.querySelector('.toast-container') as HTMLElement;
-        const toastElement = document.querySelector('.ngx-toastr') as HTMLElement;
-
-        if (toastElement) {
-          // Forzar estilos del contenedor
-          if (container) {
-            container.style.cssText = `
-            position: fixed !important;
-            top: 20px !important;
-            right: 20px !important;
-            z-index: 999999 !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-          `;
-          }
-
-          // Determinar el color según el tipo de toast
-          let bgGradient = 'linear-gradient(135deg, #10b981 0%, #059669 100%)'; // success por defecto
-          if (toastElement.classList.contains('toast-error')) {
-            bgGradient = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
-          } else if (toastElement.classList.contains('toast-info')) {
-            bgGradient = 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)';
-          } else if (toastElement.classList.contains('toast-warning')) {
-            bgGradient = 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)';
-          }
-
-          // Forzar estilos del toast
-          toastElement.style.cssText = `
-          position: relative !important;
-          display: block !important;
-          visibility: visible !important;
-          opacity: 1 !important;
-          width: 350px !important;
-          min-height: 80px !important;
-          padding: 20px !important;
-          margin-bottom: 15px !important;
-          background: ${bgGradient} !important;
-          color: white !important;
-          border-radius: 12px !important;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
-          font-family: Inter, sans-serif !important;
-          font-size: 14px !important;
-          line-height: 1.5 !important;
-          pointer-events: auto !important;
-          transform: translateX(0) !important;
-        `;
-        }
-      }, 100);
-    });
-  }
 
   // Typing animation
   currentRole = '';
@@ -263,56 +188,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       return '/assets/documents/CV_MuzoMiguel_english.pdf';
     }
     return '/assets/documents/CV_MuzoMiguel.pdf';
-  }
-
-  async onSubmit(event: Event) {
-    // Solo ejecutar en el navegador, no en SSR
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
-
-    event.preventDefault();
-
-    const form = event.target as HTMLFormElement;
-    const data = new FormData(form);
-
-    // Mostrar toast de "enviando..." con traducción
-    this.toastr.info(this.translate.instant('home.contact.toast.sending'), '', {
-      timeOut: 2000
-    });
-    this.forceToastStyles();
-
-    const sent = await this.emailService.sendContactForm({
-      from_name: (data.get('name') as string) ?? '',
-      from_email: (data.get('email') as string) ?? '',
-      subject: (data.get('subject') as string) ?? '',
-      message: (data.get('message') as string) ?? ''
-    });
-
-    if (sent) {
-      // Toast de éxito con traducción
-      this.toastr.success(
-        this.translate.instant('home.contact.toast.successMessage'),
-        this.translate.instant('home.contact.toast.successTitle'),
-        {
-          timeOut: 5000,
-          progressBar: true
-        }
-      );
-      this.forceToastStyles();
-      form.reset();
-    } else {
-      // Toast de error con traducción
-      this.toastr.error(
-        this.translate.instant('home.contact.toast.errorMessage'),
-        this.translate.instant('home.contact.toast.errorTitle'),
-        {
-          timeOut: 5000,
-          progressBar: true
-        }
-      );
-      this.forceToastStyles();
-    }
   }
 
 }

@@ -282,69 +282,35 @@
   </div>
 </section>
 
-<!-- Contact -->
+<!-- Contact (preview — full form lives on /contact) -->
 <section id="contacto" class="contact-section">
   <div class="container">
     <div class="section-header">
+      <span class="section-eyebrow">{{ 'home.contactEyebrow' | translate }}</span>
       <h2 class="section-title">{{ 'home.contact.title' | translate }}</h2>
       <p class="section-subtitle">{{ 'home.contact.subtitle' | translate }}</p>
     </div>
 
-    <div class="contact-content">
-      <!-- Información de Contacto -->
-      <div class="contact-info">
-        <div class="contact-intro">
-          <div class="animation-wrapper">
-            <ng-lottie [options]="contactOptions" class="contact-animation"></ng-lottie>
-          </div>
-        </div>
-      </div>
+    <div class="contact-preview">
+      <a class="contact-method-mini" href="mailto:eduardomuzo123456@gmail.com">
+        <i class="bi bi-envelope-fill"></i>
+        <span>{{ 'home.contact.methods.email' | translate }}</span>
+      </a>
+      <a class="contact-method-mini" href="https://wa.me/593999763190" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+        <span>{{ 'home.contact.methods.whatsapp' | translate }}</span>
+      </a>
+      <a class="contact-method-mini" href="https://www.linkedin.com/in/eduardo-miguel-muzo-6379b2234/" target="_blank">
+        <i class="bi bi-linkedin"></i>
+        <span>{{ 'home.contact.methods.linkedin' | translate }}</span>
+      </a>
+    </div>
 
-      <!-- Formulario de Contacto -->
-      <div class="contact-form-container">
-        <form class="contact-form" (ngSubmit)="onSubmit($event)" #contactForm="ngForm" novalidate>
-
-          <div class="form-header">
-            <h3>{{ 'home.contact.form.title' | translate }}</h3>
-            <p>{{ 'home.contact.form.description' | translate }}</p>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">{{ 'home.contact.form.name' | translate }}</label>
-              <input type="text" id="name" name="name" [placeholder]="'home.contact.form.name' | translate" required>
-            </div>
-            <div class="form-group">
-              <label for="email">{{ 'home.contact.form.email' | translate }}</label>
-              <input type="email" id="email" name="email" [placeholder]="'home.contact.form.email' | translate"
-                required>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="subject">{{ 'home.contact.form.projectType' | translate }}</label>
-            <select id="subject" name="subject" required>
-              <option value="">{{ 'home.contact.form.selectType' | translate }}</option>
-              <option value="web">{{ 'home.contact.form.types.web' | translate }}</option>
-              <option value="mobile">{{ 'home.contact.form.types.mobile' | translate }}</option>
-              <option value="ecommerce">{{ 'home.contact.form.types.ecommerce' | translate }}</option>
-              <option value="consulting">{{ 'home.contact.form.types.consulting' | translate }}</option>
-              <option value="other">{{ 'home.contact.form.types.other' | translate }}</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="message">{{ 'home.contact.form.message' | translate }}</label>
-            <textarea id="message" name="message" rows="4" [placeholder]="'home.contact.form.message' | translate"
-              required></textarea>
-          </div>
-
-          <button type="submit" class="btn-primary full-width">
-            <i class="bi bi-send"></i>
-            <span>{{ 'home.contact.form.send' | translate }}</span>
-          </button>
-        </form>
-      </div>
+    <div class="section-cta">
+      <a routerLink="/contact" class="btn-primary contact-cta">
+        <span>{{ 'home.hero.actions.contact' | translate }}</span>
+        <i class="bi bi-arrow-right"></i>
+      </a>
     </div>
   </div>
 </section>

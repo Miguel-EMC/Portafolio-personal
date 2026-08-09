@@ -161,7 +161,7 @@
         "fullstack-lateral": {
             "title": "AI Engineer | Backend",
             "subtitle": "Münster Mind Latinoamérica",
-            "date": "Jul 2024 - Present",
+            "date": "Jun 2024 - Present",
             "tasks": [
                 "Architected and built the first production version of a graph-based Text-to-SQL AI agent using LangGraph and AWS Bedrock, integrated with a FastAPI backend, automating a large share of previously manual SQL query creation.",
                 "Developed serverless backend services on AWS Lambda that orchestrate LLM provider APIs (AWS Bedrock, OpenAI, Gemini) and expose them through REST APIs consumed by the web (Angular) and mobile (Flutter) applications.",
@@ -171,7 +171,7 @@
             ]
         },
         "billusos-dev": {
-            "title": "Backend Developer",
+            "title": "Backend Developer (Freelance, part-time)",
             "subtitle": "Billusos",
             "date": "Dec 2023 - Nov 2024",
             "tasks": [

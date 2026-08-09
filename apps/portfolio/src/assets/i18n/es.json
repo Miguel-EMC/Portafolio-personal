@@ -13,7 +13,7 @@
             "greeting": "",
             "name": "Eduardo Miguel",
             "surname": "Muzo",
-            "description": "Ingeniero de Software enfocado en el desarrollo de arquitecturas de Backend y soluciones de Inteligencia Artificial. Experiencia en la integración de modelos de lenguaje (LLMs) mediante agentes para consultas SQL utilizando LangGraph y AWS Bedrock. Especialista en la construcción de servicios escalables sobre AWS (Lambdas, S3) y la creación de dashboards técnicos, conectando eficientemente la lógica de servidor con aplicaciones web y móviles.",
+            "description": "Construyo sistemas de IA que llegan a producción — backend, cloud y LLMs aplicados sobre AWS.",
             "stats": {
                 "years": "Años",
                 "projects": "Proyectos",
@@ -25,9 +25,10 @@
                 "downloadCV": "Descargar CV"
             },
             "rolePrefix": "Soy un",
+            "roles": ["Backend Developer", "AI Engineer", "Cloud Engineer"],
             "status": "Disponible",
             "location": "Quito, Ecuador",
-            "role": "Software Engineer | Backend & AI Focus"
+            "role": "Software Engineer · AI, Cloud & Backend"
         },
         "resume": {
             "title": "Mi Trayectoria",
@@ -51,11 +52,33 @@
             }
         },
         "portfolio": {
+            "eyebrow": "Proyectos propios",
             "title": "Proyectos Destacados",
             "subtitle": "Una selección de mis mejores trabajos",
             "viewAll": "Ver Todos los Proyectos",
             "viewProject": "Ver Proyecto",
             "viewCode": "Código"
+        },
+        "blog": {
+            "eyebrow": "Blog",
+            "title": "Del Blog",
+            "subtitle": "Notas técnicas sobre IA, cloud y backend",
+            "viewAll": "Ver todos los posts",
+            "empty": "Todavía no hay posts publicados."
+        },
+        "clientProjects": {
+            "eyebrow": "Trabajo con clientes",
+            "title": "Proyectos con Clientes",
+            "subtitle": "Trabajo profesional para empresas y organizaciones"
+        },
+        "experienceEyebrow": "Trayectoria",
+        "educationEyebrow": "Formación",
+        "contactEyebrow": "Contacto",
+        "experienceRoles": {
+            "munsterMind": "Diseño agentes de IA en producción (LangGraph, RAG) e integro múltiples proveedores de LLMs (Bedrock, OpenAI, Anthropic, Gemini) sobre backend serverless en AWS Lambda y NestJS, además de la app móvil en Flutter.",
+            "billusos": "Construí servicios backend en Django para reportería financiera automatizada y optimicé las consultas PostgreSQL detrás de los dashboards operacionales.",
+            "ceer": "Desarrollé dashboards y reportes con Angular y Laravel/Lumen para la plataforma pública CONAFIPS SARAS.",
+            "security": "Explorando seguridad ofensiva y hardening en cloud — en aprendizaje, no es mi especialidad hoy."
         },
         "skillsModal": {
             "technologies": "Tecnologías",
@@ -140,7 +163,7 @@
         "fullstack-lateral": {
             "title": "AI Engineer | Backend",
             "subtitle": "Münster Mind Latinoamérica",
-            "date": "Jul 2024 - Actualidad",
+            "date": "Jun 2024 - Actualidad",
             "tasks": [
                 "Diseñé y construí la primera versión en producción de un agente de IA Text-to-SQL basado en grafos usando LangGraph y AWS Bedrock, integrado con un backend FastAPI, automatizando gran parte de la creación manual de consultas SQL.",
                 "Desarrollé servicios backend serverless en AWS Lambda que orquestan APIs de proveedores LLM (AWS Bedrock, OpenAI, Gemini) y los exponen mediante REST APIs consumidas por las aplicaciones web (Angular) y móvil (Flutter).",
@@ -150,7 +173,7 @@
             ]
         },
         "billusos-dev": {
-            "title": "Backend Developer",
+            "title": "Backend Developer (Freelance, part-time)",
             "subtitle": "Billusos",
             "date": "Dic 2023 - Nov 2024",
             "tasks": [
@@ -292,6 +315,7 @@
         },
         "project": {
             "viewDetails": "Ver Detalles",
+            "comingSoon": "En construcción",
             "personal": "Personal",
             "professional": "Profesional",
             "viewProject": "Ver Proyecto",

@@ -563,7 +563,7 @@ textarea.form-control {
   }
   
   &.phone .method-icon {
-    background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
   }
   
   &.linkedin .method-icon {
@@ -955,4 +955,14 @@ textarea.form-control {
   .form-title {
     font-size: 1.25rem;
   }
+}
+
+/* select has no real :placeholder-shown state, so the generic
+   .form-control:invalid rule above painted it red before the user ever
+   touched it — scope the untouched state back to neutral. Needs !important:
+   the rule above already stacks 3 pseudo-classes, this is the narrowest way
+   to win the cascade without rewriting it. */
+.select-container select.form-control:invalid:not(:focus) {
+  border-color: var(--border-muted) !important;
+  background: var(--bg-tertiary) !important;
 }

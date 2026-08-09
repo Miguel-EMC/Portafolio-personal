@@ -5,11 +5,12 @@ import { Subject, takeUntil } from 'rxjs';
 
 import { PortfolioService } from '../../../core/services/portfolio.service';
 import { PortfolioProjectMeta } from '../../../interfaces/project.interface';
+import { ProjectCardComponent } from '../../../shared/components/ui/project-card/project-card.component';
 
 @Component({
   selector: 'app-portafolio',
   standalone: true,
-  imports: [NgForOf, NgIf, TranslateModule],
+  imports: [NgForOf, NgIf, TranslateModule, ProjectCardComponent],
   templateUrl: './portafolio.component.html',
   styleUrls: ['./portafolio.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -20,8 +21,6 @@ export class PortafolioComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
   activeFilter: 'all' | 'personal' | 'professional' = 'all';
-  selectedProject: PortfolioProjectMeta | null = null;
-  currentImageIndex = 0;
   allProjects: PortfolioProjectMeta[] = [];
   filteredProjects: PortfolioProjectMeta[] = [];
   isLoading = true;
@@ -75,72 +74,4 @@ export class PortafolioComponent implements OnInit, OnDestroy {
     }
   }
 
-  showDetails(project: PortfolioProjectMeta): void {
-    this.selectedProject = project;
-    this.currentImageIndex = 0;
-    document.body.style.overflow = 'hidden';
-    this.cdr.detectChanges();
-  }
-
-  closeDetails(): void {
-    this.selectedProject = null;
-    document.body.style.overflow = '';
-    this.cdr.detectChanges();
-  }
-
-  nextImage(): void {
-    if (this.selectedProject && this.selectedProject.images.length > 1) {
-      this.currentImageIndex = (this.currentImageIndex + 1) % this.selectedProject.images.length;
-      this.cdr.detectChanges();
-    }
-  }
-
-  prevImage(): void {
-    if (this.selectedProject && this.selectedProject.images.length > 1) {
-      this.currentImageIndex =
-        (this.currentImageIndex - 1 + this.selectedProject.images.length) % this.selectedProject.images.length;
-      this.cdr.detectChanges();
-    }
-  }
-
-  getTechIcon(tech: string): string {
-    const icons: Record<string, string> = {
-      Angular: 'bi-triangle',
-      React: 'bi-atom',
-      'Vue.js': 'bi-lightning',
-      TypeScript: 'bi-braces',
-      JavaScript: 'bi-braces',
-      HTML5: 'bi-filetype-html',
-      CSS3: 'bi-filetype-css',
-      'Next.js': 'bi-arrow-repeat',
-      'Node.js': 'bi-server',
-      Python: 'bi-filetype-py',
-      Django: 'bi-diagram-3',
-      Laravel: 'bi-boxes',
-      NestJS: 'bi-hexagon',
-      FastAPI: 'bi-lightning',
-      PostgreSQL: 'bi-database',
-      MySQL: 'bi-database-fill',
-      MongoDB: 'bi-database-down',
-      Firebase: 'bi-fire',
-      Redis: 'bi-database-gear',
-      Flutter: 'bi-phone',
-      'React Native': 'bi-phone-landscape',
-      Dart: 'bi-lightning-charge',
-      Bootstrap: 'bi-bootstrap',
-      'Tailwind CSS': 'bi-wind',
-      'Material Design': 'bi-palette',
-      Docker: 'bi-box-seam',
-      Kubernetes: 'bi-diagram-3',
-      AWS: 'bi-cloud',
-      Stripe: 'bi-credit-card',
-      'Chart.js': 'bi-bar-chart',
-      'D3.js': 'bi-graph-up',
-      'TensorFlow Lite': 'bi-cpu',
-      Provider: 'bi-arrow-repeat',
-      Redux: 'bi-arrow-clockwise',
-      Celery: 'bi-gear',
-    };
-    return icons[tech] || 'bi-code-slash';
-  }
 }

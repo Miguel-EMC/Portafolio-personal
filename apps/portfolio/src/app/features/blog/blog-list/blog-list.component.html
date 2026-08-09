@@ -8,32 +8,14 @@
     <!-- Header -->
     <header class="blog-header">
       <h1 class="blog-title">{{ 'blog.title' | translate }}</h1>
-      <p class="blog-subtitle">{{ 'blog.subtitle' | translate }}<span class="terminal-cursor"></span></p>
+      <p class="blog-subtitle">{{ 'blog.subtitle' | translate }}</p>
 
-      <!-- Cyber System Status Bar -->
-      <div class="cyber-status-bar">
-        <span class="status-item">
-          <span class="status-dot green"></span>
-          <span class="status-label">SYS:</span> ACTIVE
-        </span>
-        <span class="status-separator">|</span>
-        <span class="status-item">
-          <i class="bi bi-shield-check"></i>
-          <span class="status-label">CONN:</span> SECURE
-        </span>
-        <span class="status-separator">|</span>
-        <span class="status-item">
-          <i class="bi bi-cpu"></i>
-          <span class="status-label">NODE:</span> MIGUELDEV-11
-        </span>
-      </div>
-      
-      <!-- Futuristic Center-Aligned Search Bar -->
+      <!-- Search Bar -->
       <div class="blog-search-wrapper">
         <div class="search-box glass">
-          <span class="terminal-prompt">guest&#64;migueldev:~$</span>
-          <input 
-            type="text" 
+          <i class="bi bi-search search-icon"></i>
+          <input
+            type="text"
             [value]="searchQuery()"
             (input)="onSearch($any($event.target).value)"
             placeholder="{{ 'blog.searchPlaceholder' | translate }}"
@@ -117,16 +99,14 @@
       <!-- Featured Hero Post (Shown only on first page and with no active filters) -->
       @if (featuredPosts().length > 0 && !activeCategory() && !activeTag() && !searchQuery() && currentPage() === 1) {
         <div class="blog-hero animate-scale-in" [routerLink]="['/blog/post', featuredPosts()[0].slug]" [style.--card-glow-color]="getCategoryInfo(featuredPosts()[0].category)?.color">
-          <!-- Cyberpunk Card Grid Pattern -->
-          <div class="card-grid-pattern"></div>
           <div class="blog-hero-image" [class.no-image]="imageErrors()[featuredPosts()[0].slug]">
             @if (!imageErrors()[featuredPosts()[0].slug]) {
               <img [src]="featuredPosts()[0].coverImage" [alt]="featuredPosts()[0].title" (error)="onImageError(featuredPosts()[0].slug)" loading="eager" />
             } @else {
               <div class="mesh-gradient-placeholder">
-                <div class="glow-sphere glow-sphere-1"></div>
-                <div class="glow-sphere glow-sphere-2"></div>
-                <div class="glow-sphere glow-sphere-3"></div>
+                <div class="placeholder-icon lg">
+                  <i [class]="getCategoryInfo(featuredPosts()[0].category)?.icon"></i>
+                </div>
               </div>
             }
             <div class="blog-hero-overlay"></div>
@@ -179,24 +159,19 @@
               <article class="post-card" [routerLink]="['/blog/post', post.slug]" [style.--card-glow-color]="getCategoryInfo(post.category)?.color">
                 <!-- Border laser glow container -->
                 <div class="laser-border-glow"></div>
-                
-                <!-- Cyberpunk Card Grid Pattern -->
-                <div class="card-grid-pattern"></div>
-                
+
                 <div class="card-image" [class.no-image]="imageErrors()[post.slug]">
                   @if (!imageErrors()[post.slug]) {
                     <img [src]="post.coverImage" [alt]="post.title" (error)="onImageError(post.slug)" loading="lazy" />
                   } @else {
                     <div class="mesh-gradient-placeholder">
-                      <div class="glow-sphere glow-sphere-1"></div>
-                      <div class="glow-sphere glow-sphere-2"></div>
-                      <div class="glow-sphere glow-sphere-3"></div>
                       <div class="placeholder-icon">
                         <i [class]="getCategoryInfo(post.category)?.icon"></i>
                       </div>
                     </div>
                   }
-                  <div class="category-badge" [style.background-color]="getCategoryInfo(post.category)?.color">
+                  <div class="category-badge">
+                    <span class="category-dot" [style.background-color]="getCategoryInfo(post.category)?.color"></span>
                     {{ getCategoryInfo(post.category)?.name }}
                   </div>
                 </div>

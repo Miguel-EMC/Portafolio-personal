@@ -23,13 +23,6 @@ export class EmailService {
 
   async sendContactForm(formData: ContactFormData): Promise<boolean> {
     try {
-      console.log('Sending email with data:', formData);
-      console.log('EmailJS Config:', {
-        serviceId: environment.emailJsServiceId,
-        templateId: environment.emailJsTemplateId,
-        publicKey: environment.emailJsPublicKey.substring(0, 10) + '...'
-      });
-      
       const response = await emailjs.send(
         environment.emailJsServiceId,
         environment.emailJsTemplateId,
@@ -38,8 +31,7 @@ export class EmailService {
           publicKey: environment.emailJsPublicKey,
         }
       );
-      
-      console.log('EmailJS response:', response);
+
       return response.status === 200;
     } catch (error) {
       console.error('Error sending email:', error);

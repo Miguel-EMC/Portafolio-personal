@@ -2,7 +2,6 @@
 export * from './core.module';
 
 // Services
-export * from './services/theme.service';
 export * from './services/scroll.service';
 export * from './services/blog.service';
 export * from './services/admin-auth.service';

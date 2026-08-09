@@ -7,11 +7,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SeoService } from '../../../core/services/seo.service';
 import { PortfolioService } from '../../../core/services/portfolio.service';
 import { PortfolioProject, PortfolioProjectMeta } from '../../../interfaces/project.interface';
+import { ProjectCardComponent } from '../../../shared/components/ui/project-card/project-card.component';
 
 @Component({
   selector: 'app-project-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslateModule],
+  imports: [CommonModule, RouterModule, TranslateModule, ProjectCardComponent],
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.scss'],
   encapsulation: ViewEncapsulation.None

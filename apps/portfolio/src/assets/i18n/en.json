@@ -13,7 +13,7 @@
             "greeting": "",
             "name": "Eduardo Miguel",
             "surname": "Muzo",
-            "description": "Software Engineer focused on Backend architecture development and Artificial Intelligence solutions. Experience integrating language models (LLMs) through agents for SQL queries using LangGraph and AWS Bedrock. Specialist in building scalable services on AWS (Lambdas, S3) and creating technical dashboards, efficiently connecting server logic with web and mobile applications.",
+            "description": "I build AI systems that reach production — backend, cloud, and applied LLMs on AWS.",
             "stats": {
                 "years": "Years",
                 "projects": "Projects",
@@ -25,9 +25,10 @@
                 "downloadCV": "Download CV"
             },
             "rolePrefix": "I am a",
+            "roles": ["Backend Developer", "AI Engineer", "Cloud Engineer"],
             "status": "Available",
             "location": "Quito, Ecuador",
-            "role": "Software Engineer | Backend & AI Focus"
+            "role": "Software Engineer · AI, Cloud & Backend"
         },
         "resume": {
             "title": "My Journey",
@@ -51,11 +52,33 @@
             }
         },
         "portfolio": {
+            "eyebrow": "Own projects",
             "title": "Featured Projects",
             "subtitle": "A selection of my best work",
             "viewAll": "View All Projects",
             "viewProject": "View Project",
             "viewCode": "Code"
+        },
+        "blog": {
+            "eyebrow": "Blog",
+            "title": "From the Blog",
+            "subtitle": "Technical notes on AI, cloud, and backend",
+            "viewAll": "View all posts",
+            "empty": "No posts published yet."
+        },
+        "clientProjects": {
+            "eyebrow": "Client work",
+            "title": "Client Work",
+            "subtitle": "Professional work for companies and organizations"
+        },
+        "experienceEyebrow": "Career",
+        "educationEyebrow": "Education",
+        "contactEyebrow": "Contact",
+        "experienceRoles": {
+            "munsterMind": "I design production AI agents (LangGraph, RAG) and integrate multiple LLM providers (Bedrock, OpenAI, Anthropic, Gemini) on serverless AWS Lambda and NestJS backends, plus the Flutter mobile app.",
+            "billusos": "Built backend services in Django for automated financial reporting and optimized the PostgreSQL queries behind the operational dashboards.",
+            "ceer": "Developed dashboards and reports with Angular and Laravel/Lumen for the public CONAFIPS SARAS platform.",
+            "security": "Exploring offensive security and cloud hardening — still learning, not a specialty yet."
         },
         "skillsModal": {
             "technologies": "Technologies",
@@ -140,7 +163,7 @@
         "fullstack-lateral": {
             "title": "AI Engineer | Backend",
             "subtitle": "Münster Mind Latinoamérica",
-            "date": "Jul 2024 - Present",
+            "date": "Jun 2024 - Present",
             "tasks": [
                 "Architected and built the first production version of a graph-based Text-to-SQL AI agent using LangGraph and AWS Bedrock, integrated with a FastAPI backend, automating a large share of previously manual SQL query creation.",
                 "Developed serverless backend services on AWS Lambda that orchestrate LLM provider APIs (AWS Bedrock, OpenAI, Gemini) and expose them through REST APIs consumed by the web (Angular) and mobile (Flutter) applications.",
@@ -150,7 +173,7 @@
             ]
         },
         "billusos-dev": {
-            "title": "Backend Developer",
+            "title": "Backend Developer (Freelance, part-time)",
             "subtitle": "Billusos",
             "date": "Dec 2023 - Nov 2024",
             "tasks": [
@@ -292,6 +315,7 @@
         },
         "project": {
             "viewDetails": "View Details",
+            "comingSoon": "In progress",
             "personal": "Personal",
             "professional": "Professional",
             "viewProject": "View Project",

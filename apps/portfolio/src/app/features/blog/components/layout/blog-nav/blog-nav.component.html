@@ -17,25 +17,6 @@
       <a (click)="navigateToPortfolio()" class="nav-link clickable">
         <i class="bi bi-person-badge"></i> Portfolio
       </a>
-      <a routerLink="/blog/courses" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-mortarboard"></i> Cursos
-      </a>
-      <a routerLink="/blog/guides" routerLinkActive="active" class="nav-link">
-        <i class="bi bi-book"></i> Guías
-      </a>
-      
-      <div class="nav-actions mobile-only">
-        <button class="btn-auth login">Iniciar Sesión</button>
-        <button class="btn-auth signup">Unirse</button>
-      </div>
-    </div>
-
-    <div class="nav-actions desktop-only">
-      <button class="theme-toggle" (click)="toggleTheme()" [title]="'Cambiar tema'">
-        <i class="bi" [class.bi-sun]="themeService.isDarkTheme()" [class.bi-moon-stars]="!themeService.isDarkTheme()"></i>
-      </button>
-      <button class="btn-auth login">Log In</button>
-      <button class="btn-auth signup">Sign Up</button>
     </div>
 
     <button class="menu-toggle" (click)="toggleMenu()">

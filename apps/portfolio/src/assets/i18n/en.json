@@ -73,7 +73,7 @@
         },
         "experienceEyebrow": "// Career",
         "experienceRoles": {
-            "munsterMind": "I design and implement AI agents in production (LangGraph, AWS Bedrock) and the serverless backend services on AWS Lambda and NestJS that expose them to the company's web and mobile apps.",
+            "munsterMind": "I design production AI agents (LangGraph, RAG) and integrate multiple LLM providers (Bedrock, OpenAI, Anthropic, Gemini) on serverless AWS Lambda and NestJS backends, plus the Flutter mobile app.",
             "billusos": "Built backend services in Django for automated financial reporting and optimized the PostgreSQL queries behind the operational dashboards.",
             "ceer": "Developed dashboards and reports with Angular and Laravel/Lumen for the public CONAFIPS SARAS platform.",
             "security": "Exploring offensive security and cloud hardening — still learning, not a specialty yet."

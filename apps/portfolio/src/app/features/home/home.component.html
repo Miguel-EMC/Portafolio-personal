@@ -159,11 +159,11 @@
           class="blog-preview-card"
           [routerLink]="['/blog', 'post', post.slug]"
         >
-          <div class="blog-preview-glow" [style.background]="getCategoryInfo(post.category).color">
+          <div class="blog-preview-glow" [style.--cat-color]="getCategoryInfo(post.category).color">
             <i [class]="getCategoryInfo(post.category).icon"></i>
           </div>
           <div class="blog-preview-content">
-            <span class="blog-preview-category" [style.color]="getCategoryInfo(post.category).color">
+            <span class="blog-preview-category">
               {{ getCategoryInfo(post.category).name }}
             </span>
             <h3 class="blog-preview-title">{{ post.title }}</h3>

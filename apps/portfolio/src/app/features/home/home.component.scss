@@ -1304,18 +1304,17 @@
   i {
     position: relative;
     z-index: 1;
-    font-size: 1.375rem;
-    color: white;
-    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+    font-size: 1.125rem;
+    color: var(--cat-color, var(--brand-green));
   }
 
   &::before {
     content: '';
     position: absolute;
     inset: -50%;
-    background: inherit;
+    background: radial-gradient(circle at 30% 30%, var(--cat-color, var(--brand-green)), transparent 65%);
     filter: blur(28px);
-    opacity: 0.6;
+    opacity: 0.4;
   }
 }
 

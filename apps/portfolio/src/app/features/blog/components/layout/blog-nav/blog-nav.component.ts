@@ -1,9 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-
-import { DomainService } from '../../../../../core/services/domain.service';
 
 @Component({
   selector: 'app-blog-nav',
@@ -13,14 +11,9 @@ import { DomainService } from '../../../../../core/services/domain.service';
   styleUrls: ['./blog-nav.component.scss']
 })
 export class BlogNavComponent {
-  private domainService = inject(DomainService);
   isMenuOpen = false;
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-  }
-
-  navigateToPortfolio() {
-    window.location.href = this.domainService.getPortfolioUrl();
   }
 }

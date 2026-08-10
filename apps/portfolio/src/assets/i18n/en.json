@@ -61,9 +61,9 @@
         },
         "blog": {
             "eyebrow": "Blog",
-            "title": "From the Blog",
-            "subtitle": "Technical notes on AI, cloud, and backend",
-            "viewAll": "View all posts",
+            "title": "A Space of Its Own",
+            "subtitle": "Longer-form writing on AI in production, cloud, and backend systems — without the portfolio's constraints.",
+            "viewAll": "Enter the blog",
             "empty": "No posts published yet."
         },
         "clientProjects": {

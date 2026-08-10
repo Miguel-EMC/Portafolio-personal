@@ -8,9 +8,14 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: migueldev_blog
     ports:
-      - "5433:5432"
+      - "5434:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   backend:
     build:
@@ -20,11 +25,16 @@ services:
     restart: always
     ports:
       - "8000:8000"
+    env_file:
+      - ./backend/.env
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/migueldev_blog
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/migueldev_blog
       - PORT=8000
+    volumes:
+      - ./backend:/app
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
 volumes:
   postgres_data:

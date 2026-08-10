@@ -44,10 +44,12 @@
       <!-- Post Header -->
       <header class="post-header">
         <div class="post-meta">
-          <a 
+          <a
             [routerLink]="['/blog/category', post()!.category]"
             class="category-link"
-            [style.background-color]="getCategoryInfo(post()!.category)?.color"
+            [style.color]="getCategoryInfo(post()!.category)?.color"
+            [style.border-color]="getCategoryInfo(post()!.category)?.color + '40'"
+            [style.background-color]="getCategoryInfo(post()!.category)?.color + '1A'"
           >
             <i [class]="getCategoryInfo(post()!.category)?.icon"></i>
             {{ getCategoryInfo(post()!.category)?.name }}
@@ -114,7 +116,13 @@
                 Tags:
               </span>
               @for (tag of post()!.tags; track tag) {
-                <a [routerLink]="['/blog/tag', tag]" class="tag glass">
+                <a
+                  [routerLink]="['/blog/tag', tag]"
+                  class="tag glass"
+                  [style.color]="getTagColor(tag)"
+                  [style.border-color]="getTagColor(tag) + '4D'"
+                  [style.background-color]="getTagColor(tag) + '14'"
+                >
                   #{{ tag }}
                 </a>
               }
@@ -176,17 +184,17 @@
               Compartir Artículo
             </h4>
             <div class="share-buttons-sidebar">
-              <button class="share-sidebar-btn twitter" (click)="shareOnTwitter()" title="Share on X">
+              <button class="share-icon-btn twitter" (click)="shareOnTwitter()" title="Compartir en X" aria-label="Compartir en X">
                 <i class="bi bi-twitter-x"></i>
-                <span>Twitter</span>
               </button>
-              <button class="share-sidebar-btn linkedin" (click)="shareOnLinkedIn()" title="Share on LinkedIn">
+              <button class="share-icon-btn linkedin" (click)="shareOnLinkedIn()" title="Compartir en LinkedIn" aria-label="Compartir en LinkedIn">
                 <i class="bi bi-linkedin"></i>
-                <span>LinkedIn</span>
               </button>
-              <button class="share-sidebar-btn copy" (click)="copyLink()" title="Copy Link">
+              <button class="share-icon-btn whatsapp" (click)="shareOnWhatsApp()" title="Compartir en WhatsApp" aria-label="Compartir en WhatsApp">
+                <i class="bi bi-whatsapp"></i>
+              </button>
+              <button class="share-icon-btn copy" (click)="copyLink()" title="Copiar enlace" aria-label="Copiar enlace">
                 <i class="bi bi-link-45deg"></i>
-                <span>Copiar Enlace</span>
               </button>
             </div>
           </div>
@@ -262,6 +270,30 @@
           </div>
         </section>
       }
+    </div>
+  }
+
+  <!-- Diagram zoom lightbox -->
+  @if (lightboxSvg()) {
+    <div class="diagram-lightbox" (click)="closeDiagramLightbox()">
+      <div class="diagram-lightbox-toolbar" (click)="$event.stopPropagation()">
+        <span class="zoom-level">{{ (lightboxZoom() * 100) | number:'1.0-0' }}%</span>
+        <button type="button" (click)="zoomDiagram(-0.25)" aria-label="Alejar">
+          <i class="bi bi-dash-lg"></i>
+        </button>
+        <button type="button" (click)="zoomDiagram(0.25)" aria-label="Acercar">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+        <button type="button" (click)="resetDiagramZoom()" aria-label="Restablecer zoom">
+          <i class="bi bi-aspect-ratio"></i>
+        </button>
+        <button type="button" class="close-btn" (click)="closeDiagramLightbox()" aria-label="Cerrar">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="diagram-lightbox-viewport" (click)="$event.stopPropagation()">
+        <div class="diagram-lightbox-canvas" [style.transform]="'scale(' + lightboxZoom() + ')'" [innerHTML]="lightboxSvg()"></div>
+      </div>
     </div>
   }
 </article>

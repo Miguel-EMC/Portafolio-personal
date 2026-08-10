@@ -25,6 +25,15 @@ El sistema consta de varios componentes clave:
 3. **Backend FastAPI**: Expone el agente mediante una REST API
 4. **Frontend React**: Interfaz de usuario para consultas en lenguaje natural
 
+```mermaid
+flowchart LR
+    A[Consulta del usuario] --> B[understand_query]
+    B --> C[generate_sql]
+    C --> D[execute_query]
+    D --> E[format_response]
+    E --> F[Respuesta al usuario]
+```
+
 ## Configurando LangGraph
 
 LangGraph ofrece una forma poderosa de definir flujos de trabajo de agentes complejos como grafos. Aquí la configuración básica:
@@ -90,6 +99,17 @@ Tras implementar el sistema, logramos:
 | Precisión en consultas estándar | 95% |
 | Tiempo promedio de respuesta | < 1 segundo |
 | Reducción de carga manual de analistas | ~70% |
+
+```chart
+{
+  "type": "bar",
+  "title": "Impacto (%)",
+  "data": [
+    { "label": "Precisión", "value": 95, "unit": "%" },
+    { "label": "Reducción de carga", "value": 70, "unit": "%" }
+  ]
+}
+```
 
 ## Conclusión
 

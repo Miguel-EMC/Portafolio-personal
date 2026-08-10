@@ -25,6 +25,15 @@ The system consists of several key components:
 3. **FastAPI Backend**: Serves the agent through a REST API
 4. **React Frontend**: User interface for natural language queries
 
+```mermaid
+flowchart LR
+    A[User query] --> B[understand_query]
+    B --> C[generate_sql]
+    C --> D[execute_query]
+    D --> E[format_response]
+    E --> F[Response to user]
+```
+
 ## Setting Up LangGraph
 
 LangGraph provides a powerful way to define complex agent workflows as graphs. Here's the basic setup:
@@ -90,6 +99,17 @@ After implementing this system, we achieved:
 | Accuracy on standard queries | 95% |
 | Average response time | < 1 second |
 | Analyst workload reduction | ~70% |
+
+```chart
+{
+  "type": "bar",
+  "title": "Impact (%)",
+  "data": [
+    { "label": "Query accuracy", "value": 95, "unit": "%" },
+    { "label": "Workload reduction", "value": 70, "unit": "%" }
+  ]
+}
+```
 
 ## Conclusion
 

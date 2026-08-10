@@ -14,6 +14,14 @@ import {
 import { LanguageService } from '../../shared/services/language.service';
 import { environment } from '../../../environments/environment';
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -40,6 +48,14 @@ export class BlogService {
     const renderer = new marked.Renderer();
 
     renderer.code = ({ text, lang }: { text: string; lang?: string }) => {
+      if (lang === 'mermaid') {
+        return `<div class="mermaid-diagram"><pre class="mermaid-source" hidden>${escapeHtml(text)}</pre><div class="rich-content-loading">Generando diagrama…</div></div>`;
+      }
+
+      if (lang === 'chart') {
+        return `<div class="chart-container"><pre class="chart-spec" hidden>${escapeHtml(text)}</pre><div class="rich-content-loading">Generando gráfico…</div></div>`;
+      }
+
       const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext';
       const highlighted = hljs.highlight(text, { language }).value;
       return `<div class="code-block-wrapper">

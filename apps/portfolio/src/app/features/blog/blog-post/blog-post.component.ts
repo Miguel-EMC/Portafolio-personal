@@ -41,6 +41,7 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   readingProgress = signal(0);
   toc = signal<TocItem[]>([]);
   reactions = signal<Record<string, boolean>>({});
+  private chartRoots: import('@amcharts/amcharts5').Root[] = [];
   readonly reactionTypes = [
     { id: 'insightful', emoji: '💡', label: 'Insightful' },
     { id: 'helpful', emoji: '🙌', label: 'Útil' },
@@ -76,7 +77,8 @@ export class BlogPostComponent implements OnInit, OnDestroy {
         this.relatedImageErrors.set({});
         this.readingProgress.set(0);
         this.toc.set([]);
-        
+        this.disposeCharts();
+
         if (this.observer) {
           this.observer.disconnect();
         }
@@ -92,6 +94,8 @@ export class BlogPostComponent implements OnInit, OnDestroy {
           this.loadReactions(post.slug);
           this.addCopyButtons();
           this.buildToc();
+          this.renderMermaidDiagrams();
+          this.renderCharts();
         } else {
           this.error.set('Post not found');
         }
@@ -118,6 +122,13 @@ export class BlogPostComponent implements OnInit, OnDestroy {
     if (this.observer) {
       this.observer.disconnect();
     }
+
+    this.disposeCharts();
+  }
+
+  private disposeCharts(): void {
+    this.chartRoots.forEach(root => root.dispose());
+    this.chartRoots = [];
   }
 
   private onScroll = (): void => {
@@ -172,6 +183,13 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   shareOnLinkedIn(): void {
     const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`;
     window.open(url, '_blank');
+  }
+
+  shareOnWhatsApp(): void {
+    const post = this.post();
+    if (!post) return;
+    const text = `${post.title} — ${window.location.href}`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
   }
 
   copyLink(): void {
@@ -320,7 +338,7 @@ export class BlogPostComponent implements OnInit, OnDestroy {
       const postContentEl = document.querySelector('.post-content');
       if (!postContentEl) return;
       
-      const preElements = postContentEl.querySelectorAll('pre');
+      const preElements = postContentEl.querySelectorAll<HTMLPreElement>('pre:not(.mermaid-source):not(.chart-spec)');
       preElements.forEach((pre) => {
         // Prevent duplicate copy buttons
         if (pre.querySelector('.copy-code-btn')) return;
@@ -357,5 +375,166 @@ export class BlogPostComponent implements OnInit, OnDestroy {
         pre.appendChild(button);
       });
     }, 200);
+  }
+
+  private renderMermaidDiagrams(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    setTimeout(async () => {
+      const postContentEl = document.querySelector('.post-content');
+      if (!postContentEl) return;
+
+      const containers = Array.from(postContentEl.querySelectorAll<HTMLElement>('.mermaid-diagram'));
+      if (containers.length === 0) return;
+
+      // Wait for webfonts to load first — mermaid measures label text at render
+      // time, and measuring against a fallback font produces boxes too narrow
+      // for the real (wider) Inter glyphs, clipping the label permanently.
+      if ('fonts' in document) {
+        try { await (document as Document & { fonts: FontFaceSet }).fonts.ready; } catch { /* ignore */ }
+      }
+
+      const { default: mermaid } = await import('mermaid');
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: 'dark',
+        fontFamily: 'Inter, sans-serif',
+        flowchart: { htmlLabels: true, padding: 16 },
+        themeVariables: {
+          primaryColor: 'rgba(52, 211, 153, 0.12)',
+          primaryTextColor: '#f0f0f0',
+          primaryBorderColor: '#34D399',
+          lineColor: '#34D399',
+          secondaryColor: '#22262f',
+          tertiaryColor: '#1a1d24',
+          background: '#1a1d24',
+          mainBkg: '#22262f',
+          nodeBorder: '#34D399',
+          clusterBkg: '#1a1d24',
+          edgeLabelBackground: '#1a1d24'
+        }
+      });
+
+      for (const [index, container] of containers.entries()) {
+        const source = container.querySelector('.mermaid-source')?.textContent ?? '';
+        if (!source.trim()) continue;
+
+        try {
+          const { svg } = await mermaid.render(`mermaid-diagram-${index}`, source.trim());
+          container.innerHTML = svg;
+          container.classList.add('rendered');
+        } catch (err) {
+          console.error('Mermaid render failed:', err);
+          container.innerHTML = '<p class="rich-content-error">No se pudo renderizar el diagrama.</p>';
+        }
+      }
+    }, 400);
+  }
+
+  private renderCharts(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    setTimeout(async () => {
+      const postContentEl = document.querySelector('.post-content');
+      if (!postContentEl) return;
+
+      const containers = Array.from(postContentEl.querySelectorAll<HTMLElement>('.chart-container'));
+      if (containers.length === 0) return;
+
+      const [am5, am5xy, am5themesAnimated] = await Promise.all([
+        import('@amcharts/amcharts5'),
+        import('@amcharts/amcharts5/xy'),
+        import('@amcharts/amcharts5/themes/Animated')
+      ]);
+
+      containers.forEach((container, index) => {
+        const specText = container.querySelector('.chart-spec')?.textContent ?? '';
+        let spec: { type: string; title?: string; data: { label: string; value: number; unit?: string }[] };
+        try {
+          spec = JSON.parse(specText);
+        } catch (err) {
+          console.error('Invalid chart spec:', err);
+          container.innerHTML = '<p class="rich-content-error">Gráfico inválido.</p>';
+          return;
+        }
+
+        const chartId = `amchart-${index}-${Date.now()}`;
+        const chartDiv = document.createElement('div');
+        chartDiv.id = chartId;
+        chartDiv.className = 'amchart-canvas';
+        container.innerHTML = '';
+        if (spec.title) {
+          const titleEl = document.createElement('p');
+          titleEl.className = 'chart-title';
+          titleEl.textContent = spec.title;
+          container.appendChild(titleEl);
+        }
+        container.appendChild(chartDiv);
+
+        const root = am5.Root.new(chartId);
+        root.setThemes([am5themesAnimated.default.new(root)]);
+
+        const chart = root.container.children.push(
+          am5xy.XYChart.new(root, {
+            panX: false,
+            panY: false,
+            wheelX: 'none',
+            wheelY: 'none',
+            layout: root.verticalLayout,
+            paddingLeft: 0
+          })
+        );
+
+        const xRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 30 });
+        xRenderer.labels.template.setAll({ fill: am5.color(0xa0a0a0) });
+        xRenderer.grid.template.set('visible', false);
+
+        const xAxis = chart.xAxes.push(
+          am5xy.CategoryAxis.new(root, {
+            categoryField: 'label',
+            renderer: xRenderer
+          })
+        );
+        xAxis.data.setAll(spec.data);
+
+        const yRenderer = am5xy.AxisRendererY.new(root, {});
+        yRenderer.labels.template.setAll({ fill: am5.color(0xa0a0a0) });
+        yRenderer.grid.template.setAll({ stroke: am5.color(0xffffff), strokeOpacity: 0.06 });
+
+        const yAxis = chart.yAxes.push(
+          am5xy.ValueAxis.new(root, {
+            min: 0,
+            renderer: yRenderer
+          })
+        );
+
+        const series = chart.series.push(
+          am5xy.ColumnSeries.new(root, {
+            xAxis,
+            yAxis,
+            valueYField: 'value',
+            categoryXField: 'label',
+            tooltip: am5.Tooltip.new(root, {
+              labelText: `{valueY}${spec.data[0]?.unit ?? ''}`
+            })
+          })
+        );
+
+        series.columns.template.setAll({
+          fill: am5.color(0x34D399),
+          stroke: am5.color(0x34D399),
+          cornerRadiusTL: 8,
+          cornerRadiusTR: 8,
+          width: am5.percent(50)
+        });
+
+        series.data.setAll(spec.data);
+        series.appear(600);
+        chart.appear(600, 100);
+
+        // Free amCharts license requires keeping attribution visible — do not remove root._logo.
+        this.chartRoots.push(root);
+      });
+    }, 400);
   }
 }

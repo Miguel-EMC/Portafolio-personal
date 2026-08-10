@@ -44,10 +44,12 @@
       <!-- Post Header -->
       <header class="post-header">
         <div class="post-meta">
-          <a 
+          <a
             [routerLink]="['/blog/category', post()!.category]"
             class="category-link"
-            [style.background-color]="getCategoryInfo(post()!.category)?.color"
+            [style.color]="getCategoryInfo(post()!.category)?.color"
+            [style.border-color]="getCategoryInfo(post()!.category)?.color + '40'"
+            [style.background-color]="getCategoryInfo(post()!.category)?.color + '1A'"
           >
             <i [class]="getCategoryInfo(post()!.category)?.icon"></i>
             {{ getCategoryInfo(post()!.category)?.name }}
@@ -176,17 +178,17 @@
               Compartir Artículo
             </h4>
             <div class="share-buttons-sidebar">
-              <button class="share-sidebar-btn twitter" (click)="shareOnTwitter()" title="Share on X">
+              <button class="share-icon-btn twitter" (click)="shareOnTwitter()" title="Compartir en X" aria-label="Compartir en X">
                 <i class="bi bi-twitter-x"></i>
-                <span>Twitter</span>
               </button>
-              <button class="share-sidebar-btn linkedin" (click)="shareOnLinkedIn()" title="Share on LinkedIn">
+              <button class="share-icon-btn linkedin" (click)="shareOnLinkedIn()" title="Compartir en LinkedIn" aria-label="Compartir en LinkedIn">
                 <i class="bi bi-linkedin"></i>
-                <span>LinkedIn</span>
               </button>
-              <button class="share-sidebar-btn copy" (click)="copyLink()" title="Copy Link">
+              <button class="share-icon-btn whatsapp" (click)="shareOnWhatsApp()" title="Compartir en WhatsApp" aria-label="Compartir en WhatsApp">
+                <i class="bi bi-whatsapp"></i>
+              </button>
+              <button class="share-icon-btn copy" (click)="copyLink()" title="Copiar enlace" aria-label="Copiar enlace">
                 <i class="bi bi-link-45deg"></i>
-                <span>Copiar Enlace</span>
               </button>
             </div>
           </div>

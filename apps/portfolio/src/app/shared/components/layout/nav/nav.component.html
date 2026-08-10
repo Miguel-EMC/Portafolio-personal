@@ -25,9 +25,6 @@
       <a class="nav-link" routerLink="/contact" [class.active]="isActive('/contact')">
         Contacto
       </a>
-      <a class="nav-link blog-link" routerLink="/blog" [class.active]="isActive('/blog')">
-        Blog
-      </a>
     </div>
 
     <!-- Controls -->
@@ -63,10 +60,6 @@
       </a>
       <a class="nav-link" routerLink="/contact" [class.active]="isActive('/contact')" (click)="closeMobileMenu()">
         <i class="bi bi-envelope-fill"></i> Contacto
-      </a>
-      <div class="divider"></div>
-      <a class="nav-link" routerLink="/blog" [class.active]="isActive('/blog')" (click)="closeMobileMenu()">
-        <i class="bi bi-journal-text"></i> Blog
       </a>
     </div>
   </div>

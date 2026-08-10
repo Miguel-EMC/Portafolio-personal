@@ -112,15 +112,6 @@
     color: var(--accent-primary);
     background: var(--bg-accent);
   }
-
-  &.blog-link {
-    color: var(--accent-primary);
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    
-    i { font-size: 0.8rem; }
-  }
 }
 
 .nav-right {

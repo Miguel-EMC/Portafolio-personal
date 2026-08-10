@@ -61,9 +61,9 @@
         },
         "blog": {
             "eyebrow": "Blog",
-            "title": "Del Blog",
-            "subtitle": "Notas técnicas sobre IA, cloud y backend",
-            "viewAll": "Ver todos los posts",
+            "title": "Un espacio aparte",
+            "subtitle": "Donde escribo con más profundidad sobre IA en producción, cloud y sistemas backend — sin las prisas del portafolio.",
+            "viewAll": "Entrar al blog",
             "empty": "Todavía no hay posts publicados."
         },
         "clientProjects": {

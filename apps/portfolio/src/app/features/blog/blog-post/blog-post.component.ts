@@ -171,6 +171,18 @@ export class BlogPostComponent implements OnInit, OnDestroy {
     return BLOG_CATEGORIES.find(c => c.id === categoryId);
   }
 
+  // Deterministic color per tag (same tag = same color everywhere), pulled
+  // from the existing blog category palette — variety without randomness.
+  private readonly tagPalette = ['#3B82F6', '#10B981', '#8B5CF6', '#F59E0B', '#EF4444', '#EC4899', '#06B6D4'];
+
+  getTagColor(tag: string): string {
+    let hash = 0;
+    for (let i = 0; i < tag.length; i++) {
+      hash = (hash * 31 + tag.charCodeAt(i)) >>> 0;
+    }
+    return this.tagPalette[hash % this.tagPalette.length];
+  }
+
   formatDate(date: Date): string {
     return new Intl.DateTimeFormat('en-US', {
       year: 'numeric',
@@ -396,8 +408,19 @@ export class BlogPostComponent implements OnInit, OnDestroy {
       // Wait for webfonts to load first — mermaid measures label text at render
       // time, and measuring against a fallback font produces boxes too narrow
       // for the real (wider) Inter glyphs, clipping the label permanently.
+      // document.fonts.ready alone isn't enough: it only tracks fonts that
+      // have already been requested by something on the page, and nothing
+      // else may have asked for this exact family/weight yet — so force the
+      // load explicitly first.
       if ('fonts' in document) {
-        try { await (document as Document & { fonts: FontFaceSet }).fonts.ready; } catch { /* ignore */ }
+        const fontSet = (document as Document & { fonts: FontFaceSet }).fonts;
+        try {
+          await Promise.all([
+            fontSet.load('400 16px Inter'),
+            fontSet.load('700 16px Inter')
+          ]);
+          await fontSet.ready;
+        } catch { /* ignore */ }
       }
 
       const { default: mermaid } = await import('mermaid');
@@ -445,9 +468,12 @@ export class BlogPostComponent implements OnInit, OnDestroy {
     }, 400);
   }
 
+  private fitZoom = 1.75;
+
   openDiagramLightbox(svg: string): void {
     this.lightboxSvg.set(this.sanitizer.bypassSecurityTrustHtml(svg));
-    this.lightboxZoom.set(1.75);
+    this.fitZoom = this.computeFitZoom(svg);
+    this.lightboxZoom.set(this.fitZoom);
     if (isPlatformBrowser(this.platformId)) {
       document.body.style.overflow = 'hidden';
     }
@@ -461,11 +487,31 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   }
 
   zoomDiagram(delta: number): void {
-    this.lightboxZoom.update(z => Math.min(3, Math.max(0.5, +(z + delta).toFixed(2))));
+    this.lightboxZoom.update(z => Math.min(8, Math.max(0.5, +(z + delta).toFixed(2))));
   }
 
   resetDiagramZoom(): void {
-    this.lightboxZoom.set(1);
+    this.lightboxZoom.set(this.fitZoom);
+  }
+
+  // Flowcharts tend to be wide and short (a handful of boxes in a row).
+  // Fitting to viewport WIDTH keeps them looking small and lost in a
+  // fullscreen modal — there's plenty of unused vertical space either
+  // way. Fit to HEIGHT instead so the diagram actually reads as "big";
+  // the viewport scrolls horizontally (it's overflow:auto) for the rest.
+  private computeFitZoom(svg: string): number {
+    if (!isPlatformBrowser(this.platformId)) return 2.5;
+
+    const match = svg.match(/viewBox="[\d.\-]+\s[\d.\-]+\s([\d.]+)\s([\d.]+)"/);
+    if (!match) return 2.5;
+
+    const naturalHeight = parseFloat(match[2]);
+    if (!naturalHeight) return 2.5;
+
+    const availableHeight = (window.innerHeight - 140) * 0.9;
+    const zoom = availableHeight / naturalHeight;
+
+    return Math.min(6, Math.max(1.5, +zoom.toFixed(2)));
   }
 
   @HostListener('document:keydown.escape')

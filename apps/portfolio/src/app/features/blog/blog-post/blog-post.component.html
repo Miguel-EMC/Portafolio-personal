@@ -116,7 +116,13 @@
                 Tags:
               </span>
               @for (tag of post()!.tags; track tag) {
-                <a [routerLink]="['/blog/tag', tag]" class="tag glass">
+                <a
+                  [routerLink]="['/blog/tag', tag]"
+                  class="tag glass"
+                  [style.color]="getTagColor(tag)"
+                  [style.border-color]="getTagColor(tag) + '4D'"
+                  [style.background-color]="getTagColor(tag) + '14'"
+                >
                   #{{ tag }}
                 </a>
               }

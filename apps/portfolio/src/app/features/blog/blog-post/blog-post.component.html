@@ -266,4 +266,28 @@
       }
     </div>
   }
+
+  <!-- Diagram zoom lightbox -->
+  @if (lightboxSvg()) {
+    <div class="diagram-lightbox" (click)="closeDiagramLightbox()">
+      <div class="diagram-lightbox-toolbar" (click)="$event.stopPropagation()">
+        <span class="zoom-level">{{ (lightboxZoom() * 100) | number:'1.0-0' }}%</span>
+        <button type="button" (click)="zoomDiagram(-0.25)" aria-label="Alejar">
+          <i class="bi bi-dash-lg"></i>
+        </button>
+        <button type="button" (click)="zoomDiagram(0.25)" aria-label="Acercar">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+        <button type="button" (click)="resetDiagramZoom()" aria-label="Restablecer zoom">
+          <i class="bi bi-aspect-ratio"></i>
+        </button>
+        <button type="button" class="close-btn" (click)="closeDiagramLightbox()" aria-label="Cerrar">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="diagram-lightbox-viewport" (click)="$event.stopPropagation()">
+        <div class="diagram-lightbox-canvas" [style.transform]="'scale(' + lightboxZoom() + ')'" [innerHTML]="lightboxSvg()"></div>
+      </div>
+    </div>
+  }
 </article>

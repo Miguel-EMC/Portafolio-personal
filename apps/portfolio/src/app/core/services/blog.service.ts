@@ -14,6 +14,22 @@ import {
 import { LanguageService } from '../../shared/services/language.service';
 import { environment } from '../../../environments/environment';
 
+// Real per-language brand colors, kept small and curated on purpose —
+// not a rainbow, just enough variety to make code blocks scannable.
+const LANGUAGE_COLORS: Record<string, string> = {
+  python: '#3776AB',
+  javascript: '#F0DB4F',
+  typescript: '#3178C6',
+  bash: '#4EAA25',
+  shell: '#4EAA25',
+  json: '#F59E0B',
+  sql: '#00758F',
+  yaml: '#CB171E',
+  html: '#E34F26',
+  css: '#1572B6',
+  dockerfile: '#2496ED'
+};
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -58,6 +74,8 @@ export class BlogService {
 
       const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext';
       const highlighted = hljs.highlight(text, { language }).value;
+      const langColor = LANGUAGE_COLORS[language];
+      const langStyle = langColor ? ` style="color:${langColor}"` : '';
       return `<div class="code-block-wrapper">
         <div class="code-block-header">
           <div class="code-block-dots">
@@ -65,7 +83,7 @@ export class BlogService {
             <span class="dot yellow"></span>
             <span class="dot green"></span>
           </div>
-          <span class="code-block-lang">${language}</span>
+          <span class="code-block-lang"${langStyle}>${language}</span>
         </div>
         <pre><code class="hljs language-${language}">${highlighted}</code></pre>
       </div>`;

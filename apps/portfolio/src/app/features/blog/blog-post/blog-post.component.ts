@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy, inject, signal, ViewEncapsulation, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, signal, ViewEncapsulation, PLATFORM_ID, HostListener } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Subject, takeUntil, switchMap } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -28,6 +29,7 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   private seoService = inject(SeoService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private sanitizer = inject(DomSanitizer);
   private destroy$ = new Subject<void>();
   private platformId = inject(PLATFORM_ID);
   private observer?: IntersectionObserver;
@@ -42,6 +44,8 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   toc = signal<TocItem[]>([]);
   reactions = signal<Record<string, boolean>>({});
   private chartRoots: import('@amcharts/amcharts5').Root[] = [];
+  lightboxSvg = signal<SafeHtml | null>(null);
+  lightboxZoom = signal(1);
   readonly reactionTypes = [
     { id: 'insightful', emoji: '💡', label: 'Insightful' },
     { id: 'helpful', emoji: '🙌', label: 'Útil' },
@@ -78,6 +82,7 @@ export class BlogPostComponent implements OnInit, OnDestroy {
         this.readingProgress.set(0);
         this.toc.set([]);
         this.disposeCharts();
+        this.closeDiagramLightbox();
 
         if (this.observer) {
           this.observer.disconnect();
@@ -124,6 +129,7 @@ export class BlogPostComponent implements OnInit, OnDestroy {
     }
 
     this.disposeCharts();
+    this.closeDiagramLightbox();
   }
 
   private disposeCharts(): void {
@@ -423,12 +429,48 @@ export class BlogPostComponent implements OnInit, OnDestroy {
           const { svg } = await mermaid.render(`mermaid-diagram-${index}`, source.trim());
           container.innerHTML = svg;
           container.classList.add('rendered');
+
+          const expandBtn = document.createElement('button');
+          expandBtn.type = 'button';
+          expandBtn.className = 'diagram-expand-btn';
+          expandBtn.setAttribute('aria-label', 'Ver diagrama en grande');
+          expandBtn.innerHTML = '<i class="bi bi-arrows-fullscreen"></i>';
+          expandBtn.addEventListener('click', () => this.openDiagramLightbox(svg));
+          container.appendChild(expandBtn);
         } catch (err) {
           console.error('Mermaid render failed:', err);
           container.innerHTML = '<p class="rich-content-error">No se pudo renderizar el diagrama.</p>';
         }
       }
     }, 400);
+  }
+
+  openDiagramLightbox(svg: string): void {
+    this.lightboxSvg.set(this.sanitizer.bypassSecurityTrustHtml(svg));
+    this.lightboxZoom.set(1.75);
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  closeDiagramLightbox(): void {
+    this.lightboxSvg.set(null);
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  zoomDiagram(delta: number): void {
+    this.lightboxZoom.update(z => Math.min(3, Math.max(0.5, +(z + delta).toFixed(2))));
+  }
+
+  resetDiagramZoom(): void {
+    this.lightboxZoom.set(1);
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscapeKey(): void {
+    if (this.lightboxSvg()) this.closeDiagramLightbox();
   }
 
   private renderCharts(): void {
